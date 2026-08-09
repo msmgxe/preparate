@@ -48,7 +48,10 @@ async function run(file: string) {
 // donde un `await` de nivel superior no está permitido.
 async function main() {
   await run('schema.sql');
-  if (process.argv.includes('--seed')) await run('seed.sql');
+  if (process.argv.includes('--seed')) {
+    await run('seed.sql');
+    await run('seed-ingles.sql');
+  }
   process.stdout.write('\n✓ Base lista.\n');
 }
 

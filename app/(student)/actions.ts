@@ -6,12 +6,14 @@ import { getDb } from '@/db';
 import {
   attemptItems,
   attempts,
+  chapters,
   examProfiles,
   questions,
   type AttemptMode,
 } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { getDueReviews, publishedInArea, shuffle } from '@/lib/queries';
+import { getAccess } from '@/lib/entitlements';
 
 const QUICK_SIZE = 10;
 const CHAPTER_SIZE = 10;
@@ -26,7 +28,7 @@ async function launch(opts: {
   chapterId?: string | null;
   profileId?: string | null;
 }): Promise<never> {
-  if (!opts.questionIds.length) redirect('/?vacio=1');
+  if (!opts.questionIds.length) redirect('/app?vacio=1');
 
   const db = getDb();
   const [attempt] = await db
@@ -49,7 +51,7 @@ async function launch(opts: {
     })),
   );
 
-  redirect(`/sesion/${attempt.id}`);
+  redirect(`/app/sesion/${attempt.id}`);
 }
 
 export async function startChapter(formData: FormData) {
@@ -59,32 +61,58 @@ export async function startChapter(formData: FormData) {
 
   const db = getDb();
   const rows = await db
-    .select({ id: questions.id })
+    .select({ id: questions.id, areaId: chapters.areaId })
     .from(questions)
+    .innerJoin(chapters, eq(chapters.id, questions.chapterId))
     .where(and(eq(questions.status, 'published'), eq(questions.chapterId, chapterId)));
+
+  // Con el módulo cerrado la sesión se recorta a la muestra gratuita.
+  const areaId = rows[0]?.areaId;
+  const access = await getAccess(profile.id);
+  const limit = areaId ? Math.min(CHAPTER_SIZE, access.limitFor(areaId)) : CHAPTER_SIZE;
 
   await launch({
     userId: profile.id,
     mode: 'chapter',
     title,
     chapterId,
-    questionIds: shuffle(rows.map((q) => q.id)).slice(0, CHAPTER_SIZE),
+    questionIds: shuffle(rows.map((q) => q.id)).slice(0, limit),
   });
 }
 
 export async function startQuick() {
   const profile = await requireUser();
   const db = getDb();
+  const access = await getAccess(profile.id);
   const rows = await db
-    .select({ id: questions.id })
+    .select({ id: questions.id, areaId: chapters.areaId })
     .from(questions)
+    .innerJoin(chapters, eq(chapters.id, questions.chapterId))
     .where(eq(questions.status, 'published'));
+
+  /**
+   * Con módulos comprados, la sesión mixta sale de ellos. Sin ninguno, se
+   * arma con la muestra gratuita de cada módulo para que se pueda probar.
+   */
+  const owned = rows.filter((q) => access.isOpen(q.areaId));
+  let pool: string[];
+  if (owned.length) {
+    pool = shuffle(owned.map((q) => q.id)).slice(0, QUICK_SIZE);
+  } else {
+    const byArea = new Map<string, string[]>();
+    for (const q of shuffle(rows)) {
+      const list = byArea.get(q.areaId) ?? [];
+      if (list.length < access.limitFor(q.areaId)) list.push(q.id);
+      byArea.set(q.areaId, list);
+    }
+    pool = shuffle([...byArea.values()].flat()).slice(0, QUICK_SIZE);
+  }
 
   await launch({
     userId: profile.id,
     mode: 'practice',
-    title: 'Sesión relámpago',
-    questionIds: shuffle(rows.map((q) => q.id)).slice(0, QUICK_SIZE),
+    title: owned.length ? 'Sesión relámpago' : 'Sesión de muestra',
+    questionIds: pool,
   });
 }
 
@@ -111,7 +139,16 @@ export async function startExam(formData: FormData) {
     .where(eq(examProfiles.id, profileId))
     .limit(1);
 
-  if (!exam) redirect('/');
+  if (!exam) redirect('/app');
+
+  /**
+   * El simulacro es una función de pago: pide tener abiertos los módulos que
+   * entran en la mezcla. Con la muestra gratuita no tendría sentido — daría un
+   * puntaje sobre un examen incompleto.
+   */
+  const access = await getAccess(profile.id);
+  const mixAreas = Object.keys(exam.mix ?? {});
+  if (!mixAreas.every((a) => access.isOpen(a))) redirect('/app?bloqueado=simulacro');
 
   // reparte las preguntas según la mezcla real de la institución
   const mix = Object.entries(exam.mix ?? {});
@@ -192,8 +229,8 @@ export async function finishAttempt(formData: FormData) {
     .where(eq(attempts.id, attemptId))
     .limit(1);
 
-  if (!attempt || attempt.userId !== profile.id) redirect('/');
-  if (attempt.finishedAt) redirect(`/resultados/${attemptId}`);
+  if (!attempt || attempt.userId !== profile.id) redirect('/app');
+  if (attempt.finishedAt) redirect(`/app/resultados/${attemptId}`);
 
   const items = await db
     .select({ isCorrect: attemptItems.isCorrect })
@@ -212,7 +249,7 @@ export async function finishAttempt(formData: FormData) {
     })
     .where(eq(attempts.id, attemptId));
 
-  redirect(`/resultados/${attemptId}`);
+  redirect(`/app/resultados/${attemptId}`);
 }
 
 /** Marca que el alumno abrió la resolución (telemetría, no penaliza). */

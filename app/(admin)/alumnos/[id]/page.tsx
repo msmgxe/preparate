@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
-import { areas, lessons, vAreaMastery } from '@/db/schema';
+import { areas, lessons, plans, vAreaMastery } from '@/db/schema';
 import { requireAdmin, initials } from '@/lib/auth';
 import { AreaCurve } from '@/components/admin/Charts';
 import {
@@ -12,6 +12,8 @@ import {
   getWeakChaptersFor,
   getWeeklySeries,
 } from '@/lib/admin-queries';
+import { getEntitlementsFor } from '@/lib/entitlements';
+import { Accesses } from './Accesses';
 
 export const metadata: Metadata = { title: 'Ficha del alumno · RUMBO' };
 
@@ -32,12 +34,14 @@ export default async function AlumnoPage({ params }: { params: Promise<{ id: str
   const student = students.find((s) => s.userId === id);
   if (!student) notFound();
 
-  const [weekly, mastery, allAreas, weak, sessions] = await Promise.all([
+  const [weekly, mastery, allAreas, weak, sessions, accesses, allPlans] = await Promise.all([
     getWeeklySeries(),
     db.select().from(vAreaMastery).where(eq(vAreaMastery.userId, id)),
     db.select().from(areas).orderBy(areas.ord),
     getWeakChaptersFor(id),
     getSessionsFor(id),
+    getEntitlementsFor(id),
+    db.select({ id: plans.id, name: plans.name }).from(plans).orderBy(plans.ord),
   ]);
 
   const points = weekly.pointsFor(id);
@@ -233,6 +237,20 @@ export default async function AlumnoPage({ params }: { params: Promise<{ id: str
             </p>
           </>
         )}
+      </section>
+
+      <section>
+        <div className="shead">
+          <h2>Módulos y accesos</h2>
+          <div className="rule" />
+          <span className="eyebrow">cobro manual</span>
+        </div>
+        <Accesses
+          userId={id}
+          areas={allAreas.map((a) => ({ id: a.id, name: a.name, accent: a.accent }))}
+          plans={allPlans}
+          rows={accesses}
+        />
       </section>
 
       <section>

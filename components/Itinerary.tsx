@@ -31,6 +31,7 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
             <h3>{area.name}</h3>
             <div className="meta">
               {area.chapters.length} capítulos · {area.published} preguntas
+              {area.locked && ' · 🔒 muestra'}
             </div>
             <div className="bar" style={{ marginTop: 14 }}>
               <i style={{ width: `${area.mastery ?? 0}%`, background: area.accent }} />
@@ -42,6 +43,21 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
           </button>
         ))}
       </div>
+
+      {current?.locked && (
+        <div
+          className="notice bad"
+          style={{ marginTop: 16, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}
+        >
+          <span style={{ flex: 1, minWidth: 220 }}>
+            <b>{current.name}</b> está en modo muestra: puedes practicar unas pocas preguntas y leer
+            la primera clase. El resto se abre al activar el módulo.
+          </span>
+          <Link className="btn sm" href="/#planes">
+            Ver planes
+          </Link>
+        </div>
+      )}
 
       {current && (
         <div className="chapters">
@@ -59,11 +75,17 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
                 </span>
               </div>
               <div className="stars">{stars(chapter.mastery)}</div>
-              {chapter.lesson && (
-                <Link className="btn sm" href={`/clase/${chapter.lesson.id}`}>
-                  ◐ Clase · {chapter.lesson.minutes} min
-                </Link>
-              )}
+              {chapter.lesson &&
+                (!current.locked || current.freeLessonId === chapter.lesson.id ? (
+                  <Link className="btn sm" href={`/app/clase/${chapter.lesson.id}`}>
+                    ◐ Clase · {chapter.lesson.minutes} min
+                    {current.locked ? ' · muestra' : ''}
+                  </Link>
+                ) : (
+                  <span className="btn sm" style={{ opacity: 0.45, cursor: 'not-allowed' }}>
+                    🔒 Clase
+                  </span>
+                ))}
               <form action={startChapter}>
                 <input type="hidden" name="chapter_id" value={chapter.id} />
                 <input type="hidden" name="title" value={`${current.name} · ${chapter.title}`} />

@@ -81,7 +81,7 @@ export async function requireAdmin(): Promise<Profile> {
 
 /** Dónde aterriza cada rol al entrar. */
 export function homeFor(role: Profile['role']): string {
-  return role === 'admin' ? '/panel' : '/';
+  return role === 'admin' ? '/panel' : '/app';
 }
 
 export function initials(name: string): string {

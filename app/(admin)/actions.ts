@@ -7,6 +7,7 @@ import { getDb } from '@/db';
 import { lessonBlocks, lessonVideos, lessons, questions } from '@/db/schema';
 import { requireAdmin } from '@/lib/auth';
 import { emptyPayload, type BlockKind } from '@/lib/blocks';
+import { grantAccess, revokeAccess } from '@/lib/entitlements';
 
 export type EditorState = { error?: string; notice?: string };
 
@@ -324,4 +325,46 @@ export async function insertDrafts(chapterId: string, drafts: unknown[]): Promis
   await db.insert(questions).values(rows);
   revalidatePath('/balotario');
   return rows.length;
+}
+
+// ══════════════════════════ ACCESOS ══════════════════════════
+
+/**
+ * Abrir un módulo a un alumno.
+ *
+ * El cobro es manual: el padre paga por Yape o transferencia y tú abres el
+ * acceso aquí. La nota queda como recibo interno («Yape 12/08 · S/ 89»).
+ */
+export async function grantModule(_prev: EditorState, formData: FormData): Promise<EditorState> {
+  const admin = await requireAdmin();
+
+  const userId = str(formData, 'user_id');
+  const areaRaw = str(formData, 'area_id');
+  const monthsRaw = str(formData, 'months');
+  if (!userId) return { error: 'Falta el alumno.' };
+
+  const months = monthsRaw === 'never' ? null : Number(monthsRaw);
+  if (months !== null && (!Number.isFinite(months) || months <= 0)) {
+    return { error: 'La duración no es válida.' };
+  }
+
+  await grantAccess({
+    userId,
+    areaId: areaRaw === 'all' ? null : areaRaw,
+    planId: str(formData, 'plan_id') || null,
+    months,
+    note: str(formData, 'note') || null,
+    grantedBy: admin.id,
+  });
+
+  revalidatePath(`/alumnos/${userId}`);
+  return { notice: areaRaw === 'all' ? 'Todos los módulos abiertos.' : 'Módulo abierto.' };
+}
+
+export async function revokeModule(formData: FormData) {
+  await requireAdmin();
+  const id = str(formData, 'id');
+  const userId = str(formData, 'user_id');
+  await revokeAccess(id);
+  revalidatePath(`/alumnos/${userId}`);
 }

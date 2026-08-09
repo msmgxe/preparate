@@ -6,7 +6,7 @@ import { examProfiles, vStudentStats } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { daysUntil, getDueReviews, getItinerary, getStamps } from '@/lib/queries';
 import { Itinerary } from '@/components/Itinerary';
-import { startErrors, startQuick } from './actions';
+import { startErrors, startQuick } from '@/app/(student)/actions';
 
 export const metadata: Metadata = { title: 'Itinerario · RUMBO' };
 
@@ -144,7 +144,7 @@ export default async function HomePage({
               Preguntas cronometradas con la mezcla real de la institución. Sin pistas hasta el
               final.
             </p>
-            <Link className="btn solid" href={`/simulacro/${exam?.id ?? 'isil'}`}>
+            <Link className="btn solid" href={`/app/simulacro/${exam?.id ?? 'isil'}`}>
               Rendir simulacro →
             </Link>
           </div>
@@ -215,7 +215,7 @@ export default async function HomePage({
         <span>RUMBO v0.2</span>
         <span>·</span>
         <span>Next.js + Neon + Vercel</span>
-        <Link href="/perfil" style={{ marginLeft: 'auto' }}>
+        <Link href="/app/perfil" style={{ marginLeft: 'auto' }}>
           Editar mi ficha
         </Link>
       </footer>

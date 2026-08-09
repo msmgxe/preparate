@@ -49,7 +49,56 @@ export const areas = pgTable('areas', {
   accent: text('accent').notNull().default('#EFA451'),
   glow: text('glow').notNull().default('rgba(239,164,81,.14)'),
   ord: smallint('ord').notNull().default(0),
+  // el área es también un producto: se vende suelta
+  tagline: text('tagline'),
+  blurb: text('blurb'),
+  priceMonth: integer('price_month'),
+  priceYear: integer('price_year'),
+  freeQuestions: smallint('free_questions').notNull().default(5),
+  status: text('status').notNull().default('live').$type<'live' | 'soon'>(),
 });
+
+// ── negocio: planes y accesos ───────────────────────────────────────────────
+
+export const plans = pgTable('plans', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  kind: text('kind').notNull().$type<'module' | 'full' | 'family'>(),
+  tagline: text('tagline'),
+  audience: text('audience'),
+  price: integer('price').notNull(),
+  period: text('period').notNull().$type<'month' | 'year'>(),
+  compareAt: integer('compare_at'),
+  highlight: boolean('highlight').notNull().default(false),
+  cta: text('cta').notNull().default('Elegir plan'),
+  features: jsonb('features').notNull().default([]).$type<string[]>(),
+  ord: smallint('ord').notNull().default(0),
+});
+
+/** Un acceso abre un módulo (`areaId`) o todos (`areaId` nulo). */
+export const entitlements = pgTable(
+  'entitlements',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: text('user_id').notNull(),
+    areaId: text('area_id'),
+    planId: text('plan_id'),
+    status: text('status').notNull().default('active').$type<'active' | 'expired' | 'revoked'>(),
+    startsAt: timestamp('starts_at', { withTimezone: true }).notNull().defaultNow(),
+    expiresAt: timestamp('expires_at', { withTimezone: true }),
+    note: text('note'),
+    grantedBy: text('granted_by'),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('entitlements_user_idx').on(t.userId, t.status)],
+);
+
+/** Accesos vigentes ya resueltos: una fila por (alumno, módulo abierto). */
+export const vUserModules = pgView('v_user_modules', {
+  userId: text('user_id'),
+  areaId: text('area_id'),
+  expiresAt: timestamp('expires_at', { withTimezone: true }),
+}).existing();
 
 export const chapters = pgTable(
   'chapters',
@@ -397,6 +446,8 @@ export type Attempt = typeof attempts.$inferSelect;
 export type AttemptItem = typeof attemptItems.$inferSelect;
 export type Badge = typeof badges.$inferSelect;
 export type ExamProfile = typeof examProfiles.$inferSelect;
+export type Plan = typeof plans.$inferSelect;
+export type Entitlement = typeof entitlements.$inferSelect;
 
 /** Lo que el navegador puede ver de una pregunta antes de responder. */
 export type PublicQuestion = Omit<

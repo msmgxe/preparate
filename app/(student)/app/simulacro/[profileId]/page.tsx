@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, examProfiles } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
-import { startExam } from '../../actions';
+import { startExam } from '@/app/(student)/actions';
 
 export const metadata: Metadata = { title: 'Simulacro · RUMBO' };
 
@@ -32,7 +32,7 @@ export default async function SimulacroPage({
 
   return (
     <>
-      <Link className="back" href="/">
+      <Link className="back" href="/app">
         ← Volver al itinerario
       </Link>
 
@@ -125,7 +125,7 @@ export default async function SimulacroPage({
         {others
           .filter((o) => o.id !== exam.id)
           .map((o) => (
-            <Link key={o.id} className="btn sm" href={`/simulacro/${o.id}`}>
+            <Link key={o.id} className="btn sm" href={`/app/simulacro/${o.id}`}>
               {o.name}
             </Link>
           ))}

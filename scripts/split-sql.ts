@@ -5,6 +5,8 @@
 
 export const stripSqlComments = (s: string) =>
   s
+    // comentarios de bloque, anidados incluidos
+    .replace(/\/\*(?:[^*]|\*(?!\/))*\*\//g, '')
     .split('\n')
     .filter((line) => !line.trimStart().startsWith('--'))
     .join('\n')

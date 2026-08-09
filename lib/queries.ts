@@ -2,6 +2,7 @@ import 'server-only';
 
 import { and, count, desc, eq, inArray, isNotNull, lte, sql } from 'drizzle-orm';
 import { getDb } from '@/db';
+import { getAccess } from '@/lib/entitlements';
 import {
   areas,
   attempts,
@@ -53,6 +54,9 @@ export type AreaCard = Area & {
   chapters: ChapterCard[];
   published: number;
   mastery: number | null;
+  /** Cerrado = solo muestra gratuita. */
+  locked: boolean;
+  freeLessonId: string | null;
 };
 
 const num = (v: unknown): number | null => (v === null || v === undefined ? null : Number(v));
@@ -60,6 +64,7 @@ const num = (v: unknown): number | null => (v === null || v === undefined ? null
 /** Catálogo completo (áreas → capítulos) con el dominio del alumno encima. */
 export async function getItinerary(userId: string): Promise<AreaCard[]> {
   const db = getDb();
+  const access = await getAccess(userId);
 
   const [allAreas, allChapters, counts, allLessons, areaMastery, chapterMastery] =
     await Promise.all([
@@ -109,6 +114,8 @@ export async function getItinerary(userId: string): Promise<AreaCard[]> {
       chapters: own,
       published: own.reduce((a, c) => a + c.published, 0),
       mastery: am ? num(am.pct) : null,
+      locked: !access.isOpen(area.id),
+      freeLessonId: access.freeLesson.get(area.id) ?? null,
     };
   });
 }

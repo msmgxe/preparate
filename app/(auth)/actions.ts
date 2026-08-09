@@ -36,11 +36,6 @@ function traducir(message: string | undefined): string {
   return message || 'No se pudo completar. Intenta de nuevo.';
 }
 
-async function landing(): Promise<string> {
-  const profile = await getProfile();
-  return homeFor(profile?.role ?? 'student');
-}
-
 /**
  * Dónde aterriza el usuario recién autenticado.
  *
@@ -142,7 +137,7 @@ export async function magicLink(_prev: AuthState, form: FormData): Promise<AuthS
 
   const { error } = await getAuth().signIn.magicLink({
     email,
-    callbackURL: `${env.siteUrl}/`,
+    callbackURL: `${env.siteUrl}/app`,
   });
   if (error) return { error: traducir(error.message) };
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Bricolage_Grotesque, DM_Mono, Newsreader } from 'next/font/google';
+import { Bricolage_Grotesque, DM_Mono, Newsreader, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
 const display = Bricolage_Grotesque({
@@ -21,6 +21,13 @@ const serif = Newsreader({
   display: 'swap',
 });
 
+/** Tipografía de la landing: sans geométrica, legible en móvil, sin ser Inter. */
+const ui = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-ui',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'RUMBO · Preparación de Admisión',
   description:
@@ -35,7 +42,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-PE" className={`${display.variable} ${mono.variable} ${serif.variable}`}>
+    <html lang="es-PE" className={`${display.variable} ${mono.variable} ${serif.variable} ${ui.variable}`}>
       <body>{children}</body>
     </html>
   );

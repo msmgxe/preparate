@@ -6,8 +6,8 @@ import type { Profile } from '@/db/schema';
 type NavItem = { href: string; label: string };
 
 const STUDENT_NAV: NavItem[] = [
-  { href: '/', label: 'Itinerario' },
-  { href: '/simulacro/isil', label: 'Simulacro' },
+  { href: '/app', label: 'Itinerario' },
+  { href: '/app/simulacro/isil', label: 'Simulacro' },
 ];
 
 const ADMIN_NAV: NavItem[] = [
@@ -48,7 +48,7 @@ export function Header({
           {profile.role === 'admin' && variant === 'student' && (
             <Link href="/panel">Volver al panel</Link>
           )}
-          {profile.role === 'admin' && variant === 'admin' && <Link href="/">Ver como alumno</Link>}
+          {profile.role === 'admin' && variant === 'admin' && <Link href="/app">Ver como alumno</Link>}
         </nav>
 
         <div className="hstats">

@@ -16,7 +16,9 @@ import { requireUser } from '@/lib/auth';
 import { toBlock, type Block } from '@/lib/blocks';
 import { sanitizeSvg } from '@/components/SafeHtml';
 import { LessonRenderer } from '@/components/lesson/LessonRenderer';
-import { startFromLesson } from '../../actions';
+import { startFromLesson } from '@/app/(student)/actions';
+import { getAccess } from '@/lib/entitlements';
+import { Paywall } from '@/components/Paywall';
 
 export const metadata: Metadata = { title: 'Clase visual · RUMBO' };
 
@@ -38,6 +40,7 @@ export default async function ClasePage({
       status: lessons.status,
       chapterId: chapters.id,
       chapterTitle: chapters.title,
+      areaId: areas.id,
       areaName: areas.name,
       areaAccent: areas.accent,
     })
@@ -49,6 +52,20 @@ export default async function ClasePage({
 
   // los borradores solo los ve el admin
   if (!lesson || (lesson.status !== 'published' && profile.role !== 'admin')) notFound();
+
+  // muro de pago: módulo cerrado y esta no es la clase de muestra
+  const access = await getAccess(profile.id);
+  const areaId = lesson.areaId;
+  if (profile.role !== 'admin' && !access.canReadLesson(areaId, lesson.id)) {
+    return (
+      <Paywall
+        areaName={lesson.areaName}
+        areaAccent={lesson.areaAccent}
+        title={lesson.title}
+        kind="lesson"
+      />
+    );
+  }
 
   const [rawBlocks, videos, [practiceCount]] = await Promise.all([
     db.select().from(lessonBlocks).where(eq(lessonBlocks.lessonId, lessonId)).orderBy(lessonBlocks.ord),
@@ -83,7 +100,7 @@ export default async function ClasePage({
 
   return (
     <>
-      <Link className="back" href="/">
+      <Link className="back" href="/app">
         ← Volver al itinerario
       </Link>
 
@@ -116,7 +133,7 @@ export default async function ClasePage({
               <button className="btn solid">Practicar lo que acabas de leer →</button>
             </form>
           )}
-          <Link className="btn sm" href={`/practica/${lesson.chapterId}`}>
+          <Link className="btn sm" href={`/app/practica/${lesson.chapterId}`}>
             Practicar todo el capítulo
           </Link>
         </div>

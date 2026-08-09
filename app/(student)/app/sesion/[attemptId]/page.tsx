@@ -20,8 +20,8 @@ export default async function SesionPage({
 
   const [attempt] = await db.select().from(attempts).where(eq(attempts.id, attemptId)).limit(1);
 
-  if (!attempt || attempt.userId !== profile.id) redirect('/');
-  if (attempt.finishedAt) redirect(`/resultados/${attemptId}`);
+  if (!attempt || attempt.userId !== profile.id) redirect('/app');
+  if (attempt.finishedAt) redirect(`/app/resultados/${attemptId}`);
 
   const items = await db
     .select({

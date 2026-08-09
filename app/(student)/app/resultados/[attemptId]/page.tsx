@@ -6,7 +6,7 @@ import { getDb } from '@/db';
 import { areas, attemptItems, attempts, chapters, questions } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { SafeHtml } from '@/components/SafeHtml';
-import { retryWrong } from '../../actions';
+import { retryWrong } from '@/app/(student)/actions';
 
 export const metadata: Metadata = { title: 'Resultados · RUMBO' };
 
@@ -25,8 +25,8 @@ export default async function ResultadosPage({
 
   const [attempt] = await db.select().from(attempts).where(eq(attempts.id, attemptId)).limit(1);
 
-  if (!attempt || attempt.userId !== profile.id) redirect('/');
-  if (!attempt.finishedAt) redirect(`/sesion/${attemptId}`);
+  if (!attempt || attempt.userId !== profile.id) redirect('/app');
+  if (!attempt.finishedAt) redirect(`/app/sesion/${attemptId}`);
 
   // La sesión está cerrada: aquí sí se revela todo.
   const rows = await db
@@ -222,7 +222,7 @@ export default async function ResultadosPage({
                   )}
                   {row.lessonId && (
                     <div className="qnav">
-                      <Link className="btn sm" href={`/clase/${row.lessonId}`}>
+                      <Link className="btn sm" href={`/app/clase/${row.lessonId}`}>
                         ◐ Ver la clase visual
                       </Link>
                     </div>
@@ -235,7 +235,7 @@ export default async function ResultadosPage({
       </section>
 
       <div className="qnav" style={{ marginTop: 30 }}>
-        <Link className="btn solid" href="/">
+        <Link className="btn solid" href="/app">
           Volver al itinerario
         </Link>
         {wrong > 0 && (

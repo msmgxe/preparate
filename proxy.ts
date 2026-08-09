@@ -38,11 +38,17 @@ export async function proxy(request: NextRequest) {
  * —incluidos el CSS y el favicon—, que acaban redirigidos a `/login`.
  */
 export const config = {
+  /**
+   * Solo lo privado. La raíz es la página de venta y tiene que ser pública,
+   * igual que `/login`, `/registro` y los estáticos.
+   */
   matcher: [
-    /**
-     * Todo menos: las pantallas de acceso, el proxy de Neon Auth, los estáticos
-     * y cualquier archivo con extensión.
-     */
-    '/((?!login|registro|api/auth|_next/static|_next/image|favicon.ico|.*\\.[\\w]+$).*)',
+    '/app',
+    '/app/:path*',
+    '/panel/:path*',
+    '/alumnos/:path*',
+    '/balotario/:path*',
+    '/clases/:path*',
+    '/calibracion/:path*',
   ],
 };

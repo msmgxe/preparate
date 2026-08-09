@@ -10,7 +10,7 @@ export default async function PerfilPage() {
 
   return (
     <>
-      <Link className="back" href="/">
+      <Link className="back" href="/app">
         ← Volver al itinerario
       </Link>
 

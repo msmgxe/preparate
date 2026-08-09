@@ -227,7 +227,7 @@ export function Runner({
         <div className={`timer${remaining !== null && remaining < 60 ? ' warn' : ''}`}>
           {mmss(remaining ?? elapsed)}
         </div>
-        <Link className="btn sm" href="/">
+        <Link className="btn sm" href="/app">
           Salir
         </Link>
       </div>
@@ -293,7 +293,7 @@ export function Runner({
             </h3>
             <p style={{ color: '#CFC6B4', marginTop: 12, fontSize: 17 }}>{item.lesson.hook}</p>
             <div className="qnav">
-              <Link className="btn solid sm" href={`/clase/${item.lesson.id}`}>
+              <Link className="btn solid sm" href={`/app/clase/${item.lesson.id}`}>
                 Leer la clase completa →
               </Link>
               <button className="btn sm" onClick={() => setTab('x')}>
@@ -458,7 +458,7 @@ export function Runner({
 
           <div className="qnav">
             {item.lesson && (
-              <Link className="btn sm" href={`/clase/${item.lesson.id}`}>
+              <Link className="btn sm" href={`/app/clase/${item.lesson.id}`}>
                 ◐ Ver la clase completa
               </Link>
             )}

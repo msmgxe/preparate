@@ -5,7 +5,7 @@ import { and, count, eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, chapters, lessons, questions, vChapterMastery } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
-import { startChapter } from '../../actions';
+import { startChapter } from '@/app/(student)/actions';
 
 export const metadata: Metadata = { title: 'Práctica · RUMBO' };
 
@@ -57,7 +57,7 @@ export default async function PracticaPage({
 
   return (
     <>
-      <Link className="back" href="/">
+      <Link className="back" href="/app">
         ← Volver al itinerario
       </Link>
 
@@ -114,7 +114,7 @@ export default async function PracticaPage({
             </span>
             <b>{lesson.title}</b>
             <p>{lesson.hook}</p>
-            <Link className="btn" href={`/clase/${lesson.id}`}>
+            <Link className="btn" href={`/app/clase/${lesson.id}`}>
               Leer la clase →
             </Link>
           </div>

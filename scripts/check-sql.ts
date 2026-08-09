@@ -13,7 +13,7 @@ const STARTS = /^(create|alter|drop|insert|update|delete|grant|revoke|do|comment
 
 let failed = false;
 
-for (const file of ['schema.sql', 'seed.sql']) {
+for (const file of ['schema.sql', 'seed.sql', 'seed-ingles.sql']) {
   const source = readFileSync(resolve(process.cwd(), 'docs', file), 'utf8');
   const statements = splitSql(source);
   const problems: string[] = [];
@@ -40,4 +40,4 @@ for (const file of ['schema.sql', 'seed.sql']) {
 }
 
 if (failed) process.exit(1);
-console.log('\n✓ Los dos archivos se parten limpio.');
+console.log('\n✓ Todos los archivos se parten limpio.');

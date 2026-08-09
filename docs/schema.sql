@@ -413,3 +413,109 @@ insert into badges (id,label,big,small,accent,rule,ord) values
   ('streak30', 'Racha de 30 días',  '30',  E'días\nseguidos',      '#4FD69C','streak>=30',  5),
   ('exam90',   '90 % en simulacro', '90%', E'en un\nsimulacro',    '#EFA451','exam>=90',    6)
 on conflict (id) do nothing;
+
+-- ══════════════════════════ 9 · MÓDULOS, PLANES Y ACCESOS ══════════════════
+--
+-- El negocio vende por módulo: cada área del itinerario es un producto que se
+-- compra suelto, y además hay tres planes que agrupan varios. Quién tiene
+-- abierto qué se resuelve en `entitlements`; el cobro es manual (Yape /
+-- transferencia por WhatsApp) y el acceso se concede desde el panel.
+
+alter table areas add column if not exists tagline        text;
+alter table areas add column if not exists blurb          text;
+alter table areas add column if not exists price_month    int;      -- soles
+alter table areas add column if not exists price_year     int;
+alter table areas add column if not exists free_questions smallint not null default 5;
+alter table areas add column if not exists status         text not null default 'live'
+  check (status in ('live','soon'));
+
+create table if not exists plans (
+  id             text primary key,        -- 'mensual' | 'anual' | 'familiar'
+  name           text not null,
+  kind           text not null check (kind in ('module','full','family')),
+  tagline        text,
+  audience       text,                    -- a quién le habla la tarjeta
+  price          int not null,            -- soles
+  period         text not null check (period in ('month','year')),
+  compare_at     int,                     -- precio tachado, para el ahorro
+  highlight      boolean not null default false,
+  cta            text not null default 'Elegir plan',
+  features       jsonb not null default '[]'::jsonb,
+  ord            smallint not null default 0
+);
+
+-- Un acceso abre un módulo (`area_id`) o todos (`area_id is null`).
+-- `expires_at is null` = sin vencimiento.
+create table if not exists entitlements (
+  id         uuid primary key default gen_random_uuid(),
+  user_id    text not null references profiles(id) on delete cascade,
+  area_id    text references areas(id) on delete cascade,
+  plan_id    text references plans(id) on delete set null,
+  status     text not null default 'active' check (status in ('active','expired','revoked')),
+  starts_at  timestamptz not null default now(),
+  expires_at timestamptz,
+  note       text,                        -- 'Yape 12/08 · S/ 89 · mamá de Rodrigo'
+  granted_by text references profiles(id) on delete set null,
+  created_at timestamptz not null default now()
+);
+create index if not exists entitlements_user_idx on entitlements(user_id, status);
+
+-- Accesos vigentes, ya resueltos: una fila por (alumno, módulo abierto).
+drop view if exists v_user_modules cascade;
+create view v_user_modules as
+select e.user_id, a.id as area_id, min(e.expires_at) as expires_at
+from entitlements e
+join areas a on e.area_id is null or a.id = e.area_id
+where e.status = 'active'
+  and e.starts_at <= now()
+  and (e.expires_at is null or e.expires_at > now())
+group by e.user_id, a.id;
+
+-- ── el quinto módulo: Inglés ────────────────────────────────────────────────
+insert into areas (id, name, short, symbol, accent, glow, ord, status) values
+  ('eng','Inglés','ENG','æ','#2DD4BF','rgba(45,212,191,.14)',5,'soon')
+on conflict (id) do update set
+  name = excluded.name, short = excluded.short, symbol = excluded.symbol,
+  accent = excluded.accent, glow = excluded.glow, ord = excluded.ord;
+
+update areas set
+  tagline = case id
+    when 'rm'  then 'El área que más pesa y más se entrena'
+    when 'rv'  then 'Donde se decide la mitad del puntaje'
+    when 'mat' then 'La base que sostiene todo lo demás'
+    when 'cg'  then 'Puntos rápidos que casi nadie prepara'
+    when 'eng' then 'De cero a C1, con método'
+  end,
+  blurb = case id
+    when 'rm'  then 'Sucesiones, planteo de ecuaciones, edades, porcentajes, operadores, conteo de figuras, probabilidad y cronometría.'
+    when 'rv'  then 'Comprensión lectora, analogías, sinónimos y antónimos, término excluido, conectores, plan de redacción y oraciones incompletas.'
+    when 'mat' then 'Aritmética comercial, álgebra, sistemas de ecuaciones, proporcionalidad, geometría plana y estadística.'
+    when 'cg'  then 'Historia del Perú, geografía y turismo, economía y actualidad, literatura y educación cívica.'
+    when 'eng' then 'Ruta completa A1 → C1 con repetición espaciada, comprensión auditiva, shadowing y producción oral.'
+  end,
+  price_month = case when id = 'eng' then 45 else 39 end,
+  price_year  = case when id = 'eng' then 350 else 290 end
+where id in ('rm','rv','mat','cg','eng');
+
+insert into plans (id,name,kind,tagline,audience,price,period,compare_at,highlight,cta,features,ord) values
+  ('mensual','Mensual','full',
+   'Para probar la plataforma completa antes del examen.',
+   'Ideal si el examen es pronto y quieres medir el terreno.',
+   89,'month',null,false,'Empezar este mes',
+   $j$["Los 4 módulos de admisión abiertos","Simulacros cronometrados ilimitados","Clases visuales y resolución paso a paso","Bitácora de errores con repetición espaciada","Cancelas cuando quieras"]$j$::jsonb, 1),
+
+  ('anual','Pase de Admisión','full',
+   'Todo el año, a mitad de precio. El plan que eligen 8 de cada 10.',
+   'Cubre la convocatoria de enero y la de julio.',
+   590,'year',1068,true,'Asegurar mi vacante',
+   $j$["Todo lo del plan Mensual","Ahorras S/ 478 frente a pagar mes a mes","Acceso anticipado al módulo de Inglés C1","Simulacros por institución: ISIL, USIL, UPC","Plan de estudio según tu diagnóstico inicial","Precio congelado mientras renueves"]$j$::jsonb, 2),
+
+  ('familiar','Familiar','family',
+   'Para papás que quieren acompañar sin perseguir.',
+   'Incluye reporte semanal y asesoría personal.',
+   890,'year',1068,false,'Hablar con un asesor',
+   $j$["Todo lo del Pase de Admisión","Reporte semanal de avance al correo de los padres","Alerta si tu hijo deja de practicar 4 días","2 asesorías de dudas al mes con un profesor","Hasta 2 alumnos en la misma suscripción","Garantía: si no ingresa, renuevas el año sin costo"]$j$::jsonb, 3)
+on conflict (id) do update set
+  name=excluded.name, kind=excluded.kind, tagline=excluded.tagline, audience=excluded.audience,
+  price=excluded.price, period=excluded.period, compare_at=excluded.compare_at,
+  highlight=excluded.highlight, cta=excluded.cta, features=excluded.features, ord=excluded.ord;
