@@ -17,14 +17,23 @@ export function Itinerary({ areas, t }: { areas: AreaCard[]; t: Dict }) {
   const [open, setOpen] = useState<string | null>(null);
   const current = areas.find((a) => a.id === open) ?? null;
 
-  return (
-    <>
+  /**
+   * Lo comprado va arriba y aparte de lo que es solo muestra.
+   *
+   * Antes se mezclaban en una sola rejilla y un padre que había pagado un
+   * módulo veía cinco tarjetas iguales: parecía que tenía acceso a todo. La
+   * etiqueta pequeña de «muestra» no bastaba.
+   */
+  const mine = areas.filter((x) => !x.locked);
+  const sample = areas.filter((x) => x.locked);
+
+  const grid = (list: AreaCard[]) => (
       <div className="areas">
-        {areas.map((area) => (
+        {list.map((area) => (
           <button
             key={area.id}
             type="button"
-            className={`area${open === area.id ? ' on' : ''}`}
+            className={`area${open === area.id ? ' on' : ''}${area.locked ? ' locked' : ''}`}
             style={{ '--accent': area.accent, '--glow': area.glow } as React.CSSProperties}
             aria-expanded={open === area.id}
             onClick={() => setOpen((prev) => (prev === area.id ? null : area.id))}
@@ -45,6 +54,28 @@ export function Itinerary({ areas, t }: { areas: AreaCard[]; t: Dict }) {
           </button>
         ))}
       </div>
+  );
+
+  return (
+    <>
+      {mine.length > 0 && (
+        <>
+          <div className="grouphead">
+            <span className="eyebrow">{a.groupMine}</span>
+          </div>
+          {grid(mine)}
+        </>
+      )}
+
+      {sample.length > 0 && (
+        <>
+          <div className="grouphead" style={{ marginTop: mine.length ? 26 : 0 }}>
+            <span className="eyebrow">{a.groupSample}</span>
+            <span className="grouphint">{a.groupSampleHint}</span>
+          </div>
+          {grid(sample)}
+        </>
+      )}
 
       {current?.locked && (
         <div

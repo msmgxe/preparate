@@ -336,6 +336,9 @@ export const pt: Dict = {
     bestStreak: 'Melhor ofensiva',
 
     stagesTitle: 'Escalas do itinerário',
+    groupMine: 'Seus módulos',
+    groupSample: 'Outros módulos · apenas amostra',
+    groupSampleHint: 'Você pode testá-los, mas não estão ativos na sua conta.',
     stagesHint: 'Toque numa área',
     mastery: 'Domínio',
     sample: 'amostra',
@@ -390,6 +393,10 @@ export const pt: Dict = {
     wrongTail: 'Esta questão volta no seu caderno nos dias 1, 3, 7 e 21.',
     examSaved: 'Resposta salva. No simulado não há dicas: a correção chega ao entregar.',
     solutionTitle: 'Resolução guiada',
+    askSolution: 'Travou? Mostre como se resolve →',
+    shownWas: 'A resposta é',
+    shownTail:
+      'Leia com calma. Conta como erro de propósito, e a questão volta no seu registro nos dias 1, 3, 7 e 21 para você fechá-la sozinho.',
     keyConcept: 'Conceito-chave',
     examTrick: 'Atalho de prova',
     openLesson: '◐ Ver a aula completa',
@@ -408,6 +415,7 @@ export const pt: Dict = {
     resultsDetail: 'Questão por questão',
     resultsDetailHint: 'Abra cada uma para ver a resolução',
     resultsUnanswered: 'Você deixou em branco. Na prova real isso custa o mesmo que errar.',
+    resultsAsked: 'Você pediu a resolução. Tudo bem: por isso ela volta no seu registro.',
     resultsBack: 'Voltar ao itinerário',
     resultsRetry: 'Revisar os {n} erros',
     resultsRetryOne: 'Revisar o erro',

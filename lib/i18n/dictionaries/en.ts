@@ -336,6 +336,9 @@ export const en: Dict = {
     bestStreak: 'Best streak',
 
     stagesTitle: 'Stops on the itinerary',
+    groupMine: 'Your modules',
+    groupSample: 'Other modules · sample only',
+    groupSampleHint: 'You can try them, but they are not active on your account.',
     stagesHint: 'Tap an area',
     mastery: 'Mastery',
     sample: 'sample',
@@ -390,6 +393,10 @@ export const en: Dict = {
     wrongTail: 'This question returns in your log on days 1, 3, 7 and 21.',
     examSaved: 'Answer saved. In mock exams there are no hints: correction comes when you submit.',
     solutionTitle: 'Guided solution',
+    askSolution: 'Stuck? Show me how to solve it →',
+    shownWas: 'The answer is',
+    shownTail:
+      'Read it carefully. It counts as a miss on purpose, and the question comes back in your log on days 1, 3, 7 and 21 so you close it yourself.',
     keyConcept: 'Key concept',
     examTrick: 'Exam shortcut',
     openLesson: '◐ Read the full lesson',
@@ -408,6 +415,7 @@ export const en: Dict = {
     resultsDetail: 'Question by question',
     resultsDetailHint: 'Open each one to see the solution',
     resultsUnanswered: 'You left this blank. In the real exam that costs the same as getting it wrong.',
+    resultsAsked: 'You asked for the solution. That is fine: that is why it comes back in your log.',
     resultsBack: 'Back to itinerary',
     resultsRetry: 'Review the {n} misses',
     resultsRetryOne: 'Review the miss',

@@ -43,6 +43,7 @@ export default async function ResultadosPage({
       chosenIndex: attemptItems.chosenIndex,
       isCorrect: attemptItems.isCorrect,
       seconds: attemptItems.seconds,
+      viewedSolution: attemptItems.viewedSolution,
       questionId: questions.id,
       stem: questions.stem,
       passage: questions.passage,
@@ -212,7 +213,7 @@ export default async function ResultadosPage({
 
                   {row.chosenIndex === null && (
                     <p className="notice bad" style={{ marginTop: 14 }}>
-                      {a.resultsUnanswered}
+                      {row.viewedSolution ? a.resultsAsked : a.resultsUnanswered}
                     </p>
                   )}
 

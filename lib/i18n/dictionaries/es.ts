@@ -339,6 +339,9 @@ export const es = {
     bestStreak: 'Mejor racha',
 
     stagesTitle: 'Escalas del itinerario',
+    groupMine: 'Tus módulos',
+    groupSample: 'Otros módulos · solo muestra',
+    groupSampleHint: 'Puedes probarlos, pero no están activos en tu cuenta.',
     stagesHint: 'Toca un área',
     mastery: 'Dominio',
     sample: 'muestra',
@@ -394,6 +397,10 @@ export const es = {
     wrongTail: 'Esta pregunta vuelve en tu bitácora al día 1, 3, 7 y 21.',
     examSaved: 'Respuesta guardada. En simulacro no hay pistas: la corrección llega al entregar.',
     solutionTitle: 'Resolución guiada',
+    askSolution: '¿Atascado? Muéstrame cómo se resuelve →',
+    shownWas: 'La respuesta es',
+    shownTail:
+      'Léela con calma. Cuenta como fallo a propósito, y la pregunta vuelve en tu bitácora al día 1, 3, 7 y 21 para que la cierres tú.',
     keyConcept: 'Concepto clave',
     examTrick: 'Truco de examen',
     openLesson: '◐ Ver la clase completa',
@@ -412,6 +419,7 @@ export const es = {
     resultsDetail: 'Detalle pregunta por pregunta',
     resultsDetailHint: 'Abre cada una para ver la resolución',
     resultsUnanswered: 'No la respondiste. En el examen real eso cuesta lo mismo que fallarla.',
+    resultsAsked: 'Pediste la resolución. Está bien: por eso vuelve en tu bitácora.',
     resultsBack: 'Volver al itinerario',
     resultsRetry: 'Repasar los {n} errores',
     resultsRetryOne: 'Repasar el error',

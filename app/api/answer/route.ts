@@ -18,6 +18,8 @@ export type AnswerResult = {
   revealed: boolean;
   is_correct?: boolean;
   answer_index?: number;
+  /** La pidió el alumno sin responder, no la ganó respondiendo. */
+  shown?: boolean;
   steps?: Step[];
   concept?: string | null;
   trick?: string | null;
@@ -25,7 +27,13 @@ export type AnswerResult = {
 };
 
 export async function POST(request: Request) {
-  let body: { attempt_item_id?: string; chosen_index?: number; seconds?: number };
+  let body: {
+    attempt_item_id?: string;
+    chosen_index?: number;
+    seconds?: number;
+    /** «No sé cómo se hace»: abre la resolución sin responder. */
+    reveal?: boolean;
+  };
   try {
     body = await request.json();
   } catch {
@@ -33,9 +41,13 @@ export async function POST(request: Request) {
   }
 
   const { attempt_item_id: itemId, chosen_index: chosen } = body;
+  const reveal = body.reveal === true;
   const seconds = Math.max(0, Math.min(3600, Math.round(body.seconds ?? 0)));
 
-  if (!itemId || typeof chosen !== 'number' || !Number.isInteger(chosen) || chosen < 0) {
+  if (!itemId) {
+    return NextResponse.json({ error: 'Faltan datos de la respuesta.' }, { status: 400 });
+  }
+  if (!reveal && (typeof chosen !== 'number' || !Number.isInteger(chosen) || chosen < 0)) {
     return NextResponse.json({ error: 'Faltan datos de la respuesta.' }, { status: 400 });
   }
 
@@ -78,20 +90,61 @@ export async function POST(request: Request) {
   if (row.finishedAt) {
     return NextResponse.json({ error: 'La sesión ya está cerrada.' }, { status: 409 });
   }
-  if (chosen >= row.options.length) {
+  if (!reveal && chosen! >= row.options.length) {
     return NextResponse.json({ error: 'Esa alternativa no existe.' }, { status: 400 });
   }
 
   const isExam = row.mode === 'exam';
+
+  /**
+   * Pedir la resolución sin responder.
+   *
+   * Un alumno atascado tiene que poder ver cómo se hace: esconderlo no le
+   * enseña nada, solo lo frustra. Cuenta como fallo —no se puede ganar puntaje
+   * mirando la respuesta— y entra en la bitácora para que vuelva a salir. En
+   * simulacro no existe, igual que en el examen de verdad.
+   */
+  if (reveal) {
+    if (isExam) {
+      return NextResponse.json({ error: 'En simulacro no hay pistas.' }, { status: 409 });
+    }
+    if (row.chosenIndex === null) {
+      await db
+        .update(attemptItems)
+        .set({ isCorrect: false, viewedSolution: true, seconds, answeredAt: new Date() })
+        .where(and(eq(attemptItems.id, itemId), isNull(attemptItems.chosenIndex)));
+
+      await db.execute(
+        sql`select schedule_review(${profile.id}, ${row.questionId}::uuid, false)`,
+      );
+    } else {
+      await db
+        .update(attemptItems)
+        .set({ viewedSolution: true })
+        .where(eq(attemptItems.id, itemId));
+    }
+
+    return NextResponse.json<AnswerResult>({
+      saved: true,
+      revealed: true,
+      is_correct: false,
+      shown: true,
+      answer_index: row.answerIndex,
+      steps: tr(row, 'steps', locale) ?? [],
+      concept: tr(row, 'concept', locale),
+      trick: tr(row, 'trick', locale),
+      why_wrong: null,
+    });
+  }
   const alreadyAnswered = row.chosenIndex !== null;
-  const isCorrect = alreadyAnswered ? Boolean(row.isCorrect) : chosen === row.answerIndex;
+  const isCorrect = alreadyAnswered ? Boolean(row.isCorrect) : chosen! === row.answerIndex;
 
   if (!alreadyAnswered) {
     // En práctica la primera respuesta es la que cuenta.
     await db
       .update(attemptItems)
       .set({
-        chosenIndex: chosen,
+        chosenIndex: chosen!,
         isCorrect,
         seconds,
         answeredAt: new Date(),
@@ -106,8 +159,8 @@ export async function POST(request: Request) {
     await db
       .update(attemptItems)
       .set({
-        chosenIndex: chosen,
-        isCorrect: chosen === row.answerIndex,
+        chosenIndex: chosen!,
+        isCorrect: chosen! === row.answerIndex,
         seconds,
         answeredAt: new Date(),
       })
@@ -126,6 +179,6 @@ export async function POST(request: Request) {
     steps: tr(row, 'steps', locale) ?? [],
     concept: tr(row, 'concept', locale),
     trick: tr(row, 'trick', locale),
-    why_wrong: isCorrect ? null : ((row.distractors ?? {})[String(chosen)] ?? null),
+    why_wrong: isCorrect ? null : ((row.distractors ?? {})[String(chosen!)] ?? null),
   });
 }

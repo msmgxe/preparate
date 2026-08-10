@@ -42,6 +42,8 @@ type Verdict = {
   concept: string | null;
   trick: string | null;
   why_wrong?: string | null;
+  /** La pidió sin responder: no hay acierto que celebrar. */
+  shown?: boolean;
 };
 
 type Tab = 'c' | 'x' | 'r';
@@ -133,14 +135,15 @@ export function Runner({
     questionShownAt.current = Date.now();
   }, [idx]);
 
-  const answer = useCallback(
-    async (option: number) => {
+  const send = useCallback(
+    async (option: number | null) => {
       if (!item || sending) return;
-      if (!isExam && chosen[item.id] !== undefined) return; // en práctica la primera cuenta
+      const asking = option === null;
+      if (!asking && !isExam && chosen[item.id] !== undefined) return; // en práctica la primera cuenta
 
       setSending(true);
       setError(null);
-      setChosen((prev) => ({ ...prev, [item.id]: option }));
+      if (!asking) setChosen((prev) => ({ ...prev, [item.id]: option }));
 
       try {
         const response = await fetch('/api/answer', {
@@ -148,7 +151,7 @@ export function Runner({
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             attempt_item_id: item.id,
-            chosen_index: option,
+            ...(asking ? { reveal: true } : { chosen_index: option }),
             seconds: Math.round((Date.now() - questionShownAt.current) / 1000),
           }),
         });
@@ -166,15 +169,19 @@ export function Runner({
               concept: data.concept ?? null,
               trick: data.trick ?? null,
               why_wrong: data.why_wrong ?? null,
+              shown: Boolean(data.shown),
             },
           }));
+          if (data.shown) setTab('r');
         }
       } catch (e) {
-        setChosen((prev) => {
-          const next = { ...prev };
-          delete next[item.id];
-          return next;
-        });
+        if (!asking) {
+          setChosen((prev) => {
+            const next = { ...prev };
+            delete next[item.id];
+            return next;
+          });
+        }
         setError(e instanceof Error ? e.message : a.saveError);
       } finally {
         setSending(false);
@@ -182,6 +189,10 @@ export function Runner({
     },
     [chosen, isExam, item, sending, a.saveError],
   );
+
+  const answer = useCallback((option: number) => send(option), [send]);
+  /** «No sé cómo se hace»: abre la resolución y la marca como pedida. */
+  const askSolution = useCallback(() => send(null), [send]);
 
   const go = useCallback(
     (next: number) => {
@@ -360,13 +371,30 @@ export function Runner({
               })}
             </div>
 
+            {/* Atascarse no puede ser un callejón sin salida: la resolución
+                está siempre a un clic. Cuenta como fallo y vuelve en la
+                bitácora, así que no sustituye a intentarlo. */}
+            {!isExam && !revealed && (
+              <button
+                className="askbtn"
+                disabled={sending}
+                onClick={() => void askSolution()}
+              >
+                {a.askSolution}
+              </button>
+            )}
+
             {error && <p className="notice bad">{error}</p>}
 
             {revealed && (
-              <div className={`feedback ${verdict!.is_correct ? 'good' : 'bad'}`}>
-                <span style={{ fontSize: 19 }}>{verdict!.is_correct ? '✓' : '✕'}</span>
+              <div className={`feedback ${verdict!.shown ? '' : verdict!.is_correct ? 'good' : 'bad'}`}>
+                <span style={{ fontSize: 19 }}>{verdict!.shown ? '◐' : verdict!.is_correct ? '✓' : '✕'}</span>
                 <div>
-                  {verdict!.is_correct ? (
+                  {verdict!.shown ? (
+                    <>
+                      <b>{a.shownWas} {LETTERS[verdict!.answer_index]}.</b> {a.shownTail}
+                    </>
+                  ) : verdict!.is_correct ? (
                     <>
                       <b>{a.correct}</b> {a.correctTail}
                     </>
