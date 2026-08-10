@@ -10,6 +10,12 @@ export const pt: Dict = {
     startFree: 'Começar grátis hoje',
     whatsapp: 'Falar pelo WhatsApp',
     language: 'Idioma',
+    fonts: {
+      standard: 'Tipografia padrão',
+      lexend: 'Lexend · leitura fácil',
+      atkinson: 'Atkinson · baixa visão',
+      next: 'Mudar para',
+    },
     lightMode: 'Modo claro',
     darkMode: 'Modo escuro',
     noData: 'sem dados',

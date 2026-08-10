@@ -17,6 +17,7 @@ import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
+import { FontToggle } from '@/components/FontToggle';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -62,6 +63,7 @@ export default async function LandingPage() {
 
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
             <LocaleSwitcher current={locale} variant="landing" label={t.common.language} />
+            <FontToggle variant="landing" labels={t.common.fonts} />
             <ThemeToggle defaultDark={false} />
             <Link href="/login" className="lp-btn lp-btn-ghost">
               {t.common.login}

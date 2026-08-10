@@ -13,6 +13,12 @@ export const es = {
     startFree: 'Comenzar gratis hoy',
     whatsapp: 'Escribir por WhatsApp',
     language: 'Idioma',
+    fonts: {
+      standard: 'Tipografía estándar',
+      lexend: 'Lexend · lectura fácil',
+      atkinson: 'Atkinson · baja visión',
+      next: 'Cambiar a',
+    },
     lightMode: 'Modo claro',
     darkMode: 'Modo oscuro',
     noData: 'sin datos',

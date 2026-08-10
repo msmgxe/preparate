@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { signOut } from '@/app/(auth)/actions';
 import { initials } from '@/lib/auth';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { FontToggle } from '@/components/FontToggle';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { getI18n } from '@/lib/i18n';
 import type { Profile } from '@/db/schema';
@@ -63,6 +64,7 @@ export async function Header({
         <div className="hstats">
           {chips}
           <LocaleSwitcher current={locale} label={t.common.language} />
+          <FontToggle labels={t.common.fonts} />
           <ThemeToggle defaultDark />
           <form action={signOut}>
             <button className="avatar" title={`${profile.displayName} · ${t.nav.signOut}`}>

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Expone la tipografía a las utilidades de Tailwind: `font-sans`, `font-mono`
+   y `font-reading` usan exactamente las mismas familias que el CSS de abajo,
+   modo accesible incluido. */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    RUMBO — sistema visual portado del prototipo rumbo-v2.html
    Paleta con significado fijo en toda la app:
@@ -19,19 +27,15 @@
   --glow-1:rgba(239,164,81,.16); --glow-2:rgba(102,191,232,.11); --glow-3:rgba(79,214,156,.08);
   --noise:.15;
 
-  /* Tipografías: Inter (primaria), Lexend & Atkinson (accesibles) */
-  --font-sans-fallback: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-reading-fallback: 'Lexend', sans-serif;
-  --font-hyperlegible-fallback: 'Atkinson Hyperlegible', sans-serif;
-  --font-mono-fallback: 'DM Mono', ui-monospace, monospace;
+  /* ── Tipografía ──────────────────────────────────────────────────────────
+     Una sola familia para todo lo que se lee. Las tres familias vienen de
+     `next/font` con nombres propios (`--font-inter`, …) porque `--font-sans` y
+     `--font-mono` los reserva Tailwind. */
+  --font-code: var(--font-dm-mono), ui-monospace, monospace;
+  --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-body);
 
-  --font-primary: var(--font-sans, var(--font-sans-fallback));
-  --font-accessible: var(--font-reading, var(--font-reading-fallback));
-  --font-alt-accessible: var(--font-hyperlegible, var(--font-hyperlegible-fallback));
-  --font-code: var(--font-mono, var(--font-mono-fallback));
-
-  --font-body: var(--font-primary);
-  --font-heading: var(--font-primary);
+  /* Alias heredados del sistema anterior; los usa medio archivo. */
   --display: var(--font-heading);
   --mono: var(--font-code);
   --serif: var(--font-body);
@@ -43,25 +47,28 @@
 :root[data-theme='light']{
   --bg-rgb:255,255,255; --fg-rgb:17,24,39;
   --ink:#FFFFFF; --ink-2:#F9FAFB; --paper:#111827; --paper-2:#1F2937; --paper-dim:#4B5563;
-  --amber:#B26A16; --coral:#C62B24; --mint:#0F8A5F; --sky:#1E6F94; --violet:#6B3FBF;
+  --amber:#A05F12; --coral:#C62B24; --mint:#0B7A52; --sky:#1E6F94; --violet:#6B3FBF;
   --line:rgba(17,24,39,.13); --line-strong:rgba(17,24,39,.26);
   --shadow:0 18px 44px -24px rgba(17,24,39,.32);
   --glow-1:rgba(239,164,81,.13); --glow-2:rgba(102,191,232,.10); --glow-3:rgba(79,214,156,.07);
   --noise:.05;
 }
 
-/* Modos alternativos de tipografía accesible para la clase virtual */
-html[data-font='lexend'], .font-lexend {
-  --font-body: var(--font-accessible);
-  --font-heading: var(--font-accessible);
-}
-html[data-font='atkinson'], .font-atkinson, .accessible-font {
-  --font-body: var(--font-alt-accessible);
-  --font-heading: var(--font-alt-accessible);
-}
+/**
+ * Modos de lectura accesible.
+ *
+ * Solo se redefine `--font-body`: `--font-heading` cuelga de él, así que todo
+ * el producto —app, panel y landing— cambia de una vez. Las familias solo se
+ * descargan cuando alguien las activa.
+ */
+html[data-font='lexend']{ --font-body: var(--font-lexend), system-ui, sans-serif; }
+html[data-font='atkinson']{ --font-body: var(--font-atkinson), system-ui, sans-serif; }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;font-size:16px}
+/* `font-size:100%`, no `16px`: fijar píxeles aquí anula el tamaño de letra que
+   el alumno haya configurado en su navegador, que es justo lo contrario de una
+   mejora de accesibilidad. El 100% ya vale 16px por defecto. */
+html{-webkit-text-size-adjust:100%;font-size:100%}
 body{background:var(--ink);color:var(--paper);font-family:var(--font-body);font-size:1rem;line-height:1.55;min-height:100vh;overflow-x:hidden;position:relative}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(1100px 600px at 82% -12%,var(--glow-1),transparent 62%),
@@ -103,6 +110,10 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(v
 .langs button.on{background:var(--paper);color:var(--ink);font-weight:500}
 .themebtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:rgba(var(--fg-rgb),.03);color:var(--paper-dim);display:grid;place-content:center;cursor:pointer;transition:.18s;flex:none}
 .themebtn:hover{color:var(--paper);border-color:var(--line-strong)}
+/* Cuando hay una tipografía de lectura activa, el botón lo dice sin abrirlo. */
+.themebtn[data-on]{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 55%,var(--line))}
+/* Texto solo para lectores de pantalla: anuncia el modo puesto ahora mismo. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .avatar{width:34px;height:34px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-content:center;font-family:var(--display);font-weight:800;font-size:14px;cursor:pointer;flex:none;border:none}
 
 /* TIPOGRAFÍA Y ENCABEZADOS DE ALTA LEGIBILIDAD */
@@ -169,7 +180,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .pass::before{top:-13px}.pass::after{bottom:-13px}
 .pass-main{padding:24px 26px}
 .pass-stub{border-left:2px dashed rgba(var(--bg-rgb),.28);padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper-2)}
-.pf .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(var(--bg-rgb),.5)}
+.pf .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--bg-rgb),.72)}
 .pf .v{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;line-height:1.25}
 .pf .v.sm{font-size:15px;font-weight:600}
 .pass-row{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
@@ -177,9 +188,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .route .arrow{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(var(--bg-rgb),.35) 0 5px,transparent 5px 10px);position:relative}
 .route .arrow::after{content:'✈';position:absolute;right:-2px;top:-10px;font-size:15px}
 .barcode{height:40px;width:100%;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 9px);opacity:.85;margin-top:16px}
-.stub-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(var(--bg-rgb),.5)}
+.stub-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--bg-rgb),.72)}
 .stub-v{font-family:var(--display);font-weight:800;font-size:36px;letter-spacing:-.04em;line-height:1;margin-top:2px}
-.stub-n{font-family:var(--mono);font-size:11px;color:rgba(var(--bg-rgb),.62);margin-top:10px}
+.stub-n{font-family:var(--mono);font-size:12px;color:rgba(var(--bg-rgb),.72);margin-top:10px}
 
 .areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:13px}
 .area{border:1px solid var(--line);border-radius:var(--r);padding:19px;background:linear-gradient(160deg,rgba(var(--fg-rgb),.045),rgba(var(--fg-rgb),.012));cursor:pointer;transition:.26s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden;text-align:left;width:100%;display:block}
@@ -204,7 +215,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .qcard{border:1px dashed var(--line-strong);border-radius:var(--r);padding:21px;display:flex;flex-direction:column;gap:10px;transition:.24s;background:rgba(var(--fg-rgb),.018)}
 .qcard:hover{background:rgba(var(--fg-rgb),.05);border-style:solid}
 .qcard b{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em}
-.qcard p{font-size:15px;color:#C3BAA8;line-height:1.45;flex:1}
+.qcard p{font-size:15px;color:var(--paper-dim);line-height:1.45;flex:1}
 .stamps{display:flex;gap:18px;flex-wrap:wrap}
 .stamp{width:100px;height:100px;border-radius:50%;display:grid;place-content:center;text-align:center;border:2.5px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:9.5px;line-height:1.35;letter-spacing:.07em;text-transform:uppercase;transform:rotate(var(--rot));opacity:.92;position:relative;padding:6px}
 .stamp::before{content:'';position:absolute;inset:6px;border:1px solid currentColor;border-radius:50%;opacity:.45}
@@ -232,7 +243,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .qcardbox{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:linear-gradient(170deg,rgba(var(--fg-rgb),.05),rgba(var(--fg-rgb),.015))}
 .qtag{display:flex;gap:8px;align-items:center;margin-bottom:15px;flex-wrap:wrap}
 .stem{font-size:19px;line-height:1.58}
-.stem .lect,.lect{display:block;border-left:2px solid var(--amber);padding:2px 0 2px 18px;margin-bottom:16px;font-style:italic;color:#D8CFBD;font-size:17px}
+.stem .lect,.lect{display:block;border-left:2px solid var(--amber);padding:2px 0 2px 18px;margin-bottom:16px;font-style:italic;color:var(--paper);font-size:17px}
 .opts{margin-top:22px;display:flex;flex-direction:column;gap:9px}
 .opt{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;padding:14px 17px;border:1px solid var(--line);border-radius:11px;transition:.18s;background:rgba(var(--fg-rgb),.018);font-size:17px;line-height:1.45}
 .opt:hover:not(.dis){background:rgba(var(--fg-rgb),.06);border-color:var(--line-strong);transform:translateX(3px)}
@@ -256,7 +267,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .step .n{counter-increment:s;flex:none;width:32px;height:32px;border-radius:9px;border:1px solid var(--amber);color:var(--amber);display:grid;place-content:center;font-family:var(--mono);font-size:13px}
 .step .n::before{content:counter(s)}
 .step .c b{font-family:var(--display);font-weight:600;font-size:16px;display:block;margin-bottom:5px}
-.step .c p{font-size:16.5px;color:#CEC5B3}
+.step .c p{font-size:16.5px;color:var(--paper-dim)}
 .math{font-family:var(--mono);font-size:15px;background:rgba(var(--bg-rgb),.5);border:1px solid var(--line);border-radius:9px;padding:12px 16px;margin-top:10px;overflow-x:auto;white-space:pre;color:var(--paper)}
 .concept,.trick{margin-top:14px;padding:17px 19px;border-radius:12px}
 .concept{border:1px solid rgba(102,191,232,.3);background:rgba(102,191,232,.07)}
@@ -337,7 +348,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .rl .st{width:24px;height:24px;border-radius:7px;flex:none;display:grid;place-content:center;font-size:13px}
 .rl .st.ok{background:rgba(79,214,156,.18);color:var(--mint)}
 .rl .st.bad{background:rgba(255,95,87,.16);color:var(--coral)}
-.rl .tx{flex:1;min-width:0;font-size:15.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#C7BEAC}
+.rl .tx{flex:1;min-width:0;font-size:15.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--paper-dim)}
 .rl .ar{font-family:var(--mono);font-size:10px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:.1em;flex:none}
 
 /* ══ ADMIN ══ */
@@ -363,7 +374,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .alert.g{border-color:rgba(79,214,156,.3);background:rgba(79,214,156,.06)}
 .alert .ic{font-size:17px;flex:none;margin-top:1px}
 .alert b{font-family:var(--display);font-weight:600;font-size:16px;display:block;margin-bottom:2px}
-.alert p{font-size:15.5px;color:#C3BAA8;line-height:1.45}
+.alert p{font-size:15.5px;color:var(--paper-dim);line-height:1.45}
 .heat{display:grid;gap:5px;font-family:var(--mono);font-size:11px;overflow-x:auto}
 .heatcell{aspect-ratio:1.9;border-radius:7px;display:grid;place-content:center;font-size:11px;color:var(--ink);font-weight:500;min-width:52px}
 .heatlbl{display:flex;align-items:center;font-size:11px;color:var(--paper-dim);white-space:nowrap;padding-right:8px}
@@ -380,18 +391,116 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--paper-dim);display:flex;gap:16px;flex-wrap:wrap}
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   MEDIOS FLUIDOS
    ═══════════════════════════════════════════════════════════════════════════ */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-img, video, iframe, svg, canvas {
+/* Los SVG quedan fuera a propósito: varios llevan alto explícito sin viewBox
+   (el anillo de resultados) y `height:auto` los recortaría. */
+img, video, iframe, canvas {
   max-width: 100%;
   height: auto;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   LANDING — identidad propia, clara y vibrante.
+
+   La app es oscura y editorial; la página de venta no tiene por qué vestir
+   igual. Todo cuelga de `.lp`, que además pinta un fondo opaco por encima de
+   los degradados fijos del `body` para que no se cuelen.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.lp{
+  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F6FB;
+  --text:#111827; --text-2:#4A5568; --text-3:#667080;
+  --line:#E6E9F0;
+  --brand:#2C5BE8;        /* azul académico: confianza */
+  --brand-soft:#EAF0FF;
+  --accent:#7C3AED;       /* violeta moderno: energía */
+  --accent-soft:#F3EBFF;
+  --lime:#10B981; --warn:#F59E0B; --rose:#E11D48;
+  --shadow-sm:0 1px 2px rgba(11,18,32,.06), 0 4px 12px rgba(11,18,32,.05);
+  --shadow-md:0 8px 30px rgba(11,18,32,.10);
+  --shadow-lg:0 24px 60px -18px rgba(44,91,232,.35);
+
+  position:relative; z-index:5; min-height:100vh;
+  background:var(--bg); color:var(--text);
+  /* La misma familia que la app, y por tanto también el modo accesible. Antes
+     apuntaba a `--font-ui`, que dejó de existir al unificar la tipografía. */
+  font-family:var(--font-body);
+  font-size:1rem; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+:root[data-theme='dark'] .lp{
+  --bg:#0A0F1C; --surface:#111827; --surface-2:#161F31;
+  --text:#F5F7FA; --text-2:#B4BECC; --text-3:#7A879B;
+  --line:#22304A;
+  --brand:#6D95FF; --brand-soft:#16233E;
+  --accent:#A98BFF; --accent-soft:#1E1733;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 8px 30px rgba(0,0,0,.45);
+  --shadow-lg:0 24px 60px -18px rgba(109,149,255,.30);
+}
+.lp *{box-sizing:border-box}
+.lp h1,.lp h2,.lp h3,.lp h4{font-family:var(--font-heading);letter-spacing:-.02em;line-height:1.15;color:var(--text)}
+.lp h1{font-size:clamp(34px,5.4vw,62px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.lp h2{font-size:clamp(26px,3.6vw,42px);font-weight:700}
+.lp h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.lp p{color:var(--text-2)}
+.lp a{color:inherit;text-decoration:none}
+.lp-wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.lp-section{padding:88px 0}
+@media(max-width:720px){ .lp-section{padding:60px 0} }
+
+/* — chrome — */
+.lp-nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.lp-navbar{display:flex;align-items:center;gap:22px;height:66px}
+.lp-logo{font-weight:800;font-size:21px;letter-spacing:-.04em;display:flex;align-items:baseline;gap:7px}
+.lp-logo span{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
+.lp-navlinks{display:flex;gap:4px;margin-left:14px}
+.lp-navlinks a{padding:8px 12px;border-radius:9px;font-size:14.5px;font-weight:500;color:var(--text-2);transition:.16s}
+.lp-navlinks a:hover{color:var(--text);background:var(--surface-2)}
+
+/* — botones — */
+.lp-fontbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text-3);display:grid;place-content:center;cursor:pointer;transition:.16s;flex:none}
+.lp-fontbtn:hover{color:var(--text);border-color:var(--text-3)}
+.lp-fontbtn[data-on]{color:var(--brand);border-color:var(--brand);background:var(--brand-soft)}
+.lp-langs{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:2px}
+.lp-langs button{font-size:12px;font-weight:700;letter-spacing:.03em;padding:6px 9px;border-radius:8px;border:none;background:none;color:var(--text-3);cursor:pointer;transition:.16s}
+.lp-langs button:hover{color:var(--text)}
+.lp-langs button.on{background:var(--brand);color:#fff}
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:12px 20px;border-radius:12px;border:1px solid transparent;transition:transform .16s,box-shadow .16s,background .16s;cursor:pointer;white-space:nowrap}
+.lp-btn:hover{transform:translateY(-2px)}
+.lp-btn-primary{background:var(--brand);color:#fff;box-shadow:var(--shadow-sm)}
+.lp-btn-primary:hover{box-shadow:var(--shadow-lg)}
+.lp-btn-ghost{background:var(--surface);color:var(--text);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.lp-btn-ghost:hover{background:var(--surface-2)}
+.lp-btn-accent{background:var(--accent);color:#fff}
+.lp-btn-lg{padding:15px 26px;font-size:16.5px;border-radius:14px}
+.lp-btn-block{width:100%}
+
+/* — piezas — */
+.lp-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
+.lp-card-hover:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
+.lp-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;font-size:13px;font-weight:600;background:var(--brand-soft);color:var(--brand)}
+.lp-pill-accent{background:var(--accent-soft);color:var(--accent)}
+.lp-eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.lp-grid{display:grid;gap:18px}
+.lp-muted{color:var(--text-3)}
+
+/* — revelado al hacer scroll — */
+.lp-reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.lp-reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .lp-reveal{opacity:1;transform:none;transition:none}
+  .lp-btn:hover,.lp-card-hover:hover{transform:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+
+   Va al final del archivo a propósito. Las reglas de la landing (`.lp-…`)
+   tienen la misma especificidad que sus versiones móviles; si estas se
+   escriben antes, la regla de escritorio gana y el ajuste móvil no llega a
+   aplicarse nunca. El orden es lo único que las separa.
+   ═══════════════════════════════════════════════════════════════════════════ */
 @media(max-width:940px){ .editgrid{grid-template-columns:1fr} }
 @media(max-width:820px){
   .hbar{
@@ -493,92 +602,4 @@ img, video, iframe, svg, canvas {
     padding: 5px 7px;
     font-size: 11px;
   }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   LANDING — identidad propia, clara y vibrante.
-
-   La app es oscura y editorial; la página de venta no tiene por qué vestir
-   igual. Todo cuelga de `.lp`, que además pinta un fondo opaco por encima de
-   los degradados fijos del `body` para que no se cuelen.
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-.lp{
-  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F6FB;
-  --text:#0B1220; --text-2:#4A5568; --text-3:#8A94A6;
-  --line:#E6E9F0;
-  --brand:#2C5BE8;        /* azul académico: confianza */
-  --brand-soft:#EAF0FF;
-  --accent:#7C3AED;       /* violeta moderno: energía */
-  --accent-soft:#F3EBFF;
-  --lime:#10B981; --warn:#F59E0B; --rose:#E11D48;
-  --shadow-sm:0 1px 2px rgba(11,18,32,.06), 0 4px 12px rgba(11,18,32,.05);
-  --shadow-md:0 8px 30px rgba(11,18,32,.10);
-  --shadow-lg:0 24px 60px -18px rgba(44,91,232,.35);
-
-  position:relative; z-index:5; min-height:100vh;
-  background:var(--bg); color:var(--text);
-  font-family:var(--font-ui),ui-sans-serif,system-ui,sans-serif;
-  font-size:16px; line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-:root[data-theme='dark'] .lp{
-  --bg:#0A0F1C; --surface:#111827; --surface-2:#161F31;
-  --text:#F5F7FA; --text-2:#B4BECC; --text-3:#7A879B;
-  --line:#22304A;
-  --brand:#6D95FF; --brand-soft:#16233E;
-  --accent:#A98BFF; --accent-soft:#1E1733;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 8px 30px rgba(0,0,0,.45);
-  --shadow-lg:0 24px 60px -18px rgba(109,149,255,.30);
-}
-.lp *{box-sizing:border-box}
-.lp h1,.lp h2,.lp h3,.lp h4{font-family:var(--font-ui),ui-sans-serif,system-ui,sans-serif;letter-spacing:-.025em;line-height:1.1;color:var(--text)}
-.lp h1{font-size:clamp(34px,5.4vw,62px);font-weight:800;letter-spacing:-.04em}
-.lp h2{font-size:clamp(26px,3.6vw,42px);font-weight:800}
-.lp h3{font-size:20px;font-weight:700}
-.lp p{color:var(--text-2)}
-.lp a{color:inherit;text-decoration:none}
-.lp-wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-.lp-section{padding:88px 0}
-@media(max-width:720px){ .lp-section{padding:60px 0} }
-
-/* — chrome — */
-.lp-nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.lp-navbar{display:flex;align-items:center;gap:22px;height:66px}
-.lp-logo{font-weight:800;font-size:21px;letter-spacing:-.04em;display:flex;align-items:baseline;gap:7px}
-.lp-logo span{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
-.lp-navlinks{display:flex;gap:4px;margin-left:14px}
-.lp-navlinks a{padding:8px 12px;border-radius:9px;font-size:14.5px;font-weight:500;color:var(--text-2);transition:.16s}
-.lp-navlinks a:hover{color:var(--text);background:var(--surface-2)}
-
-/* — botones — */
-.lp-langs{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:2px}
-.lp-langs button{font-size:12px;font-weight:700;letter-spacing:.03em;padding:6px 9px;border-radius:8px;border:none;background:none;color:var(--text-3);cursor:pointer;transition:.16s}
-.lp-langs button:hover{color:var(--text)}
-.lp-langs button.on{background:var(--brand);color:#fff}
-.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:12px 20px;border-radius:12px;border:1px solid transparent;transition:transform .16s,box-shadow .16s,background .16s;cursor:pointer;white-space:nowrap}
-.lp-btn:hover{transform:translateY(-2px)}
-.lp-btn-primary{background:var(--brand);color:#fff;box-shadow:var(--shadow-sm)}
-.lp-btn-primary:hover{box-shadow:var(--shadow-lg)}
-.lp-btn-ghost{background:var(--surface);color:var(--text);border-color:var(--line);box-shadow:var(--shadow-sm)}
-.lp-btn-ghost:hover{background:var(--surface-2)}
-.lp-btn-accent{background:var(--accent);color:#fff}
-.lp-btn-lg{padding:15px 26px;font-size:16.5px;border-radius:14px}
-.lp-btn-block{width:100%}
-
-/* — piezas — */
-.lp-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
-.lp-card-hover:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
-.lp-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:100px;font-size:13px;font-weight:600;background:var(--brand-soft);color:var(--brand)}
-.lp-pill-accent{background:var(--accent-soft);color:var(--accent)}
-.lp-eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
-.lp-grid{display:grid;gap:18px}
-.lp-muted{color:var(--text-3)}
-
-/* — revelado al hacer scroll — */
-.lp-reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
-.lp-reveal.is-in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  .lp-reveal{opacity:1;transform:none;transition:none}
-  .lp-btn:hover,.lp-card-hover:hover{transform:none}
 }

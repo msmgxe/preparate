@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Atkinson_Hyperlegible, DM_Mono, Inter, Lexend } from 'next/font/google';
 import { THEME_BOOTSTRAP } from '@/components/ThemeToggle';
+import { FONT_BOOTSTRAP } from '@/components/FontToggle';
 import './globals.css';
 
 /**
@@ -15,9 +16,12 @@ import './globals.css';
  * archivo desde nuestro propio dominio: sin petición a un tercero al cargar la
  * página, sin salto de maquetación y sin filtrar a Google quién nos visita.
  */
+/* ⚠️ Los nombres no pueden ser `--font-sans` ni `--font-mono`: Tailwind usa
+   esas dos claves para generar `font-sans` y `font-mono`, y la referencia
+   acabaría apuntándose a sí misma. */
 const sans = Inter({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -27,8 +31,10 @@ const sans = Inter({
  */
 const reading = Lexend({
   subsets: ['latin'],
-  variable: '--font-reading',
+  variable: '--font-lexend',
   display: 'swap',
+  // opcional: solo se descarga cuando alguien la activa
+  preload: false,
 });
 
 /**
@@ -38,15 +44,16 @@ const reading = Lexend({
 const hyperlegible = Atkinson_Hyperlegible({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-hyperlegible',
+  variable: '--font-atkinson',
   display: 'swap',
+  preload: false,
 });
 
 /** Solo para cifras, fórmulas y micro-rótulos; nunca para texto corrido. */
 const mono = DM_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-mono',
+  variable: '--font-dm-mono',
   display: 'swap',
 });
 
@@ -66,8 +73,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es-PE" className={`${sans.variable} ${reading.variable} ${hyperlegible.variable} ${mono.variable}`}>
       <head>
-        {/* corre antes del primer pintado, para que no parpadee el tema */}
+        {/* corren antes del primer pintado, para que no parpadee nada */}
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+        <script dangerouslySetInnerHTML={{ __html: FONT_BOOTSTRAP }} />
       </head>
       <body>{children}</body>
     </html>
