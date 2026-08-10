@@ -6,8 +6,13 @@ import { getDb } from '@/db';
 import { areas, chapters, lessons, questions, vChapterMastery } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { startChapter } from '@/app/(student)/actions';
+import { getI18n, fill } from '@/lib/i18n';
+import { tr } from '@/lib/i18n/content';
 
-export const metadata: Metadata = { title: 'Práctica · RUMBO' };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: `${t.titles.practice} · RUMBO` };
+}
 
 /**
  * Briefing antes de despegar. La sesión se crea con un POST, nunca al abrir la
@@ -20,21 +25,30 @@ export default async function PracticaPage({
 }) {
   const { chapterId } = await params;
   const profile = await requireUser();
+  const { locale, t } = await getI18n();
   const db = getDb();
 
-  const [chapter] = await db
+  const [row] = await db
     .select({
       id: chapters.id,
       title: chapters.title,
+      i18n: chapters.i18n,
       areaName: areas.name,
       areaAccent: areas.accent,
+      areaI18n: areas.i18n,
     })
     .from(chapters)
     .innerJoin(areas, eq(areas.id, chapters.areaId))
     .where(eq(chapters.id, chapterId))
     .limit(1);
 
-  if (!chapter) notFound();
+  if (!row) notFound();
+
+  const chapter = {
+    ...row,
+    title: tr(row, 'title', locale),
+    areaName: tr({ i18n: row.areaI18n, name: row.areaName }, 'name', locale),
+  };
 
   const [[available], [lesson], [mastery]] = await Promise.all([
     db
@@ -42,7 +56,13 @@ export default async function PracticaPage({
       .from(questions)
       .where(and(eq(questions.chapterId, chapterId), eq(questions.status, 'published'))),
     db
-      .select({ id: lessons.id, title: lessons.title, minutes: lessons.minutes, hook: lessons.hook })
+      .select({
+        id: lessons.id,
+        title: lessons.title,
+        minutes: lessons.minutes,
+        hook: lessons.hook,
+        i18n: lessons.i18n,
+      })
       .from(lessons)
       .where(and(eq(lessons.chapterId, chapterId), eq(lessons.status, 'published')))
       .limit(1),
@@ -58,12 +78,12 @@ export default async function PracticaPage({
   return (
     <>
       <Link className="back" href="/app">
-        ← Volver al itinerario
+        {t.common.backToItinerary}
       </Link>
 
       <section style={{ marginTop: 8 }}>
         <span className="eyebrow" style={{ color: chapter.areaAccent }}>
-          {chapter.areaName} · capítulo
+          {chapter.areaName} · {t.app.practiceChapter}
         </span>
         <h1 style={{ marginTop: 10 }}>{chapter.title}</h1>
       </section>
@@ -71,32 +91,32 @@ export default async function PracticaPage({
       <section style={{ marginTop: 26 }}>
         <div className="grid4">
           <div className="kpi">
-            <div className="l">Preguntas publicadas</div>
+            <div className="l">{t.app.practicePublished}</div>
             <div className="v">{total}</div>
-            <div className="d flat">la sesión toma hasta 10</div>
+            <div className="d flat">{t.app.practiceTakes}</div>
           </div>
           <div className="kpi">
-            <div className="l">Tu dominio</div>
+            <div className="l">{t.app.practiceYourMastery}</div>
             <div className="v" style={{ color: chapter.areaAccent }}>
               {mastery ? `${Number(mastery.pct)}%` : '—'}
             </div>
             <div className="d flat">
-              {mastery ? `${Number(mastery.n)} respondidas` : 'sin datos todavía'}
+              {mastery ? fill(t.app.practiceAnswered, { n: Number(mastery.n) }) : t.app.practiceNoData}
             </div>
           </div>
           <div className="kpi">
-            <div className="l">Corrección</div>
+            <div className="l">{t.app.practiceFeedback}</div>
             <div className="v" style={{ fontSize: 26 }}>
-              Inmediata
+              {t.app.practiceImmediate}
             </div>
-            <div className="d flat">con resolución paso a paso</div>
+            <div className="d flat">{t.app.practiceWithSteps}</div>
           </div>
           <div className="kpi">
-            <div className="l">Reloj</div>
+            <div className="l">{t.app.practiceClock}</div>
             <div className="v" style={{ fontSize: 26 }}>
-              Libre
+              {t.app.practiceFree}
             </div>
-            <div className="d flat">se mide, no se castiga</div>
+            <div className="d flat">{t.app.practiceMeasured}</div>
           </div>
         </div>
       </section>
@@ -104,18 +124,18 @@ export default async function PracticaPage({
       {lesson && (
         <section>
           <div className="shead">
-            <h2>Antes de practicar</h2>
+            <h2>{t.app.practiceBefore}</h2>
             <div className="rule" />
-            <span className="eyebrow">recomendado</span>
+            <span className="eyebrow">{t.app.practiceRecommended}</span>
           </div>
           <div className="qcard">
             <span className="eyebrow" style={{ color: 'var(--sky)' }}>
-              Clase visual · {lesson.minutes} min
+              {t.app.lessonBtn.replace('◐ ', '')} · {lesson.minutes} {t.common.minutes}
             </span>
-            <b>{lesson.title}</b>
-            <p>{lesson.hook}</p>
+            <b>{tr(lesson, 'title', locale)}</b>
+            <p>{tr(lesson, 'hook', locale)}</p>
             <Link className="btn" href={`/app/clase/${lesson.id}`}>
-              Leer la clase →
+              {t.app.practiceReadLesson}
             </Link>
           </div>
         </section>
@@ -126,7 +146,7 @@ export default async function PracticaPage({
           <input type="hidden" name="chapter_id" value={chapter.id} />
           <input type="hidden" name="title" value={`${chapter.areaName} · ${chapter.title}`} />
           <button className="btn solid" disabled={total === 0}>
-            {total === 0 ? 'Sin preguntas publicadas' : 'Empezar la sesión →'}
+            {total === 0 ? t.app.practiceNone : t.app.practiceStart}
           </button>
         </form>
       </div>

@@ -4,32 +4,33 @@ import Link from 'next/link';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { magicLink, signIn, signUp, type AuthState } from './actions';
+import type { Dict } from '@/lib/i18n/dictionaries/es';
 
 const EMPTY: AuthState = {};
 
-const ORGS = [
+/** Los nombres de las instituciones no se traducen: son nombres propios. */
+export const ORG_NAMES = [
   'ISIL — Evaluación de Potencial',
   'USIL — Examen de admisión',
   'UPC',
   'Universidad de Lima',
-  'Aún no decidido',
 ];
 
-function Submit({ label, pending: forced }: { label: string; pending?: boolean }) {
+function Submit({ label, working, pending: forced }: { label: string; working: string; pending?: boolean }) {
   const { pending } = useFormStatus();
   const busy = pending || forced;
   return (
     <button type="submit" className="btn solid full" style={{ marginTop: 8 }} disabled={busy}>
-      {busy ? 'Un momento…' : label}
+      {busy ? working : label}
     </button>
   );
 }
 
-function MagicLinkButton() {
+function MagicLinkButton({ label, sending }: { label: string; sending: string }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" className="btn full" style={{ marginTop: 10 }} disabled={pending}>
-      {pending ? 'Enviando…' : '✦ Enviarme un enlace mágico'}
+      {pending ? sending : label}
     </button>
   );
 }
@@ -40,19 +41,21 @@ function Feedback({ state }: { state: AuthState }) {
   return null;
 }
 
-export function AuthCard({ mode }: { mode: 'in' | 'up' }) {
+export function AuthCard({ mode, t }: { mode: 'in' | 'up'; t: Dict }) {
   const [state, action] = useActionState(mode === 'up' ? signUp : signIn, EMPTY);
   const [magicState, magicAction] = useActionState(magicLink, EMPTY);
+  const a = t.auth;
+  const orgs = [...ORG_NAMES, a.orgUndecided];
 
   return (
     <>
       <div className="card">
         <div className="seg">
           <Link href="/login" className={mode === 'in' ? 'on' : ''}>
-            Iniciar sesión
+            {a.signIn}
           </Link>
           <Link href="/registro" className={mode === 'up' ? 'on' : ''}>
-            Crear cuenta
+            {a.signUp}
           </Link>
         </div>
 
@@ -60,30 +63,30 @@ export function AuthCard({ mode }: { mode: 'in' | 'up' }) {
           {mode === 'up' && (
             <>
               <div className="field">
-                <label htmlFor="display_name">Nombre completo</label>
+                <label htmlFor="display_name">{a.fullName}</label>
                 <input id="display_name" name="display_name" placeholder="Rodrigo Mendoza" required />
               </div>
               <div className="field">
-                <label htmlFor="school">Colegio / Academia</label>
+                <label htmlFor="school">{a.school}</label>
                 <input id="school" name="school" placeholder="Colegio San Agustín" />
               </div>
               <div className="field">
-                <label htmlFor="target_org">Institución objetivo</label>
-                <select id="target_org" name="target_org" defaultValue={ORGS[0]}>
-                  {ORGS.map((o) => (
+                <label htmlFor="target_org">{a.targetOrg}</label>
+                <select id="target_org" name="target_org" defaultValue={orgs[0]}>
+                  {orgs.map((o) => (
                     <option key={o}>{o}</option>
                   ))}
                 </select>
               </div>
               <div className="field">
-                <label htmlFor="target_date">Fecha estimada del examen</label>
+                <label htmlFor="target_date">{a.examDate}</label>
                 <input id="target_date" name="target_date" type="date" defaultValue="2026-12-28" />
               </div>
             </>
           )}
 
           <div className="field">
-            <label htmlFor="email">Correo electrónico</label>
+            <label htmlFor="email">{a.email}</label>
             <input
               id="email"
               name="email"
@@ -94,7 +97,7 @@ export function AuthCard({ mode }: { mode: 'in' | 'up' }) {
             />
           </div>
           <div className="field">
-            <label htmlFor="password">Contraseña</label>
+            <label htmlFor="password">{a.password}</label>
             <input
               id="password"
               name="password"
@@ -106,27 +109,27 @@ export function AuthCard({ mode }: { mode: 'in' | 'up' }) {
             />
           </div>
 
-          <Submit label={mode === 'up' ? 'Crear cuenta y abordar →' : 'Abordar →'} />
+          <Submit label={mode === 'up' ? a.submitUp : a.submitIn} working={a.working} />
           <Feedback state={state} />
         </form>
 
         <div className="demo">
-          <span className="eyebrow">Sin contraseña</span>
+          <span className="eyebrow">{a.noPassword}</span>
           <form action={magicAction}>
             <div className="field" style={{ marginTop: 12, marginBottom: 0 }}>
               <input name="email" type="email" placeholder="rodrigo@correo.com" required />
             </div>
-            <MagicLinkButton />
+            <MagicLinkButton label={a.magicLink} sending={a.sending} />
             <Feedback state={magicState} />
           </form>
           <p className="hint">
-            El enlace mágico llega a tu correo y entra directo. Útil en el celular.
+            {a.magicHint}
           </p>
         </div>
       </div>
 
       <p className="hint" style={{ marginTop: 20 }}>
-        Tus respuestas solo las ves tú y quien te acompaña.
+        {a.privacy}
       </p>
     </>
   );

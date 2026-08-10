@@ -2,6 +2,10 @@
 
 import { ChevronDown, Lock, Sparkles } from 'lucide-react';
 import { useState } from 'react';
+import type { Dict } from '@/lib/i18n/dictionaries/es';
+import type { Locale } from '@/lib/i18n/config';
+import { whatsappLink } from '@/lib/site';
+import { fill } from '@/lib/i18n/fill';
 
 export type ModuleCard = {
   id: string;
@@ -18,6 +22,8 @@ export type ModuleCard = {
   questions: number;
   lessons: number;
   sample: string | null;
+  /** Idiomas en los que se ofrece; fuera de ellos la tarjeta no se muestra. */
+  locales: string[];
 };
 
 /**
@@ -26,12 +32,22 @@ export type ModuleCard = {
  * La expansión no es decorativa: dentro va el temario real y una pregunta de
  * muestra del módulo. Es lo que un padre quiere ver antes de pagar.
  */
-export function Modules({ modules }: { modules: ModuleCard[] }) {
+export function Modules({
+  modules,
+  t,
+  locale,
+}: {
+  modules: ModuleCard[];
+  t: Dict['landing'];
+  locale: Locale;
+}) {
   const [open, setOpen] = useState<string | null>(modules[0]?.id ?? null);
 
   return (
     <div className="lp-grid" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
-      {modules.map((m) => {
+      {modules
+        .filter((m) => m.locales.includes(locale))
+        .map((m) => {
         const isOpen = open === m.id;
         const soon = m.status === 'soon';
 
@@ -68,7 +84,7 @@ export function Modules({ modules }: { modules: ModuleCard[] }) {
               </div>
               {soon && (
                 <span className="lp-pill lp-pill-accent" style={{ fontSize: 11.5, padding: '5px 10px' }}>
-                  <Sparkles size={12} /> Pronto
+                  <Sparkles size={12} /> {t.moduleSoon}
                 </span>
               )}
             </div>
@@ -83,9 +99,9 @@ export function Modules({ modules }: { modules: ModuleCard[] }) {
                 color: 'var(--text-3)',
               }}
             >
-              <span>{m.chapters} capítulos</span>
-              {m.questions > 0 && <span>{m.questions} preguntas</span>}
-              {m.lessons > 0 && <span>{m.lessons} clases</span>}
+              <span>{fill(t.moduleChapters, { n: m.chapters })}</span>
+              {m.questions > 0 && <span>{fill(t.moduleQuestions, { n: m.questions })}</span>}
+              {m.lessons > 0 && <span>{fill(t.moduleLessons, { n: m.lessons })}</span>}
             </div>
 
             <button
@@ -94,7 +110,7 @@ export function Modules({ modules }: { modules: ModuleCard[] }) {
               style={{ width: '100%', marginTop: 16, justifyContent: 'space-between', fontSize: 14.5 }}
               aria-expanded={isOpen}
             >
-              {isOpen ? 'Ocultar temario' : 'Ver temario y ejemplo'}
+              {isOpen ? t.moduleClose : t.moduleOpen}
               <ChevronDown
                 size={17}
                 style={{ transition: 'transform .2s', transform: isOpen ? 'rotate(180deg)' : 'none' }}
@@ -125,7 +141,7 @@ export function Modules({ modules }: { modules: ModuleCard[] }) {
                         marginBottom: 6,
                       }}
                     >
-                      Pregunta de muestra
+                      {t.moduleSample}
                     </div>
                     <p style={{ fontSize: 14, color: 'var(--text)' }}>{m.sample}</p>
                   </div>
@@ -146,24 +162,25 @@ export function Modules({ modules }: { modules: ModuleCard[] }) {
                     S/ {m.priceMonth}
                   </span>
                   <span className="lp-muted" style={{ fontSize: 14 }}>
-                    / mes suelto
+                    {t.moduleLoose}
                   </span>
                   <span className="lp-muted" style={{ fontSize: 13, marginLeft: 'auto' }}>
-                    o S/ {m.priceYear} al año
+                    {fill(t.moduleYear, { price: m.priceYear ?? 0 })}
                   </span>
                 </div>
 
                 <a
                   className={`lp-btn ${soon ? 'lp-btn-accent' : 'lp-btn-primary'}`}
                   style={{ width: '100%', marginTop: 12 }}
-                  href={soon ? '#ingles' : '#planes'}
+                  href={soon ? '#ingles' : whatsappLink(fill(t.waBuyModule, { module: m.name }))}
+                  {...(soon ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
                 >
                   {soon ? (
                     <>
-                      <Lock size={15} /> Entrar a la lista de espera
+                      <Lock size={15} /> {t.moduleWaitlist}
                     </>
                   ) : (
-                    'Comprar solo este módulo'
+                    t.moduleBuy
                   )}
                 </a>
               </div>

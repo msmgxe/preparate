@@ -7,8 +7,13 @@ import { requireUser } from '@/lib/auth';
 import { daysUntil, getDueReviews, getItinerary, getStamps } from '@/lib/queries';
 import { Itinerary } from '@/components/Itinerary';
 import { startErrors, startQuick } from '@/app/(student)/actions';
+import { getI18n, fill } from '@/lib/i18n';
+import { INTL_LOCALE } from '@/lib/i18n/config';
 
-export const metadata: Metadata = { title: 'Itinerario · RUMBO' };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: `${t.titles.itinerary} · RUMBO` };
+}
 
 export default async function HomePage({
   searchParams,
@@ -16,11 +21,13 @@ export default async function HomePage({
   searchParams: Promise<{ vacio?: string }>;
 }) {
   const profile = await requireUser();
+  const { locale, t } = await getI18n();
+  const a = t.app;
   const { vacio } = await searchParams;
   const db = getDb();
 
   const [areas, stamps, due, [stats], [exam]] = await Promise.all([
-    getItinerary(profile.id),
+    getItinerary(profile.id, locale),
     getStamps(profile.id),
     getDueReviews(profile.id),
     db.select().from(vStudentStats).where(eq(vStudentStats.userId, profile.id)).limit(1),
@@ -34,7 +41,7 @@ export default async function HomePage({
     .map((a) => a.short)
     .join(' · ');
 
-  const today = new Date().toLocaleDateString('es-PE', {
+  const today = new Date().toLocaleDateString(INTL_LOCALE[locale], {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -43,19 +50,19 @@ export default async function HomePage({
   return (
     <>
       <section style={{ marginTop: 34 }}>
-        <span className="eyebrow">Check-in del día · {today}</span>
+        <span className="eyebrow">{a.checkIn} · {today}</span>
         <h1 style={{ marginTop: 12 }}>
           {left === null ? (
             <>
-              Aún no fijas la fecha. <em>Ponle una y empieza a contar.</em>
+              {a.countdownNone} <em>{a.countdownNoneEm}</em>
             </>
           ) : left > 0 ? (
             <>
-              Tu vuelo despega en <em>{left} días</em>. Vamos preparando el equipaje.
+              {a.countdownLeft} <em>{left} {a.countdownLeftEm}</em>{a.countdownLeftTail}
             </>
           ) : (
             <>
-              <em>Es hoy.</em> Respira y confía en lo practicado.
+              <em>{a.countdownToday}</em> {a.countdownTodayTail}
             </>
           )}
         </h1>
@@ -63,43 +70,42 @@ export default async function HomePage({
 
       {vacio && (
         <p className="notice bad" style={{ marginTop: 20 }}>
-          Ese capítulo todavía no tiene preguntas publicadas. Prueba con otro o pídele al
-          administrador que publique el balotario.
+          {a.emptyChapter}
         </p>
       )}
 
       <div className="pass">
         <div className="pass-main">
           <div className="pf">
-            <div className="l">Pasajero</div>
+            <div className="l">{a.passenger}</div>
             <div className="v">{profile.displayName}</div>
           </div>
           <div className="route">
             <div className="pf">
-              <div className="l">Desde</div>
+              <div className="l">{a.from}</div>
               <div className="v">{profile.school ?? '—'}</div>
             </div>
             <div className="arrow" />
             <div className="pf" style={{ textAlign: 'right' }}>
-              <div className="l">Destino</div>
-              <div className="v">{profile.targetOrg ?? 'Por decidir'}</div>
+              <div className="l">{a.to}</div>
+              <div className="v">{profile.targetOrg ?? a.undecided}</div>
             </div>
           </div>
           <div className="pass-row">
             <div className="pf">
-              <div className="l">Sesiones</div>
+              <div className="l">{a.sessions}</div>
               <div className="v sm">{Number(stats?.sessions ?? 0)}</div>
             </div>
             <div className="pf">
-              <div className="l">Áreas clave</div>
+              <div className="l">{a.keyAreas}</div>
               <div className="v sm">{keyAreas || '—'}</div>
             </div>
             <div className="pf">
-              <div className="l">Simulacros</div>
-              <div className="v sm">{Number(stats?.exams ?? 0)} rendidos</div>
+              <div className="l">{a.exams}</div>
+              <div className="v sm">{Number(stats?.exams ?? 0)} {a.examsTaken}</div>
             </div>
             <div className="pf">
-              <div className="l">Precisión</div>
+              <div className="l">{a.accuracy}</div>
               <div className="v sm" style={{ color: '#1E7A55' }}>
                 {stats?.accuracy == null ? '—' : `${Number(stats.accuracy)} %`}
               </div>
@@ -108,12 +114,12 @@ export default async function HomePage({
         </div>
         <div className="pass-stub">
           <div>
-            <div className="stub-l">Racha</div>
+            <div className="stub-l">{a.streak}</div>
             <div className="stub-v">{profile.streak}</div>
             <div className="stub-n">
-              {profile.miles.toLocaleString('es-PE')} millas
+              {profile.miles.toLocaleString(INTL_LOCALE[locale])} {a.miles}
               <br />
-              Mejor racha: {profile.bestStreak} días
+              {a.bestStreak}: {profile.bestStreak} {t.common.days}
             </div>
           </div>
           <div className="barcode" />
@@ -122,56 +128,50 @@ export default async function HomePage({
 
       <section>
         <div className="shead">
-          <h2>Escalas del itinerario</h2>
+          <h2>{a.stagesTitle}</h2>
           <div className="rule" />
-          <span className="eyebrow">Toca un área</span>
+          <span className="eyebrow">{a.stagesHint}</span>
         </div>
-        <Itinerary areas={areas} />
+        <Itinerary areas={areas} t={t} />
       </section>
 
       <section>
         <div className="shead">
-          <h2>Despegue rápido</h2>
+          <h2>{a.quickTitle}</h2>
           <div className="rule" />
         </div>
         <div className="quick">
           <div className="qcard">
             <span className="eyebrow" style={{ color: 'var(--amber)' }}>
-              Modo simulacro
+              {a.quickExamEyebrow}
             </span>
-            <b>Examen completo</b>
-            <p>
-              Preguntas cronometradas con la mezcla real de la institución. Sin pistas hasta el
-              final.
-            </p>
+            <b>{a.quickExamTitle}</b>
+            <p>{a.quickExamBody}</p>
             <Link className="btn solid" href={`/app/simulacro/${exam?.id ?? 'isil'}`}>
-              Rendir simulacro →
+              {a.quickExamCta}
             </Link>
           </div>
 
           <div className="qcard">
             <span className="eyebrow" style={{ color: 'var(--mint)' }}>
-              Modo práctica
+              {a.quickPracticeEyebrow}
             </span>
-            <b>Sesión relámpago</b>
-            <p>
-              Preguntas mixtas con corrección inmediata, clase visual y resolución paso a paso
-              apenas respondes.
-            </p>
+            <b>{a.quickPracticeTitle}</b>
+            <p>{a.quickPracticeBody}</p>
             <form action={startQuick}>
-              <button className="btn mint">Empezar ahora →</button>
+              <button className="btn mint">{a.quickPracticeCta}</button>
             </form>
           </div>
 
           <div className="qcard">
             <span className="eyebrow" style={{ color: 'var(--coral)' }}>
-              Bitácora de errores
+              {a.quickErrorsEyebrow}
             </span>
-            <b>Repaso inteligente</b>
-            <p>Lo que fallaste vuelve programado al día 1, 3, 7 y 21. Nada se queda sin cerrar.</p>
+            <b>{a.quickErrorsTitle}</b>
+            <p>{a.quickErrorsBody}</p>
             <form action={startErrors}>
               <button className="btn" disabled={due.length === 0}>
-                {due.length === 0 ? 'Nada pendiente hoy' : `Ver ${due.length} pendientes →`}
+                {due.length === 0 ? a.quickErrorsNone : fill(a.quickErrorsCta, { n: due.length })}
               </button>
             </form>
           </div>
@@ -180,10 +180,10 @@ export default async function HomePage({
 
       <section>
         <div className="shead">
-          <h2>Sellos del pasaporte</h2>
+          <h2>{a.stampsTitle}</h2>
           <div className="rule" />
           <span className="eyebrow">
-            {stamps.filter((b) => b.earned).length} de {stamps.length}
+            {stamps.filter((b) => b.earned).length} {a.stampsOf} {stamps.length}
           </span>
         </div>
         <div className="stamps">
@@ -216,7 +216,7 @@ export default async function HomePage({
         <span>·</span>
         <span>Next.js + Neon + Vercel</span>
         <Link href="/app/perfil" style={{ marginLeft: 'auto' }}>
-          Editar mi ficha
+          {a.editProfile}
         </Link>
       </footer>
     </>

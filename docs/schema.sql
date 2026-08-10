@@ -519,3 +519,26 @@ on conflict (id) do update set
   name=excluded.name, kind=excluded.kind, tagline=excluded.tagline, audience=excluded.audience,
   price=excluded.price, period=excluded.period, compare_at=excluded.compare_at,
   highlight=excluded.highlight, cta=excluded.cta, features=excluded.features, ord=excluded.ord;
+
+-- ══════════════════════════ 10 · IDIOMAS ═══════════════════════════════════
+--
+-- El español es la lengua fuente: vive en las columnas de siempre. Las
+-- traducciones van en `i18n`, con la forma {"en": {...}, "pt": {...}}, y solo
+-- las claves traducidas. Si falta una, se cae al español — nunca a un hueco.
+
+alter table profiles add column if not exists locale text not null default 'es'
+  check (locale in ('es','en','pt'));
+
+alter table areas         add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table chapters      add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table questions     add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table lessons       add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table lesson_blocks add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table visuals       add column if not exists i18n jsonb not null default '{}'::jsonb;
+alter table plans         add column if not exists i18n jsonb not null default '{}'::jsonb;
+
+-- El módulo de Inglés enseña contrastando con el español, así que solo se
+-- ofrece a quien navega en español. `locales` deja abierta la puerta a que un
+-- futuro módulo se ofrezca en otros.
+alter table areas add column if not exists locales text[] not null default array['es','en','pt'];
+update areas set locales = array['es'] where id = 'eng';

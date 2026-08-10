@@ -50,5 +50,7 @@ export const config = {
     '/balotario/:path*',
     '/clases/:path*',
     '/calibracion/:path*',
+    '/traducciones/:path*',
+    '/ayuda/:path*',
   ],
 };

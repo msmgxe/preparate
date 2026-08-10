@@ -5,6 +5,8 @@ import { getDb } from '@/db';
 import { areas, chapters, lessons, plans, questions } from '@/db/schema';
 import type { ModuleCard } from '@/components/landing/Modules';
 import type { PlanCard } from '@/components/landing/PlanPicker';
+import type { Locale } from '@/lib/i18n/config';
+import { tr } from '@/lib/i18n/content';
 
 /**
  * Los módulos tal como se venden, con su temario real.
@@ -12,7 +14,7 @@ import type { PlanCard } from '@/components/landing/PlanPicker';
  * Se leen de la base, no de una constante: cuando publiques más preguntas o
  * clases, la página de venta lo refleja sola.
  */
-export async function getLandingModules(): Promise<ModuleCard[]> {
+export async function getLandingModules(locale: Locale = 'es'): Promise<ModuleCard[]> {
   const db = getDb();
 
   const [allAreas, chapterCounts, questionCounts, lessonCounts, samples] = await Promise.all([
@@ -35,7 +37,7 @@ export async function getLandingModules(): Promise<ModuleCard[]> {
       .groupBy(chapters.areaId),
     // un enunciado por área, solo para enseñar el tono de las preguntas
     db
-      .select({ areaId: chapters.areaId, stem: questions.stem })
+      .select({ areaId: chapters.areaId, stem: questions.stem, i18n: questions.i18n })
       .from(questions)
       .innerJoin(chapters, eq(chapters.id, questions.chapterId))
       .where(eq(questions.status, 'published'))
@@ -51,16 +53,18 @@ export async function getLandingModules(): Promise<ModuleCard[]> {
   const lessonsBy = byArea(lessonCounts);
 
   const sampleBy = new Map<string, string>();
-  for (const s of samples) if (!sampleBy.has(s.areaId)) sampleBy.set(s.areaId, s.stem);
+  // solo el enunciado se traduce aquí: el resto de la pregunta ni se consulta
+  for (const s of samples) if (!sampleBy.has(s.areaId)) sampleBy.set(s.areaId, tr(s, 'stem', locale));
 
   return allAreas.map((a) => ({
     id: a.id,
-    name: a.name,
-    short: a.short,
+    name: tr(a, 'name', locale),
+    short: tr(a, 'short', locale),
     symbol: a.symbol,
     accent: a.accent,
-    tagline: a.tagline,
-    blurb: a.blurb,
+    tagline: tr(a, 'tagline', locale),
+    blurb: tr(a, 'blurb', locale),
+    locales: a.locales,
     status: a.status,
     priceMonth: a.priceMonth,
     priceYear: a.priceYear,
@@ -72,19 +76,19 @@ export async function getLandingModules(): Promise<ModuleCard[]> {
   }));
 }
 
-export async function getLandingPlans(): Promise<PlanCard[]> {
+export async function getLandingPlans(locale: Locale = 'es'): Promise<PlanCard[]> {
   const rows = await getDb().select().from(plans).orderBy(plans.ord);
   return rows.map((p) => ({
     id: p.id,
-    name: p.name,
+    name: tr(p, 'name', locale),
     kind: p.kind,
-    tagline: p.tagline,
-    audience: p.audience,
+    tagline: tr(p, 'tagline', locale),
+    audience: tr(p, 'audience', locale),
     price: p.price,
     period: p.period,
     compareAt: p.compareAt,
     highlight: p.highlight,
-    cta: p.cta,
-    features: (p.features ?? []) as string[],
+    cta: tr(p, 'cta', locale),
+    features: (tr(p, 'features', locale) ?? []) as string[],
   }));
 }

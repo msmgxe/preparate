@@ -4,10 +4,15 @@ import type { Metadata } from 'next';
 import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, examProfiles } from '@/db/schema';
+import { getI18n, fill } from '@/lib/i18n';
+import { tr } from '@/lib/i18n/content';
 import { requireUser } from '@/lib/auth';
 import { startExam } from '@/app/(student)/actions';
 
-export const metadata: Metadata = { title: 'Simulacro · RUMBO' };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: `${t.titles.exam} · RUMBO` };
+}
 
 export default async function SimulacroPage({
   params,
@@ -16,6 +21,8 @@ export default async function SimulacroPage({
 }) {
   const { profileId } = await params;
   await requireUser();
+  const { locale, t } = await getI18n();
+  const a = t.app;
   const db = getDb();
 
   const [[exam], allAreas, others] = await Promise.all([
@@ -33,14 +40,14 @@ export default async function SimulacroPage({
   return (
     <>
       <Link className="back" href="/app">
-        ← Volver al itinerario
+        {t.common.backToItinerary}
       </Link>
 
       <section style={{ marginTop: 8 }}>
-        <span className="eyebrow">Sala de embarque</span>
+        <span className="eyebrow">{a.examLounge}</span>
         <h1 style={{ marginTop: 10 }}>{exam.name}</h1>
         {exam.description && (
-          <p style={{ marginTop: 14, color: '#CFC6B4', fontSize: 18, maxWidth: '60ch' }}>
+          <p style={{ marginTop: 14, color: 'var(--paper-dim)', fontSize: 18, maxWidth: '60ch' }}>
             {exam.description}
           </p>
         )}
@@ -49,42 +56,42 @@ export default async function SimulacroPage({
       <section style={{ marginTop: 26 }}>
         <div className="grid4">
           <div className="kpi">
-            <div className="l">Preguntas</div>
+            <div className="l">{a.examQuestions}</div>
             <div className="v">{exam.nQuestions}</div>
-            <div className="d flat">en el orden del examen</div>
+            <div className="d flat">{a.examInOrder}</div>
           </div>
           <div className="kpi">
-            <div className="l">Tiempo</div>
+            <div className="l">{a.examTime}</div>
             <div className="v">
               {Math.round(exam.seconds / 60)}
-              <span style={{ fontSize: 19, color: 'var(--paper-dim)' }}> min</span>
+              <span style={{ fontSize: 19, color: 'var(--paper-dim)' }}> {t.common.minutes}</span>
             </div>
             <div className="d flat">
-              ≈ {Math.round(exam.seconds / exam.nQuestions)} s por pregunta
+              {fill(a.examPerQuestion, { n: Math.round(exam.seconds / exam.nQuestions) })}
             </div>
           </div>
           <div className="kpi">
-            <div className="l">Pistas</div>
+            <div className="l">{a.examHints}</div>
             <div className="v" style={{ fontSize: 26, color: 'var(--coral)' }}>
-              Ninguna
+              {a.examNone}
             </div>
-            <div className="d flat">la corrección llega al entregar</div>
+            <div className="d flat">{a.examOnSubmit}</div>
           </div>
           <div className="kpi">
-            <div className="l">Al terminar</div>
+            <div className="l">{a.examAfter}</div>
             <div className="v" style={{ fontSize: 26 }}>
-              Todo
+              {a.examEverything}
             </div>
-            <div className="d flat">resolución de cada pregunta</div>
+            <div className="d flat">{a.examAllSolutions}</div>
           </div>
         </div>
       </section>
 
       <section>
         <div className="shead">
-          <h2>Mezcla del examen</h2>
+          <h2>{a.examMix}</h2>
           <div className="rule" />
-          <span className="eyebrow">tal como lo toma la institución</span>
+          <span className="eyebrow">{a.examMixHint}</span>
         </div>
         <div className="chartbox">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
@@ -102,9 +109,10 @@ export default async function SimulacroPage({
                       marginBottom: 6,
                     }}
                   >
-                    <span style={{ color: area?.accent }}>{area?.name ?? areaId}</span>
+                    <span style={{ color: area?.accent }}>{area ? tr(area, 'name', locale) : areaId}</span>
                     <span>
-                      {share} % · ≈ {Math.round((weight / totalWeight) * exam.nQuestions)} preguntas
+                      {share} % · ≈ {Math.round((weight / totalWeight) * exam.nQuestions)}{' '}
+                      {t.common.questions}
                     </span>
                   </div>
                   <div className="bar" style={{ height: 9 }}>
@@ -120,7 +128,7 @@ export default async function SimulacroPage({
       <div className="qnav" style={{ marginTop: 34 }}>
         <form action={startExam}>
           <input type="hidden" name="profile_id" value={exam.id} />
-          <button className="btn solid">Rendir simulacro →</button>
+          <button className="btn solid">{a.examStart}</button>
         </form>
         {others
           .filter((o) => o.id !== exam.id)

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "db:setup": "dotenv -e .env.local -- tsx scripts/db.ts",
     "db:seed": "dotenv -e .env.local -- tsx scripts/db.ts --seed",
-    "check:sql": "tsx scripts/check-sql.ts"
+    "check:sql": "tsx scripts/check-sql.ts",
+    "db:i18n": "dotenv -e .env.local -- tsx scripts/i18n.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",

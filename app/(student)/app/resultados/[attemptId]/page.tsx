@@ -4,11 +4,16 @@ import type { Metadata } from 'next';
 import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, attemptItems, attempts, chapters, questions } from '@/db/schema';
+import { getI18n, fill } from '@/lib/i18n';
+import { tr } from '@/lib/i18n/content';
 import { requireUser } from '@/lib/auth';
 import { SafeHtml } from '@/components/SafeHtml';
 import { retryWrong } from '@/app/(student)/actions';
 
-export const metadata: Metadata = { title: 'Resultados · RUMBO' };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getI18n();
+  return { title: `${t.titles.results} · RUMBO` };
+}
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 const R = 78;
@@ -21,6 +26,8 @@ export default async function ResultadosPage({
 }) {
   const { attemptId } = await params;
   const profile = await requireUser();
+  const { locale, t } = await getI18n();
+  const a = t.app;
   const db = getDb();
 
   const [attempt] = await db.select().from(attempts).where(eq(attempts.id, attemptId)).limit(1);
@@ -29,7 +36,7 @@ export default async function ResultadosPage({
   if (!attempt.finishedAt) redirect(`/app/sesion/${attemptId}`);
 
   // La sesión está cerrada: aquí sí se revela todo.
-  const rows = await db
+  const rawRows = await db
     .select({
       itemId: attemptItems.id,
       ord: attemptItems.ord,
@@ -49,6 +56,8 @@ export default async function ResultadosPage({
       areaName: areas.name,
       areaShort: areas.short,
       areaAccent: areas.accent,
+      i18n: questions.i18n,
+      areaI18n: areas.i18n,
     })
     .from(attemptItems)
     .innerJoin(questions, eq(questions.id, attemptItems.questionId))
@@ -56,6 +65,19 @@ export default async function ResultadosPage({
     .innerJoin(areas, eq(areas.id, chapters.areaId))
     .where(eq(attemptItems.attemptId, attemptId))
     .orderBy(attemptItems.ord);
+
+  // el idioma se resuelve una vez por fila y ya nadie vuelve a mirar `i18n`
+  const rows = rawRows.map((r) => ({
+    ...r,
+    stem: tr(r, 'stem', locale),
+    passage: tr(r, 'passage', locale),
+    options: tr(r, 'options', locale),
+    steps: tr(r, 'steps', locale),
+    concept: tr(r, 'concept', locale),
+    trick: tr(r, 'trick', locale),
+    areaName: tr({ i18n: r.areaI18n, name: r.areaName }, 'name', locale),
+    areaShort: tr({ i18n: r.areaI18n, short: r.areaShort }, 'short', locale),
+  }));
 
   const total = rows.length;
   const correct = rows.filter((r) => r.isCorrect).length;
@@ -83,21 +105,21 @@ export default async function ResultadosPage({
     <>
       <section style={{ marginTop: 26 }}>
         <span className="eyebrow">
-          Sesión completada · {attempt.title} · {Math.floor(elapsed / 60)} min
+          {a.resultsDone} · {attempt.title} · {Math.floor(elapsed / 60)} {t.common.minutes}
         </span>
         <h1 style={{ marginTop: 10, fontSize: 'clamp(28px,4.8vw,44px)' }}>
           {pct >= 80 ? (
             <>
-              Aterrizaje perfecto. <em style={{ color: 'var(--mint)' }}>Sigue así.</em>
+              {a.resultsPerfect} <em style={{ color: 'var(--mint)' }}>{a.resultsPerfectEm}</em>
             </>
           ) : pct >= 60 ? (
             <>
-              Buen vuelo, con turbulencia.{' '}
-              <em style={{ color: 'var(--amber)' }}>Revisa los fallos.</em>
+              {a.resultsMid}{' '}
+              <em style={{ color: 'var(--amber)' }}>{a.resultsMidEm}</em>
             </>
           ) : (
             <>
-              Toca reprogramar. <em style={{ color: 'var(--coral)' }}>Nada grave.</em>
+              {a.resultsLow} <em style={{ color: 'var(--coral)' }}>{a.resultsLowEm}</em>
             </>
           )}
         </h1>
@@ -106,7 +128,7 @@ export default async function ResultadosPage({
       <div className="score">
         <div className="ring">
           <svg width="180" height="180">
-            <circle cx="90" cy="90" r={R} fill="none" stroke="rgba(247,241,229,.1)" strokeWidth="11" />
+            <circle cx="90" cy="90" r={R} fill="none" stroke="rgba(var(--fg-rgb),.1)" strokeWidth="11" />
             <circle
               cx="90"
               cy="90"
@@ -145,17 +167,16 @@ export default async function ResultadosPage({
             );
           })}
           <div className="mono" style={{ fontSize: 12, color: 'var(--paper-dim)', marginTop: 4 }}>
-            + {correct * 40} millas · racha de {profile.streak}{' '}
-            {profile.streak === 1 ? 'día' : 'días'}
+            {fill(a.resultsMiles, { n: correct * 40, streak: profile.streak })}
           </div>
         </div>
       </div>
 
       <section>
         <div className="shead">
-          <h2>Detalle pregunta por pregunta</h2>
+          <h2>{a.resultsDetail}</h2>
           <div className="rule" />
-          <span className="eyebrow">Abre cada una para ver la resolución</span>
+          <span className="eyebrow">{a.resultsDetailHint}</span>
         </div>
 
         <div className="review-list">
@@ -191,7 +212,7 @@ export default async function ResultadosPage({
 
                   {row.chosenIndex === null && (
                     <p className="notice bad" style={{ marginTop: 14 }}>
-                      No la respondiste. En el examen real eso cuesta lo mismo que fallarla.
+                      {a.resultsUnanswered}
                     </p>
                   )}
 
@@ -210,20 +231,20 @@ export default async function ResultadosPage({
 
                   {row.concept && (
                     <div className="concept">
-                      <div className="eyebrow">Concepto clave</div>
+                      <div className="eyebrow">{a.keyConcept}</div>
                       <p>{row.concept}</p>
                     </div>
                   )}
                   {row.trick && (
                     <div className="trick">
-                      <div className="eyebrow">Truco de examen</div>
+                      <div className="eyebrow">{a.examTrick}</div>
                       <p>{row.trick}</p>
                     </div>
                   )}
                   {row.lessonId && (
                     <div className="qnav">
                       <Link className="btn sm" href={`/app/clase/${row.lessonId}`}>
-                        ◐ Ver la clase visual
+                        {a.seeLesson}
                       </Link>
                     </div>
                   )}
@@ -236,13 +257,13 @@ export default async function ResultadosPage({
 
       <div className="qnav" style={{ marginTop: 30 }}>
         <Link className="btn solid" href="/app">
-          Volver al itinerario
+          {a.resultsBack}
         </Link>
         {wrong > 0 && (
           <form action={retryWrong}>
             <input type="hidden" name="attempt_id" value={attemptId} />
             <button className="btn">
-              Repasar los {wrong} {wrong === 1 ? 'error' : 'errores'}
+              {wrong === 1 ? a.resultsRetryOne : fill(a.resultsRetry, { n: wrong })}
             </button>
           </form>
         )}

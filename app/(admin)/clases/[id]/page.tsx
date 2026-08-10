@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { eq, inArray } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, chapters, lessonBlocks, lessonVideos, lessons, visuals } from '@/db/schema';
+import { getI18n } from '@/lib/i18n';
 import { requireAdmin } from '@/lib/auth';
 import { BLOCK_KINDS, BLOCK_LABEL, toBlock, type Block } from '@/lib/blocks';
 import { sanitizeSvg } from '@/components/SafeHtml';
@@ -17,6 +18,7 @@ export const metadata: Metadata = { title: 'Editar clase · RUMBO' };
 export default async function EditarClasePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   await requireAdmin();
+  const { t } = await getI18n();
   const db = getDb();
 
   const [lesson] = await db.select().from(lessons).where(eq(lessons.id, id)).limit(1);
@@ -124,6 +126,7 @@ export default async function EditarClasePage({ params }: { params: Promise<{ id
                 blocks={blocks}
                 visuals={svgById}
                 videos={videos}
+            t={t}
               />
             </div>
           </div>

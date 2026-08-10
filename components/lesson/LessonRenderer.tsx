@@ -1,5 +1,8 @@
 'use client';
 
+import type { Dict } from '@/lib/i18n/dictionaries/es';
+import { fill } from '@/lib/i18n/fill';
+
 import { useEffect, useRef, useState } from 'react';
 import { SafeHtml } from '@/components/SafeHtml';
 import type { Block } from '@/lib/blocks';
@@ -18,11 +21,13 @@ export type LessonVideo = { id: string; title: string; source: string | null; ur
  * Los SVG llegan ya sanitizados desde el servidor.
  */
 export function LessonRenderer({
+  t,
   lessonId,
   blocks,
   visuals,
   videos,
 }: {
+  t: Dict;
   lessonId: string;
   blocks: Block[];
   visuals: Record<string, string>;
@@ -115,21 +120,21 @@ export function LessonRenderer({
               <div className="lblock" key={block.id}>
                 <div className="viz">
                   <div className="vtop">
-                    <span className="eyebrow">Infografía</span>
+                    <span className="eyebrow">{t.app.lessonInfographic}</span>
                     <button
                       className="replay"
                       onClick={() =>
                         setReplays((prev) => ({ ...prev, [block.id]: (prev[block.id] ?? 0) + 1 }))
                       }
                     >
-                      ↻ Repetir
+                      {t.app.lessonReplay}
                     </button>
                   </div>
                   {svg ? (
                     // el `key` cambia al repetir: React remonta el SVG y la animación arranca de cero
                     <div key={nonce} dangerouslySetInnerHTML={{ __html: svg }} />
                   ) : (
-                    <p className="empty">Falta la infografía «{block.payload.viz_id}».</p>
+                    <p className="empty">{fill(t.app.lessonMissingViz, { id: block.payload.viz_id })}</p>
                   )}
                   {block.payload.caption && <div className="vcap">{block.payload.caption}</div>}
                 </div>
@@ -143,7 +148,7 @@ export function LessonRenderer({
             const ok = chosen === block.payload.ans;
             return (
               <div className="check" key={block.id}>
-                <div className="eyebrow">Compruébalo antes de seguir</div>
+                <div className="eyebrow">{t.app.lessonCheckpoint}</div>
                 <div className="cq">{block.payload.q}</div>
                 <div className="copts">
                   {block.payload.opts.map((option, i) => {
@@ -178,7 +183,7 @@ export function LessonRenderer({
             return (
               <div className="lblock" key={block.id}>
                 <div className="errbox">
-                  <div className="eyebrow">Los errores que más se repiten</div>
+                  <div className="eyebrow">{t.app.lessonErrors}</div>
                   <ul className="errlist">
                     {block.payload.items.map((item, i) => (
                       <li key={i}>{item}</li>
@@ -192,7 +197,7 @@ export function LessonRenderer({
             if (!videos.length) return null;
             return (
               <div className="lblock" key={block.id}>
-                <span className="eyebrow">Videos cortos sobre el tema</span>
+                <span className="eyebrow">{t.app.lessonVideos}</span>
                 {videos.map((video) => (
                   <a
                     className="video"
@@ -215,8 +220,7 @@ export function LessonRenderer({
                   className="mono"
                   style={{ fontSize: 14, color: 'var(--paper-dim)', marginTop: 8 }}
                 >
-                  Enlaces curados por el administrador. Se abren en una pestaña nueva: el video es
-                  refuerzo, no la clase.
+                  {t.app.lessonVideoNote}
                 </p>
               </div>
             );
@@ -228,7 +232,7 @@ export function LessonRenderer({
 
       {gate && (
         <div className="locked-gate">
-          Responde el checkpoint para seguir leyendo
+          {t.app.lessonGate}
         </div>
       )}
     </>

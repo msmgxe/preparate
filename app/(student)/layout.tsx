@@ -1,3 +1,5 @@
+import { getI18n } from '@/lib/i18n';
+import { INTL_LOCALE } from '@/lib/i18n/config';
 import { requireUser } from '@/lib/auth';
 import { Header } from '@/components/Header';
 
@@ -13,6 +15,7 @@ export const dynamic = 'force-dynamic';
  */
 export default async function StudentLayout({ children }: { children: React.ReactNode }) {
   const profile = await requireUser();
+  const { locale, t } = await getI18n();
 
   return (
     <>
@@ -23,11 +26,11 @@ export default async function StudentLayout({ children }: { children: React.Reac
           <>
             <div className="chip fire">
               <i>🔥</i>
-              {profile.streak} {profile.streak === 1 ? 'día' : 'días'}
+              {profile.streak} {profile.streak === 1 ? t.common.day : t.common.days}
             </div>
             <div className="chip miles hide-sm">
               <i>✈</i>
-              {profile.miles.toLocaleString('es-PE')} millas
+              {profile.miles.toLocaleString(INTL_LOCALE[locale])} {t.app.miles}
             </div>
           </>
         }

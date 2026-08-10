@@ -2,6 +2,7 @@
 
 import { Check, RotateCcw, X } from 'lucide-react';
 import { useState } from 'react';
+import type { Dict } from '@/lib/i18n/dictionaries/es';
 
 /**
  * Demo del hero: una pregunta real, resuelta en el sitio.
@@ -11,27 +12,10 @@ import { useState } from 'react';
  * página pública sin sesión no puede llamar a `/api/answer`, así que traer una
  * pregunta de verdad obligaría a exponer su respuesta. Esta es de muestra.
  */
-const DEMO = {
-  area: 'Razonamiento Matemático',
-  chapter: 'Fracciones y porcentajes',
-  stem: 'Un hotel aplica 20 % de descuento por reserva anticipada y, sobre el precio ya rebajado, un 10 % adicional por pago con tarjeta. ¿A qué descuento único equivale?',
-  options: ['26 %', '28 %', '30 %', '32 %'],
-  answer: 1,
-  why: {
-    ok: 'Exacto. Descontar 20 % deja el 80 %; descontar 10 % deja el 90 %. Y los factores sí se multiplican: 0,80 × 0,90 = 0,72. Queda el 72 %, así que se descontó el 28 %.',
-    no: 'La trampa es sumar 20 + 10. El segundo descuento se aplica sobre un precio que ya encogió: 0,80 × 0,90 = 0,72 → queda el 72 %, se descontó el 28 %.',
-  },
-  steps: [
-    'No sumes los descuentos: 30 % es la alternativa trampa.',
-    'Piensa en lo que queda: 20 % deja el 80 %; 10 % deja el 90 %.',
-    'Multiplica los factores: 0,80 × 0,90 = 0,72.',
-    'Convierte a descuento: 100 % − 72 % = 28 %.',
-  ],
-};
-
 const LETTERS = ['A', 'B', 'C', 'D'];
 
-export function Demo() {
+export function Demo({ t }: { t: Dict['landing'] }) {
+  const DEMO = { ...t.demo, answer: 1 };
   const [chosen, setChosen] = useState<number | null>(null);
   const answered = chosen !== null;
   const correct = chosen === DEMO.answer;
@@ -42,7 +26,7 @@ export function Demo() {
         <span className="lp-pill">{DEMO.area}</span>
         <span className="lp-pill lp-pill-accent">{DEMO.chapter}</span>
         <span style={{ marginLeft: 'auto', fontSize: 12.5, fontWeight: 600 }} className="lp-muted">
-          Pruébalo ahora
+          {t.demoTry}
         </span>
       </div>
 
@@ -125,9 +109,9 @@ export function Demo() {
               marginBottom: 6,
             }}
           >
-            {correct ? '✓ Correcto' : 'Casi — mira por qué'}
+            {correct ? t.demoCorrect : t.demoWrong}
           </div>
-          <p style={{ fontSize: 14.5, marginBottom: 12 }}>{correct ? DEMO.why.ok : DEMO.why.no}</p>
+          <p style={{ fontSize: 14.5, marginBottom: 12 }}>{correct ? DEMO.ok : DEMO.no}</p>
 
           <div style={{ display: 'grid', gap: 7 }}>
             {DEMO.steps.map((step, i) => (
@@ -158,14 +142,14 @@ export function Demo() {
             className="lp-btn lp-btn-ghost"
             style={{ marginTop: 14, fontSize: 14, padding: '9px 15px' }}
           >
-            <RotateCcw size={15} /> Intentar de nuevo
+            <RotateCcw size={15} /> {t.demoRetry}
           </button>
         </div>
       )}
 
       {!answered && (
         <p className="lp-muted" style={{ fontSize: 13.5, marginTop: 14 }}>
-          Así se resuelve cada pregunta dentro: eliges, y al instante ves por qué.
+          {t.demoHint}
         </p>
       )}
     </div>

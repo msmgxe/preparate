@@ -1,5 +1,7 @@
 'use client';
 
+import type { Dict } from '@/lib/i18n/dictionaries/es';
+
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { finishAttempt, markSolutionViewed, toggleFlag } from '@/app/(student)/actions';
@@ -50,6 +52,7 @@ function mmss(total: number): string {
 }
 
 export function Runner({
+  t,
   attemptId,
   mode,
   title,
@@ -57,6 +60,7 @@ export function Runner({
   startedAt,
   items,
 }: {
+  t: Dict;
   attemptId: string;
   mode: string;
   title: string;
@@ -64,6 +68,7 @@ export function Runner({
   startedAt: string;
   items: RunnerItem[];
 }) {
+  const a = t.app;
   const isExam = mode === 'exam';
 
   const [idx, setIdx] = useState(0);
@@ -149,7 +154,7 @@ export function Runner({
         });
 
         const data = (await response.json()) as AnswerResult & { error?: string };
-        if (!response.ok) throw new Error(data.error ?? 'No se pudo guardar la respuesta.');
+        if (!response.ok) throw new Error(data.error ?? a.saveError);
 
         if (data.revealed) {
           setVerdicts((prev) => ({
@@ -170,12 +175,12 @@ export function Runner({
           delete next[item.id];
           return next;
         });
-        setError(e instanceof Error ? e.message : 'Falló la conexión. Intenta de nuevo.');
+        setError(e instanceof Error ? e.message : a.saveError);
       } finally {
         setSending(false);
       }
     },
-    [chosen, isExam, item, sending],
+    [chosen, isExam, item, sending, a.saveError],
   );
 
   const go = useCallback(
@@ -208,7 +213,7 @@ export function Runner({
   }, [answer, go, idx, item, tab]);
 
   if (!item) {
-    return <p className="empty">Esta sesión quedó sin preguntas.</p>;
+    return <p className="empty">{a.emptySession}</p>;
   }
 
   const isLast = idx === items.length - 1;
@@ -219,7 +224,7 @@ export function Runner({
       <div className="qtop">
         <div className="where">
           <span className="eyebrow">
-            {isExam ? 'Modo simulacro · sin pistas' : 'Modo práctica · corrección inmediata'}
+            {isExam ? a.runnerExam : a.runnerPractice}
           </span>
           <b>{title}</b>
         </div>
@@ -228,7 +233,7 @@ export function Runner({
           {mmss(remaining ?? elapsed)}
         </div>
         <Link className="btn sm" href="/app">
-          Salir
+          {a.exit}
         </Link>
       </div>
 
@@ -256,11 +261,11 @@ export function Runner({
       <div className="tabs">
         {item.lesson && (
           <button className={`tab${tab === 'c' ? ' on' : ''}`} onClick={() => setTab('c')}>
-            ◐ Clase · {item.lesson.minutes} min
+            {a.tabLesson} · {item.lesson.minutes} {t.common.minutes}
           </button>
         )}
         <button className={`tab${tab === 'x' ? ' on' : ''}`} onClick={() => setTab('x')}>
-          Examen
+          {a.tabExam}
         </button>
         <button
           className={`tab${tab === 'r' ? ' on' : ''}`}
@@ -270,7 +275,7 @@ export function Runner({
             void markSolutionViewed(item.id);
           }}
         >
-          {canSeeSolution ? 'Resolución ✦' : isExam ? 'Resolución (al terminar)' : 'Resolución'}
+          {canSeeSolution ? a.tabSolutionReady : isExam ? a.tabSolutionLater : a.tabSolution}
         </button>
       </div>
 
@@ -278,7 +283,7 @@ export function Runner({
         <div className="panel">
           <div className="qcardbox">
             <span className="eyebrow" style={{ color: 'var(--sky)' }}>
-              Clase visual · {item.chapter}
+              {a.tabLesson.replace('◐ ', '')} · {item.chapter}
             </span>
             <h3
               style={{
@@ -294,7 +299,7 @@ export function Runner({
             <p style={{ color: '#CFC6B4', marginTop: 12, fontSize: 17 }}>{item.lesson.hook}</p>
             <div className="qnav">
               <Link className="btn solid sm" href={`/app/clase/${item.lesson.id}`}>
-                Leer la clase completa →
+                {a.openLesson.replace('◐ ', '')} →
               </Link>
               <button className="btn sm" onClick={() => setTab('x')}>
                 Ir al examen →
@@ -316,7 +321,7 @@ export function Runner({
               </span>
               <span className="tagl">{item.chapter}</span>
               <span className="tagl">
-                Dificultad {'●'.repeat(item.question.difficulty)}
+                {a.difficulty} {'●'.repeat(item.question.difficulty)}
                 {'○'.repeat(3 - item.question.difficulty)}
               </span>
               <span className="tagl">
@@ -363,14 +368,15 @@ export function Runner({
                 <div>
                   {verdict!.is_correct ? (
                     <>
-                      <b>Correcto.</b> Abre la <b>Resolución</b> para fijar el método
-                      {item.lesson ? ', o la Clase si quieres el fundamento visual' : ''}.
+                      <b>{a.correct}</b> {a.correctTail}
                     </>
                   ) : (
                     <>
-                      <b>La respuesta era {LETTERS[verdict!.answer_index]}.</b>{' '}
+                      <b>
+                        {a.wrongWas} {LETTERS[verdict!.answer_index]}.
+                      </b>{' '}
                       {verdict!.why_wrong ? `${verdict!.why_wrong} ` : ''}
-                      Esta pregunta vuelve en tu bitácora al día 1, 3, 7 y 21.
+                      {a.wrongTail}
                     </>
                   )}
                 </div>
@@ -381,7 +387,7 @@ export function Runner({
               <div className="feedback good">
                 <span style={{ fontSize: 19 }}>✓</span>
                 <div>
-                  Respuesta guardada. En simulacro no hay pistas: la corrección llega al entregar.
+                  {a.examSaved}
                 </div>
               </div>
             )}
@@ -389,7 +395,7 @@ export function Runner({
 
           <div className="qnav">
             <button className="btn sm" onClick={() => go(idx - 1)} disabled={idx === 0}>
-              ← Anterior
+              {a.prev}
             </button>
             <button
               className="btn sm"
@@ -399,18 +405,18 @@ export function Runner({
                 void toggleFlag(item.id, next);
               }}
             >
-              {flags[item.id] ? '⚑ Marcada' : '⚑ Marcar'}
+              {flags[item.id] ? a.flagged : a.flag}
             </button>
             <div className="sp" />
             {!isLast && (
               <button className="btn sm" onClick={() => go(idx + 1)}>
-                Siguiente →
+                {a.next}
               </button>
             )}
             <form action={finishAttempt} ref={finishRef}>
               <input type="hidden" name="attempt_id" value={attemptId} />
               <button className={`btn sm${isLast ? ' solid' : ''}`}>
-                {isLast ? 'Terminar y calificar' : 'Entregar ahora'}
+                {isLast ? a.finish : a.submitNow}
               </button>
             </form>
           </div>
@@ -421,7 +427,7 @@ export function Runner({
         <div className="panel">
           <div className="qcardbox">
             <span className="eyebrow" style={{ color: 'var(--amber)' }}>
-              Resolución guiada
+              {a.solutionTitle}
             </span>
             <SafeHtml
               className="stem"
@@ -444,13 +450,13 @@ export function Runner({
 
             {verdict.concept && (
               <div className="concept">
-                <div className="eyebrow">Concepto clave</div>
+                <div className="eyebrow">{a.keyConcept}</div>
                 <p>{verdict.concept}</p>
               </div>
             )}
             {verdict.trick && (
               <div className="trick">
-                <div className="eyebrow">Truco de examen</div>
+                <div className="eyebrow">{a.examTrick}</div>
                 <p>{verdict.trick}</p>
               </div>
             )}
@@ -459,18 +465,18 @@ export function Runner({
           <div className="qnav">
             {item.lesson && (
               <Link className="btn sm" href={`/app/clase/${item.lesson.id}`}>
-                ◐ Ver la clase completa
+                {a.openLesson}
               </Link>
             )}
             <div className="sp" />
             {!isLast ? (
               <button className="btn sm" onClick={() => go(idx + 1)}>
-                Siguiente pregunta →
+                {a.nextQuestion}
               </button>
             ) : (
               <form action={finishAttempt}>
                 <input type="hidden" name="attempt_id" value={attemptId} />
-                <button className="btn solid sm">Terminar y calificar</button>
+                <button className="btn solid sm">{a.finish}</button>
               </form>
             )}
           </div>

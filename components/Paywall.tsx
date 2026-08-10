@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { whatsappLink } from '@/lib/site';
+import { getI18n, fill } from '@/lib/i18n';
 
 /**
  * Lo que ve un alumno cuando el módulo no está abierto.
@@ -8,7 +9,7 @@ import { whatsappLink } from '@/lib/site';
  * abrirlo. El pago es manual (Yape o transferencia por WhatsApp), así que el
  * botón lleva a una conversación, no a un checkout.
  */
-export function Paywall({
+export async function Paywall({
   areaName,
   areaAccent,
   title,
@@ -19,25 +20,17 @@ export function Paywall({
   title?: string;
   kind: 'lesson' | 'exam' | 'practice';
 }) {
+  const { t } = await getI18n();
   const copy = {
-    lesson: {
-      head: 'Esta clase es parte del módulo completo',
-      body: 'Ya leíste la clase de muestra de este módulo. El resto —con sus infografías, checkpoints y errores frecuentes— se abre al activarlo.',
-    },
-    exam: {
-      head: 'Los simulacros necesitan el módulo completo',
-      body: 'Un simulacro con solo las preguntas de muestra daría un puntaje que no significa nada. Se abre con el módulo activo.',
-    },
-    practice: {
-      head: 'Has terminado la muestra de este módulo',
-      body: 'Las preguntas abiertas están para que compruebes si el método te sirve. El balotario completo se abre al activar el módulo.',
-    },
+    lesson: { head: t.app.paywallLessonHead, body: t.app.paywallLessonBody },
+    exam: { head: t.app.paywallExamHead, body: t.app.paywallExamBody },
+    practice: { head: t.app.paywallPracticeHead, body: t.app.paywallPracticeBody },
   }[kind];
 
   return (
     <>
       <Link className="back" href="/app">
-        ← Volver al itinerario
+        {t.common.backToItinerary}
       </Link>
 
       <section style={{ marginTop: 8, maxWidth: 640 }}>
@@ -46,26 +39,26 @@ export function Paywall({
           {title ? ` · ${title}` : ''}
         </span>
         <h1 style={{ marginTop: 12, fontSize: 'clamp(26px,4.2vw,38px)' }}>{copy.head}</h1>
-        <p style={{ marginTop: 14, color: '#CFC6B4', fontSize: 17.5, lineHeight: 1.65 }}>
+        <p style={{ marginTop: 14, color: 'var(--paper-dim)', fontSize: 17.5, lineHeight: 1.65 }}>
           {copy.body}
         </p>
 
         <div className="qnav" style={{ marginTop: 28 }}>
           <a
             className="btn solid"
-            href={whatsappLink(`Hola, quiero activar el módulo de ${areaName} en RUMBO.`)}
+            href={whatsappLink(fill(t.wa.buyModule, { module: areaName }))}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Activar {areaName} →
+            {fill(t.app.paywallActivate, { area: areaName })}
           </a>
           <Link className="btn sm" href="/#planes">
-            Ver todos los planes
+            {t.app.paywallAllPlans}
           </Link>
         </div>
 
         <p className="hint" style={{ textAlign: 'left', marginTop: 22 }}>
-          Se paga por Yape, Plin o transferencia. El acceso se abre el mismo día.
+          {t.app.paywallPay}
         </p>
       </section>
     </>

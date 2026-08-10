@@ -46,7 +46,7 @@ export default async function ClasesPage() {
       <section style={{ marginTop: 32 }}>
         <span className="eyebrow">Contenido</span>
         <h1 style={{ marginTop: 10, fontSize: 'clamp(28px,4.6vw,42px)' }}>Clases visuales</h1>
-        <p style={{ marginTop: 14, color: '#CFC6B4', fontSize: 17, maxWidth: '62ch' }}>
+        <p style={{ marginTop: 14, color: 'var(--paper-dim)', fontSize: 17, maxWidth: '62ch' }}>
           {rows.length} de {Number(chapterCount)} capítulos tienen clase. Cada infografía cuesta 1–2
           horas de diseño real: haz primero las de los capítulos donde el grupo está peor y deja el
           resto en resolución paso a paso, que ya es buena. La calibración te dirá cuáles.

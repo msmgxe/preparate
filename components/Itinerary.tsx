@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { startChapter } from '@/app/(student)/actions';
 import type { AreaCard } from '@/lib/queries';
+import type { Dict } from '@/lib/i18n/dictionaries/es';
 
 function stars(mastery: number | null): string {
   if (mastery === null) return '☆☆☆';
@@ -11,7 +12,8 @@ function stars(mastery: number | null): string {
   return '★'.repeat(filled) + '☆'.repeat(3 - filled);
 }
 
-export function Itinerary({ areas }: { areas: AreaCard[] }) {
+export function Itinerary({ areas, t }: { areas: AreaCard[]; t: Dict }) {
+  const a = t.app;
   const [open, setOpen] = useState<string | null>(null);
   const current = areas.find((a) => a.id === open) ?? null;
 
@@ -30,15 +32,15 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
             <div className="sym">{area.symbol}</div>
             <h3>{area.name}</h3>
             <div className="meta">
-              {area.chapters.length} capítulos · {area.published} preguntas
-              {area.locked && ' · 🔒 muestra'}
+              {area.chapters.length} {t.common.chapters} · {area.published} {t.common.questions}
+              {area.locked && ` · 🔒 ${a.sample}`}
             </div>
             <div className="bar" style={{ marginTop: 14 }}>
               <i style={{ width: `${area.mastery ?? 0}%`, background: area.accent }} />
             </div>
             <div className="pct">
-              <span>Dominio</span>
-              <span>{area.mastery === null ? 'sin datos' : `${area.mastery}%`}</span>
+              <span>{a.mastery}</span>
+              <span>{area.mastery === null ? t.common.noData : `${area.mastery}%`}</span>
             </div>
           </button>
         ))}
@@ -50,11 +52,10 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
           style={{ marginTop: 16, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}
         >
           <span style={{ flex: 1, minWidth: 220 }}>
-            <b>{current.name}</b> está en modo muestra: puedes practicar unas pocas preguntas y leer
-            la primera clase. El resto se abre al activar el módulo.
+            <b>{current.name}</b> {a.lockedNotice}
           </span>
           <Link className="btn sm" href="/#planes">
-            Ver planes
+            {t.common.seePlans}
           </Link>
         </div>
       )}
@@ -67,30 +68,31 @@ export function Itinerary({ areas }: { areas: AreaCard[] }) {
               <div className="t">
                 <b>{chapter.title}</b>
                 <span>
-                  {chapter.published} {chapter.published === 1 ? 'pregunta' : 'preguntas'}
+                  {chapter.published}{' '}
+                  {chapter.published === 1 ? t.common.question : t.common.questions}
                   {chapter.answered > 0
-                    ? ` · ${chapter.answered} resueltas · ${chapter.mastery}% de acierto`
-                    : ' · sin empezar'}
-                  {chapter.lesson ? ' · clase visual disponible' : ''}
+                    ? ` · ${chapter.answered} ${a.solved} · ${chapter.mastery}% ${a.accuracyShort}`
+                    : ` · ${a.notStarted}`}
+                  {chapter.lesson ? ` · ${a.lessonAvailable}` : ''}
                 </span>
               </div>
               <div className="stars">{stars(chapter.mastery)}</div>
               {chapter.lesson &&
                 (!current.locked || current.freeLessonId === chapter.lesson.id ? (
                   <Link className="btn sm" href={`/app/clase/${chapter.lesson.id}`}>
-                    ◐ Clase · {chapter.lesson.minutes} min
-                    {current.locked ? ' · muestra' : ''}
+                    {a.lessonBtn} · {chapter.lesson.minutes} {t.common.minutes}
+                    {current.locked ? ` · ${a.sample}` : ''}
                   </Link>
                 ) : (
                   <span className="btn sm" style={{ opacity: 0.45, cursor: 'not-allowed' }}>
-                    🔒 Clase
+                    🔒 {a.lessonBtn.replace('◐ ', '')}
                   </span>
                 ))}
               <form action={startChapter}>
                 <input type="hidden" name="chapter_id" value={chapter.id} />
                 <input type="hidden" name="title" value={`${current.name} · ${chapter.title}`} />
                 <button className="btn sm" disabled={chapter.published === 0}>
-                  {chapter.published === 0 ? 'Sin preguntas' : 'Practicar'}
+                  {chapter.published === 0 ? a.noQuestions : a.practiceBtn}
                 </button>
               </form>
             </div>

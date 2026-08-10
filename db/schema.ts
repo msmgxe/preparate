@@ -36,6 +36,12 @@ export const blockKind = pgEnum('block_kind', [
 ]);
 export const questionKind = pgEnum('question_kind', ['single_choice', 'reading_set', 'numeric']);
 
+/**
+ * Traducciones de una fila: `{ en: {campo: valor}, pt: {...} }`.
+ * El español vive en las columnas normales y hace de respaldo.
+ */
+export type Translations = Record<string, Record<string, unknown>>;
+
 /** Paso de la resolución guiada. */
 export type Step = { t: string; p: string; m: string | null };
 
@@ -56,6 +62,9 @@ export const areas = pgTable('areas', {
   priceYear: integer('price_year'),
   freeQuestions: smallint('free_questions').notNull().default(5),
   status: text('status').notNull().default('live').$type<'live' | 'soon'>(),
+  /** Idiomas en los que se ofrece el módulo. */
+  locales: text('locales').array().notNull().default(['es', 'en', 'pt']),
+  i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
 });
 
 // ── negocio: planes y accesos ───────────────────────────────────────────────
@@ -73,6 +82,7 @@ export const plans = pgTable('plans', {
   cta: text('cta').notNull().default('Elegir plan'),
   features: jsonb('features').notNull().default([]).$type<string[]>(),
   ord: smallint('ord').notNull().default(0),
+  i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
 });
 
 /** Un acceso abre un módulo (`areaId`) o todos (`areaId` nulo). */
@@ -110,6 +120,7 @@ export const chapters = pgTable(
     title: text('title').notNull(),
     ord: smallint('ord').notNull().default(0),
     videoUrl: text('video_url'),
+    i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
   },
   (t) => [unique('chapters_area_id_title_key').on(t.areaId, t.title)],
 );
@@ -125,6 +136,7 @@ export const lessons = pgTable('lessons', {
   minutes: smallint('minutes').notNull().default(6),
   status: text('status').notNull().default('draft').$type<'draft' | 'reviewed' | 'published'>(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+  i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
 });
 
 export const questions = pgTable(
@@ -152,6 +164,7 @@ export const questions = pgTable(
     createdBy: text('created_by'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+    i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
   },
   (t) => [index('questions_chapter_idx').on(t.chapterId), index('questions_status_idx').on(t.status)],
 );
@@ -182,6 +195,7 @@ export const profiles = pgTable('profiles', {
   bestStreak: smallint('best_streak').notNull().default(0),
   miles: integer('miles').notNull().default(0),
   lastPracticeDate: date('last_practice_date'),
+  locale: text('locale').notNull().default('es').$type<'es' | 'en' | 'pt'>(),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -207,6 +221,7 @@ export const lessonBlocks = pgTable(
     ord: smallint('ord').notNull(),
     kind: blockKind('kind').notNull(),
     payload: jsonb('payload').notNull(),
+    i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
   },
   (t) => [unique('lesson_blocks_lesson_id_ord_key').on(t.lessonId, t.ord)],
 );
@@ -217,6 +232,7 @@ export const visuals = pgTable('visuals', {
   svg: text('svg').notNull(),
   version: smallint('version').default(1),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+  i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
 });
 
 export const lessonVideos = pgTable('lesson_videos', {
@@ -449,8 +465,13 @@ export type ExamProfile = typeof examProfiles.$inferSelect;
 export type Plan = typeof plans.$inferSelect;
 export type Entitlement = typeof entitlements.$inferSelect;
 
-/** Lo que el navegador puede ver de una pregunta antes de responder. */
+/**
+ * Lo que el navegador puede ver de una pregunta antes de responder.
+ *
+ * `i18n` queda fuera además de los campos obvios: ese blob guarda también las
+ * traducciones de `steps`, `concept` y `trick`. Se resuelve en el servidor.
+ */
 export type PublicQuestion = Omit<
   Question,
-  'answerIndex' | 'steps' | 'distractors' | 'concept' | 'trick' | 'createdBy'
+  'answerIndex' | 'steps' | 'distractors' | 'concept' | 'trick' | 'createdBy' | 'i18n'
 >;

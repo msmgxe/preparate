@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { THEME_BOOTSTRAP } from '@/components/landing/ThemeToggle';
 
 export const metadata: Metadata = {
   title: 'RUMBO · Prepárate para tu examen de admisión',
@@ -13,10 +12,6 @@ export const metadata: Metadata = {
  */
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="lp">
-      {/* corre durante el parseo, antes del primer pintado */}
-      <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
-      {children}
-    </div>
+    <div className="lp">{children}</div>
   );
 }

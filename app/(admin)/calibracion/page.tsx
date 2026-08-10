@@ -26,7 +26,7 @@ export default async function CalibracionPage({
         <h1 style={{ marginTop: 10, fontSize: 'clamp(28px,4.6vw,42px)' }}>
           Calibración del balotario
         </h1>
-        <p style={{ marginTop: 14, color: '#CFC6B4', fontSize: 17, maxWidth: '62ch' }}>
+        <p style={{ marginTop: 14, color: 'var(--paper-dim)', fontSize: 17, maxWidth: '62ch' }}>
           Es lo que evita que el balotario se degrade. Menos de 45 % de acierto suele ser un
           problema de redacción, no de dificultad; más de 92 % es una pregunta que ya no enseña
           nada.

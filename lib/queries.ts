@@ -2,6 +2,8 @@ import 'server-only';
 
 import { and, count, desc, eq, inArray, isNotNull, lte, sql } from 'drizzle-orm';
 import { getDb } from '@/db';
+import { tr } from '@/lib/i18n/content';
+import type { Locale } from '@/lib/i18n/config';
 import { getAccess } from '@/lib/entitlements';
 import {
   areas,
@@ -62,7 +64,7 @@ export type AreaCard = Area & {
 const num = (v: unknown): number | null => (v === null || v === undefined ? null : Number(v));
 
 /** Catálogo completo (áreas → capítulos) con el dominio del alumno encima. */
-export async function getItinerary(userId: string): Promise<AreaCard[]> {
+export async function getItinerary(userId: string, locale: Locale = 'es'): Promise<AreaCard[]> {
   const db = getDb();
   const access = await getAccess(userId);
 
@@ -82,6 +84,7 @@ export async function getItinerary(userId: string): Promise<AreaCard[]> {
           title: lessons.title,
           minutes: lessons.minutes,
           chapterId: lessons.chapterId,
+          i18n: lessons.i18n,
         })
         .from(lessons)
         .where(eq(lessons.status, 'published')),
@@ -94,15 +97,20 @@ export async function getItinerary(userId: string): Promise<AreaCard[]> {
   const masteryByChapter = new Map(chapterMastery.map((m) => [m.chapterId!, m]));
   const masteryByArea = new Map(areaMastery.map((m) => [m.areaId!, m]));
 
-  return allAreas.map((area) => {
+  // un módulo que no existe en el idioma del alumno no aparece en su itinerario
+  return allAreas
+    .filter((area) => area.locales.includes(locale))
+    .map((area) => {
     const own = allChapters
       .filter((c) => c.areaId === area.id)
       .map<ChapterCard>((c) => {
         const m = masteryByChapter.get(c.id);
+        const lesson = lessonByChapter.get(c.id) ?? null;
         return {
           ...c,
+          title: tr(c, 'title', locale),
           published: countByChapter.get(c.id) ?? 0,
-          lesson: lessonByChapter.get(c.id) ?? null,
+          lesson: lesson ? { ...lesson, title: tr(lesson, 'title', locale) } : null,
           mastery: m ? num(m.pct) : null,
           answered: m ? Number(m.n ?? 0) : 0,
         };
@@ -111,6 +119,8 @@ export async function getItinerary(userId: string): Promise<AreaCard[]> {
     const am = masteryByArea.get(area.id);
     return {
       ...area,
+      name: tr(area, 'name', locale),
+      short: tr(area, 'short', locale),
       chapters: own,
       published: own.reduce((a, c) => a + c.published, 0),
       mastery: am ? num(am.pct) : null,

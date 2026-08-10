@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, DM_Mono, Newsreader, Plus_Jakarta_Sans } from 'next/font/google';
+import { THEME_BOOTSTRAP } from '@/components/ThemeToggle';
 import './globals.css';
 
 const display = Bricolage_Grotesque({
@@ -43,6 +44,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-PE" className={`${display.variable} ${mono.variable} ${serif.variable} ${ui.variable}`}>
+      <head>
+        {/* corre antes del primer pintado, para que no parpadee el tema */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+      </head>
       <body>{children}</body>
     </html>
   );

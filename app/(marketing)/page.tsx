@@ -14,9 +14,11 @@ import {
   Timer,
 } from 'lucide-react';
 import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
+import { getI18n, fill } from '@/lib/i18n';
+import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
-import { ThemeToggle } from '@/components/landing/ThemeToggle';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { Demo } from '@/components/landing/Demo';
 import { Modules } from '@/components/landing/Modules';
 import { EnglishRoadmap } from '@/components/landing/EnglishRoadmap';
@@ -25,47 +27,16 @@ import { Faq } from '@/components/landing/Faq';
 
 export const dynamic = 'force-dynamic';
 
-const METHOD = [
-  {
-    icon: BookOpenCheck,
-    title: 'Clase previa express',
-    time: '5–7 min',
-    body: 'Una infografía animada explica el concepto antes de que practiques. Empieza por la intuición: la fórmula aparece al final, cuando ya es obvia. Para seguir leyendo tienes que responder un checkpoint, así que no se puede leer en piloto automático.',
-  },
-  {
-    icon: Target,
-    title: 'Preguntas tipo examen',
-    time: 'a tu ritmo',
-    body: 'Practicas con preguntas escritas al formato real de cada institución, cronometradas como en el examen. Cada alternativa incorrecta corresponde a un error de razonamiento concreto, no a ruido.',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'Retroalimentación al instante',
-    time: 'inmediata',
-    body: 'Al responder ves la resolución paso a paso, el concepto que se transfiere y el truco que ahorra tiempo. Lo que fallaste vuelve programado a los días 1, 3, 7 y 21: nada se queda sin cerrar.',
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    quote: 'Llegué a la evaluación de ISIL habiendo hecho catorce simulacros. El día del examen ya no me temblaba la mano: era el mismo formato de siempre.',
-    name: 'Valeria Q.',
-    role: 'Ingresó a ISIL · promoción 2026',
-  },
-  {
-    quote: 'Lo que me convenció fue el reporte de los domingos. Sin perseguirlo ni preguntarle, yo sabía si había practicado y en qué andaba flojo. Dejamos de pelear por eso.',
-    name: 'Carmen R.',
-    role: 'Mamá de un ingresante a UPC',
-  },
-  {
-    quote: 'Odiaba Razonamiento Verbal porque nunca entendía por qué me equivocaba. Aquí te dicen exactamente qué relación estabas leyendo mal. Subí de 48 % a 79 % en dos meses.',
-    name: 'Rodrigo M.',
-    role: '5.º de secundaria',
-  },
-];
+/** Los iconos del método; el texto viene traducido del diccionario. */
+const METHOD_ICONS = [BookOpenCheck, Target, BrainCircuit];
 
 export default async function LandingPage() {
-  const [modules, plans] = await Promise.all([getLandingModules(), getLandingPlans()]);
+  const { locale, t } = await getI18n();
+  const [modules, plans] = await Promise.all([
+    getLandingModules(locale),
+    getLandingPlans(locale),
+  ]);
+  const l = t.landing;
 
   const published = modules.reduce((sum, m) => sum + m.questions, 0);
   const chapters = modules.reduce((sum, m) => sum + m.chapters, 0);
@@ -81,20 +52,21 @@ export default async function LandingPage() {
           </Link>
 
           <nav className="lp-navlinks">
-            <a href="#modulos">Módulos</a>
-            <a href="#ingles">Inglés C1</a>
-            <a href="#metodo">Cómo funciona</a>
-            <a href="#planes">Planes</a>
-            <a href="#preguntas">Preguntas</a>
+            <a href="#modulos">{t.nav.modules}</a>
+            <a href="#ingles">{t.nav.english}</a>
+            <a href="#metodo">{t.nav.method}</a>
+            <a href="#planes">{t.nav.plans}</a>
+            <a href="#preguntas">{t.nav.faq}</a>
           </nav>
 
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <ThemeToggle />
+            <LocaleSwitcher current={locale} variant="landing" label={t.common.language} />
+            <ThemeToggle defaultDark={false} />
             <Link href="/login" className="lp-btn lp-btn-ghost">
-              Iniciar sesión
+              {t.common.login}
             </Link>
             <a href="#planes" className="lp-btn lp-btn-primary">
-              Ver planes
+              {t.common.seePlans}
             </a>
           </div>
         </div>
@@ -108,39 +80,37 @@ export default async function LandingPage() {
         >
           <Reveal>
             <span className="lp-pill">
-              <GraduationCap size={14} /> ISIL · USIL · UPC · U. de Lima
+              <GraduationCap size={14} /> {l.badge}
             </span>
 
             <h1 style={{ marginTop: 18 }}>
-              Tu hijo no necesita
+              {l.heroA}
               <br />
-              estudiar más.
+              {l.heroB}
               <br />
-              <span style={{ color: 'var(--brand)' }}>Necesita practicar mejor.</span>
+              <span style={{ color: 'var(--brand)' }}>{l.heroC}</span>
             </h1>
 
             <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '52ch' }}>
-              Clase visual de cinco minutos, preguntas del examen real y la resolución paso a paso
-              en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de
-              fallarse.
+              {l.heroBody}
             </p>
 
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
               <Link href="/registro" className="lp-btn lp-btn-primary lp-btn-lg">
-                Comenzar gratis hoy <ArrowRight size={18} />
+                {t.common.startFree} <ArrowRight size={18} />
               </Link>
               <a href="#planes" className="lp-btn lp-btn-ghost lp-btn-lg">
-                Ver planes y garantía
+                {l.heroCta2}
               </a>
             </div>
 
             <p className="lp-muted" style={{ fontSize: 14, marginTop: 14 }}>
-              Sin tarjeta. Cada módulo trae preguntas abiertas para que lo pruebes antes de pagar.
+              {l.heroNote}
             </p>
           </Reveal>
 
           <Reveal delay={120}>
-            <Demo />
+            <Demo t={l} />
           </Reveal>
         </div>
       </section>
@@ -159,10 +129,10 @@ export default async function LandingPage() {
             }}
           >
             {[
-              { value: <Counter to={chapters} />, label: 'capítulos con temario propio' },
-              { value: <Counter to={published} suffix="+" />, label: 'preguntas con resolución paso a paso' },
-              { value: <Counter to={4} />, label: 'días: 1, 3, 7 y 21 — cuándo vuelve tu error' },
-              { value: <Counter to={5} />, label: 'módulos que puedes comprar por separado' },
+              { value: <Counter to={chapters} />, label: l.statChapters },
+              { value: <Counter to={published} suffix="+" />, label: l.statQuestions },
+              { value: <Counter to={4} />, label: l.statSpaced },
+              { value: <Counter to={5} />, label: l.statModules },
             ].map((stat, i) => (
               <div key={i}>
                 <div style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-.03em', color: 'var(--brand)' }}>
@@ -180,18 +150,14 @@ export default async function LandingPage() {
       {/* ═══ MÓDULOS ═══ */}
       <section id="modulos" className="lp-wrap lp-section">
         <Reveal>
-          <span className="lp-eyebrow">Los módulos</span>
-          <h2 style={{ marginTop: 10 }}>Compra solo lo que necesitas</h2>
-          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>
-            Cada área es un curso independiente con su propio temario, sus clases y su balotario.
-            Si tu hijo solo se atasca en Verbal, paga Verbal. Si quiere todo, sale mucho más a
-            cuenta un plan.
-          </p>
+          <span className="lp-eyebrow">{l.modulesEyebrow}</span>
+          <h2 style={{ marginTop: 10 }}>{l.modulesTitle}</h2>
+          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.modulesBody}</p>
         </Reveal>
 
         <Reveal delay={80} className="lp-grid" >
           <div style={{ marginTop: 30 }}>
-            <Modules modules={modules} />
+            <Modules modules={modules} t={l} locale={locale} />
           </div>
         </Reveal>
       </section>
@@ -210,41 +176,41 @@ export default async function LandingPage() {
             >
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
                 <span className="lp-pill lp-pill-accent">
-                  <Sparkles size={14} /> Nuevo módulo · preventa
+                  <Sparkles size={14} /> {l.englishBadge}
                 </span>
                 {english?.priceMonth && (
                   <span className="lp-muted" style={{ fontSize: 14, fontWeight: 600 }}>
-                    S/ {english.priceMonth} al mes · incluido en el Pase de Admisión
+                    {fill(l.englishPrice, { price: english.priceMonth })}
                   </span>
                 )}
               </div>
 
               <h2 style={{ marginTop: 16 }}>
-                Inglés de cero a <span style={{ color: 'var(--accent)' }}>C1</span>
+                {l.englishTitleA} <span style={{ color: 'var(--accent)' }}>C1</span>
               </h2>
               <p style={{ fontSize: 18, marginTop: 12, maxWidth: '64ch' }}>
-                No otra app de rachas y vidas. Una ruta con las técnicas que de verdad mueven la
-                aguja: repetición espaciada, input comprensible, shadowing y producción con
-                corrección razonada. Cien semanas de camino, marcadas nivel por nivel.
+                {l.englishBody}
               </p>
 
               <div style={{ marginTop: 26 }}>
-                <EnglishRoadmap />
+                <EnglishRoadmap
+                  levels={l.roadmap}
+                  weeksLabel={l.englishWeeks}
+                  onFinishLabel={l.englishOnFinish}
+                />
               </div>
 
               <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
                 <a
-                  href={whatsappLink(
-                    'Hola, quiero entrar a la lista de espera del módulo de Inglés C1 de RUMBO.',
-                  )}
+                  href={whatsappLink(t.wa.waitlist)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="lp-btn lp-btn-accent lp-btn-lg"
                 >
-                  Unirme a la lista de espera <ArrowRight size={18} />
+                  {l.englishCta} <ArrowRight size={18} />
                 </a>
                 <a href="#planes" className="lp-btn lp-btn-ghost lp-btn-lg">
-                  Ver planes con acceso anticipado
+                  {l.englishCta2}
                 </a>
               </div>
             </div>
@@ -255,19 +221,18 @@ export default async function LandingPage() {
       {/* ═══ MÉTODO ═══ */}
       <section id="metodo" className="lp-wrap lp-section">
         <Reveal>
-          <span className="lp-eyebrow">La fórmula</span>
-          <h2 style={{ marginTop: 10 }}>Tres pasos, siempre en el mismo orden</h2>
-          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>
-            No es una biblioteca de videos donde nadie sabe por dónde empezar. Cada capítulo sigue
-            la misma secuencia, y esa repetición es la que construye el hábito.
-          </p>
+          <span className="lp-eyebrow">{l.methodEyebrow}</span>
+          <h2 style={{ marginTop: 10 }}>{l.methodTitle}</h2>
+          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.methodBody}</p>
         </Reveal>
 
         <div
           className="lp-grid"
           style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 32 }}
         >
-          {METHOD.map((step, i) => (
+          {l.method.map((step, i) => {
+            const Icon = METHOD_ICONS[i];
+            return (
             <Reveal key={step.title} delay={i * 100}>
               <div className="lp-card lp-card-hover" style={{ padding: 26, height: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -282,7 +247,7 @@ export default async function LandingPage() {
                       color: 'var(--brand)',
                     }}
                   >
-                    <step.icon size={21} />
+                    <Icon size={21} />
                   </span>
                   <span
                     style={{
@@ -301,7 +266,8 @@ export default async function LandingPage() {
                 <p style={{ fontSize: 15, marginTop: 10, lineHeight: 1.65 }}>{step.body}</p>
               </div>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -309,17 +275,14 @@ export default async function LandingPage() {
       <section id="planes" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
           <Reveal>
-            <span className="lp-eyebrow">Planes</span>
-            <h2 style={{ marginTop: 10 }}>Elige por módulo o llévate todo</h2>
-            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>
-              Sin letra chica: pagas por Yape, Plin o transferencia y abrimos el acceso el mismo
-              día. Si el plan no encaja, escríbenos y lo armamos a medida.
-            </p>
+            <span className="lp-eyebrow">{l.plansEyebrow}</span>
+            <h2 style={{ marginTop: 10 }}>{l.plansTitle}</h2>
+            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.plansBody}</p>
           </Reveal>
 
           <Reveal delay={80}>
             <div style={{ marginTop: 32 }}>
-              <PlanPicker plans={plans} modules={modules} />
+              <PlanPicker plans={plans} modules={modules} t={l} locale={locale} />
             </div>
           </Reveal>
 
@@ -337,20 +300,16 @@ export default async function LandingPage() {
             >
               <ShieldCheck size={26} style={{ color: 'var(--lime)', flex: 'none' }} />
               <div style={{ flex: 1, minWidth: 260 }}>
-                <h3 style={{ fontSize: 17 }}>Garantía de acompañamiento</h3>
-                <p style={{ fontSize: 14.5, marginTop: 4 }}>
-                  En el plan Familiar, si tu hijo practicó al menos 3 horas por semana y no ingresa,
-                  renuevas el año siguiente sin costo. No prometemos una vacante — eso no lo puede
-                  prometer nadie — sino que no te quedas solo si hay que volver a intentarlo.
-                </p>
+                <h3 style={{ fontSize: 17 }}>{l.guaranteeTitle}</h3>
+                <p style={{ fontSize: 14.5, marginTop: 4 }}>{l.guaranteeBody}</p>
               </div>
               <a
-                href={whatsappLink('Hola, tengo dudas sobre los planes de RUMBO. ¿Me orientas?')}
+                href={whatsappLink(t.wa.plans)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="lp-btn lp-btn-ghost"
               >
-                <MessageCircle size={17} /> Hablar con alguien
+                <MessageCircle size={17} /> {l.guaranteeCta}
               </a>
             </div>
           </Reveal>
@@ -360,20 +319,20 @@ export default async function LandingPage() {
       {/* ═══ TESTIMONIOS ═══ */}
       <section className="lp-wrap lp-section">
         <Reveal>
-          <span className="lp-eyebrow">Confianza</span>
-          <h2 style={{ marginTop: 10 }}>Quienes ya pasaron por aquí</h2>
+          <span className="lp-eyebrow">{l.socialEyebrow}</span>
+          <h2 style={{ marginTop: 10 }}>{l.socialTitle}</h2>
         </Reveal>
 
         <div
           className="lp-grid"
           style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 30 }}
         >
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100}>
+          {l.testimonials.map((item, i) => (
+            <Reveal key={item.name} delay={i * 100}>
               <figure className="lp-card lp-card-hover" style={{ padding: 26, height: '100%', margin: 0 }}>
                 <Quote size={22} style={{ color: 'var(--brand)', opacity: 0.5 }} />
                 <blockquote style={{ fontSize: 16, lineHeight: 1.65, marginTop: 12, color: 'var(--text)' }}>
-                  {t.quote}
+                  {item.quote}
                 </blockquote>
                 <figcaption style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 11 }}>
                   <span
@@ -389,14 +348,14 @@ export default async function LandingPage() {
                       fontSize: 14,
                     }}
                   >
-                    {t.name.slice(0, 1)}
+                    {item.name.slice(0, 1)}
                   </span>
                   <span>
                     <span style={{ display: 'block', fontWeight: 700, fontSize: 14.5, color: 'var(--text)' }}>
-                      {t.name}
+                      {item.name}
                     </span>
                     <span className="lp-muted" style={{ fontSize: 13 }}>
-                      {t.role}
+                      {item.role}
                     </span>
                   </span>
                 </figcaption>
@@ -410,7 +369,7 @@ export default async function LandingPage() {
             className="lp-muted"
             style={{ fontSize: 13, marginTop: 20, textAlign: 'center', maxWidth: '62ch', marginInline: 'auto' }}
           >
-            Testimonios de la fase piloto. Los nombres están abreviados a pedido de las familias.
+            {l.socialNote}
           </p>
         </Reveal>
       </section>
@@ -419,11 +378,11 @@ export default async function LandingPage() {
       <section id="preguntas" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
           <Reveal>
-            <span className="lp-eyebrow">Preguntas frecuentes</span>
-            <h2 style={{ marginTop: 10, marginBottom: 30 }}>Lo que preguntan los papás</h2>
+            <span className="lp-eyebrow">{l.faqEyebrow}</span>
+            <h2 style={{ marginTop: 10, marginBottom: 30 }}>{l.faqTitle}</h2>
           </Reveal>
           <Reveal delay={80}>
-            <Faq />
+            <Faq items={l.faq} />
           </Reveal>
         </div>
       </section>
@@ -441,10 +400,9 @@ export default async function LandingPage() {
               color: '#fff',
             }}
           >
-            <h2 style={{ color: '#fff' }}>El examen tiene fecha. La preparación, no.</h2>
+            <h2 style={{ color: '#fff' }}>{l.closingTitle}</h2>
             <p style={{ color: 'rgba(255,255,255,.9)', fontSize: 18, marginTop: 12, maxWidth: '54ch', marginInline: 'auto' }}>
-              Empieza hoy con las preguntas abiertas de cada módulo. Si encaja, eliges plan; si no,
-              no perdiste nada.
+              {l.closingBody}
             </p>
             <div style={{ display: 'flex', gap: 12, marginTop: 26, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
@@ -452,16 +410,16 @@ export default async function LandingPage() {
                 className="lp-btn lp-btn-lg"
                 style={{ background: '#fff', color: 'var(--brand)' }}
               >
-                Crear cuenta gratis <ArrowRight size={18} />
+                {l.closingCta} <ArrowRight size={18} />
               </Link>
               <a
-                href={whatsappLink('Hola, quiero información sobre RUMBO para mi hijo.')}
+                href={whatsappLink(t.wa.info)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="lp-btn lp-btn-lg"
                 style={{ background: 'rgba(255,255,255,.16)', color: '#fff', borderColor: 'rgba(255,255,255,.4)' }}
               >
-                <MessageCircle size={18} /> Escribir por WhatsApp
+                <MessageCircle size={18} /> {t.common.whatsapp}
               </a>
             </div>
           </div>
@@ -479,7 +437,7 @@ export default async function LandingPage() {
               RUMBO <span>Admisión</span>
             </div>
             <p style={{ fontSize: 14, marginTop: 10 }}>
-              Preparación para exámenes de admisión en Perú. Hecho en Lima.
+              {l.footerBlurb}
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 14, fontSize: 14 }}>
               <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="lp-muted">
@@ -496,37 +454,37 @@ export default async function LandingPage() {
 
           <div style={{ display: 'flex', gap: 44, flexWrap: 'wrap', fontSize: 14.5 }}>
             <div style={{ display: 'grid', gap: 9 }}>
-              <span style={{ fontWeight: 700 }}>Plataforma</span>
-              <a href="#modulos" className="lp-muted">Módulos</a>
-              <a href="#ingles" className="lp-muted">Inglés C1</a>
-              <a href="#planes" className="lp-muted">Planes</a>
-              <Link href="/login" className="lp-muted">Iniciar sesión</Link>
+              <span style={{ fontWeight: 700 }}>{l.footerPlatform}</span>
+              <a href="#modulos" className="lp-muted">{t.nav.modules}</a>
+              <a href="#ingles" className="lp-muted">{t.nav.english}</a>
+              <a href="#planes" className="lp-muted">{t.nav.plans}</a>
+              <Link href="/login" className="lp-muted">{t.common.login}</Link>
             </div>
             <div style={{ display: 'grid', gap: 9 }}>
-              <span style={{ fontWeight: 700 }}>Legal</span>
-              <span className="lp-muted">Términos y condiciones</span>
-              <span className="lp-muted">Política de privacidad</span>
-              <span className="lp-muted">Política de reembolso</span>
+              <span style={{ fontWeight: 700 }}>{l.footerLegal}</span>
+              <span className="lp-muted">{l.footerTerms}</span>
+              <span className="lp-muted">{l.footerPrivacy}</span>
+              <span className="lp-muted">{l.footerRefund}</span>
             </div>
           </div>
 
           <div>
             <a
-              href={whatsappLink('Hola, quiero información sobre RUMBO.')}
+              href={whatsappLink(t.wa.short)}
               target="_blank"
               rel="noopener noreferrer"
               className="lp-btn lp-btn-primary"
             >
-              <MessageCircle size={17} /> Atención a padres
+              <MessageCircle size={17} /> {l.footerSupport}
             </a>
             <div className="lp-muted" style={{ fontSize: 13, marginTop: 10, display: 'flex', gap: 7, alignItems: 'center' }}>
-              <Timer size={14} /> Lun a sáb, 9 a 20 h
+              <Timer size={14} /> {l.footerHours}
             </div>
             <div className="lp-muted" style={{ fontSize: 13, marginTop: 6, display: 'flex', gap: 7, alignItems: 'center' }}>
-              <BadgeCheck size={14} /> Pago con Yape, Plin o transferencia
+              <BadgeCheck size={14} /> {l.footerPay}
             </div>
             <div className="lp-muted" style={{ fontSize: 13, marginTop: 6, display: 'flex', gap: 7, alignItems: 'center' }}>
-              <CalendarClock size={14} /> Convocatorias de enero y julio
+              <CalendarClock size={14} /> {l.footerCalls}
             </div>
           </div>
         </div>
@@ -535,8 +493,7 @@ export default async function LandingPage() {
           className="lp-wrap lp-muted"
           style={{ fontSize: 13, marginTop: 30, paddingTop: 20, borderTop: '1px solid var(--line)' }}
         >
-          © {new Date().getFullYear()} RUMBO. Los nombres de las instituciones se citan solo para
-          indicar el formato de examen que se practica; no existe vínculo ni respaldo de ellas.
+          © {new Date().getFullYear()} RUMBO. {l.footerDisclaimer}
         </div>
       </footer>
     </>

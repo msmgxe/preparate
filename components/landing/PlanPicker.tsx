@@ -3,6 +3,9 @@
 import { Check, Minus, Sparkles } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { whatsappLink } from '@/lib/site';
+import type { Dict } from '@/lib/i18n/dictionaries/es';
+import type { Locale } from '@/lib/i18n/config';
+import { fill } from '@/lib/i18n/fill';
 
 export type PlanCard = {
   id: string;
@@ -25,27 +28,24 @@ export type PickerModule = {
   accent: string;
   priceMonth: number | null;
   status: string;
+  /** Idiomas en los que se ofrece el módulo. */
+  locales: string[];
 };
-
-/** Lo que separa a un plan de otro, en la tabla comparativa. */
-const MATRIX: { label: string; mensual: string | boolean; anual: string | boolean; familiar: string | boolean }[] = [
-  { label: 'Módulos incluidos', mensual: 'Los 4 de admisión', anual: 'Los 4 + Inglés en preventa', familiar: 'Los 4 + Inglés en preventa' },
-  { label: 'Simulacros cronometrados', mensual: 'Ilimitados', anual: 'Ilimitados', familiar: 'Ilimitados' },
-  { label: 'Clases visuales y resolución paso a paso', mensual: true, anual: true, familiar: true },
-  { label: 'Bitácora de errores (repetición espaciada)', mensual: true, anual: true, familiar: true },
-  { label: 'Simulacros por institución (ISIL, USIL, UPC)', mensual: false, anual: true, familiar: true },
-  { label: 'Plan de estudio según diagnóstico inicial', mensual: false, anual: true, familiar: true },
-  { label: 'Reporte semanal a los padres', mensual: false, anual: false, familiar: true },
-  { label: 'Alerta si deja de practicar 4 días', mensual: false, anual: false, familiar: true },
-  { label: 'Asesorías de dudas con un profesor', mensual: false, anual: false, familiar: '2 al mes' },
-  { label: 'Alumnos por suscripción', mensual: '1', anual: '1', familiar: 'Hasta 2' },
-  { label: 'Garantía: si no ingresa, renuevas sin costo', mensual: false, anual: false, familiar: true },
-];
 
 const money = (n: number) => `S/ ${n.toLocaleString('es-PE')}`;
 
-export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: PickerModule[] }) {
-  const sellable = modules.filter((m) => m.priceMonth !== null);
+export function PlanPicker({
+  plans,
+  modules,
+  t,
+  locale,
+}: {
+  plans: PlanCard[];
+  modules: PickerModule[];
+  t: Dict['landing'];
+  locale: Locale;
+}) {
+  const sellable = modules.filter((m) => m.priceMonth !== null && m.locales.includes(locale));
   const [picked, setPicked] = useState<string[]>(sellable.slice(0, 2).map((m) => m.id));
 
   const anual = plans.find((p) => p.id === 'anual');
@@ -72,9 +72,9 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
       {/* ── calculadora: sueltos frente a plan ─────────────────────────── */}
       <div className="lp-card" style={{ padding: 24, marginBottom: 34 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
-          <h3 style={{ fontSize: 19 }}>¿Cuántos módulos necesitas?</h3>
+          <h3 style={{ fontSize: 19 }}>{t.pickerTitle}</h3>
           <span className="lp-muted" style={{ fontSize: 14 }}>
-            Marca los que te interesan y compara al instante.
+            {t.pickerHint}
           </span>
         </div>
 
@@ -117,7 +117,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
                 </span>
                 {m.name}
                 {m.status === 'soon' && (
-                  <span style={{ fontSize: 11, color: 'var(--accent)' }}>pronto</span>
+                  <span style={{ fontSize: 11, color: 'var(--accent)' }}>{t.planSoonShort}</span>
                 )}
               </button>
             );
@@ -130,22 +130,22 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
         >
           <div style={{ padding: 16, borderRadius: 13, background: 'var(--surface-2)' }}>
             <div className="lp-muted" style={{ fontSize: 12.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.07em' }}>
-              Sueltos
+              {t.pickerLoose}
             </div>
             <div style={{ fontSize: 27, fontWeight: 800, marginTop: 5 }}>
               {picked.length === 0 ? '—' : `${money(compare.loose)}`}
             </div>
             <div className="lp-muted" style={{ fontSize: 13 }}>
-              al mes · {picked.length} {picked.length === 1 ? 'módulo' : 'módulos'}
+              {fill(t.pickerModulesCount, { n: picked.length })}
             </div>
           </div>
 
           <div style={{ padding: 16, borderRadius: 13, background: 'var(--surface-2)' }}>
             <div className="lp-muted" style={{ fontSize: 12.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.07em' }}>
-              Plan Mensual
+              {t.pickerMonthly}
             </div>
             <div style={{ fontSize: 27, fontWeight: 800, marginTop: 5 }}>{money(compare.monthly)}</div>
-            <div className="lp-muted" style={{ fontSize: 13 }}>al mes · todos los módulos</div>
+            <div className="lp-muted" style={{ fontSize: 13 }}>{t.pickerAllModules}</div>
           </div>
 
           <div
@@ -157,13 +157,13 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
             }}
           >
             <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.07em', color: 'var(--brand)' }}>
-              Pase de Admisión
+              {t.pickerYearly}
             </div>
             <div style={{ fontSize: 27, fontWeight: 800, marginTop: 5, color: 'var(--text)' }}>
               {money(compare.yearlyAsMonth)}
             </div>
             <div style={{ fontSize: 13, color: 'var(--brand)', fontWeight: 600 }}>
-              al mes · pagando el año
+              {t.pickerPayingYear}
             </div>
           </div>
         </div>
@@ -180,9 +180,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
               fontWeight: 600,
             }}
           >
-            Con el Pase de Admisión pagas {money(compare.savesVsLoose)} menos al mes que comprando
-            esos {picked.length === 1 ? 'módulo' : `${picked.length} módulos`} sueltos — y además te
-            llevas todos los demás.
+            {fill(t.pickerSaving, { amount: money(compare.savesVsLoose), n: picked.length })}
           </p>
         )}
       </div>
@@ -212,7 +210,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
                   color: '#fff',
                 }}
               >
-                <Sparkles size={13} /> El más elegido
+                <Sparkles size={13} /> {t.planPopular}
               </span>
             )}
 
@@ -224,7 +222,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
                 {money(plan.price)}
               </span>
               <span className="lp-muted" style={{ fontSize: 15 }}>
-                /{plan.period === 'year' ? 'año' : 'mes'}
+                /{plan.period === 'year' ? t.planPeriodYear : t.planPeriodMonth}
               </span>
               {plan.compareAt && (
                 <span className="lp-muted" style={{ fontSize: 14.5, textDecoration: 'line-through' }}>
@@ -235,7 +233,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
 
             {plan.period === 'year' && (
               <div style={{ fontSize: 13.5, color: 'var(--brand)', fontWeight: 600, marginTop: 3 }}>
-                equivale a {money(Math.round(plan.price / 12))} al mes
+                {fill(t.planEquivalent, { amount: money(Math.round(plan.price / 12)) })}
               </div>
             )}
 
@@ -247,7 +245,11 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
 
             <a
               href={whatsappLink(
-                `Hola, me interesa el plan ${plan.name} de RUMBO (${money(plan.price)} al ${plan.period === 'year' ? 'año' : 'mes'}). ¿Me cuentas cómo empiezo?`,
+                fill(t.waBuyPlan, {
+                  plan: plan.name,
+                  price: money(plan.price),
+                  period: plan.period === 'year' ? t.planPeriodYear : t.planPeriodMonth,
+                }),
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -275,16 +277,16 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
           <thead>
             <tr>
               <th style={{ textAlign: 'left', padding: '16px 20px', fontSize: 13.5, color: 'var(--text-3)', fontWeight: 700 }}>
-                Comparativa
+                {t.compare}
               </th>
-              {['Mensual', 'Pase de Admisión', 'Familiar'].map((n) => (
+              {[t.colMonthly, t.colYearly, t.colFamily].map((n) => (
                 <th
                   key={n}
                   style={{
                     padding: '16px 14px',
                     fontSize: 14,
                     fontWeight: 700,
-                    color: n === 'Pase de Admisión' ? 'var(--brand)' : 'var(--text)',
+                    color: n === t.colYearly ? 'var(--brand)' : 'var(--text)',
                     borderBottom: '1px solid var(--line)',
                   }}
                 >
@@ -294,7 +296,7 @@ export function PlanPicker({ plans, modules }: { plans: PlanCard[]; modules: Pic
             </tr>
           </thead>
           <tbody>
-            {MATRIX.map((row) => (
+            {t.matrix.map((row) => (
               <tr key={row.label}>
                 <td style={{ padding: '13px 20px', fontSize: 14.5, color: 'var(--text-2)', borderTop: '1px solid var(--line)' }}>
                   {row.label}

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { and, eq, isNull, sql } from 'drizzle-orm';
 import { getDb } from '@/db';
+import { getLocale } from '@/lib/i18n';
+import { tr } from '@/lib/i18n/content';
 import { attemptItems, attempts, questions, type Step } from '@/db/schema';
 import { getProfile } from '@/lib/auth';
 
@@ -40,6 +42,7 @@ export async function POST(request: Request) {
   const profile = await getProfile();
   if (!profile) return NextResponse.json({ error: 'Sin sesión.' }, { status: 401 });
 
+  const locale = await getLocale();
   const db = getDb();
 
   const [row] = await db
@@ -57,6 +60,7 @@ export async function POST(request: Request) {
       concept: questions.concept,
       trick: questions.trick,
       distractors: questions.distractors,
+      i18n: questions.i18n,
     })
     .from(attemptItems)
     .innerJoin(attempts, eq(attempts.id, attemptItems.attemptId))
@@ -119,9 +123,9 @@ export async function POST(request: Request) {
     revealed: true,
     is_correct: isCorrect,
     answer_index: row.answerIndex,
-    steps: row.steps ?? [],
-    concept: row.concept,
-    trick: row.trick,
+    steps: tr(row, 'steps', locale) ?? [],
+    concept: tr(row, 'concept', locale),
+    trick: tr(row, 'trick', locale),
     why_wrong: isCorrect ? null : ((row.distractors ?? {})[String(chosen)] ?? null),
   });
 }

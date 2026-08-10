@@ -1,6 +1,7 @@
 import 'server-only';
 
 import { eq } from 'drizzle-orm';
+import { cache } from 'react';
 import { redirect } from 'next/navigation';
 import { getDb } from '@/db';
 import { profiles, type Profile } from '@/db/schema';
@@ -54,7 +55,7 @@ async function ensureProfile(user: SessionUser): Promise<Profile> {
 }
 
 /** Perfil del usuario actual, o null si no hay sesión. */
-export async function getProfile(): Promise<Profile | null> {
+export const getProfile = cache(async (): Promise<Profile | null> => {
   if (!dbConfigured) return null;
   const user = await getSessionUser();
   if (!user) return null;
@@ -62,7 +63,7 @@ export async function getProfile(): Promise<Profile | null> {
   const db = getDb();
   const [existing] = await db.select().from(profiles).where(eq(profiles.id, user.id)).limit(1);
   return existing ?? (await ensureProfile(user));
-}
+});
 
 /** Guard de `(student)`: hace falta sesión. El admin también puede mirar. */
 export async function requireUser(): Promise<Profile> {
