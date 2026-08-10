@@ -45,6 +45,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-presente', caption: 'La -s existe una sola vez en la frase. Sin auxiliar la lleva el verbo; en cuanto aparece «does», se la queda él.' },
+      },
+      {
         kind: 'text',
         payload: {
           h: 'Y esa única letra es la que se cae',
@@ -243,6 +247,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-preguntas', caption: 'Preguntar no mueve el verbo: mete un auxiliar delante. El resto de la frase se queda como estaba.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'La excepción que casi nadie enseña',
@@ -346,6 +354,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-pasado', caption: 'El pasado también existe una sola vez. Si aparece «did», el verbo vuelve a su forma base.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'La trampa de did',
@@ -440,6 +452,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         payload: {
           m: 'lo decido AHORA       →  I’ll help you.\nya estaba DECIDIDO    →  I’m going to study medicine.\nya está en la AGENDA  →  I’m seeing the doctor at 4.',
         },
+      },
+      {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-futuro', caption: 'Los tres futuros según cuándo se tomó la decisión, no según cuándo ocurre lo que se cuenta.' },
       },
       {
         kind: 'callout',
@@ -539,6 +555,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-comparar', caption: 'La longitud del adjetivo decide. Y la marca de comparación va una sola vez, nunca las dos.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'La marca va una sola vez',
@@ -636,6 +656,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-describir', caption: 'Las casillas están fijas. En la práctica solo hacen falta tres: edad, color y origen, en ese orden.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'En la práctica casi nunca son más de dos',
@@ -725,6 +749,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         payload: {
           m: 'Activa:  Someone stole my bike.\nPasiva:  My bike was stolen.\n\nActiva:  They speak English here.\nPasiva:  English is spoken here.',
         },
+      },
+      {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-pasiva', caption: 'Lo que recibía la acción pasa al frente, «be» se conjuga en el mismo tiempo y el participio no cambia.' },
       },
       {
         kind: 'callout',
@@ -920,6 +948,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-velocidad', caption: 'Lo mismo escrito y hablado. No es velocidad: las palabras se pegan y las átonas casi desaparecen.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'Lo importante suena; lo gramatical se borra',
@@ -1006,6 +1038,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         },
       },
       {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-modales', caption: 'Los modales de pasado son una escala de certeza. Elegir uno es decir cuánto te comprometes con lo que afirmas.' },
+      },
+      {
         kind: 'callout',
         payload: {
           t: 'La deducción es la que más se usa y menos se enseña',
@@ -1090,6 +1126,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         payload: {
           m: 'presente     →  pasado          am    →  was\npasado       →  pasado perfecto went  →  had gone\nwill         →  would\ncan          →  could\ntomorrow     →  the next day\nhere         →  there',
         },
+      },
+      {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-reported', caption: 'Cada tiempo baja un escalón al reportarse. La excepción: si lo dicho sigue siendo verdad, puede quedarse donde está.' },
       },
       {
         kind: 'callout',
@@ -1443,6 +1483,10 @@ export const ENG_LESSONS: LessonSeed[] = [
         payload: {
           m: 'I have never seen such a thing.\nNever have I seen such a thing.        ← inversión\n\nHe not only arrived late, he also…\nNot only did he arrive late, but he also…',
         },
+      },
+      {
+        kind: 'viz',
+        payload: { viz_id: 'v-eng-foco', caption: 'La misma frase, tres focos. Lo que va después de «it was» es lo que el lector va a retener.' },
       },
       {
         kind: 'text',

@@ -1,8 +1,9 @@
 import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
-import { chapters, lessonBlocks, lessons } from '@/db/schema';
+import { chapters, lessonBlocks, lessons, visuals } from '@/db/schema';
 import type { BlockKind } from '@/lib/blocks';
 import { ENG_LESSONS } from '../docs/bank/eng-lessons';
+import { ENG_VISUALS } from '../docs/bank/eng-visuals';
 
 /**
  * Siembra las clases escritas a mano.
@@ -20,6 +21,15 @@ async function main() {
     .select({ id: chapters.id, title: chapters.title })
     .from(chapters);
   const byTitle = new Map(allChapters.map((c) => [c.title, c.id]));
+
+  // ── las infografías, antes que las clases que las usan ───────────────────
+  for (const visual of ENG_VISUALS) {
+    await db
+      .insert(visuals)
+      .values({ id: visual.id, svg: visual.svg })
+      .onConflictDoUpdate({ target: visuals.id, set: { svg: visual.svg } });
+  }
+  process.stdout.write(`   ✓ ${ENG_VISUALS.length} infografías\n\n`);
 
   let created = 0;
   let updated = 0;
