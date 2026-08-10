@@ -2,8 +2,11 @@
  * Las infografías de la ayuda.
  *
  * Son SVG escritos a mano, no imágenes: heredan los colores del tema, se leen
- * en modo claro y oscuro, escalan sin pixelarse y pesan nada. `currentColor` y
- * las variables CSS hacen todo el trabajo.
+ * en modo claro y oscuro, escalan sin pixelarse y pesan nada.
+ *
+ * ⚠️ El relleno y el trazo van siempre por `style`, nunca como atributo: dentro
+ * de un atributo SVG (`fill="var(--sky)"`) las variables CSS no se sustituyen y
+ * el dibujo sale en negro.
  */
 
 const LINE = 'rgba(var(--fg-rgb),.22)';
@@ -36,10 +39,9 @@ function Box({
         width={w}
         height={h}
         rx={11}
-        fill={`color-mix(in srgb, ${accent} 12%, transparent)`}
-        stroke={accent}
         strokeWidth={1.4}
         strokeDasharray={dashed ? '5 4' : undefined}
+        style={{ fill: `color-mix(in srgb, ${accent} 12%, transparent)`, stroke: accent }}
       />
       <text
         x={x + w / 2}
@@ -47,12 +49,12 @@ function Box({
         textAnchor="middle"
         fontSize={12.5}
         fontWeight={700}
-        fill="currentColor"
+        style={{ fill: 'currentColor' }}
       >
         {title}
       </text>
       {sub && (
-        <text x={x + w / 2} y={y + h / 2 + 14} textAnchor="middle" fontSize={10.5} fill={DIM}>
+        <text x={x + w / 2} y={y + h / 2 + 14} textAnchor="middle" fontSize={10.5} style={{ fill: DIM }}>
           {sub}
         </text>
       )}
@@ -82,10 +84,10 @@ function Arrow({
         y1={y1}
         x2={x2}
         y2={y2}
-        stroke={LINE}
         strokeWidth={1.6}
         strokeDasharray={dashed ? '4 4' : undefined}
         markerEnd={`url(#${tip})`}
+        style={{ stroke: LINE }}
       />
       {label && (
         <text
@@ -93,7 +95,7 @@ function Arrow({
           y={(y1 + y2) / 2 - 7}
           textAnchor="middle"
           fontSize={10}
-          fill={DIM}
+          style={{ fill: DIM }}
         >
           {label}
         </text>
@@ -106,7 +108,7 @@ function Defs({ tip }: { tip: string }) {
   return (
     <defs>
       <marker id={tip} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M0,0 L10,5 L0,10 z" fill={LINE} />
+        <path d="M0,0 L10,5 L0,10 z" style={{ fill: LINE }} />
       </marker>
     </defs>
   );
@@ -144,13 +146,13 @@ function Canvas({
 export function SystemMap() {
   return (
     <Canvas w={860} h={330} tip="tip-sys">
-      <text x={10} y={18} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={10} y={18} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         LO PÚBLICO
       </text>
       <Box x={10} y={30} w={180} title="Landing" sub="/ · vende y capta" accent="var(--mint)" />
       <Box x={10} y={100} w={180} title="Registro / Login" sub="/registro · /login" accent="var(--mint)" />
 
-      <text x={250} y={18} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={250} y={18} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         LO DEL ALUMNO
       </text>
       <Box x={250} y={30} w={180} title="Itinerario" sub="/app" accent="var(--sky)" />
@@ -158,7 +160,7 @@ export function SystemMap() {
       <Box x={250} y={170} w={180} title="Práctica y simulacro" sub="/app/sesion/…" accent="var(--sky)" />
       <Box x={250} y={240} w={180} title="Resultados" sub="/app/resultados/…" accent="var(--sky)" />
 
-      <text x={490} y={18} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={490} y={18} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         TU PANEL
       </text>
       <Box x={490} y={30} w={170} title="Torre de control" sub="/panel" accent="var(--amber)" />
@@ -166,7 +168,7 @@ export function SystemMap() {
       <Box x={490} y={170} w={170} title="Balotario y Clases" sub="el contenido" accent="var(--amber)" />
       <Box x={490} y={240} w={170} title="Idiomas y Calibración" sub="ajuste fino" accent="var(--amber)" />
 
-      <text x={710} y={18} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={710} y={18} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         DEBAJO
       </text>
       <Box x={700} y={100} w={150} h={124} title="Neon" sub="Postgres + Auth" accent="var(--coral)" />
@@ -340,23 +342,23 @@ export function ContentCycle() {
 export function GoldenRule() {
   return (
     <Canvas w={860} h={260} tip="tip-golden">
-      <text x={10} y={16} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={10} y={16} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         NAVEGADOR DEL ALUMNO
       </text>
-      <rect x={10} y={24} width={380} height={210} rx={13} fill="none" stroke={LINE} strokeDasharray="6 5" />
+      <rect x={10} y={24} width={380} height={210} rx={13} strokeDasharray="6 5" style={{ fill: 'none', stroke: LINE }} />
       <Box x={30} y={44} w={160} title="Enunciado" accent="var(--sky)" />
       <Box x={210} y={44} w={160} title="Alternativas" accent="var(--sky)" />
       <Box x={30} y={120} w={340} h={44} title="Respuesta correcta · pasos · truco" accent="var(--coral)" dashed />
-      <text x={200} y={190} textAnchor="middle" fontSize={11.5} fill="var(--coral)" fontWeight={700}>
+      <text x={200} y={190} textAnchor="middle" fontSize={11.5}  fontWeight={700} style={{ fill: 'var(--coral)' }}>
         no viajan hasta que el alumno responde
       </text>
 
       <Arrow from={[392, 130]} to={[452, 130]} label="POST" tip="tip-golden" />
 
-      <text x={470} y={16} fontSize={11} fontWeight={700} fill={DIM}>
+      <text x={470} y={16} fontSize={11} fontWeight={700} style={{ fill: DIM }}>
         SERVIDOR
       </text>
-      <rect x={455} y={24} width={395} height={210} rx={13} fill="none" stroke={LINE} />
+      <rect x={455} y={24} width={395} height={210} rx={13} style={{ fill: 'none', stroke: LINE }} />
       <Box x={475} y={44} w={170} title="/api/answer" sub="compara y decide" accent="var(--amber)" />
       <Box x={665} y={44} w={170} title="Guarda el intento" sub="acierto · segundos" accent="var(--amber)" />
       <Box x={475} y={130} w={170} title="Programa el repaso" sub="si falló" accent="var(--mint)" />
@@ -375,23 +377,23 @@ export function SpacedRepetition() {
   const days = [1, 3, 7, 21];
   return (
     <Canvas w={860} h={190} tip="tip-spaced">
-      <line x1={40} y1={110} x2={820} y2={110} stroke={LINE} strokeWidth={1.6} />
-      <circle cx={40} cy={110} r={7} fill="var(--coral)" />
-      <text x={40} y={140} textAnchor="middle" fontSize={11.5} fontWeight={700} fill="var(--coral)">
+      <line x1={40} y1={110} x2={820} y2={110} strokeWidth={1.6} style={{ stroke: LINE }} />
+      <circle cx={40} cy={110} r={7} style={{ fill: 'var(--coral)' }} />
+      <text x={40} y={140} textAnchor="middle" fontSize={11.5} fontWeight={700}  style={{ fill: 'var(--coral)' }}>
         falla
       </text>
-      <text x={40} y={156} textAnchor="middle" fontSize={10.5} fill={DIM}>
+      <text x={40} y={156} textAnchor="middle" fontSize={10.5} style={{ fill: DIM }}>
         hoy
       </text>
       {days.map((d, i) => {
         const x = 40 + ((i + 1) * 780) / 4;
         return (
           <g key={d}>
-            <circle cx={x} cy={110} r={7} fill="var(--mint)" />
-            <text x={x} y={140} textAnchor="middle" fontSize={11.5} fontWeight={700} fill="currentColor">
+            <circle cx={x} cy={110} r={7} style={{ fill: 'var(--mint)' }} />
+            <text x={x} y={140} textAnchor="middle" fontSize={11.5} fontWeight={700} style={{ fill: 'currentColor' }}>
               día {d}
             </text>
-            <text x={x} y={156} textAnchor="middle" fontSize={10.5} fill={DIM}>
+            <text x={x} y={156} textAnchor="middle" fontSize={10.5} style={{ fill: DIM }}>
               vuelve a salir
             </text>
             <rect
@@ -400,17 +402,19 @@ export function SpacedRepetition() {
               width={88}
               height={40}
               rx={9}
-              fill="color-mix(in srgb, var(--mint) 12%, transparent)"
-              stroke="var(--mint)"
               strokeWidth={1.2}
+              style={{
+                fill: 'color-mix(in srgb, var(--mint) 12%, transparent)',
+                stroke: 'var(--mint)',
+              }}
             />
-            <text x={x} y={65} textAnchor="middle" fontSize={11.5} fill="currentColor">
+            <text x={x} y={65} textAnchor="middle" fontSize={11.5} style={{ fill: 'currentColor' }}>
               {i === 3 ? 'aprendida' : 'repaso'}
             </text>
           </g>
         );
       })}
-      <text x={40} y={30} fontSize={11.5} fill={DIM}>
+      <text x={40} y={30} fontSize={11.5} style={{ fill: DIM }}>
         Si vuelve a fallar en cualquier punto, el reloj se reinicia en el día 1.
       </text>
     </Canvas>
@@ -438,7 +442,7 @@ export function LanguageFlow() {
       <Arrow from={[490, 203]} to={[548, 203]} tip="tip-lang" />
       <Box x={550} y={172} w={300} h={62} title="Columna i18n de cada tabla" sub="se edita en /traducciones, sin tocar código" accent="var(--amber)" />
 
-      <text x={10} y={262} fontSize={11.5} fill={DIM}>
+      <text x={10} y={262} fontSize={11.5} style={{ fill: DIM }}>
         Si falta una traducción, el alumno ve el español. Nunca un hueco ni un texto en clave.
       </text>
     </Canvas>

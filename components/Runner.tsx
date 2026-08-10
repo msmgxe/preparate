@@ -296,7 +296,7 @@ export function Runner({
             >
               {item.lesson.title}
             </h3>
-            <p style={{ color: '#CFC6B4', marginTop: 12, fontSize: 17 }}>{item.lesson.hook}</p>
+            <p style={{ color: 'var(--paper-dim)', marginTop: 12, fontSize: 17 }}>{item.lesson.hook}</p>
             <div className="qnav">
               <Link className="btn solid sm" href={`/app/clase/${item.lesson.id}`}>
                 {a.openLesson.replace('◐ ', '')} →

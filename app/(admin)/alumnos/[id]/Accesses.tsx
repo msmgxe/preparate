@@ -148,6 +148,6 @@ const SELECT: React.CSSProperties = {
   padding: '11px 14px',
   borderRadius: 10,
   border: '1px solid var(--line-strong)',
-  background: 'rgba(8,21,30,.5)',
+  background: 'rgba(var(--bg-rgb),.5)',
   color: 'var(--paper)',
 };

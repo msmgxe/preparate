@@ -7,7 +7,11 @@
 
 export type Series = { name: string; color: string; points: (number | null)[] };
 
-const GRID = 'rgba(247,241,229,.09)';
+/**
+ * `var()` no se resuelve dentro de un atributo SVG (`stroke="…"`), solo dentro
+ * de una propiedad CSS. Por eso el trazo de la rejilla se pinta con `style`.
+ */
+const GRID = 'rgba(var(--fg-rgb),.09)';
 const DIM = '#B9AE99';
 
 /** Precisión semanal, una línea por alumno. */
@@ -36,7 +40,7 @@ export function TrendChart({
       <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', height: 'auto' }}>
         {[40, 60, 80, 90].map((v) => (
           <g key={v}>
-            <line x1={padLeft} y1={y(v)} x2={width - 10} y2={y(v)} stroke={GRID} strokeWidth="1" />
+            <line x1={padLeft} y1={y(v)} x2={width - 10} y2={y(v)} style={{ stroke: GRID }} strokeWidth="1" />
             <text x="6" y={y(v) + 4} fill={DIM} fontSize="9" fontFamily="var(--mono)">
               {v}%
             </text>
@@ -112,7 +116,7 @@ export function TrendChart({
 }
 
 export function heatColor(v: number | null): string {
-  if (v === null) return 'rgba(247,241,229,.07)';
+  if (v === null) return 'rgba(var(--fg-rgb),.07)';
   if (v < 50) return 'rgba(255,95,87,.75)';
   if (v < 70) return 'rgba(239,164,81,.75)';
   if (v < 85) return 'rgba(79,214,156,.55)';
@@ -210,7 +214,7 @@ export function AreaCurve({
     <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', height: 'auto' }}>
       {[40, 60, 80].map((v) => (
         <g key={v}>
-          <line x1={padLeft} y1={y(v)} x2={width - 10} y2={y(v)} stroke={GRID} />
+          <line x1={padLeft} y1={y(v)} x2={width - 10} y2={y(v)} style={{ stroke: GRID }} />
           <text x="4" y={y(v) + 4} fill={DIM} fontSize="9" fontFamily="var(--mono)">
             {v}%
           </text>

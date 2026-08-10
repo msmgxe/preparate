@@ -33,7 +33,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </>
         }
       />
-      <div className="wrap">{children}</div>
+      <div className="wrap wide">{children}</div>
     </>
   );
 }

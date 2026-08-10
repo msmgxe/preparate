@@ -42,7 +42,7 @@ export async function Header({
 
   return (
     <header>
-      <div className="hbar">
+      <div className={`hbar${variant === 'admin' ? ' wide' : ''}`}>
         <Link className="brand" href={variant === 'admin' ? '/panel' : '/'}>
           <b>RUMBO</b>
           <span>{variant === 'admin' ? t.nav.admin : t.nav.student}</span>

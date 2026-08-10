@@ -1,6 +1,6 @@
 'use client';
 
-import { Moon, Sun } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import { useSyncExternalStore } from 'react';
 
 export const THEME_KEY = 'rumbo-theme';
@@ -52,7 +52,8 @@ export function ThemeToggle({
 
   return (
     <button onClick={toggle} className="themebtn" aria-label={title} title={title}>
-      {dark ? <Sun size={16} /> : <Moon size={16} />}
+      {/* el ojo se abre cuando pulsarlo enciende la luz */}
+      {dark ? <Eye size={16} /> : <EyeOff size={16} />}
     </button>
   );
 }
