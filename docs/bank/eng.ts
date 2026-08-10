@@ -352,4 +352,315 @@ export const ENG: BankQuestion[] = [
       '4': 'Hay dos errores: el verbo y el artículo.',
     },
   },
+  // ── A1 · Las 1000 palabras que cubren el 85 % ─────────────────────────────
+  {
+    chapter: 'A1 · Las 1000 palabras que cubren el 85 %',
+    stem: '¿Cómo se dice <b>«hacer una pregunta»</b> en inglés?',
+    options: ['ask a question', 'make a question', 'do a question', 'say a question', 'take a question'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'No traduzcas el verbo',
+        p: 'En español el verbo es «hacer», pero cada idioma empareja sus propios verbos con sus propios sustantivos. Ese emparejamiento no se deduce.',
+        m: 'hacer una pregunta → ask a question',
+      },
+      {
+        t: 'Apréndelo como una sola pieza',
+        p: 'Guarda «ask a question» entero, no «ask» por un lado y «question» por otro. Sale más rápido al hablar.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las colocaciones —qué verbo va con qué sustantivo— no siguen reglas y cambian de un idioma a otro. Se memorizan en bloque.',
+    trick: 'Cuando aprendas un sustantivo nuevo, apunta con qué verbo viene. Cuesta lo mismo y ahorra el error.',
+    distractors: {
+      '1': 'Es la traducción literal, y el error más frecuente del hispanohablante.',
+      '2': '«Do» va con tareas: do homework, do the dishes.',
+      '3': '«Say» es decir algo, no formular una pregunta.',
+      '4': 'Existe en el sentido de «aceptar una pregunta», no de hacerla.',
+    },
+  },
+  {
+    chapter: 'A1 · Las 1000 palabras que cubren el 85 %',
+    stem: '¿Qué verbo acompaña a <b>homework</b>, <b>the dishes</b> y <b>the shopping</b>?',
+    options: ['do', 'make', 'take', 'have', 'get'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Busca qué tienen en común',
+        p: 'La tarea, los platos y las compras son obligaciones: cosas que hay que cumplir, no cosas que se crean.',
+        m: '',
+      },
+      {
+        t: 'Aplica la aproximación que funciona',
+        p: '«Do» para tareas y obligaciones; «make» para lo que se produce o se crea.',
+        m: 'DO   → homework · the dishes\nMAKE → dinner · a mistake',
+      },
+    ],
+    concept:
+      'Do y make se traducen igual y no significan lo mismo. Tareas frente a creaciones acierta la mayoría de las veces.',
+    trick: 'Si al terminar queda algo nuevo —una cena, un error, una decisión—, es make. Si solo queda cumplida una obligación, es do.',
+    distractors: {
+      '1': 'Va con lo que se produce: make dinner, make a mistake.',
+      '2': 'Va con fotos, transporte y tiempo: take a photo, take the bus.',
+      '3': 'Va con comidas y experiencias: have breakfast, have fun.',
+      '4': 'Significa conseguir u obtener, no realizar.',
+    },
+  },
+  {
+    chapter: 'A1 · Las 1000 palabras que cubren el 85 %',
+    stem: '¿Cómo se dice <b>«estoy de acuerdo»</b>?',
+    options: ['I agree.', 'I am agree.', 'I am agreed.', "I'm according.", 'I have agree.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en qué es «agree»',
+        p: 'En español «estar de acuerdo» es un estado y usa el verbo estar. En inglés «agree» ya es un verbo completo: no necesita otro delante.',
+        m: 'agree = estar de acuerdo',
+      },
+      {
+        t: 'Conjúgalo solo',
+        p: 'Se usa como cualquier otro verbo del presente simple.',
+        m: 'I agree. / She agrees.\nI don\'t agree.',
+      },
+    ],
+    concept:
+      'Algunos verbos ingleses ya contienen lo que en español son dos palabras. Añadirles «to be» delante los rompe.',
+    trick: 'Otros iguales: I need, I want, I miss you, I remember. Ninguno lleva am, is o are.',
+    distractors: {
+      '1': 'Es el error más frecuente: «agree» ya es el verbo, no un adjetivo.',
+      '2': 'La forma pasiva no aplica aquí.',
+      '3': '«According» existe, pero en «according to», que significa «según».',
+      '4': 'Mezcla el presente perfecto sin razón.',
+    },
+  },
+  {
+    chapter: 'A1 · Las 1000 palabras que cubren el 85 %',
+    stem: 'Completa con el verbo natural: «Can you <b>______</b> a photo of us?»',
+    options: ['take', 'make', 'do', 'have', 'put'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Recuerda el bloque, no el verbo',
+        p: 'La foto viene siempre con «take». Es una colocación fija.',
+        m: 'take a photo / take a picture',
+      },
+      {
+        t: 'Ubícalo en la familia de take',
+        p: '«Take» acompaña a transporte, tiempo y capturas.',
+        m: 'take the bus · take time · take a photo',
+      },
+    ],
+    concept: 'Cada verbo frecuente arrastra su propia familia de sustantivos. Aprender la familia entera rinde más que el verbo suelto.',
+    trick: 'Take: photo, bus, shower, time, care. Cinco bloques que cubren casi todo el A1.',
+    distractors: {
+      '1': 'Se usa para producir algo, no para capturarlo.',
+      '2': 'Va con tareas.',
+      '3': 'No es la colocación natural.',
+      '4': 'Significa colocar.',
+    },
+  },
+  {
+    chapter: 'A1 · Las 1000 palabras que cubren el 85 %',
+    stem: 'Si tienes veinte minutos al día para vocabulario, ¿qué rinde más?',
+    options: [
+      'Aprender bloques completos de las palabras más frecuentes',
+      'Memorizar listas alfabéticas de palabras sueltas',
+      'Estudiar vocabulario especializado de tu carrera',
+      'Aprender los sinónimos de cada palabra que ya conoces',
+      'Traducir textos largos con diccionario',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Empieza por la cobertura',
+        p: 'Las mil palabras más frecuentes cubren cerca del 85 % de una conversación normal. Las raras aportan muy poco por el esfuerzo que cuestan.',
+        m: '1 000 palabras ≈ 85 %',
+      },
+      {
+        t: 'Ahora el formato',
+        p: 'Una palabra suelta hay que ensamblarla al hablar, y ensamblar toma tiempo. Un bloque sale entero y ya correcto.',
+        m: 'make + decision → dos piezas\n«make a decision» → una',
+      },
+      {
+        t: 'Junta las dos ideas',
+        p: 'Frecuencia decide qué estudiar; el bloque decide cómo. Las dos cosas a la vez es lo que rinde.',
+        m: '',
+      },
+    ],
+    concept:
+      'El vocabulario no se mide en palabras conocidas sino en palabras disponibles al hablar. La frecuencia y el bloque son lo que convierte una en la otra.',
+    trick:
+      'Cuando anotes una palabra nueva, anótala dentro de una frase corta que puedas usar mañana. Sin frase, no la vas a usar.',
+    distractors: {
+      '1': 'El orden alfabético junta palabras que no tienen nada que ver y separa las que se usan juntas.',
+      '2': 'Es útil más adelante, pero sin las mil básicas no se sostiene una conversación.',
+      '3': 'Multiplica el esfuerzo sin ampliar lo que puedes decir.',
+      '4': 'Entrena a entender con ayuda, no a producir sin ella.',
+    },
+  },
+
+  // ── A1 · Preguntar y responder ────────────────────────────────────────────
+  {
+    chapter: 'A1 · Preguntar y responder',
+    stem: '¿Cuál es la pregunta <b>correcta</b>?',
+    options: ['Where do you live?', 'Where you live?', 'Where live you?', 'Where you do live?', 'Where does you live?'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Recuerda que hace falta un auxiliar',
+        p: 'En español basta la entonación. En inglés el presente simple necesita do para poder preguntar.',
+        m: 'You live here. → Do you live here?',
+      },
+      {
+        t: 'Coloca la palabra de pregunta delante',
+        p: 'La palabra wh- va primero, y después el auxiliar y el sujeto.',
+        m: 'Where + do + you + live?',
+      },
+    ],
+    concept:
+      'El orden de una pregunta inglesa es fijo: palabra wh-, auxiliar, sujeto, verbo. Ese orden es lo que hace que se entienda como pregunta.',
+    trick: 'Arma primero la afirmación y después mete el auxiliar delante del sujeto. Nunca muevas el verbo principal.',
+    distractors: {
+      '1': 'Falta el auxiliar: calca la estructura española.',
+      '2': 'Mueve el verbo principal, que en inglés no se invierte.',
+      '3': 'El auxiliar va antes del sujeto, no después.',
+      '4': 'Con «you» el auxiliar es do, no does.',
+    },
+  },
+  {
+    chapter: 'A1 · Preguntar y responder',
+    stem: '¿Cuál es la <b>respuesta corta</b> correcta a «Does she work here?»',
+    options: ['Yes, she does.', 'Yes, she do.', 'Yes, she is.', 'Yes, does she.', 'Yes, she works here.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira con qué auxiliar se preguntó',
+        p: 'La respuesta corta repite el mismo auxiliar de la pregunta. Aquí fue «does».',
+        m: 'Does she…? → Yes, she does.',
+      },
+      {
+        t: 'Comprueba el orden',
+        p: 'Sujeto y después auxiliar, no al revés: eso ya sería otra pregunta.',
+        m: 'she does  ✓\ndoes she  ✗',
+      },
+    ],
+    concept:
+      'La respuesta corta existe porque «Yes» a secas suena cortante. Repetir el auxiliar es lo que la vuelve natural, y no tiene equivalente en español.',
+    trick: 'Sea cual sea el auxiliar de la pregunta —do, does, is, can, did—, la respuesta corta lo repite.',
+    distractors: {
+      '1': 'Con «she» el auxiliar es does.',
+      '2': '«Is» solo responde a preguntas hechas con el verbo be.',
+      '3': 'Ese orden vuelve a ser una pregunta.',
+      '4': 'Es correcto pero no es una respuesta corta: repite toda la frase.',
+    },
+  },
+  {
+    chapter: 'A1 · Preguntar y responder',
+    stem: 'Completa: «<b>______</b> do you usually have for breakfast?»',
+    options: ['What', 'How', 'Who', 'When', 'Where'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira qué tipo de respuesta pide la frase',
+        p: 'La respuesta sería una cosa: pan, fruta, café. Eso lo pregunta «what».',
+        m: 'una cosa → what',
+      },
+      {
+        t: 'Descarta por el tipo de respuesta',
+        p: 'Cada palabra wh- pide una clase distinta de información.',
+        m: 'who → persona\nwhen → momento\nwhere → lugar\nhow → manera',
+      },
+    ],
+    concept:
+      'Elegir la palabra de pregunta es elegir qué tipo de respuesta quieres. Si sabes qué esperas oír, la palabra sale sola.',
+    trick: 'Piensa la respuesta antes que la pregunta. Si la respuesta es una cosa, what; si es una persona, who; si es un momento, when.',
+    distractors: {
+      '1': 'Preguntaría por la manera, no por la cosa.',
+      '2': 'Preguntaría por una persona.',
+      '3': 'Preguntaría por el momento.',
+      '4': 'Preguntaría por el lugar.',
+    },
+  },
+  {
+    chapter: 'A1 · Preguntar y responder',
+    stem: 'Traduce: «<b>¿Quién rompió la ventana?</b>»',
+    options: ['Who broke the window?', 'Who did break the window?', 'Who did broke the window?', 'Who breaks the window?', 'Who does broke the window?'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Comprueba qué papel tiene «who»',
+        p: 'La respuesta sería «Pedro rompió la ventana». «Pedro» es el sujeto, así que «who» ocupa el lugar del sujeto.',
+        m: 'Who = sujeto',
+      },
+      {
+        t: 'Aplica la excepción',
+        p: 'Cuando la palabra wh- es el sujeto, la frase ya está en orden y no hace falta auxiliar.',
+        m: 'Who + verbo en pasado\nWho broke…',
+      },
+      {
+        t: 'Compáralo con el otro caso',
+        p: 'Si «who» fuera el objeto sí haría falta: «Who did you see?» — allí el sujeto es «you».',
+        m: 'Who broke it?  (sujeto)\nWho did you see? (objeto)',
+      },
+    ],
+    concept:
+      'El auxiliar aparece para permitir la inversión. Si la palabra de pregunta ya es el sujeto, no hay nada que invertir y el auxiliar sobra.',
+    trick: 'Prueba a responder. Si la respuesta empieza la frase —«Pedro rompió…»—, no metas did.',
+    distractors: {
+      '1': 'Solo es correcto con énfasis fuerte, no en una pregunta neutra.',
+      '2': 'Con did, el verbo vuelve a su forma base: nunca «did broke».',
+      '3': 'Está en presente y la pregunta es sobre el pasado.',
+      '4': 'Mezcla dos errores: auxiliar innecesario y verbo en pasado tras does.',
+    },
+  },
+  {
+    chapter: 'A1 · Preguntar y responder',
+    stem: 'Convierte en pregunta cortés: «Where is the station?»',
+    options: [
+      'Could you tell me where the station is?',
+      'Could you tell me where is the station?',
+      'Could you tell me where does the station is?',
+      'Could you tell me where the station?',
+      'Could you tell me where is it the station?',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Fíjate en que ya hay una pregunta',
+        p: '«Could you tell me…?» es la pregunta. Lo que viene detrás deja de serlo: se convierte en una frase normal dentro de ella.',
+        m: '',
+      },
+      {
+        t: 'Deshaz la inversión',
+        p: 'Como ya no es pregunta, el verbo vuelve detrás del sujeto. Es exactamente al revés de lo que uno espera.',
+        m: 'Where is the station?  → directa\n…where the station is → indirecta',
+      },
+      {
+        t: 'Comprueba con otro ejemplo',
+        p: 'La misma regla con el auxiliar: «Where do you live?» pasa a «Could you tell me where you live?».',
+        m: 'sin do, sin inversión',
+      },
+    ],
+    concept:
+      'En una pregunta indirecta, la parte de después vuelve al orden de una afirmación. La cortesía cambia la estructura, no solo el tono.',
+    trick:
+      'Si ya empezaste con «Could you tell me…» o «Do you know…», lo que sigue se escribe como si fuera una frase normal.',
+    distractors: {
+      '1': 'Mantiene la inversión, que en la indirecta desaparece.',
+      '2': 'Añade un auxiliar que además no concuerda.',
+      '3': 'Le falta el verbo.',
+      '4': 'Duplica el sujeto.',
+    },
+  },
 ];
