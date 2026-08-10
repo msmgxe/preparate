@@ -1,7 +1,7 @@
 'use client';
 
 import type { Dict } from '@/lib/i18n/dictionaries/es';
-import { Pronounce, Speak } from './Speak';
+import { Pronounce, Speak, VoicePicker } from './Speak';
 import { fill } from '@/lib/i18n/fill';
 
 import { useEffect, useRef, useState } from 'react';
@@ -85,8 +85,12 @@ export function LessonRenderer({
     };
   }, [answered, blocks, lessonId]);
 
+  // el audio depende de las voces del sistema, así que se elige una vez arriba
+  const hasAudio = blocks.some((b) => b.kind === 'listen' || b.kind === 'pair' || b.kind === 'say');
+
   return (
     <>
+      {hasAudio && <VoicePicker labels={t.app.voice} />}
       {visible.map((block) => {
         switch (block.kind) {
           case 'text':

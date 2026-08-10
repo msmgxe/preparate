@@ -1,7 +1,8 @@
 'use client';
 
 import { Mic, Volume2 } from 'lucide-react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, useSyncExternalStore } from 'react';
+import { loadVoices, saveVoiceName, savedVoiceName } from '@/lib/speech';
 
 /**
  * El oído y la boca del curso de inglés.
@@ -46,12 +47,93 @@ function getRecognition(): Recognition | null {
   return Ctor ? new Ctor() : null;
 }
 
-/** Elige la voz inglesa que suene mejor de las que tenga el sistema. */
-function englishVoice(): SpeechSynthesisVoice | undefined {
-  const voices = window.speechSynthesis.getVoices();
-  const english = voices.filter((v) => v.lang.startsWith('en'));
-  // las locales suenan mucho mejor que las sintetizadas en servidor
-  return english.find((v) => v.localService && v.lang === 'en-US') ?? english[0];
+/**
+ * Las voces ordenadas, cargadas una sola vez para toda la página.
+ *
+ * Antes se pedían en cada reproducción y se tomaba la primera en inglés. En
+ * macOS esa es una de las voces de juguete —Albert, Bad News, Deranged—, que
+ * suenan roncas a propósito. Ahora se puntúan y el alumno puede elegir.
+ */
+let cache: SpeechSynthesisVoice[] | null = null;
+const listeners = new Set<() => void>();
+const notify = () => listeners.forEach((fn) => fn());
+
+function subscribe(fn: () => void) {
+  listeners.add(fn);
+  if (cache === null) {
+    cache = [];
+    void loadVoices().then((voices) => {
+      cache = voices;
+      notify();
+    });
+  }
+  return () => listeners.delete(fn);
+}
+
+/** La elección del alumno también se observa, para que el `select` la refleje. */
+const choiceListeners = new Set<() => void>();
+function subscribeChoice(fn: () => void) {
+  choiceListeners.add(fn);
+  return () => choiceListeners.delete(fn);
+}
+const notifyChoice = () => choiceListeners.forEach((fn) => fn());
+
+/** Clave estable: el navegador recrea los objetos de voz en cada consulta. */
+const snapshot = () => (cache ?? []).map((v) => v.name).join('|');
+const onServer = () => '';
+
+export function useVoices(): SpeechSynthesisVoice[] {
+  useSyncExternalStore(subscribe, snapshot, onServer);
+  return cache ?? [];
+}
+
+/** La voz que toca ahora: la elegida por el alumno, o la mejor puntuada. */
+function currentVoice(): SpeechSynthesisVoice | undefined {
+  const voices = cache ?? [];
+  const chosen = savedVoiceName();
+  return voices.find((v) => v.name === chosen) ?? voices[0];
+}
+
+/**
+ * Deja al alumno probar las voces de su equipo y quedarse con una.
+ *
+ * Es necesario porque la calidad depende del sistema, no de nosotros: el mismo
+ * código suena distinto en un Mac, en un Android y en un Windows. Elegir y oír
+ * al momento resuelve en diez segundos lo que ninguna heurística acierta.
+ */
+export function VoicePicker({ labels }: { labels: { voice: string; sample: string } }) {
+  const voices = useVoices();
+  // se lee con `useSyncExternalStore` y no en un efecto: el primer render del
+  // cliente ya trae la elección guardada, sin saltos
+  const chosen = useSyncExternalStore(subscribeChoice, savedVoiceName, onServer);
+
+  if (voices.length < 2) return null;
+
+  const pick = (name: string) => {
+    saveVoiceName(name);
+    notifyChoice();
+    const voice = voices.find((v) => v.name === name);
+    if (!voice) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(labels.sample);
+    utterance.voice = voice;
+    utterance.lang = voice.lang;
+    utterance.rate = 0.92;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  return (
+    <label className="voicebar">
+      <span className="eyebrow">{labels.voice}</span>
+      <select value={chosen || voices[0].name} onChange={(e) => pick(e.target.value)}>
+        {voices.map((voice) => (
+          <option key={voice.name} value={voice.name}>
+            {voice.name} · {voice.lang}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
 }
 
 /** Botón de escuchar. `slow` baja el ritmo para separar los sonidos. */
@@ -67,16 +149,21 @@ export function Speak({
   big?: boolean;
 }) {
   const [playing, setPlaying] = useState(false);
+  useVoices();
 
   const play = useCallback(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
     utterance.rate = slow ? 0.62 : 0.92;
-    const voice = englishVoice();
-    if (voice) utterance.voice = voice;
+    const voice = currentVoice();
+    if (voice) {
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    } else {
+      utterance.lang = 'en-US';
+    }
     utterance.onend = () => setPlaying(false);
     utterance.onerror = () => setPlaying(false);
 

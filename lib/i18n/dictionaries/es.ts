@@ -512,6 +512,7 @@ export const es = {
     lessonErrors: 'Los errores que más se repiten',
     lessonVideos: 'Videos cortos sobre el tema',
     audioListen: 'Escuchar',
+    voice: { voice: 'Voz', sample: 'This is how I sound. Pick the voice you hear best.' },
     audioSlow: 'Escuchar despacio',
     pron: {
       say: 'Dilo tú',

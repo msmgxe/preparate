@@ -508,6 +508,7 @@ export const en: Dict = {
     lessonErrors: 'The mistakes that repeat most',
     lessonVideos: 'Short videos on the topic',
     audioListen: 'Listen',
+    voice: { voice: 'Voice', sample: 'This is how I sound. Pick the voice you hear best.' },
     audioSlow: 'Listen slowly',
     pron: {
       say: 'Your turn',
