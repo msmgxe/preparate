@@ -704,4 +704,197 @@ export const ENG_LESSONS: LessonSeed[] = [
       { kind: 'video', payload: {} },
     ],
   },
+
+  // ── B1 · Cuando el sujeto no importa ──────────────────────────────────────
+  {
+    slug: 'eng-pasiva',
+    chapter: 'B1 · Cuando el sujeto no importa',
+    title: 'La voz que el español resuelve con «se»',
+    hook: 'El inglés usa la pasiva muchísimo más que el español. No porque le guste enredar, sino porque no tiene el «se» que a nosotros nos saca del apuro.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'El problema que resuelve',
+          p: 'A veces quien hace la acción no importa, no se sabe, o es obvio. El español lo despacha con «se»: <em>se habla inglés</em>, <em>se construyó en 1950</em>, <em>me robaron la bici</em>. El inglés no tiene esa salida, así que le da la vuelta a la frase y pone lo importante delante.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'Activa:  Someone stole my bike.\nPasiva:  My bike was stolen.\n\nActiva:  They speak English here.\nPasiva:  English is spoken here.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La receta, y no hay más',
+          p: 'Se forma con <strong>be + participio</strong>. El verbo be lleva el tiempo —was, is, has been, will be— y el participio no cambia nunca. Si quieres decir quién lo hizo, se añade al final con <em>by</em>; pero en la mayoría de las pasivas no se dice, y por eso se usó la pasiva.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'presente        →  is  built\npasado          →  was built\npresente perf.  →  has been built\nfuturo          →  will be built',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escúchalas en contexto',
+          items: [
+            { en: 'English is spoken here.', es: 'Aquí se habla inglés.' },
+            { en: 'My bike was stolen last night.', es: 'Me robaron la bici anoche.' },
+            { en: 'The bridge was built in 1950.', es: 'El puente se construyó en 1950.' },
+            { en: "The room hasn't been cleaned yet.", es: 'La habitación todavía no se ha limpiado.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Por qué te conviene reconocerla',
+          p: 'La pasiva es la voz del inglés escrito: aparece en instrucciones, noticias, informes y exámenes. Aunque al hablar la uses poco, <strong>necesitas entenderla a la primera</strong>, porque en un texto académico está en casi cada párrafo.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Fíjate en que el participio no cambia: lo que se conjuga es el verbo be.',
+          items: [
+            { text: 'English is spoken here' },
+            { text: 'My bike was stolen' },
+            { text: 'The bridge was built in 1950' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Traduce: «El puente se construyó en 1950.»',
+          opts: [
+            'The bridge was build in 1950.',
+            'The bridge was built in 1950.',
+            'The bridge built in 1950.',
+            'The bridge is built in 1950.',
+          ],
+          ans: 1,
+          ok: 'Exacto. Be en pasado más el participio de build, que es built.',
+          no: 'La pasiva es be + participio. El participio de «build» es «built», no «build».',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Usar la forma base en vez del participio: «was build», «was steal».',
+            'Olvidar el verbo be: «The bridge built in 1950» significa otra cosa.',
+            'Traducir toda pasiva inglesa con «se» sin pensar si suena natural en español.',
+            'Poner el agente cuando no aporta nada: «My bike was stolen by someone».',
+            'Confundir «was born» con un pasado activo: en inglés nacer es siempre pasivo.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B1 · Los verbos que cambian con la partícula ──────────────────────────
+  {
+    slug: 'eng-phrasal',
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    title: 'Una palabra detrás lo cambia todo',
+    hook: 'Sabes qué es «look». Y aun así look after, look for y look up no tienen nada que ver entre sí. Esta clase explica cómo abordarlos sin volverse loco.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'No son verbos raros: son los normales',
+          p: 'Un phrasal verb es un verbo corriente más una partícula que le cambia el significado. Son <strong>la forma normal de hablar</strong> en inglés cotidiano: donde el registro formal usa un verbo largo de origen latino, la conversación usa uno corto con partícula.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'formal        cotidiano\ntolerate   →  put up with\ninvestigate → look into\npostpone   →  put off\ndiscover   →  find out',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Cómo NO estudiarlos',
+          p: 'La lista alfabética de doscientos phrasal verbs no funciona: se olvidan al día siguiente porque no significan nada juntos. Lo que sí funciona es <strong>agruparlos por verbo</strong> —todos los de «look», todos los de «take»— y aprender cada uno dentro de una frase que puedas usar mañana.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'look for    →  buscar\nlook after  →  cuidar\nlook up     →  consultar (en un diccionario)\nlook into   →  investigar\nlook out    →  ¡cuidado!',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'La familia de «look», en frases',
+          items: [
+            { en: "I'm looking for my keys.", es: 'Estoy buscando mis llaves.' },
+            { en: 'Can you look after my dog?', es: '¿Puedes cuidar a mi perro?' },
+            { en: "Look it up in the dictionary.", es: 'Búscalo en el diccionario.' },
+            { en: 'Look out! There’s a car coming.', es: '¡Cuidado! Viene un coche.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'La regla del pronombre',
+          p: 'Algunos phrasal verbs se pueden partir y otros no. Y hay una regla que resuelve el caso más frecuente: <strong>cuando el objeto es un pronombre —it, them, him—, va en medio</strong>. Se dice <em>turn it off</em>, nunca <em>turn off it</em>.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'Turn off the light.  ✓\nTurn the light off.  ✓\nTurn it off.         ✓\nTurn off it.         ✗',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Dilos de corrido, como una sola palabra. Si los partes al pronunciarlos, pierden el sentido.',
+          items: [
+            { text: "I'm looking for my keys" },
+            { text: 'Can you look after my dog' },
+            { text: 'Turn it off' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál está bien?',
+          opts: ['Turn off it.', 'Turn it off.', 'Turn off it please.', 'It turn off.'],
+          ans: 1,
+          ok: 'Exacto. Cuando el objeto es un pronombre, se mete entre el verbo y la partícula.',
+          no: 'Con un pronombre como «it», el phrasal verb se parte: va en medio, no al final.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Dejar el pronombre al final: «turn off it», «pick up them».',
+            'Traducir la partícula por separado y buscarle sentido literal.',
+            'Estudiar listas alfabéticas en vez de agrupar por verbo.',
+            'Usar el verbo formal en una conversación: «tolerate» donde un nativo diría «put up with».',
+            'Confundir «look for» (buscar) con «look after» (cuidar) por lo parecidas que suenan.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
 ];

@@ -1275,4 +1275,626 @@ export const ENG: BankQuestion[] = [
       '4': 'Hay dos errores claros.',
     },
   },
+
+  // ── B1 · El tiempo que no existe en español ───────────────────────────────
+  {
+    chapter: 'B1 · El tiempo que no existe en español',
+    stem: 'Completa: «She <b>______</b> just arrived.»',
+    options: ['has', 'have', 'is', 'was', 'did'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Reconoce la estructura',
+        p: 'El present perfect se forma con have o has más el participio. «Arrived» ya es el participio, así que falta el auxiliar.',
+        m: 'have/has + participio',
+      },
+      {
+        t: 'Elige según el sujeto',
+        p: 'Con he, she o it el auxiliar es «has». Con el resto, «have».',
+        m: 'she → has',
+      },
+    ],
+    concept:
+      'El present perfect siempre lleva dos piezas: el auxiliar have o has, que carga la persona, y el participio, que no cambia nunca.',
+    trick: 'Es la misma -s de tercera persona de siempre, escondida dentro de «has».',
+    distractors: {
+      '1': 'Corresponde a I, you, we o they.',
+      '2': 'Formaría un continuo, y «arrived» no es gerundio.',
+      '3': 'Sería pasiva, y llegar no admite pasiva.',
+      '4': 'Con «did» el verbo iría en forma base: «did arrive».',
+    },
+  },
+  {
+    chapter: 'B1 · El tiempo que no existe en español',
+    stem: 'Completa: «I have lived in Lima <b>______</b> 2019.»',
+    options: ['since', 'for', 'from', 'during', 'ago'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira qué tipo de dato viene detrás',
+        p: '2019 es un punto en el tiempo, no una duración.',
+        m: '2019 → un momento',
+      },
+      {
+        t: 'Aplica la pareja',
+        p: '«Since» va con el momento en que empezó; «for», con cuánto ha durado.',
+        m: 'since 2019   → desde 2019\nfor six years → durante seis años',
+      },
+    ],
+    concept:
+      'For mide la duración y since marca el inicio. Los dos acompañan al present perfect, pero nunca son intercambiables.',
+    trick: 'Si puedes responder «¿desde cuándo?», es since. Si respondes «¿cuánto tiempo?», es for.',
+    distractors: {
+      '1': 'Iría con una duración: for six years.',
+      '2': '«From» necesita un «to» que cierre el período.',
+      '3': 'Indica a lo largo de un período, no desde cuándo.',
+      '4': 'Va con pasado simple y se coloca detrás del tiempo.',
+    },
+  },
+  {
+    chapter: 'B1 · El tiempo que no existe en español',
+    stem: '«Where is Ana?» — «She <b>______</b> to the bank.» (todavía no ha vuelto)',
+    options: ['has gone', 'has been', 'went', 'has go', 'is gone'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Distingue los dos participios',
+        p: '«Has gone» significa que fue y sigue allí. «Has been» significa que fue y ya volvió.',
+        m: 'has gone → sigue allí\nhas been → ya volvió',
+      },
+      {
+        t: 'Aplícalo a la situación',
+        p: 'Preguntan dónde está porque no está: sigue en el banco.',
+        m: 'She has gone to the bank.',
+      },
+    ],
+    concept:
+      'Been y gone son dos participios del mismo verbo con significados opuestos en la práctica: uno cuenta una visita terminada y el otro una ausencia en curso.',
+    trick: '«I have been to Cusco» presume de haber viajado. «I have gone to Cusco» solo lo diría alguien que aún está allí.',
+    distractors: {
+      '1': 'Diría que ya fue y volvió, y entonces estaría ahí.',
+      '2': 'Es correcto gramaticalmente, pero no explica que siga fuera.',
+      '3': 'El participio de «go» es «gone», no «go».',
+      '4': 'Suena a estado, no a movimiento.',
+    },
+  },
+  {
+    chapter: 'B1 · El tiempo que no existe en español',
+    stem: 'Completa: «I <b>______</b> him yesterday.»',
+    options: ['saw', 'have seen', 'have saw', 'has seen', 'did saw'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en la referencia temporal',
+        p: '«Yesterday» es un momento cerrado: terminó y no se puede volver a él.',
+        m: 'momento cerrado → pasado simple',
+      },
+      {
+        t: 'Descarta el present perfect',
+        p: 'Ese tiempo se usa cuando el período sigue abierto —today, this week, ever— o cuando no se dice cuándo.',
+        m: 'I have seen him this week  ✓\nI have seen him yesterday  ✗',
+      },
+    ],
+    concept:
+      'El present perfect no admite un momento terminado. Si la frase dice cuándo ocurrió y ese cuándo ya pasó, va pasado simple.',
+    trick: 'Yesterday, last week, in 2019 y ago cierran el período. Con cualquiera de ellos, pasado simple.',
+    distractors: {
+      '1': 'El present perfect choca con «yesterday».',
+      '2': 'El participio de «see» es «seen», no «saw».',
+      '3': 'El sujeto es «I», que lleva «have».',
+      '4': 'Con «did» el verbo va en forma base.',
+    },
+  },
+  {
+    chapter: 'B1 · El tiempo que no existe en español',
+    stem: 'Traduce: «<b>Llevo tres años trabajando aquí.</b>»',
+    options: [
+      'I have been working here for three years.',
+      'I have three years working here.',
+      'I am working here since three years.',
+      'I have been working here since three years.',
+      'I work here from three years.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Reconoce el calco',
+        p: 'El español dice «llevo tres años», con el verbo llevar. El inglés no tiene ese uso: <em>I have three years working here</em> no significa nada.',
+        m: 'llevar + tiempo → have been + -ing',
+      },
+      {
+        t: 'Elige el tiempo verbal',
+        p: 'Algo que empezó en el pasado y sigue ocurriendo es present perfect continuo: have been más gerundio.',
+        m: 'I have been working…',
+      },
+      {
+        t: 'Elige entre for y since',
+        p: 'Tres años es una duración, no un punto de inicio. Por tanto, for.',
+        m: 'for three years  ✓\nsince three years  ✗',
+      },
+    ],
+    concept:
+      'La estructura española «llevo + tiempo + gerundio» se traduce con present perfect continuo y «for». Es de las que más se calcan y de las que peor suenan.',
+    trick:
+      'Otra salida igual de correcta y más fácil de decir: «I started working here three years ago». Si no te sale la primera, usa esa.',
+    distractors: {
+      '1': 'Calco literal de «llevo tres años». En inglés no se entiende.',
+      '2': 'Con «since» hace falta un momento, y además el tiempo verbal no es el adecuado.',
+      '3': 'La estructura es correcta, pero «since» exige un punto de inicio, no una duración.',
+      '4': '«From» no funciona sin un «to» que cierre el período.',
+    },
+  },
+
+  // ── B1 · Hipótesis ────────────────────────────────────────────────────────
+  {
+    chapter: 'B1 · Hipótesis',
+    stem: 'Completa: «If it <b>______</b> tomorrow, we will stay home.»',
+    options: ['rains', 'will rain', 'rained', 'would rain', 'is raining'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Recuerda la regla de oro',
+        p: 'En la parte del «if» nunca va «will», aunque se hable del futuro. El futuro se queda en la otra mitad.',
+        m: 'If + presente , will + verbo',
+      },
+      {
+        t: 'Compruébalo con el español',
+        p: 'Decimos «si llueve mañana», también en presente. La lógica es la misma.',
+        m: '',
+      },
+    ],
+    concept:
+      'El primer condicional habla de algo probable: condición en presente simple y resultado con will. La probabilidad la marca la estructura, no las palabras.',
+    trick: 'Si ves «will» detrás de «if», casi seguro está mal. Es el error más fácil de detectar al revisar.',
+    distractors: {
+      '1': 'El «will» no entra en la parte del if.',
+      '2': 'El pasado convertiría la frase en improbable.',
+      '3': 'Would tampoco entra en la parte del if.',
+      '4': 'El continuo hablaría de algo que ocurre ahora.',
+    },
+  },
+  {
+    chapter: 'B1 · Hipótesis',
+    stem: 'Completa: «If I <b>______</b> more time, I would learn Japanese.»',
+    options: ['had', 'have', 'would have', 'will have', 'am having'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira la otra mitad',
+        p: 'El resultado lleva «would», así que la frase habla de algo improbable o imaginario: es el segundo condicional.',
+        m: 'would → segundo condicional',
+      },
+      {
+        t: 'Pon el pasado en la condición',
+        p: 'El segundo condicional usa pasado simple en la parte del if, aunque no hable del pasado. Ese pasado significa «esto no es real».',
+        m: 'If + pasado , would + verbo',
+      },
+    ],
+    concept:
+      'En el segundo condicional el pasado no marca tiempo sino distancia de la realidad. Es un uso que el español resuelve con el subjuntivo: «si tuviera».',
+    trick: 'Traduce mentalmente por «si tuviera», no por «si tengo». Si encaja el subjuntivo español, va pasado en inglés.',
+    distractors: {
+      '1': 'Sería primer condicional, y no encaja con «would».',
+      '2': 'Would nunca aparece dentro del if.',
+      '3': 'Will tampoco.',
+      '4': 'El continuo no expresa hipótesis.',
+    },
+  },
+  {
+    chapter: 'B1 · Hipótesis',
+    stem: '¿Cuál está <b>correcta</b>?',
+    options: [
+      'If I had time, I would call you.',
+      'If I would have time, I would call you.',
+      'If I will have time, I would call you.',
+      'If I would had time, I called you.',
+      'If I have time, I would called you.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Localiza dónde puede ir «would»',
+        p: 'Solo en la mitad del resultado. Nunca detrás de «if».',
+        m: 'If + pasado , would + base',
+      },
+      {
+        t: 'Entiende de dónde sale el error',
+        p: 'En español decimos coloquialmente «si tendría tiempo». Esa forma se calca al inglés y produce «if I would have».',
+        m: 'si tuviera  ✓\nsi tendría  ✗',
+      },
+    ],
+    concept:
+      'La estructura del condicional reparte las piezas: el pasado va en la condición y el would en la consecuencia. Meterlos juntos rompe la frase.',
+    trick: 'Revisa siempre lo que hay justo después de «if». Si es will o would, corrige sin pensarlo más.',
+    distractors: {
+      '1': 'Es el calco de «si tendría»: would no entra en el if.',
+      '2': 'Will tampoco entra en el if.',
+      '3': 'Tiene el would mal colocado y el resultado sin would.',
+      '4': 'Mezcla presente en el if con un pasado en el resultado.',
+    },
+  },
+  {
+    chapter: 'B1 · Hipótesis',
+    stem: 'Para enunciar una verdad general, completa: «If you heat water to 100 °C, it <b>______</b>.»',
+    options: ['boils', 'will boil', 'would boil', 'boiled', 'is boiling'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en que no hay hipótesis',
+        p: 'No se imagina nada: siempre que se cumple la condición, ocurre el resultado. Eso no es un condicional, es una ley.',
+        m: 'siempre que… → siempre ocurre',
+      },
+      {
+        t: 'Usa presente en las dos mitades',
+        p: 'Es el llamado condicional cero: presente simple a los dos lados.',
+        m: 'If + presente , presente',
+      },
+    ],
+    concept:
+      'El condicional cero describe lo que ocurre siempre: leyes físicas, normas e instrucciones. Se reconoce porque «if» se puede sustituir por «when» sin cambiar el sentido.',
+    trick: 'Prueba a cambiar «if» por «when». Si la frase sigue significando lo mismo, van los dos verbos en presente.',
+    distractors: {
+      '1': 'Convertiría una ley física en una predicción concreta.',
+      '2': 'Would la volvería imaginaria.',
+      '3': 'El pasado no describe una ley general.',
+      '4': 'El continuo hablaría de este momento.',
+    },
+  },
+  {
+    chapter: 'B1 · Hipótesis',
+    stem: 'Traduce: «<b>Si hubiera estudiado, habría aprobado.</b>»',
+    options: [
+      'If I had studied, I would have passed.',
+      'If I would have studied, I would have passed.',
+      'If I studied, I would pass.',
+      'If I had studied, I would passed.',
+      'If I have studied, I would have passed.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Sitúa la hipótesis en el tiempo',
+        p: 'El examen ya pasó y ya no se puede cambiar. Eso es el tercer condicional: imposible, no improbable.',
+        m: 'pasado imposible → tercer condicional',
+      },
+      {
+        t: 'Monta las dos mitades',
+        p: 'La condición va en pasado perfecto y el resultado con «would have» más participio.',
+        m: 'If + had + participio ,\nwould have + participio',
+      },
+      {
+        t: 'Comprueba que el would siga fuera del if',
+        p: 'La regla no cambia con el tercer condicional: en la parte del if nunca hay would.',
+        m: 'If I had studied  ✓\nIf I would have studied  ✗',
+      },
+    ],
+    concept:
+      'El tercer condicional habla de lo que no ocurrió y ya no puede ocurrir. Es la estructura del arrepentimiento y de la explicación a posteriori.',
+    trick:
+      'Cuenta los «have»: hay uno en cada mitad, pero solo el segundo va con would. Si te salen dos «would have», sobra uno.',
+    distractors: {
+      '1': 'Es el mismo calco de «si hubiera» por «si habría».',
+      '2': 'Es segundo condicional: hablaría del presente, no del pasado.',
+      '3': 'Al resultado le falta el «have».',
+      '4': 'El present perfect no forma condicionales.',
+    },
+  },
+
+  // ── B1 · Cuando el sujeto no importa ──────────────────────────────────────
+  {
+    chapter: 'B1 · Cuando el sujeto no importa',
+    stem: 'Completa: «The bridge <b>______</b> in 1950.» (build)',
+    options: ['was built', 'was build', 'is built', 'built', 'has built'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Reconoce que es pasiva',
+        p: 'El puente no construyó nada: lo construyeron. El sujeto recibe la acción.',
+        m: 'sujeto recibe → pasiva',
+      },
+      {
+        t: 'Aplica la receta',
+        p: 'Be conjugado más participio. El tiempo lo lleva be, y 1950 pide pasado.',
+        m: 'was + built',
+      },
+    ],
+    concept:
+      'La pasiva es siempre be más participio. Lo único que cambia entre tiempos es la forma del verbo be.',
+    trick: 'El participio nunca se conjuga. Si te sale un verbo con -ed detrás de was y no es el participio, revísalo.',
+    distractors: {
+      '1': '«Build» es la forma base; el participio es «built».',
+      '2': 'Está en presente y la frase habla de 1950.',
+      '3': 'Sin «was» la frase diría que el puente construyó algo.',
+      '4': 'Diría que el puente ha construido algo.',
+    },
+  },
+  {
+    chapter: 'B1 · Cuando el sujeto no importa',
+    stem: 'Completa: «One Hundred Years of Solitude <b>______</b> by García Márquez.»',
+    options: ['was written', 'was wrote', 'wrote', 'has wrote', 'is writing'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Identifica quién hace y quién recibe',
+        p: 'El libro no escribió: fue escrito. Y quien lo hizo aparece detrás, con «by».',
+        m: 'objeto + be + participio + by + agente',
+      },
+      {
+        t: 'Usa el participio correcto',
+        p: 'Write es irregular: write, wrote, written. El participio es el tercero.',
+        m: 'write → wrote → written',
+      },
+    ],
+    concept:
+      'Cuando el agente sí importa, la pasiva lo recupera al final con «by». Se usa para poner el foco en la obra y no en quien la hizo.',
+    trick: 'En la pasiva siempre va el tercer verbo de la lista de irregulares, nunca el segundo.',
+    distractors: {
+      '1': 'Usa el pasado en vez del participio.',
+      '2': 'Diría que el libro escribió a García Márquez.',
+      '3': 'Además de participio incorrecto, el tiempo no encaja.',
+      '4': 'Diría que el libro está escribiendo.',
+    },
+  },
+  {
+    chapter: 'B1 · Cuando el sujeto no importa',
+    stem: 'Escribe en <b>voz pasiva</b>: «Aquí se habla inglés.»',
+    options: ['English is spoken here.', 'English is speak here.', 'English speaks here.', 'Here is spoken English.', 'It is spoken English here.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Entiende qué hace el «se» español',
+        p: 'Oculta a quien realiza la acción. El inglés no tiene esa partícula, así que recurre a la pasiva.',
+        m: 'se habla → is spoken',
+      },
+      {
+        t: 'Móntala',
+        p: 'Lo que recibe la acción va delante, después be, después el participio.',
+        m: 'English + is + spoken',
+      },
+    ],
+    concept:
+      'La pasiva inglesa cubre buena parte de lo que el español resuelve con «se». Por eso aparece mucho más a menudo de lo que un hispanohablante espera.',
+    trick: 'Cada vez que en español te salga un «se» impersonal, comprueba si en inglés toca pasiva.',
+    distractors: {
+      '1': 'Falta el participio: es «spoken», no «speak».',
+      '2': 'Diría que el inglés habla.',
+      '3': 'El orden deja la frase sin sujeto delante.',
+      '4': 'Duplica el sujeto sin necesidad.',
+    },
+  },
+  {
+    chapter: 'B1 · Cuando el sujeto no importa',
+    stem: 'Completa: «The room <b>______</b> cleaned yet.»',
+    options: ["hasn't been", "isn't", "didn't", "hasn't", "wasn't been"],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en «yet»',
+        p: 'Señala algo que se esperaba y todavía no ha ocurrido. Eso pide present perfect.',
+        m: 'yet → present perfect',
+      },
+      {
+        t: 'Súmale la pasiva',
+        p: 'La habitación no limpia: la limpian. Hay que combinar los dos: have + been + participio.',
+        m: "hasn't + been + cleaned",
+      },
+    ],
+    concept:
+      'La pasiva se puede combinar con cualquier tiempo. Lo único que hace falta es conjugar «be» en ese tiempo y dejar el participio quieto.',
+    trick: 'Monta primero el tiempo con «be» como si fuera el verbo, y después pega el participio detrás.',
+    distractors: {
+      '1': 'Le falta el present perfect que exige «yet».',
+      '2': 'Con «didn\'t» el verbo iría en forma base y sin pasiva.',
+      '3': 'Le falta el «been» de la pasiva.',
+      '4': 'Mezcla pasado y participio de forma imposible.',
+    },
+  },
+  {
+    chapter: 'B1 · Cuando el sujeto no importa',
+    stem: 'Pasa a voz pasiva: «Someone stole my bike last night.»',
+    options: [
+      'My bike was stolen last night.',
+      'My bike was stole last night.',
+      'My bike is stolen last night.',
+      'My bike stole last night.',
+      'My bike has stolen last night.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Mueve el objeto al frente',
+        p: 'Lo que recibía la acción pasa a ser el sujeto de la frase nueva.',
+        m: 'my bike → sujeto',
+      },
+      {
+        t: 'Conjuga be en el mismo tiempo',
+        p: 'La activa estaba en pasado simple, así que be va en pasado: was.',
+        m: 'stole → was + participio',
+      },
+      {
+        t: 'Pon el participio y descarta el agente',
+        p: 'Steal es irregular: steal, stole, stolen. Y «someone» no aporta nada, así que no se añade con «by».',
+        m: 'My bike was stolen last night.',
+      },
+    ],
+    concept:
+      'Transformar a pasiva son tres movimientos: el objeto al frente, be en el tiempo original, y el participio. El agente solo se conserva si aporta información.',
+    trick:
+      'Cuando el sujeto de la activa es «someone», «people» o «they» genérico, la pasiva casi siempre suena mejor y por eso el inglés la prefiere.',
+    distractors: {
+      '1': 'Usa el pasado «stole» donde va el participio «stolen».',
+      '2': 'El presente choca con «last night».',
+      '3': 'Diría que la bici robó algo.',
+      '4': 'Le falta el «been» y además cambia el sentido.',
+    },
+  },
+
+  // ── B1 · Los verbos que cambian con la partícula ──────────────────────────
+  {
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    stem: 'Completa: «Can you <b>______</b> my dog this weekend?» (cuidar)',
+    options: ['look after', 'look for', 'look up', 'look at', 'look out'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'No traduzcas la partícula',
+        p: '«After» no significa «después» aquí. La combinación entera tiene su propio significado.',
+        m: 'look after = cuidar',
+      },
+      {
+        t: 'Compárala con sus vecinas',
+        p: 'La familia de «look» es la que más se confunde, y cada miembro significa algo distinto.',
+        m: 'look for   → buscar\nlook up    → consultar\nlook at    → mirar',
+      },
+    ],
+    concept:
+      'Un phrasal verb no se deduce sumando el verbo y la partícula: es una unidad con significado propio, y hay que aprenderla entera.',
+    trick: 'Agrúpalos por verbo, no en listas alfabéticas. Los cinco de «look» se aprenden juntos en una tarde.',
+    distractors: {
+      '1': 'Significa buscar.',
+      '2': 'Significa consultar en un diccionario o en internet.',
+      '3': 'Significa simplemente mirar.',
+      '4': 'Es una advertencia: ¡cuidado!',
+    },
+  },
+  {
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    stem: 'Completa: «I can\'t find my keys. I\'ve been <b>______</b> them all morning.»',
+    options: ['looking for', 'looking after', 'looking up', 'looking out', 'looking into'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Lee la pista de la frase anterior',
+        p: 'Dice que no encuentra las llaves, así que las está buscando.',
+        m: '',
+      },
+      {
+        t: 'Elige el miembro correcto de la familia',
+        p: 'Buscar algo perdido es «look for». Es el que más se confunde con «look after».',
+        m: 'look for = buscar',
+      },
+    ],
+    concept:
+      'Dentro de una misma familia, la partícula cambia el significado por completo. El contexto de la frase es lo que permite elegir.',
+    trick: 'Recuerda la pareja por el sentido: buscar es «for» —lo que quieres— y cuidar es «after» —ir detrás de alguien—.',
+    distractors: {
+      '1': 'Significa cuidar, y las llaves no se cuidan.',
+      '2': 'Se usa para consultar un dato, no para buscar un objeto perdido.',
+      '3': 'Es una advertencia.',
+      '4': 'Significa investigar un asunto.',
+    },
+  },
+  {
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    stem: 'La luz está encendida y quieres pedir que la apaguen refiriéndote a ella con un pronombre. ¿Cuál está bien?',
+    options: ['Turn it off.', 'Turn off it.', 'It turn off.', 'Turn off it, please.', 'Off turn it.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Comprueba si el phrasal verb se puede partir',
+        p: '«Turn off» admite el objeto en medio o al final cuando es un sustantivo: turn off the light, turn the light off.',
+        m: 'los dos órdenes valen con sustantivo',
+      },
+      {
+        t: 'Aplica la regla del pronombre',
+        p: 'Cuando el objeto es un pronombre —it, them, him—, la partición deja de ser opcional: va obligatoriamente en medio.',
+        m: 'Turn it off  ✓\nTurn off it  ✗',
+      },
+    ],
+    concept:
+      'Con los phrasal verbs separables, un pronombre siempre va entre el verbo y la partícula. Es una de las pocas reglas fijas del tema.',
+    trick: 'Si el objeto es una sola palabra corta como it o them, mételo en medio sin dudar.',
+    distractors: {
+      '1': 'Con pronombre, la partícula no puede ir antes.',
+      '2': 'El orden deja la frase sin sentido.',
+      '3': 'El «please» no arregla el orden.',
+      '4': 'La partícula no va al principio.',
+    },
+  },
+  {
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    stem: 'Completa: «He <b>______</b> smoking last year.» (dejó de fumar)',
+    options: ['gave up', 'gave in', 'gave away', 'gave back', 'gave out'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Ubica la familia',
+        p: 'Todas son de «give», y cada partícula la lleva a un sitio distinto.',
+        m: '',
+      },
+      {
+        t: 'Elige por el significado',
+        p: 'Abandonar un hábito o rendirse es «give up».',
+        m: 'give up = dejar, rendirse',
+      },
+    ],
+    concept:
+      'La partícula es la que carga el significado. Aprender el verbo suelto no sirve de nada si no se aprende con cuál va.',
+    trick: 'Muchos phrasal verbs con «up» implican terminar o completar: give up, finish up, use up, eat up.',
+    distractors: {
+      '1': 'Significa ceder ante una presión.',
+      '2': 'Significa regalar.',
+      '3': 'Significa devolver.',
+      '4': 'Significa repartir.',
+    },
+  },
+  {
+    chapter: 'B1 · Los verbos que cambian con la partícula',
+    stem: '¿Qué significa <b>run into</b> en «I ran into an old friend yesterday»?',
+    options: [
+      'Encontrarse con alguien por casualidad',
+      'Chocar contra algo con un vehículo',
+      'Entrar corriendo a un sitio',
+      'Huir de alguien',
+      'Quedarse sin algo',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Desconfía del sentido literal',
+        p: 'Literalmente sería «correr hacia dentro de», que con una persona no tiene sentido en esta frase.',
+        m: '',
+      },
+      {
+        t: 'Usa el contexto',
+        p: 'Se habla de un viejo amigo y de ayer. Encaja un encuentro inesperado.',
+        m: 'run into someone = topárselo',
+      },
+      {
+        t: 'Ten en cuenta que también tiene sentido literal',
+        p: 'Con un objeto sí significa chocar: «the car ran into a wall». El complemento decide cuál de los dos es.',
+        m: 'con persona → encontrarse\ncon objeto  → chocar',
+      },
+    ],
+    concept:
+      'Muchos phrasal verbs tienen un sentido literal y otro figurado. Lo que va detrás —una persona o una cosa— suele decidir cuál toca.',
+    trick:
+      'Cuando un phrasal verb no encaje literalmente, no lo descartes: busca el sentido figurado antes de darlo por incomprensible.',
+    distractors: {
+      '1': 'Es el sentido literal, y aplica a objetos, no a un amigo.',
+      '2': 'Sería «run in», y tampoco es lo habitual.',
+      '3': 'Huir sería «run away from».',
+      '4': 'Quedarse sin algo es «run out of».',
+    },
+  },
 ];

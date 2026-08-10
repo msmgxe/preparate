@@ -55,6 +55,58 @@ const BY_LESSON: Record<string, AudioBlock[]> = {
       },
     },
   ],
+
+  // ── B1 · las dos clases que ya venían del prototipo ─────────────────────
+  'eng-perfect': [
+    {
+      kind: 'listen',
+      payload: {
+        h: 'El contraste que decide el capítulo',
+        items: [
+          { en: 'I saw him yesterday.', es: 'Lo vi ayer. (momento cerrado)' },
+          { en: "I haven't seen him this week.", es: 'No lo he visto esta semana. (la semana sigue)' },
+          { en: 'I have lived here since 2019.', es: 'Vivo aquí desde 2019. (y sigo)' },
+          { en: 'I have been working here for three years.', es: 'Llevo tres años trabajando aquí.' },
+        ],
+      },
+    },
+    {
+      kind: 'say',
+      payload: {
+        h: 'Dilo tú',
+        note: 'La tercera es la que más cuesta: en español decimos «llevo tres años», y el inglés lo dice con have been + -ing. No hay atajo, hay que decirla hasta que salga sola.',
+        items: [
+          { text: 'I have lived here since 2019' },
+          { text: "I haven't seen him this week" },
+          { text: 'I have been working here for three years' },
+        ],
+      },
+    },
+  ],
+  'eng-conditionals': [
+    {
+      kind: 'listen',
+      payload: {
+        h: 'Los tres, uno detrás de otro',
+        items: [
+          { en: "If it rains tomorrow, we'll stay home.", es: 'Si llueve mañana, nos quedamos en casa. (probable)' },
+          { en: 'If I had more time, I would learn Japanese.', es: 'Si tuviera más tiempo, aprendería japonés. (improbable)' },
+          { en: 'If I had studied, I would have passed.', es: 'Si hubiera estudiado, habría aprobado. (imposible: ya pasó)' },
+        ],
+      },
+    },
+    {
+      kind: 'say',
+      payload: {
+        h: 'Dilo tú',
+        note: 'Fíjate en que el «would» nunca aparece en la parte del «if». En español sí decimos «si tendría», y de ahí sale el error.',
+        items: [
+          { text: 'If it rains tomorrow we will stay home' },
+          { text: 'If I had more time I would learn Japanese' },
+        ],
+      },
+    },
+  ],
 };
 
 async function main() {
