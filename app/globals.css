@@ -18,30 +18,51 @@
   --shadow:0 24px 60px -20px rgba(0,0,0,.75); --r:14px;
   --glow-1:rgba(239,164,81,.16); --glow-2:rgba(102,191,232,.11); --glow-3:rgba(79,214,156,.08);
   --noise:.15;
-  --display:var(--font-display),'Bricolage Grotesque',system-ui,sans-serif;
-  --mono:var(--font-mono),'DM Mono',ui-monospace,monospace;
-  --serif:var(--font-serif),'Newsreader',Georgia,serif;
+
+  /* Tipografías: Inter (primaria), Lexend & Atkinson (accesibles) */
+  --font-sans-fallback: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-reading-fallback: 'Lexend', sans-serif;
+  --font-hyperlegible-fallback: 'Atkinson Hyperlegible', sans-serif;
+  --font-mono-fallback: 'DM Mono', ui-monospace, monospace;
+
+  --font-primary: var(--font-sans, var(--font-sans-fallback));
+  --font-accessible: var(--font-reading, var(--font-reading-fallback));
+  --font-alt-accessible: var(--font-hyperlegible, var(--font-hyperlegible-fallback));
+  --font-code: var(--font-mono, var(--font-mono-fallback));
+
+  --font-body: var(--font-primary);
+  --font-heading: var(--font-primary);
+  --display: var(--font-heading);
+  --mono: var(--font-code);
+  --serif: var(--font-body);
 }
 /**
- * Tema claro. `--ink` y `--paper` intercambian su papel — son los dos únicos
- * tokens cuyo nombre deja de ser literal aquí; el resto del CSS no se entera
- * porque todo lo translúcido va por `--bg-rgb` / `--fg-rgb`.
- * Los acentos se oscurecen: el ámbar original sobre fondo claro no llega al
- * contraste mínimo para texto.
+ * Tema claro. `--ink` (fondo) y `--paper` (texto principal) optimizados para WCAG AA
+ * (Texto oscuro #111827 sobre fondo blanco o #FAF7F0 con radio de contraste > 17:1).
  */
 :root[data-theme='light']{
-  --bg-rgb:250,247,240; --fg-rgb:18,33,44;
-  --ink:#FAF7F0; --ink-2:#FFFFFF; --paper:#12212C; --paper-2:#EDE6D8; --paper-dim:#6B7580;
+  --bg-rgb:255,255,255; --fg-rgb:17,24,39;
+  --ink:#FFFFFF; --ink-2:#F9FAFB; --paper:#111827; --paper-2:#1F2937; --paper-dim:#4B5563;
   --amber:#B26A16; --coral:#C62B24; --mint:#0F8A5F; --sky:#1E6F94; --violet:#6B3FBF;
-  --line:rgba(18,33,44,.13); --line-strong:rgba(18,33,44,.26);
-  --shadow:0 18px 44px -24px rgba(18,33,44,.32);
+  --line:rgba(17,24,39,.13); --line-strong:rgba(17,24,39,.26);
+  --shadow:0 18px 44px -24px rgba(17,24,39,.32);
   --glow-1:rgba(239,164,81,.13); --glow-2:rgba(102,191,232,.10); --glow-3:rgba(79,214,156,.07);
   --noise:.05;
 }
 
+/* Modos alternativos de tipografía accesible para la clase virtual */
+html[data-font='lexend'], .font-lexend {
+  --font-body: var(--font-accessible);
+  --font-heading: var(--font-accessible);
+}
+html[data-font='atkinson'], .font-atkinson, .accessible-font {
+  --font-body: var(--font-alt-accessible);
+  --font-heading: var(--font-alt-accessible);
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--ink);color:var(--paper);font-family:var(--serif);font-size:17px;line-height:1.55;min-height:100vh;overflow-x:hidden;position:relative}
+html{-webkit-text-size-adjust:100%;font-size:16px}
+body{background:var(--ink);color:var(--paper);font-family:var(--font-body);font-size:1rem;line-height:1.55;min-height:100vh;overflow-x:hidden;position:relative}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(1100px 600px at 82% -12%,var(--glow-1),transparent 62%),
              radial-gradient(900px 700px at -10% 12%,var(--glow-2),transparent 60%),
@@ -84,13 +105,18 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(v
 .themebtn:hover{color:var(--paper);border-color:var(--line-strong)}
 .avatar{width:34px;height:34px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-content:center;font-family:var(--display);font-weight:800;font-size:14px;cursor:pointer;flex:none;border:none}
 
-/* TIPOGRAFÍA */
-h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5.6vw,54px);line-height:1;letter-spacing:-.035em;max-width:18ch}
-h1 em{font-style:normal;color:var(--amber)}
-section{margin-top:48px}
-.shead{display:flex;align-items:flex-end;gap:14px;margin-bottom:18px;flex-wrap:wrap}
-.shead h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.025em}
-.shead .rule{flex:1;height:1px;background:var(--line);margin-bottom:9px;min-width:24px}
+/* TIPOGRAFÍA Y ENCABEZADOS DE ALTA LEGIBILIDAD */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--paper);
+}
+h1 { font-weight: 700; font-size: clamp(32px, 5.6vw, 54px); line-height: 1.12; letter-spacing: -0.02em; max-width: 18ch; }
+h1 em { font-style: normal; color: var(--amber); }
+section { margin-top: 48px; }
+.shead { display: flex; align-items: flex-end; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.shead h2, h2 { font-family: var(--font-heading); font-weight: 700; font-size: 24px; letter-spacing: -0.015em; }
+h3, .h3 { font-family: var(--font-heading); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+.shead .rule { flex: 1; height: 1px; background: var(--line); margin-bottom: 9px; min-width: 24px; }
 
 /* BOTONES */
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
