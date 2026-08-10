@@ -316,4 +316,392 @@ export const ENG_LESSONS: LessonSeed[] = [
       { kind: 'video', payload: {} },
     ],
   },
+
+  // ── A2 · Contar lo que pasó ───────────────────────────────────────────────
+  {
+    slug: 'eng-pasado',
+    chapter: 'A2 · Contar lo que pasó',
+    title: 'El pasado y la trampa de did',
+    hook: 'El pasado inglés es más fácil que el español: una sola forma para todas las personas. Lo difícil está en otro sitio, y casi nadie lo enseña bien.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Otra vez la buena noticia',
+          p: 'El pasado inglés no se conjuga. <strong>I worked, you worked, she worked, they worked</strong>: una sola forma para todo el mundo. Donde el español tiene seis terminaciones distintas, el inglés tiene una.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'El precio: los irregulares',
+          p: 'A cambio, unos doscientos verbos no siguen la regla. Suena mucho, pero los que de verdad se usan son unos cincuenta, y son <strong>justo los más frecuentes</strong>: go, have, do, say, get, make, come, see, take, know. Se aprenden usándolos, no en tablas.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'work  →  worked        go    →  went\nlive  →  lived         have  →  had\nplay  →  played        see   →  saw',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La trampa de did',
+          p: 'Para preguntar y negar en pasado aparece <strong>did</strong>. Y en cuanto aparece, se lleva él la marca de pasado: el verbo principal vuelve a su forma base. Por eso <em>did you went</em> nunca es correcto — el pasado ya está en <em>did</em>, y ponerlo dos veces es como decir «fuistes».',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'You went home.       →  afirmativa\nDid you go home?     →  did se lleva el pasado\nI didn’t go home.    →  igual al negar',
+        },
+      },
+      {
+        kind: 'pair',
+        payload: {
+          h: 'La -ed no siempre suena igual',
+          note: 'Se escribe igual y se pronuncia de tres formas. Solo es una sílaba aparte cuando el verbo ya termina en sonido de t o de d: wanted, needed, decided. En el resto se pega al final sin añadir sílaba.',
+          items: [
+            { a: 'worked', ipaA: '/t/', esA: 'una sílaba', b: 'wanted', ipaB: '/ɪd/', esB: 'dos sílabas' },
+            { a: 'played', ipaA: '/d/', esA: 'una sílaba', b: 'needed', ipaB: '/ɪd/', esB: 'dos sílabas' },
+          ],
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escúchalo en frases',
+          items: [
+            { en: 'I worked late yesterday.', es: 'Ayer trabajé hasta tarde.' },
+            { en: 'She wanted to come.', es: 'Ella quería venir.' },
+            { en: 'Did you see the game?', es: '¿Viste el partido?' },
+            { en: "I didn't go to the party.", es: 'No fui a la fiesta.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Las tres frases del capítulo. Fíjate en no meter el pasado dos veces cuando aparece did.',
+          items: [{ text: 'I went home early' }, { text: 'Did you go home' }, { text: "I didn't go home" }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál está bien?',
+          opts: [
+            'Did you saw the game?',
+            'Did you see the game?',
+            'Did you seen the game?',
+            'You did saw the game?',
+          ],
+          ans: 1,
+          ok: 'Exacto. Con did, el verbo vuelve a su forma base: see, no saw.',
+          no: 'El pasado ya está en «did». Si lo pones también en el verbo, lo estás diciendo dos veces.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Repetir el pasado con did: «did you went», «I didn’t saw».',
+            'Regularizar los irregulares: «goed», «buyed», «teached».',
+            'Usar el participio en vez del pasado: «I have went» o «I seen it».',
+            'Pronunciar todas las -ed como sílaba aparte: «worked» tiene una sola.',
+            'Negar sin auxiliar: «I not went» en vez de «I didn’t go».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── A2 · Hablar del futuro ────────────────────────────────────────────────
+  {
+    slug: 'eng-futuro',
+    chapter: 'A2 · Hablar del futuro',
+    title: 'Tres futuros y una decisión',
+    hook: 'El español tiene un futuro y el inglés tres. No se eligen al azar: cada uno dice algo distinto sobre cuándo lo decidiste.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'La pregunta que decide',
+          p: 'No preguntes «¿cuál de los tres?». Pregunta <strong>¿cuándo lo decidí?</strong>. Si lo decido en este momento, mientras hablo, es <em>will</em>. Si ya estaba decidido antes de abrir la boca, es <em>going to</em>. Y si además ya está en la agenda, con hora y sitio, es el presente continuo.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'lo decido AHORA       →  I’ll help you.\nya estaba DECIDIDO    →  I’m going to study medicine.\nya está en la AGENDA  →  I’m seeing the doctor at 4.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La prueba del teléfono',
+          p: 'Suena el teléfono y dices «yo contesto». En inglés es <strong>«I’ll get it»</strong>, nunca <em>I’m going to get it</em> — porque lo acabas de decidir, al oír el timbre. Si dijeras «going to» sonaría como si tuvieras planeado desde el desayuno contestar ese teléfono.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Y una cuarta cosa, que no es futuro',
+          p: 'Los horarios van en <strong>presente simple</strong>, aunque hablen de mañana: <em>The train leaves at 7:30</em>. Es la misma lógica del español —«el tren sale a las siete»— y por eso casi nunca da problemas.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Los cuatro, seguidos',
+          items: [
+            { en: "The phone is ringing. I'll get it.", es: 'Suena el teléfono. Yo contesto.' },
+            { en: "I'm going to study medicine.", es: 'Voy a estudiar medicina.' },
+            { en: "I'm meeting Ana at six.", es: 'Quedé con Ana a las seis.' },
+            { en: 'The train leaves at seven thirty.', es: 'El tren sale a las siete y media.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Predecir también se reparte',
+          p: 'Si predices porque <strong>lo estás viendo</strong>, va <em>going to</em>: «Look at those clouds — it’s going to rain». Si predices por opinión o por lo que crees, va <em>will</em>: «I think it will rain tomorrow». La evidencia delante de los ojos manda going to.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Tres frases, tres futuros distintos. Piensa cuándo se decidió cada una antes de decirla.',
+          items: [
+            { text: "I'll get it" },
+            { text: "I'm going to study medicine" },
+            { text: "It's going to rain" },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Se te cae un vaso de las manos y alguien lo ve venir. ¿Qué diría?',
+          opts: [
+            'Careful! You will drop it.',
+            'Careful! You are going to drop it.',
+            'Careful! You drop it.',
+            'Careful! You would drop it.',
+          ],
+          ans: 1,
+          ok: 'Exacto. Lo está viendo pasar: hay evidencia delante, y eso pide going to.',
+          no: 'Piensa en la evidencia: lo está viendo ocurrir en este momento. Eso pide going to, no una opinión con will.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Usar will para lo que ya estaba planeado: «I will study medicine» cuando lo decidiste hace meses.',
+            'Usar going to para lo que decides al hablar: «I’m going to get it» al oír el teléfono.',
+            'Poner el infinitivo con to detrás de will: «I will to help you».',
+            'Evitar «I’m going to go» por sonar raro: es correcto y se usa a diario.',
+            'Usar futuro con los horarios: «The train will leave at 7:30» en vez de «leaves».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── A2 · Comparar ─────────────────────────────────────────────────────────
+  {
+    slug: 'eng-comparar',
+    chapter: 'A2 · Comparar',
+    title: 'Contar sílabas antes de comparar',
+    hook: 'El inglés compara de dos maneras distintas y elige según lo larga que sea la palabra. Suena arbitrario. Lo es. Pero la regla es corta.',
+    minutes: 6,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'La regla cabe en dos líneas',
+          p: 'Adjetivo <strong>corto</strong> —una sílaba, o dos terminadas en -y—: se le pega <em>-er</em> y <em>the -est</em>. Adjetivo <strong>largo</strong> —dos sílabas o más—: se le antepone <em>more</em> y <em>the most</em>. Eso es todo.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'cheap      →  cheaper         →  the cheapest\nhappy      →  happier         →  the happiest\nexpensive  →  more expensive  →  the most expensive',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La marca va una sola vez',
+          p: 'El error más frecuente es marcarlo dos veces: <em>more cheaper</em>, <em>the most biggest</em>. En español decimos «más barato», con el «más» suelto, así que la mano pide ponerlo también aquí. Pero <strong>-er ya significa «más»</strong>: repetirlo es como decir «más mejor».',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Los tres que se saltan la regla',
+          p: 'Como en español, los más usados son irregulares: <strong>good → better → the best</strong>, <strong>bad → worse → the worst</strong>, <strong>far → further → the furthest</strong>. Son tres. Se memorizan y se acabó.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Y cuando son iguales',
+          p: 'Para decir que dos cosas se parecen se usa <strong>as … as</strong>: <em>Lima is as big as Bogotá</em>. Y para negarlo, <em>not as … as</em>: <em>It isn’t as big as I imagined</em>. Nunca <em>so big as</em> ni <em>bigger as</em>.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escúchalas',
+          items: [
+            { en: 'This one is cheaper than that one.', es: 'Este es más barato que aquel.' },
+            { en: 'It was the best day of the trip.', es: 'Fue el mejor día del viaje.' },
+            { en: "Machu Picchu isn't as big as I imagined.", es: 'Machu Picchu no es tan grande como imaginaba.' },
+            { en: 'Traffic is worse than last year.', es: 'El tráfico está peor que el año pasado.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Cuidado con no marcar dos veces: se dice «cheaper», no «more cheaper».',
+          items: [
+            { text: 'This is cheaper than that' },
+            { text: 'It was the best day' },
+            { text: "It isn't as big as I imagined" },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál está bien?',
+          opts: [
+            'This hotel is more cheaper.',
+            'This hotel is cheaper.',
+            'This hotel is more cheap.',
+            'This hotel is the cheaper.',
+          ],
+          ans: 1,
+          ok: 'Exacto. «Cheap» es corto, así que lleva -er. Y con -er ya no hace falta more.',
+          no: 'Cuenta las sílabas: «cheap» tiene una, así que va con -er. Y el -er ya significa «más»: no lo repitas con more.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Marcar dos veces: «more cheaper», «the most biggest».',
+            'Usar more con adjetivos cortos: «more cheap», «more big».',
+            'Usar -er con adjetivos largos: «expensiver», «interestinger».',
+            'Olvidar el «the» del superlativo: «it was best day».',
+            'Decir «so big as» o «bigger as» en vez de «as big as».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── A2 · Describir personas y rutinas ─────────────────────────────────────
+  {
+    slug: 'eng-describir',
+    chapter: 'A2 · Describir personas y rutinas',
+    title: 'El orden que en español es libre',
+    hook: 'En español puedes decir «un coche rojo japonés nuevo» o «un coche nuevo japonés rojo». En inglés hay un solo orden posible, y el oído nativo lo nota al instante.',
+    minutes: 6,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Los adjetivos van en fila india',
+          p: 'Cuando se juntan varios delante del sustantivo, el inglés los ordena siempre igual: <strong>opinión, tamaño, edad, forma, color, origen, material</strong>. Nadie aprende la lista de memoria; se interioriza oyéndola.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'a  nice     small   new    round  red    Japanese  box\n   opinión  tamaño  edad   forma  color  origen',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'En la práctica casi nunca son más de dos',
+          p: 'La lista completa asusta, pero en el habla real rara vez se encadenan más de dos o tres adjetivos. Lo único que hay que retener es la pareja que más se usa: <strong>edad antes que color</strong> y <strong>color antes que origen</strong>. Con eso resuelves casi todo: <em>a new red Japanese car</em>.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Los adverbios de frecuencia también tienen sitio',
+          p: 'Always, usually, often, sometimes, never. Van <strong>delante del verbo</strong> —<em>I always get up at seven</em>— salvo con el verbo <em>be</em>, donde van <strong>detrás</strong>: <em>She is always late</em>. Es la única excepción y cubre todos los casos.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'I   always  get up  at seven.  →  delante del verbo\nShe  is  always  late.           →  detrás de be',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Rutinas de verdad',
+          items: [
+            { en: 'I usually get up at seven.', es: 'Normalmente me levanto a las siete.' },
+            { en: 'She is always late for class.', es: 'Ella siempre llega tarde a clase.' },
+            { en: 'We never eat out on Mondays.', es: 'Nunca comemos fuera los lunes.' },
+            { en: 'He has a new red Japanese car.', es: 'Tiene un coche japonés rojo nuevo.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'Fíjate en dónde cae el adverbio: delante del verbo normal, detrás de «is».',
+          items: [
+            { text: 'I usually get up at seven' },
+            { text: 'She is always late' },
+            { text: 'A new red Japanese car' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál está bien?',
+          opts: ['She always is late.', 'She is always late.', 'Always she is late.', 'She is late always.'],
+          ans: 1,
+          ok: 'Exacto. Con el verbo be, el adverbio de frecuencia va detrás.',
+          no: 'Recuerda la única excepción: con «be» el adverbio va detrás del verbo, no delante.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Poner el adverbio detrás del verbo normal: «I get up always at seven».',
+            'Ponerlo delante de «be»: «she always is late».',
+            'Ordenar los adjetivos como en español: «a red new car».',
+            'Poner el adjetivo detrás del sustantivo: «a car red».',
+            'Olvidar la -s de tercera persona al describir rutinas: «he get up at seven».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
 ];

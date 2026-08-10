@@ -663,4 +663,616 @@ export const ENG: BankQuestion[] = [
       '4': 'Duplica el sujeto.',
     },
   },
+
+  // ── A2 · Contar lo que pasó ───────────────────────────────────────────────
+  {
+    chapter: 'A2 · Contar lo que pasó',
+    stem: 'Completa: «She <b>______</b> to the market yesterday.»',
+    options: ['went', 'goed', 'go', 'gone', 'was go'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Fíjate en la pista temporal',
+        p: '«Yesterday» obliga al pasado. No hay otra opción posible.',
+        m: 'yesterday → pasado simple',
+      },
+      {
+        t: 'Recuerda que «go» es irregular',
+        p: 'No admite -ed: su pasado es una palabra distinta.',
+        m: 'go → went → gone',
+      },
+    ],
+    concept:
+      'Los verbos más frecuentes del inglés son casi todos irregulares. No se deducen: se aprenden usándolos.',
+    trick: 'Estudia los irregulares en tríos —go, went, gone—, porque el tercero hace falta más adelante.',
+    distractors: {
+      '1': 'Regularizaste un irregular. «Goed» no existe.',
+      '2': 'Es el presente, y la frase habla de ayer.',
+      '3': 'Es el participio: se usa con have, no solo.',
+      '4': 'Mezcla dos estructuras que no van juntas.',
+    },
+  },
+  {
+    chapter: 'A2 · Contar lo que pasó',
+    stem: 'Completa: «Did you <b>______</b> the game last night?»',
+    options: ['see', 'saw', 'seen', 'sees', 'seeing'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Localiza dónde está el pasado',
+        p: 'Ya está en «did». Ese es el único sitio donde puede estar.',
+        m: 'did = do en pasado',
+      },
+      {
+        t: 'Deja el verbo desnudo',
+        p: 'Con el auxiliar presente, el verbo principal vuelve a su forma base. Marcar el pasado dos veces es como decir «fuistes».',
+        m: 'Did you see…  ✓\nDid you saw…  ✗',
+      },
+    ],
+    concept:
+      'La marca de tiempo aparece una sola vez en la frase. Si hay auxiliar, la lleva el auxiliar y el verbo se queda en su forma base.',
+    trick: 'Es la misma regla del presente: «does she like», nunca «does she likes». Cambia el auxiliar, no la regla.',
+    distractors: {
+      '1': 'Pone el pasado dos veces: ya está en «did».',
+      '2': 'Es el participio; aquí haría falta have.',
+      '3': 'Es la tercera persona del presente.',
+      '4': 'Es el gerundio, que necesita el verbo be.',
+    },
+  },
+  {
+    chapter: 'A2 · Contar lo que pasó',
+    stem: '¿En cuál de estos verbos la terminación <b>-ed</b> añade una sílaba entera al pronunciarse?',
+    options: ['wanted', 'worked', 'played', 'lived', 'called'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira en qué sonido termina el verbo sin la -ed',
+        p: 'La -ed solo suena como sílaba aparte cuando el verbo ya acaba en sonido de t o de d. En los demás casos se pega al final.',
+        m: 'want → termina en /t/  → wan-ted',
+      },
+      {
+        t: 'Comprueba los otros',
+        p: 'Ninguno acaba en t ni en d, así que la -ed no añade sílaba: suena pegada.',
+        m: 'worked  → /wɜːrkt/   una sílaba\nplayed  → /pleɪd/    una sílaba',
+      },
+    ],
+    concept:
+      'La -ed se escribe siempre igual y se pronuncia de tres maneras. Solo la tercera —/ɪd/— añade una sílaba, y solo tras t o d.',
+    trick: 'Prueba a decir «workted». Si suena forzado, es que ahí la -ed no lleva sílaba propia.',
+    distractors: {
+      '1': 'Termina en /k/: la -ed suena /t/ y no añade sílaba.',
+      '2': 'Termina en vocal: la -ed suena /d/ pegada.',
+      '3': 'Termina en /v/: también pegada.',
+      '4': 'Termina en /l/: igualmente pegada.',
+    },
+  },
+  {
+    chapter: 'A2 · Contar lo que pasó',
+    stem: 'Traduce: «<b>No lo vi la semana pasada.</b>»',
+    options: ["I didn't see him last week.", "I didn't saw him last week.", 'I not saw him last week.', 'I no saw him last week.', "I haven't see him last week."],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'La negación necesita auxiliar',
+        p: 'En español basta «no» delante del verbo. En inglés hace falta didn’t, que no traduce nada por sí solo.',
+        m: 'No vi  →  I didn’t see',
+      },
+      {
+        t: 'El verbo vuelve a su forma base',
+        p: 'El pasado ya está dentro de didn’t.',
+        m: "didn't + see  ✓\ndidn't + saw  ✗",
+      },
+    ],
+    concept:
+      'Negar y preguntar en pasado funcionan igual: el auxiliar carga el tiempo y el verbo se queda desnudo.',
+    trick: 'Si en tu frase aparecen dos marcas de pasado, sobra una. Quítasela al verbo, nunca al auxiliar.',
+    distractors: {
+      '1': 'Marca el pasado dos veces.',
+      '2': 'Le falta el auxiliar.',
+      '3': 'Calca la negación española.',
+      '4': 'El presente perfecto no admite «last week», que es un momento cerrado.',
+    },
+  },
+  {
+    chapter: 'A2 · Contar lo que pasó',
+    stem: 'Traduce: «<b>Hace dos años me mudé a Lima.</b>»',
+    options: [
+      'I moved to Lima two years ago.',
+      'I moved to Lima ago two years.',
+      'I have moved to Lima two years ago.',
+      'It makes two years I moved to Lima.',
+      'Two years ago I move to Lima.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Traduce «hace» por «ago», no por un verbo',
+        p: 'El «hace» español es el verbo hacer; el inglés no usa ningún verbo aquí, usa una palabra que va detrás del tiempo.',
+        m: 'hace dos años → two years ago',
+      },
+      {
+        t: 'Colócalo en su sitio',
+        p: '«Ago» va siempre detrás de la expresión de tiempo, nunca delante.',
+        m: 'two years ago  ✓\nago two years  ✗',
+      },
+      {
+        t: 'Elige el tiempo verbal',
+        p: '«Ago» señala un momento terminado, y eso exige pasado simple. Con presente perfecto es incompatible: no se puede decir cuándo ocurrió algo que sigue abierto.',
+        m: 'ago + pasado simple  ✓\nago + present perfect  ✗',
+      },
+    ],
+    concept:
+      '«Ago» marca un punto cerrado en el pasado. Por eso convive con el pasado simple y choca con el presente perfecto.',
+    trick:
+      'Si en la frase aparece «ago», «yesterday» o «last week», el verbo va en pasado simple. Sin excepciones.',
+    distractors: {
+      '1': '«Ago» va detrás del tiempo, no delante.',
+      '2': '«Ago» y el presente perfecto no pueden ir juntos.',
+      '3': 'Traduce «hace» como si fuera el verbo hacer.',
+      '4': 'La colocación es correcta, pero el verbo está en presente.',
+    },
+  },
+
+  // ── A2 · Hablar del futuro ────────────────────────────────────────────────
+  {
+    chapter: 'A2 · Hablar del futuro',
+    stem: '¿Cuál está <b>bien formada</b>?',
+    options: [
+      'She is going to study medicine.',
+      'She is going to studies medicine.',
+      'She is going study medicine.',
+      'She will to study medicine.',
+      'She go to study medicine.',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Arma la estructura pieza a pieza',
+        p: 'Son tres: el verbo be conjugado, «going to», y el verbo en infinitivo sin nada más.',
+        m: 'be + going to + verbo base',
+      },
+      {
+        t: 'Comprueba que no sobre ni falte nada',
+        p: 'El verbo final va desnudo: ni -s, ni -ing, ni otro «to».',
+        m: 'is going to study  ✓',
+      },
+    ],
+    concept:
+      'Los futuros ingleses son fórmulas fijas. Antes de elegir cuál usar hay que saber montarlas, y montarlas mal delata más que elegir mal.',
+    trick: 'Detrás de «to» y detrás de «will» siempre va el verbo en su forma base. Nunca conjugado.',
+    distractors: {
+      '1': 'Detrás de «to» el verbo no se conjuga.',
+      '2': 'Falta el «to» de «going to».',
+      '3': 'Detrás de «will» no va «to».',
+      '4': 'No hay estructura de futuro: falta el verbo be.',
+    },
+  },
+  {
+    chapter: 'A2 · Hablar del futuro',
+    stem: 'Suena el teléfono y dices que contestas tú. ¿Cuál es la forma natural?',
+    options: ["I'll get it.", "I'm going to get it.", 'I get it.', "I'm getting it.", 'I will to get it.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Pregúntate cuándo lo decidiste',
+        p: 'Lo decides en ese instante, al oír el timbre. No estaba planeado.',
+        m: 'decisión del momento → will',
+      },
+      {
+        t: 'Comprueba qué diría «going to»',
+        p: 'Sonaría a que tenías planeado desde antes contestar ese teléfono, lo cual es absurdo.',
+        m: '',
+      },
+    ],
+    concept:
+      'Will y going to no se diferencian por el tiempo sino por el momento de la decisión: ahora frente a antes.',
+    trick: 'Ofrecimientos y promesas van con will, porque nacen al hablar: «I’ll help you», «I’ll call you».',
+    distractors: {
+      '1': 'Implicaría que estaba planeado de antemano.',
+      '2': 'El presente simple es para rutinas.',
+      '3': 'El continuo indicaría una cita ya fijada.',
+      '4': 'Detrás de «will» no va «to».',
+    },
+  },
+  {
+    chapter: 'A2 · Hablar del futuro',
+    stem: 'Ves a alguien tambaleándose con una bandeja llena. ¿Qué le dices?',
+    options: [
+      "Careful! You're going to drop those glasses.",
+      'Careful! You will drop those glasses.',
+      'Careful! You drop those glasses.',
+      'Careful! You would drop those glasses.',
+      'Careful! You are dropping those glasses.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira en qué se apoya tu predicción',
+        p: 'No es una opinión: lo estás viendo ocurrir. Hay evidencia delante de los ojos.',
+        m: 'evidencia visible → going to',
+      },
+      {
+        t: 'Contrástalo con will',
+        p: 'Will serviría para una opinión sobre el futuro: «I think you’ll drop them one day».',
+        m: 'opinión → will\nevidencia → going to',
+      },
+    ],
+    concept:
+      'Para predecir, el inglés distingue entre lo que uno cree y lo que uno ve. La evidencia presente pide going to.',
+    trick: 'Si puedes señalar con el dedo la razón de tu predicción, usa going to.',
+    distractors: {
+      '1': 'Serviría para una opinión, no para algo que estás viendo.',
+      '2': 'El presente simple no predice.',
+      '3': 'Would es condicional, no futuro.',
+      '4': 'Diría que ya se están cayendo, no que van a caerse.',
+    },
+  },
+  {
+    chapter: 'A2 · Hablar del futuro',
+    stem: 'Según el horario oficial de la estación, completa: «The train <b>______</b> at 7:30 tomorrow.»',
+    options: ['leaves', 'will leave', 'is going to leave', 'leave', 'would leave'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en de qué tipo de futuro se trata',
+        p: 'No es un plan de nadie ni una predicción: es un horario fijado por una institución.',
+        m: 'horario → presente simple',
+      },
+      {
+        t: 'Compáralo con el español',
+        p: 'Decimos «el tren sale a las siete y media», también en presente. La lógica es la misma.',
+        m: '',
+      },
+    ],
+    concept:
+      'Los horarios de trenes, vuelos, clases y cines van en presente simple aunque hablen del futuro. Es lo fijado, no lo previsto.',
+    trick: 'Si lo decide un horario y no una persona, presente simple.',
+    distractors: {
+      '1': 'Es una predicción, y un horario no se predice.',
+      '2': 'Es un plan personal, y aquí el plan es de la estación.',
+      '3': 'Falta la -s de tercera persona.',
+      '4': 'Es condicional.',
+    },
+  },
+  {
+    chapter: 'A2 · Hablar del futuro',
+    stem: '¿Qué diferencia hay entre «<b>I’ll call him</b>» y «<b>I’m going to call him</b>»?',
+    options: [
+      'La primera se decide al hablar; la segunda ya estaba decidida',
+      'La primera es más lejana en el tiempo que la segunda',
+      'La primera es formal y la segunda coloquial',
+      'La primera es una obligación y la segunda una opción',
+      'No hay ninguna diferencia: son intercambiables',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Descarta el tiempo',
+        p: 'Las dos pueden referirse al mismo momento: dentro de cinco minutos o mañana. La diferencia no está ahí.',
+        m: '',
+      },
+      {
+        t: 'Sitúa la decisión',
+        p: 'Will nace en el instante de hablar; going to venía decidido de antes.',
+        m: 'will      → lo decido ahora\ngoing to  → ya lo tenía pensado',
+      },
+      {
+        t: 'Compruébalo con un contexto',
+        p: 'Si alguien dice «nadie le ha avisado», la respuesta natural es «I’ll call him»: lo decides en ese momento.',
+        m: '',
+      },
+    ],
+    concept:
+      'El futuro inglés codifica algo que el español deja implícito: cuándo se tomó la decisión. Elegir mal no da error, pero cambia lo que el otro entiende.',
+    trick:
+      'Si puedes añadir «ya lo tenía pensado» sin que suene raro, va going to. Si añadirías «se me acaba de ocurrir», va will.',
+    distractors: {
+      '1': 'Ninguna de las dos indica distancia temporal.',
+      '2': 'Las dos se usan igual en habla formal y coloquial.',
+      '3': 'Ninguna expresa obligación.',
+      '4': 'Se entienden las dos, pero comunican cosas distintas.',
+    },
+  },
+
+  // ── A2 · Comparar ─────────────────────────────────────────────────────────
+  {
+    chapter: 'A2 · Comparar',
+    stem: 'Completa con el comparativo de <b>cheap</b>: «This book is <b>______</b> than that one.»',
+    options: ['cheaper', 'more cheap', 'cheapest', 'more cheaper', 'the cheaper'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      { t: 'Cuenta las sílabas', p: '«Cheap» tiene una: es un adjetivo corto.', m: 'cheap → 1 sílaba' },
+      {
+        t: 'Aplica la regla de los cortos',
+        p: 'Los adjetivos cortos forman el comparativo con -er, sin more.',
+        m: 'cheap + er = cheaper',
+      },
+    ],
+    concept:
+      'El inglés elige entre -er y more según la longitud del adjetivo. Una sílaba, o dos terminadas en -y, van con -er.',
+    trick: 'Si el adjetivo cabe cómodo en una sola sílaba, casi seguro lleva -er.',
+    distractors: {
+      '1': 'More es para los adjetivos largos.',
+      '2': 'Es el superlativo, y aquí se comparan dos cosas.',
+      '3': 'Marca la comparación dos veces.',
+      '4': 'El artículo sobra en el comparativo.',
+    },
+  },
+  {
+    chapter: 'A2 · Comparar',
+    stem: 'Completa: «Lima is <b>______</b> city in Peru.»',
+    options: ['the biggest', 'the most big', 'bigger', 'the bigger', 'biggest'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Decide si comparas o destacas',
+        p: 'No se compara con otra ciudad concreta: se la señala como la primera de todas. Eso es superlativo.',
+        m: 'una entre todas → superlativo',
+      },
+      {
+        t: 'Fórmalo',
+        p: 'Adjetivo corto: -est. Y el superlativo siempre lleva «the» delante.',
+        m: 'the + big + est = the biggest',
+      },
+    ],
+    concept:
+      'El comparativo enfrenta dos cosas; el superlativo destaca una dentro de un grupo. El artículo «the» es obligatorio en el segundo.',
+    trick: 'Si en español dirías «el más», en inglés hay «the». Si dirías solo «más», no lo pongas.',
+    distractors: {
+      '1': 'Most es para adjetivos largos.',
+      '2': 'Es comparativo, y falta con qué se compara.',
+      '3': 'Mezcla el artículo del superlativo con la forma del comparativo.',
+      '4': 'Le falta el «the».',
+    },
+  },
+  {
+    chapter: 'A2 · Comparar',
+    stem: '¿Cuál es el comparativo de <b>expensive</b>?',
+    options: ['more expensive', 'expensiver', 'most expensive', 'more expensiver', 'expensivest'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      { t: 'Cuenta las sílabas', p: 'Ex-pen-sive: tres. Es un adjetivo largo.', m: 'expensive → 3 sílabas' },
+      {
+        t: 'Aplica la regla de los largos',
+        p: 'Se antepone «more» y el adjetivo no cambia.',
+        m: 'more + expensive',
+      },
+    ],
+    concept:
+      'Los adjetivos de dos sílabas o más forman el comparativo con more y el superlativo con the most, sin alterar la palabra.',
+    trick: 'Si al pegarle -er la palabra te suena imposible de pronunciar, es que necesita more.',
+    distractors: {
+      '1': 'Los adjetivos largos no admiten -er.',
+      '2': 'Es el superlativo, no el comparativo.',
+      '3': 'Marca la comparación dos veces.',
+      '4': 'Los largos tampoco admiten -est.',
+    },
+  },
+  {
+    chapter: 'A2 · Comparar',
+    stem: 'Completa: «It was <b>______</b> day of the whole trip.» (good)',
+    options: ['the best', 'the goodest', 'the most good', 'better', 'the better'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce el irregular',
+        p: '«Good» no sigue ninguna regla, igual que «bueno» en español no da «más bueno» sino «mejor».',
+        m: 'good → better → the best',
+      },
+      { t: 'Elige la forma que pide la frase', p: 'Es el mejor de todo el viaje: superlativo.', m: 'the best' },
+    ],
+    concept:
+      'Solo tres adjetivos frecuentes son irregulares: good, bad y far. El resto sigue la regla de las sílabas.',
+    trick: 'Memoriza los tres tríos completos —good/better/best, bad/worse/worst, far/further/furthest— y ya no hay más excepciones.',
+    distractors: {
+      '1': '«Good» no admite -est.',
+      '2': 'Tampoco admite most.',
+      '3': 'Es el comparativo, y aquí se destaca uno entre todos.',
+      '4': 'Mezcla el artículo con el comparativo.',
+    },
+  },
+  {
+    chapter: 'A2 · Comparar',
+    stem: 'Traduce: «<b>Machu Picchu no es tan grande como imaginaba.</b>»',
+    options: [
+      "Machu Picchu isn't as big as I imagined.",
+      "Machu Picchu isn't so big as I imagined.",
+      "Machu Picchu isn't bigger as I imagined.",
+      "Machu Picchu isn't as bigger as I imagined.",
+      "Machu Picchu isn't more big as I imagined.",
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Reconoce la estructura',
+        p: 'No se compara diciendo que uno es más que otro: se dice que no llega al mismo nivel. Esa es la estructura de igualdad.',
+        m: 'tan … como  →  as … as',
+      },
+      {
+        t: 'Deja el adjetivo sin marcar',
+        p: 'Entre los dos «as» el adjetivo va en su forma normal, sin -er ni more: la comparación ya la hacen los «as».',
+        m: 'as big as  ✓\nas bigger as  ✗',
+      },
+      {
+        t: 'Descarta el calco',
+        p: '«So … as» copia el «tan … como» español y solo aparece en inglés muy antiguo o literario.',
+        m: '',
+      },
+    ],
+    concept:
+      'La comparación de igualdad usa as … as y nunca lleva el adjetivo marcado. Es la estructura que más se calca del español.',
+    trick: 'Recuerda la pareja: siempre dos «as», uno delante y otro detrás del adjetivo desnudo.',
+    distractors: {
+      '1': 'Calca el «tan … como» español; en inglés moderno se usa «as … as».',
+      '2': 'Mezcla el comparativo con la estructura de igualdad.',
+      '3': 'Marca el adjetivo dentro de una estructura que ya compara.',
+      '4': 'Mezcla dos formas de comparar a la vez.',
+    },
+  },
+
+  // ── A2 · Describir personas y rutinas ─────────────────────────────────────
+  {
+    chapter: 'A2 · Describir personas y rutinas',
+    stem: 'Coloca <b>usually</b>: «I ______ get up at seven.»',
+    options: ['I usually get up at seven.', 'I get up usually at seven.', 'Usually I am get up at seven.', 'I get usually up at seven.', 'I get up at seven usually.'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Recuerda dónde viven estos adverbios',
+        p: 'Always, usually, often, sometimes y never van delante del verbo principal.',
+        m: 'sujeto + adverbio + verbo',
+      },
+      { t: 'Aplícalo', p: 'El verbo es «get up», así que el adverbio va justo antes.', m: 'I usually get up…' },
+    ],
+    concept:
+      'Los adverbios de frecuencia tienen una posición fija en la frase inglesa, mientras que en español se mueven con libertad.',
+    trick: 'Piensa en el hueco entre el sujeto y el verbo: ahí es donde encajan.',
+    distractors: {
+      '1': 'Queda detrás del verbo, que es la posición española.',
+      '2': 'Añade un verbo be que sobra.',
+      '3': 'Parte el verbo «get up» por la mitad.',
+      '4': 'Al final suena a añadido, no a rutina.',
+    },
+  },
+  {
+    chapter: 'A2 · Describir personas y rutinas',
+    stem: 'Coloca <b>always</b>: «She ______ late for class.»',
+    options: ['She is always late', 'She always is late', 'Always she is late', 'She is late always', 'She always late'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Identifica el verbo',
+        p: 'Aquí el verbo es «is», es decir el verbo be. Y ese cambia la regla.',
+        m: 'verbo = be',
+      },
+      {
+        t: 'Aplica la única excepción',
+        p: 'Con «be» el adverbio va detrás, no delante. Con cualquier otro verbo, delante.',
+        m: 'I always work.      → delante\nShe is always late. → detrás',
+      },
+    ],
+    concept:
+      'La regla de los adverbios de frecuencia tiene una sola excepción, y es el verbo be. Aprenderla resuelve todo el capítulo.',
+    trick: 'Regla en cinco palabras: antes del verbo, después de be.',
+    distractors: {
+      '1': 'Es la posición de los demás verbos, no la de be.',
+      '2': 'Al inicio suena enfático y forzado en esta frase.',
+      '3': 'Al final queda como añadido, no como rutina.',
+      '4': 'Le falta el verbo.',
+    },
+  },
+  {
+    chapter: 'A2 · Describir personas y rutinas',
+    stem: 'Ordena los adjetivos: un coche <b>japonés, rojo y nuevo</b>.',
+    options: ['a new red Japanese car', 'a red new Japanese car', 'a Japanese red new car', 'a new Japanese red car', 'a red Japanese new car'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Recuerda el orden fijo',
+        p: 'Opinión, tamaño, edad, forma, color, origen, material. Aquí solo intervienen tres de esas casillas.',
+        m: 'edad → color → origen',
+      },
+      { t: 'Colócalos', p: 'Nuevo es edad, rojo es color, japonés es origen. En ese orden.', m: 'new  red  Japanese' },
+      {
+        t: 'Comprueba con el oído',
+        p: 'Cualquier otro orden suena mal a un nativo aunque sea comprensible. Es lo que delata una traducción.',
+        m: '',
+      },
+    ],
+    concept:
+      'El inglés tiene un orden obligatorio para los adjetivos encadenados; el español los coloca con libertad. Es una regla que nadie enuncia y todos aplican.',
+    trick: 'De las siete casillas, en la práctica solo necesitas dos parejas: edad antes que color, y color antes que origen.',
+    distractors: {
+      '1': 'Pone el color antes que la edad.',
+      '2': 'Pone el origen primero, que va siempre al final.',
+      '3': 'Coloca el origen antes que el color.',
+      '4': 'Invierte las tres casillas.',
+    },
+  },
+  {
+    chapter: 'A2 · Describir personas y rutinas',
+    stem: 'Completa: «How often <b>______</b> you go to the gym?»',
+    options: ['do', 'are', 'does', 'did', 'have'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira el sujeto y el tiempo',
+        p: 'El sujeto es «you» y la pregunta es sobre una rutina, es decir presente simple.',
+        m: 'you + presente → do',
+      },
+      {
+        t: 'Recuerda que las preguntas de rutina llevan auxiliar',
+        p: '«How often» pide frecuencia, y la frecuencia se pregunta en presente simple.',
+        m: 'How often do you…?',
+      },
+    ],
+    concept:
+      'La palabra de pregunta no sustituye al auxiliar: «how often» abre la pregunta, pero el auxiliar sigue haciendo falta.',
+    trick: 'Responde mentalmente antes: «I go three times a week». El verbo de esa respuesta te dice qué auxiliar toca.',
+    distractors: {
+      '1': 'Se usa con adjetivos o con el continuo, no con «go» en presente simple.',
+      '2': 'Corresponde a he, she o it.',
+      '3': 'Preguntaría por el pasado.',
+      '4': 'Serviría para el presente perfecto, que aquí no toca.',
+    },
+  },
+  {
+    chapter: 'A2 · Describir personas y rutinas',
+    stem: '«My brother always is late and he get up at nine.» ¿Cuántos errores hay?',
+    options: [
+      'Dos: «always is» debe ser «is always», y «he get up» debe ser «he gets up»',
+      'Uno: solo «always is»',
+      'Uno: solo «he get up»',
+      'Tres: los dos anteriores y además falta un artículo',
+      'Ninguno: la frase es correcta',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Revisa la primera mitad',
+        p: 'El verbo es «is», así que el adverbio va detrás.',
+        m: 'always is  ✗  →  is always  ✓',
+      },
+      {
+        t: 'Revisa la segunda',
+        p: '«He» es tercera persona del singular, y el verbo lleva -s. Aquí no hay auxiliar que se la lleve.',
+        m: 'he get up  ✗  →  he gets up  ✓',
+      },
+      {
+        t: 'Comprueba que no haya más',
+        p: 'El resto está bien: «at nine» no lleva artículo y «my brother» está completo.',
+        m: 'My brother is always late\nand he gets up at nine.',
+      },
+    ],
+    concept:
+      'Describir rutinas junta dos reglas a la vez: la posición del adverbio y la -s de tercera persona. Los dos errores suelen aparecer en la misma frase.',
+    trick:
+      'Al revisar lo que escribes, haz dos pasadas separadas: una buscando adverbios mal colocados y otra buscando -s que falten.',
+    distractors: {
+      '1': 'También falta la -s de tercera persona en «get up».',
+      '2': 'También está mal la posición de «always».',
+      '3': 'No falta ningún artículo: «at nine» es correcto así.',
+      '4': 'Hay dos errores claros.',
+    },
+  },
 ];
