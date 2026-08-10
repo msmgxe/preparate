@@ -113,6 +113,32 @@ export const en: Dict = {
     age: 'Made for the last three years of secondary school, and for anyone who already finished and is applying.',
   },
 
+  /** La ruta del alumno, dibujada como un camino de tres paradas. */
+  route: {
+    eyebrow: 'The path',
+    title: 'From not knowing where you stand to walking in with room to spare',
+    body:
+      'Not three promises: the three stages everyone who studies here goes through, and what you actually do in each. The first takes an afternoon; the third runs until exam day.',
+    stops: [
+      {
+        tag: 'Stage 1',
+        title: 'Diagnosis',
+        body: 'A short mock exam places you chapter by chapter. You leave knowing what you own, what is shaky and where it pays to start.',
+      },
+      {
+        tag: 'Stage 2',
+        title: 'Active practice',
+        body: 'A five-minute lesson, questions in the real format, and instant marking that explains which reasoning error leads to each wrong option.',
+      },
+      {
+        tag: 'Stage 3',
+        title: 'Mastery',
+        body: 'What you got wrong comes back on days 1, 3, 7 and 21, and timed mocks give you the only number that matters: how you perform under pressure.',
+      },
+    ],
+    note: 'You can start with any chapter you like. The fixed order applies only to English, because a language really is built on top of what came before.',
+  },
+
   proof: {
     eyebrow: 'How you study here',
     title: 'Four decisions that change the outcome',
@@ -168,6 +194,8 @@ export const en: Dict = {
       'A five-minute visual lesson, real exam questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
     heroCta2: 'See plans and guarantee',
     heroNote: 'No card needed. Every module opens a few questions so you can try before paying.',
+    heroAltA: 'A student working through exercises in her notebook',
+    heroAltB: 'A student practising on his laptop',
 
     statChapters: 'chapters with their own syllabus',
     statQuestions: 'questions with step-by-step solutions',

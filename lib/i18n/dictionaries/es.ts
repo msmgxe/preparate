@@ -116,6 +116,32 @@ export const es = {
     age: 'Pensado para 3.º, 4.º y 5.º de secundaria, y para quien ya salió y va a postular.',
   },
 
+  /** La ruta del alumno, dibujada como un camino de tres paradas. */
+  route: {
+    eyebrow: 'El camino',
+    title: 'De no saber dónde estás a entrar con margen',
+    body:
+      'No son tres promesas: son las tres etapas por las que pasa cualquiera que estudia aquí, con lo que hace en cada una. La primera dura una tarde; la tercera, hasta el día del examen.',
+    stops: [
+      {
+        tag: 'Etapa 1',
+        title: 'Diagnóstico',
+        body: 'Un simulacro corto te ubica capítulo por capítulo. Sales sabiendo qué dominas, qué está flojo y por dónde conviene empezar.',
+      },
+      {
+        tag: 'Etapa 2',
+        title: 'Práctica activa',
+        body: 'Clase de cinco minutos, ejercicios al formato real y corrección explicada al instante: qué error de razonamiento llevó a cada alternativa.',
+      },
+      {
+        tag: 'Etapa 3',
+        title: 'Dominio',
+        body: 'Lo que fallaste vuelve a los 1, 3, 7 y 21 días, y los simulacros cronometrados te dan la única cifra que importa: cómo rindes bajo presión.',
+      },
+    ],
+    note: 'Puedes entrar por el capítulo que quieras. El orden fijo es solo en Inglés, porque un idioma sí se construye por encima de lo anterior.',
+  },
+
   proof: {
     eyebrow: 'Cómo se estudia aquí',
     title: 'Cuatro decisiones que cambian el resultado',
@@ -171,6 +197,8 @@ export const es = {
       'Clase visual de cinco minutos, preguntas del examen real y la resolución paso a paso en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de fallarse.',
     heroCta2: 'Ver planes y garantía',
     heroNote: 'Sin tarjeta. Cada módulo trae preguntas abiertas para que lo pruebes antes de pagar.',
+    heroAltA: 'Una alumna resolviendo ejercicios en su cuaderno',
+    heroAltB: 'Un alumno practicando en la laptop',
 
     statChapters: 'capítulos con temario propio',
     statQuestions: 'preguntas con resolución paso a paso',

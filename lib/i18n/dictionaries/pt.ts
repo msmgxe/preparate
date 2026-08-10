@@ -113,6 +113,32 @@ export const pt: Dict = {
     age: 'Pensado para os últimos anos do ensino médio e para quem já terminou e vai prestar.',
   },
 
+  /** La ruta del alumno, dibujada como un camino de tres paradas. */
+  route: {
+    eyebrow: 'O caminho',
+    title: 'De não saber onde você está a entrar com folga',
+    body:
+      'Não são três promessas: são as três etapas pelas quais passa quem estuda aqui, com o que se faz em cada uma. A primeira dura uma tarde; a terceira vai até o dia da prova.',
+    stops: [
+      {
+        tag: 'Etapa 1',
+        title: 'Diagnóstico',
+        body: 'Um simulado curto situa você capítulo a capítulo. Você sai sabendo o que domina, o que está frágil e por onde convém começar.',
+      },
+      {
+        tag: 'Etapa 2',
+        title: 'Prática ativa',
+        body: 'Aula de cinco minutos, exercícios no formato real e correção explicada na hora: qual erro de raciocínio leva a cada alternativa.',
+      },
+      {
+        tag: 'Etapa 3',
+        title: 'Domínio',
+        body: 'O que você errou volta nos dias 1, 3, 7 e 21, e os simulados cronometrados dão o único número que importa: como você rende sob pressão.',
+      },
+    ],
+    note: 'Você pode começar pelo capítulo que quiser. A ordem fixa vale só para o Inglês, porque um idioma realmente se constrói sobre o que veio antes.',
+  },
+
   proof: {
     eyebrow: 'Como se estuda aqui',
     title: 'Quatro decisões que mudam o resultado',
@@ -168,6 +194,8 @@ export const pt: Dict = {
       'Aula visual de cinco minutos, questões da prova real e a resolução passo a passo no instante em que você erra. O que você erra volta programado até deixar de errar.',
     heroCta2: 'Ver planos e garantia',
     heroNote: 'Sem cartão. Cada módulo abre algumas questões para você testar antes de pagar.',
+    heroAltA: 'Uma aluna resolvendo exercícios no caderno',
+    heroAltB: 'Um aluno praticando no notebook',
 
     statChapters: 'capítulos com conteúdo próprio',
     statQuestions: 'questões com resolução passo a passo',

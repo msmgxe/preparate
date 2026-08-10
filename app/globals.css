@@ -496,15 +496,6 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-fa
 .guidebody{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:22px 20px 24px;margin-top:-1px}
 .guideintro{font-size:16.5px;color:var(--paper-dim);max-width:66ch;line-height:1.6}
 
-.route-map{margin:22px 0 6px;overflow-x:auto}
-.route-plane{
-  fill:var(--amber);
-  offset-path:path('M 40 84 C 200 84, 200 34, 360 34 S 520 84, 680 84 L 760 84');
-  offset-rotate:auto;
-  animation:route-fly 11s linear infinite;
-}
-@keyframes route-fly{from{offset-distance:0%}to{offset-distance:100%}}
-
 .guidestep{border:1.5px solid var(--line);border-radius:var(--r);padding:20px;margin-top:14px;animation:fade .3s ease}
 .guidestep-head{display:flex;gap:14px;align-items:flex-start}
 .guidestep-icon{width:42px;height:42px;border-radius:12px;display:grid;place-content:center;color:var(--ink);flex:none}
@@ -539,10 +530,9 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-fa
 .course-next-label b{font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .course-next-kind{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 
-/* Quien pide menos movimiento no ve el avión dar vueltas. */
 @media(prefers-reduced-motion:reduce){
-  .route-plane{animation:none;offset-distance:50%}
   .guidetips li,.guidestep{animation:none}
+  button.road-stop:hover{transform:none}
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -663,6 +653,42 @@ img, video, iframe, canvas {
   .lp-reveal{opacity:1;transform:none;transition:none}
   .lp-btn:hover,.lp-card-hover:hover{transform:none}
 }
+
+
+/* ── La carretera: la ruta dibujada como un camino ─────────────────────────
+   Se usa en la landing y en la guía del alumno, que no comparten paleta. Por
+   eso no toma ningún color propio: los lee de cuatro variables que cada
+   contexto define aquí abajo, y el componente queda idéntico en los dos. */
+.road{--road-ink:var(--paper);--road-bg:var(--ink);--road-line:var(--line);--road-dim:var(--paper-dim);margin-top:22px}
+.lp .road{--road-ink:var(--text);--road-bg:var(--surface);--road-line:var(--line);--road-dim:var(--text-3)}
+.road-track{overflow:visible}
+.road-stops{display:grid;gap:16px;grid-template-columns:repeat(var(--road-n),minmax(0,1fr))}
+.road-stop{display:grid;gap:8px;justify-items:center;text-align:center;padding:22px 18px;border:1.5px solid var(--road-line);border-radius:16px;background:var(--road-bg);font:inherit;color:inherit;transition:transform .2s,border-color .2s,opacity .2s}
+button.road-stop{cursor:pointer}
+button.road-stop:hover{transform:translateY(-3px)}
+.road-stop.is-off{opacity:.62}
+.road-icon{width:48px;height:48px;border-radius:15px;display:grid;place-content:center;color:#fff;flex:none}
+.road-tag{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.road-title{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.road-body{font-size:14.5px;line-height:1.6;color:var(--road-dim)}
+.lp .road-tag{font-family:var(--font-heading);letter-spacing:.09em;font-size:11px}
+.lp .road-title{color:var(--text)}
+
+/* ── Hero con retratos a los lados ─────────────────────────────────────── */
+.lp-hero{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.36fr) minmax(0,.82fr);gap:32px;align-items:center;padding:56px 0 4px}
+.lp-hero-mid{text-align:center;display:grid;justify-items:center}
+.lp-hero-mid p{margin-left:auto;margin-right:auto}
+.lp-hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;justify-content:center}
+.lp-portrait{margin:0;border-radius:22px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line);box-shadow:var(--shadow-md)}
+.lp-portrait-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+
+/* ── Propuesta de valor: tres columnas centradas ───────────────────────── */
+.lp-vp{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:38px}
+.lp-vp-item{display:grid;justify-items:center;text-align:center;gap:10px}
+.lp-vp-icon{width:58px;height:58px;border-radius:17px;display:grid;place-content:center;background:var(--brand-soft);color:var(--brand)}
+.lp-vp-item h3{margin-top:4px}
+.lp-vp-item p{font-size:15.5px;line-height:1.65;max-width:34ch}
+.lp-vp-time{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
@@ -785,4 +811,20 @@ img, video, iframe, canvas {
     padding: 5px 7px;
     font-size: 11px;
   }
+}
+
+@media(max-width:1000px){
+  /* el titular manda: sube arriba y los dos retratos se reparten debajo */
+  .lp-hero{grid-template-columns:1fr 1fr;gap:18px;padding-top:40px}
+  .lp-hero-mid{grid-column:1/-1;order:-1}
+}
+@media(max-width:860px){
+  /* sin sitio para la curva, la ruta se lee como lista */
+  .road-track{display:none}
+  .road-stops{grid-template-columns:1fr;gap:12px}
+  .road-stop{grid-template-columns:auto 1fr;grid-template-areas:'i t' 'i h' 'i b';justify-items:start;text-align:left;column-gap:15px;row-gap:5px;padding:18px}
+  .road-icon{grid-area:i;align-self:start}
+  .road-tag{grid-area:t}
+  .road-title{grid-area:h}
+  .road-body{grid-area:b}
 }

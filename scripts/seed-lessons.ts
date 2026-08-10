@@ -4,6 +4,15 @@ import { chapters, lessonBlocks, lessons, visuals } from '@/db/schema';
 import type { BlockKind } from '@/lib/blocks';
 import { ENG_LESSONS } from '../docs/bank/eng-lessons';
 import { ENG_VISUALS } from '../docs/bank/eng-visuals';
+import { RM_LESSONS } from '../docs/bank/rm-lessons';
+import { RM_VISUALS } from '../docs/bank/rm-visuals';
+
+/**
+ * Todo lo escrito a mano, junto. Cada área añade aquí su par de archivos y el
+ * resto del script no cambia.
+ */
+const ALL_LESSONS = [...ENG_LESSONS, ...RM_LESSONS];
+const ALL_VISUALS = [...ENG_VISUALS, ...RM_VISUALS];
 
 /**
  * Siembra las clases escritas a mano.
@@ -23,18 +32,18 @@ async function main() {
   const byTitle = new Map(allChapters.map((c) => [c.title, c.id]));
 
   // ── las infografías, antes que las clases que las usan ───────────────────
-  for (const visual of ENG_VISUALS) {
+  for (const visual of ALL_VISUALS) {
     await db
       .insert(visuals)
       .values({ id: visual.id, svg: visual.svg })
       .onConflictDoUpdate({ target: visuals.id, set: { svg: visual.svg } });
   }
-  process.stdout.write(`   ✓ ${ENG_VISUALS.length} infografías\n\n`);
+  process.stdout.write(`   ✓ ${ALL_VISUALS.length} infografías\n\n`);
 
   let created = 0;
   let updated = 0;
 
-  for (const seed of ENG_LESSONS) {
+  for (const seed of ALL_LESSONS) {
     const chapterId = byTitle.get(seed.chapter);
     if (!chapterId) {
       process.stdout.write(`⚠ capítulo no encontrado: ${seed.chapter}\n`);

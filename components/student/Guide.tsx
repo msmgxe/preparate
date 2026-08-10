@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from 'react';
 import { BookOpenCheck, BrainCircuit, ChevronDown, Lightbulb, Target, Timer } from 'lucide-react';
+import { Road } from '@/components/Road';
 import type { Dict } from '@/lib/i18n/dictionaries/es';
 
 const ICONS = [BookOpenCheck, Target, BrainCircuit, Timer];
@@ -32,9 +33,9 @@ const onServer = () => '';
  * con qué ritmo. Se abre sola la primera vez y luego se queda plegada, porque
  * una guía que no se puede cerrar acaba siendo ruido.
  *
- * La ruta se dibuja como un plan de vuelo: cuatro escalas sobre una línea, con
- * el avión recorriéndolas. Es la misma metáfora del resto de la app —
- * itinerario, pasajero, millas— y ayuda a recordar el orden.
+ * La ruta se dibuja como la carretera de la página de venta, con las mismas
+ * cuatro escalas. No es solo estética: quien llegó desde ahí ya vio ese dibujo
+ * y reconoce en qué etapa está, sin que nadie se lo explique otra vez.
  */
 export function Guide({ t, startOpen }: { t: Dict; startOpen: boolean }) {
   const g = t.guide;
@@ -74,68 +75,24 @@ export function Guide({ t, startOpen }: { t: Dict; startOpen: boolean }) {
         <div className="guidebody">
           <p className="guideintro">{g.intro}</p>
 
-          {/* ── el plan de vuelo ─────────────────────────────────────── */}
-          <div className="route-map">
-            <svg viewBox="0 0 800 120" width="100%" style={{ height: 'auto', display: 'block' }} role="img">
-              <path
-                id="rumbo-route"
-                d="M 40 84 C 200 84, 200 34, 360 34 S 520 84, 680 84 L 760 84"
-                fill="none"
-                style={{ stroke: 'rgba(var(--fg-rgb),.18)' }}
-                strokeWidth="2"
-                strokeDasharray="6 6"
-              />
-              {g.steps.map((s, i) => {
-                const x = 40 + (i * 720) / 3;
-                const y = i === 1 || i === 2 ? 40 : 84;
-                const on = i === active;
-                return (
-                  <g
-                    key={s.id}
-                    onClick={() => setActive(i)}
-                    style={{ cursor: 'pointer' }}
-                    role="button"
-                    aria-label={s.title}
-                  >
-                    <circle
-                      cx={x}
-                      cy={y}
-                      r={on ? 15 : 10}
-                      style={{
-                        fill: on ? COLORS[i] : 'rgba(var(--fg-rgb),.10)',
-                        stroke: COLORS[i],
-                        transition: 'r .2s',
-                      }}
-                      strokeWidth="2"
-                    />
-                    <text
-                      x={x}
-                      y={y + 4}
-                      textAnchor="middle"
-                      fontSize="11"
-                      fontWeight="700"
-                      style={{ fill: on ? 'var(--ink)' : 'var(--paper-dim)', pointerEvents: 'none' }}
-                    >
-                      {i + 1}
-                    </text>
-                    <text
-                      x={x}
-                      y={y - 22}
-                      textAnchor="middle"
-                      fontSize="10.5"
-                      style={{ fill: on ? COLORS[i] : 'var(--paper-dim)', pointerEvents: 'none' }}
-                    >
-                      {s.tag}
-                    </text>
-                  </g>
-                );
-              })}
-              {/* el avión recorre la ruta; se detiene si el sistema pide menos movimiento */}
-              <text className="route-plane" fontSize="19">
-                ✈
-              </text>
-            </svg>
-          </div>
+          {/* ── la ruta, como carretera ──────────────────────────────────
+              Es el mismo componente que la página de venta: quien llega
+              desde ahí reconoce el dibujo y sabe que está en la etapa que
+              le vendieron. Aquí además es el selector de las escalas. */}
+          <Road
+            label={g.routeTitle}
+            colors={COLORS}
+            active={active}
+            onSelect={setActive}
+            stops={g.steps.map((s, i) => ({
+              tag: s.tag,
+              title: s.title,
+              icon: (() => {
+                const Icon = ICONS[i];
+                return <Icon size={21} />;
+              })(),
+            }))}
+          />
 
           {/* ── la escala elegida ────────────────────────────────────── */}
           <div className="guidestep" style={{ borderColor: COLORS[active] }}>

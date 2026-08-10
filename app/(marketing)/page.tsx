@@ -18,6 +18,8 @@ import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
 import { StudentFocused, StudentMobile, StudyGroup } from '@/components/landing/Figures';
+import { PHOTOS, Portrait, PortraitLaptop, PortraitWriting } from '@/components/landing/Portrait';
+import { Road } from '@/components/Road';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
 import { Demo } from '@/components/landing/Demo';
@@ -47,13 +49,19 @@ export default async function LandingPage() {
     <>
       <LandingNav locale={locale} t={t} />
 
-      {/* ═══ HERO ═══ */}
-      <section className="lp-wrap" style={{ padding: '64px 20px 0' }}>
-        <div
-          className="lp-grid"
-          style={{ gridTemplateColumns: 'minmax(0,1.05fr) minmax(0,.95fr)', gap: 48, alignItems: 'center' }}
-        >
-          <Reveal>
+      {/* ═══ HERO ═══════════════════════════════════════════════════════
+          Retrato · titular · retrato. Los dos retratos son ilustraciones
+          hasta que se rellenen las rutas de PHOTOS en components/landing/
+          Portrait.tsx; el marco y el recorte son los mismos en ambos casos. */}
+      <section className="lp-wrap">
+        <div className="lp-hero">
+          <Reveal className="lp-hero-side">
+            <Portrait src={PHOTOS.left} alt={l.heroAltA}>
+              <PortraitWriting />
+            </Portrait>
+          </Reveal>
+
+          <Reveal className="lp-hero-mid" delay={60}>
             <span className="lp-pill">
               <GraduationCap size={14} /> {l.badge}
             </span>
@@ -66,11 +74,11 @@ export default async function LandingPage() {
               <span style={{ color: 'var(--brand)' }}>{l.heroC}</span>
             </h1>
 
-            <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '52ch' }}>
+            <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '46ch' }}>
               {l.heroBody}
             </p>
 
-            <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
+            <div className="lp-hero-cta">
               <Link href="/registro" className="lp-btn lp-btn-primary lp-btn-lg">
                 {t.common.startFree} <ArrowRight size={18} />
               </Link>
@@ -84,10 +92,19 @@ export default async function LandingPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={120}>
-            <Demo t={l} />
+          <Reveal className="lp-hero-side" delay={120}>
+            <Portrait src={PHOTOS.right} alt={l.heroAltB}>
+              <PortraitLaptop />
+            </Portrait>
           </Reveal>
         </div>
+      </section>
+
+      {/* ═══ LA MUESTRA EN VIVO ═══ */}
+      <section className="lp-wrap" style={{ paddingTop: 56 }}>
+        <Reveal>
+          <Demo t={l} />
+        </Reveal>
       </section>
 
       {/* ═══ CIFRAS ═══ */}
@@ -240,48 +257,52 @@ export default async function LandingPage() {
           <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.methodBody}</p>
         </Reveal>
 
-        <div
-          className="lp-grid"
-          style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 32 }}
-        >
+        <div className="lp-vp">
           {l.method.map((step, i) => {
             const Icon = METHOD_ICONS[i];
             return (
-            <Reveal key={step.title} delay={i * 100}>
-              <div className="lp-card lp-card-hover" style={{ padding: 26, height: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span
-                    style={{
-                      width: 42,
-                      height: 42,
-                      borderRadius: 12,
-                      display: 'grid',
-                      placeContent: 'center',
-                      background: 'var(--brand-soft)',
-                      color: 'var(--brand)',
-                    }}
-                  >
-                    <Icon size={21} />
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: 'var(--text-3)',
-                      marginLeft: 'auto',
-                    }}
-                  >
-                    {step.time}
-                  </span>
-                </div>
-                <h3 style={{ marginTop: 16 }}>
-                  <span style={{ color: 'var(--brand)' }}>{i + 1}.</span> {step.title}
-                </h3>
-                <p style={{ fontSize: 15, marginTop: 10, lineHeight: 1.65 }}>{step.body}</p>
-              </div>
-            </Reveal>
+              <Reveal key={step.title} delay={i * 100} className="lp-vp-item">
+                <span className="lp-vp-icon">
+                  <Icon size={26} />
+                </span>
+                <span className="lp-vp-time">{step.time}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </Reveal>
             );
           })}
+        </div>
+      </section>
+
+      {/* ═══ EL CAMINO ══════════════════════════════════════════════════
+          Las tres etapas por las que pasa un alumno, dibujadas como una
+          carretera. El mismo componente se reutiliza en la guía de dentro. */}
+      <section id="camino" className="lp-section" style={{ background: 'var(--surface-2)' }}>
+        <div className="lp-wrap">
+          <Reveal>
+            <span className="lp-eyebrow">{t.route.eyebrow}</span>
+            <h2 style={{ marginTop: 10 }}>{t.route.title}</h2>
+            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '64ch' }}>{t.route.body}</p>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <Road
+              label={t.route.title}
+              colors={['var(--brand)', 'var(--accent)', 'var(--lime)']}
+              stops={t.route.stops.map((s, i) => ({
+                tag: s.tag,
+                title: s.title,
+                body: s.body,
+                icon: [<Target key="a" size={22} />, <BookOpenCheck key="b" size={22} />, <BadgeCheck key="c" size={22} />][i],
+              }))}
+            />
+          </Reveal>
+
+          <Reveal delay={160}>
+            <p className="lp-muted" style={{ fontSize: 14.5, marginTop: 22, textAlign: 'center' }}>
+              {t.route.note}
+            </p>
+          </Reveal>
         </div>
       </section>
 
