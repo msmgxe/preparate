@@ -111,16 +111,23 @@ async function main() {
     }
     if (onlyArea && chapter.areaId !== onlyArea) continue;
 
+    // el módulo de Inglés se vende solo en español: no hay traducción que poner
+    const translated = note.en !== '' && note.pt !== '';
     await db
       .update(chapters)
       .set({
         blurb: note.es,
+        ...(translated ? {} : {}),
         // se fusiona con lo que ya haya traducido, sin pisar el resto de campos
+        ...(translated
+          ? {
         i18n: sql`jsonb_set(
           jsonb_set(coalesce(${chapters.i18n}, '{}'::jsonb), '{en}',
             coalesce(${chapters.i18n} -> 'en', '{}'::jsonb) || ${JSON.stringify({ blurb: note.en })}::jsonb, true),
           '{pt}',
           coalesce(${chapters.i18n} -> 'pt', '{}'::jsonb) || ${JSON.stringify({ blurb: note.pt })}::jsonb, true)`,
+            }
+          : {}),
       })
       .where(eq(chapters.id, chapter.id));
     noted += 1;

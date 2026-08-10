@@ -1,6 +1,7 @@
 'use client';
 
 import type { Dict } from '@/lib/i18n/dictionaries/es';
+import { Pronounce, Speak } from './Speak';
 import { fill } from '@/lib/i18n/fill';
 
 import { useEffect, useRef, useState } from 'react';
@@ -178,6 +179,73 @@ export function LessonRenderer({
               </div>
             );
           }
+
+          case 'listen':
+            return (
+              <div className="lblock" key={block.id}>
+                {block.payload.h && <h4>{block.payload.h}</h4>}
+                <div className="listenbox">
+                  {block.payload.items.map((item, i) => (
+                    <div className="listenrow" key={i}>
+                      <Speak text={item.en} label={t.app.audioListen} big />
+                      <Speak text={item.en} label={t.app.audioSlow} slow />
+                      <div className="listentext">
+                        <b lang="en">{item.en}</b>
+                        <span>{item.es}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+
+          case 'pair':
+            return (
+              <div className="lblock" key={block.id}>
+                {block.payload.h && <h4>{block.payload.h}</h4>}
+                <div className="pairbox">
+                  {block.payload.items.map((item, i) => (
+                    <div className="pairrow" key={i}>
+                      <div className="pairside a">
+                        <Speak text={item.a} label={t.app.audioListen} />
+                        <b lang="en">{item.a}</b>
+                        <span className="mono">{item.ipaA}</span>
+                        <span className="pairgloss">{item.esA}</span>
+                      </div>
+                      <span className="pairvs">≠</span>
+                      <div className="pairside b">
+                        <Speak text={item.b} label={t.app.audioListen} />
+                        <b lang="en">{item.b}</b>
+                        <span className="mono">{item.ipaB}</span>
+                        <span className="pairgloss">{item.esB}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {block.payload.note && <p className="pairnote">{block.payload.note}</p>}
+              </div>
+            );
+
+          case 'say':
+            return (
+              <div className="lblock" key={block.id}>
+                {block.payload.h && <h4>{block.payload.h}</h4>}
+                {block.payload.note && <p className="saynote">{block.payload.note}</p>}
+                <div className="saybox">
+                  {block.payload.items.map((item, i) => (
+                    <div className="sayrow" key={i}>
+                      <Speak text={item.text} label={t.app.audioListen} />
+                      <b lang="en">{item.text}</b>
+                      <Pronounce
+                        target={item.text}
+                        confusable={item.vs ?? undefined}
+                        labels={t.app.pron}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
 
           case 'err':
             return (

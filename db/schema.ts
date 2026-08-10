@@ -33,6 +33,10 @@ export const blockKind = pgEnum('block_kind', [
   'check',
   'err',
   'video',
+  // audio, para el módulo de Inglés
+  'listen',
+  'pair',
+  'say',
 ]);
 export const questionKind = pgEnum('question_kind', ['single_choice', 'reading_set', 'numeric']);
 

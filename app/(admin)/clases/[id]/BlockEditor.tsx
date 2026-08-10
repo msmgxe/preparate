@@ -14,6 +14,9 @@ const SHAPE: Record<BlockKind, string> = {
   check: '{ "q": "…", "opts": ["a","b"], "ans": 1, "ok": "…", "no": "…" }',
   err: '{ "items": ["…", "…"] }',
   video: '{}  — los enlaces se gestionan abajo',
+  listen: '{ "h": "Escucha", "items": [{ "en": "How are you?", "es": "¿Cómo estás?" }] }',
+  pair: '{ "h": "…", "note": "…", "items": [{ "a": "ship", "ipaA": "/ɪ/", "esA": "barco", "b": "sheep", "ipaB": "/iː/", "esB": "oveja" }] }',
+  say: '{ "h": "…", "note": "…", "items": [{ "text": "sheep", "vs": "ship" }] }',
 };
 
 function Save() {

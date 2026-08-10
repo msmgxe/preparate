@@ -507,6 +507,17 @@ export const pt: Dict = {
     lessonGate: 'Responda o checkpoint para continuar lendo',
     lessonErrors: 'Os erros que mais se repetem',
     lessonVideos: 'Vídeos curtos sobre o tema',
+    audioListen: 'Ouvir',
+    audioSlow: 'Ouvir devagar',
+    pron: {
+      say: 'Sua vez',
+      listening: 'Estou ouvindo…',
+      ok: '✓ Você foi entendido perfeitamente',
+      near: 'Quase. Tente de novo',
+      off: 'Entendi outra coisa:',
+      confused: '✕ Soou como «{word}». É exatamente a confusão que estamos trabalhando',
+      error: 'Seu navegador não consegue ouvir. Tente no Chrome ou Safari',
+    },
     lessonVideoNote:
       'Links selecionados pelo administrador. Abrem em uma aba nova: o vídeo é reforço, não a aula.',
     lessonPracticeCta: 'Praticar o que acabou de ler →',

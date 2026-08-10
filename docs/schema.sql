@@ -548,3 +548,15 @@ update areas set locales = array['es'] where id = 'eng';
 -- ese capítulo y qué error concreto ataca. Se traduce por la columna `i18n`,
 -- igual que el título.
 alter table chapters add column if not exists blurb text;
+
+-- ── 12 · bloques de audio para el módulo de Inglés ──────────────────────────
+-- Un idioma no se aprende leyéndolo. Estos tres tipos añaden el oído y la boca:
+--   listen  · una frase que se escucha, con su traducción debajo
+--   pair    · pares mínimos: dos palabras que el alumno confunde al oírlas
+--   say     · repetir en voz alta y comprobar si se le entiende
+-- El audio lo pone la voz del navegador, sin archivos ni peticiones de red.
+do $$ begin
+  alter type block_kind add value if not exists 'listen';
+  alter type block_kind add value if not exists 'pair';
+  alter type block_kind add value if not exists 'say';
+end $$;

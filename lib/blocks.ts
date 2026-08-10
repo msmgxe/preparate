@@ -12,6 +12,17 @@ export type CheckPayload = { q: string; opts: string[]; ans: number; ok: string;
 export type ErrPayload = { items: string[] };
 export type VideoPayload = Record<string, never>;
 
+/** Una frase que se escucha, con lo que significa debajo. */
+export type ListenPayload = { h?: string | null; items: { en: string; es: string }[] };
+/** Dos palabras que suenan casi igual y significan cosas distintas. */
+export type PairPayload = {
+  h?: string | null;
+  note?: string | null;
+  items: { a: string; ipaA: string; esA: string; b: string; ipaB: string; esB: string }[];
+};
+/** Repetir en voz alta; el navegador dice si se entendió. */
+export type SayPayload = { h?: string | null; note?: string | null; items: { text: string; vs?: string | null }[] };
+
 export type Block =
   | { id: string; ord: number; kind: 'text'; payload: TextPayload }
   | { id: string; ord: number; kind: 'viz'; payload: VizPayload }
@@ -19,7 +30,10 @@ export type Block =
   | { id: string; ord: number; kind: 'callout'; payload: CalloutPayload }
   | { id: string; ord: number; kind: 'check'; payload: CheckPayload }
   | { id: string; ord: number; kind: 'err'; payload: ErrPayload }
-  | { id: string; ord: number; kind: 'video'; payload: VideoPayload };
+  | { id: string; ord: number; kind: 'video'; payload: VideoPayload }
+  | { id: string; ord: number; kind: 'listen'; payload: ListenPayload }
+  | { id: string; ord: number; kind: 'pair'; payload: PairPayload }
+  | { id: string; ord: number; kind: 'say'; payload: SayPayload };
 
 export const BLOCK_KINDS: BlockKind[] = [
   'text',
@@ -29,6 +43,9 @@ export const BLOCK_KINDS: BlockKind[] = [
   'check',
   'err',
   'video',
+  'listen',
+  'pair',
+  'say',
 ];
 
 export const BLOCK_LABEL: Record<BlockKind, string> = {
@@ -39,6 +56,9 @@ export const BLOCK_LABEL: Record<BlockKind, string> = {
   check: 'Checkpoint',
   err: 'Errores frecuentes',
   video: 'Videos',
+  listen: 'Escucha',
+  pair: 'Pares mínimos',
+  say: 'Dilo en voz alta',
 };
 
 /** Payload vacío por tipo, para el editor. */
@@ -58,6 +78,12 @@ export function emptyPayload(kind: BlockKind): Json {
       return { items: ['', '', ''] };
     case 'video':
       return {};
+    case 'listen':
+      return { h: '', items: [{ en: '', es: '' }] };
+    case 'pair':
+      return { h: '', note: '', items: [{ a: '', ipaA: '', esA: '', b: '', ipaB: '', esB: '' }] };
+    case 'say':
+      return { h: '', note: '', items: [{ text: '', vs: '' }] };
   }
 }
 
@@ -101,6 +127,38 @@ export function toBlock(row: { id: string; ord: number; kind: BlockKind; payload
         : null;
     case 'video':
       return { ...base, kind: 'video', payload: {} };
+    case 'listen':
+      return Array.isArray(p.items)
+        ? {
+            ...base,
+            kind: 'listen',
+            payload: { h: (p.h as string) ?? null, items: p.items as ListenPayload['items'] },
+          }
+        : null;
+    case 'pair':
+      return Array.isArray(p.items)
+        ? {
+            ...base,
+            kind: 'pair',
+            payload: {
+              h: (p.h as string) ?? null,
+              note: (p.note as string) ?? null,
+              items: p.items as PairPayload['items'],
+            },
+          }
+        : null;
+    case 'say':
+      return Array.isArray(p.items)
+        ? {
+            ...base,
+            kind: 'say',
+            payload: {
+              h: (p.h as string) ?? null,
+              note: (p.note as string) ?? null,
+              items: p.items as SayPayload['items'],
+            },
+          }
+        : null;
     default:
       return null;
   }

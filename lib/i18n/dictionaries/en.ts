@@ -507,6 +507,17 @@ export const en: Dict = {
     lessonGate: 'Answer the checkpoint to keep reading',
     lessonErrors: 'The mistakes that repeat most',
     lessonVideos: 'Short videos on the topic',
+    audioListen: 'Listen',
+    audioSlow: 'Listen slowly',
+    pron: {
+      say: 'Your turn',
+      listening: 'Listening…',
+      ok: '✓ You were understood perfectly',
+      near: 'Close. Try again',
+      off: 'I heard something else:',
+      confused: '✕ It sounded like "{word}". That is exactly the confusion we are working on',
+      error: 'Your browser cannot listen. Try Chrome or Safari',
+    },
     lessonVideoNote:
       'Links curated by the administrator. They open in a new tab: video is reinforcement, not the lesson.',
     lessonPracticeCta: 'Practise what you just read →',

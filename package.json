@@ -14,7 +14,8 @@
     "db:i18n": "dotenv -e .env.local -- tsx scripts/i18n.ts",
     "db:bank": "dotenv -e .env.local -- tsx scripts/fill-bank.ts",
     "db:seed-bank": "dotenv -e .env.local -- tsx scripts/seed-bank.ts",
-    "db:fix-visuals": "dotenv -e .env.local -- tsx scripts/fix-visuals.ts"
+    "db:fix-visuals": "dotenv -e .env.local -- tsx scripts/fix-visuals.ts",
+    "db:seed-audio": "dotenv -e .env.local -- tsx scripts/seed-audio.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",

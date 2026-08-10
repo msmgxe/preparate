@@ -511,6 +511,17 @@ export const es = {
     lessonGate: 'Responde el checkpoint para seguir leyendo',
     lessonErrors: 'Los errores que más se repiten',
     lessonVideos: 'Videos cortos sobre el tema',
+    audioListen: 'Escuchar',
+    audioSlow: 'Escuchar despacio',
+    pron: {
+      say: 'Dilo tú',
+      listening: 'Te escucho…',
+      ok: '✓ Se te entendió perfecto',
+      near: 'Casi. Vuelve a intentarlo',
+      off: 'Entendí otra cosa:',
+      confused: '✕ Sonó como «{word}». Es justo la confusión que estamos trabajando',
+      error: 'Tu navegador no puede escuchar. Prueba en Chrome o Safari',
+    },
     lessonVideoNote:
       'Enlaces curados por el administrador. Se abren en una pestaña nueva: el video es refuerzo, no la clase.',
     lessonPracticeCta: 'Practicar lo que acabas de leer →',
