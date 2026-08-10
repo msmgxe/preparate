@@ -340,4 +340,31 @@ export const ENG_VISUALS: Visual[] = [
   </g>
 </svg>`,
   },
+
+  // ── El retroceso que marca la irrealidad ────────────────────────────────
+  {
+    id: 'v-eng-condicionales',
+    svg: `${OPEN.replace('%H%', '246')}
+  <g class="grow" style="animation-delay:0s">
+    ${tag(128, 52, MINT, 'PUEDE PASAR', 'end')}
+    ${box(140, 30, 200, 40, MINT, 'If it rains', 14)}
+    ${box(356, 30, 240, 40, MINT, 'I will stay home', 14)}
+  </g>
+  <g class="grow" style="animation-delay:.7s">
+    ${tag(128, 128, AMBER, 'NO ES ASÍ HOY', 'end')}
+    ${box(140, 106, 200, 40, AMBER, 'If I had money', 14)}
+    ${box(356, 106, 240, 40, AMBER, 'I would travel', 14)}
+  </g>
+  <g class="grow" style="animation-delay:1.3s">
+    ${tag(128, 204, VIOLET, 'YA NO SE PUEDE', 'end')}
+    ${box(140, 182, 200, 40, VIOLET, 'If I had studied', 13)}
+    ${box(356, 182, 240, 40, VIOLET, 'I would have passed', 13)}
+  </g>
+  <g class="an" style="animation-delay:1.9s">
+    <path d="M 44 34 L 44 214 M 36 202 L 44 218 L 52 202" fill="none" stroke="${CORAL}" stroke-width="1.8"/>
+    <text x="24" y="124" text-anchor="middle" fill="${CORAL}" font-size="11.5" transform="rotate(90 24 124)">el verbo retrocede un tiempo</text>
+    ${tag(368, 242, CORAL, 'y jamás un will o un would dentro del if')}
+  </g>
+</svg>`,
+  },
 ];

@@ -2,17 +2,23 @@ import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { chapters, lessonBlocks, lessons, visuals } from '@/db/schema';
 import type { BlockKind } from '@/lib/blocks';
+import { CG_LESSONS } from '../docs/bank/cg-lessons';
+import { CG_VISUALS } from '../docs/bank/cg-visuals';
 import { ENG_LESSONS } from '../docs/bank/eng-lessons';
 import { ENG_VISUALS } from '../docs/bank/eng-visuals';
+import { MAT_LESSONS } from '../docs/bank/mat-lessons';
+import { MAT_VISUALS } from '../docs/bank/mat-visuals';
 import { RM_LESSONS } from '../docs/bank/rm-lessons';
 import { RM_VISUALS } from '../docs/bank/rm-visuals';
+import { RV_LESSONS } from '../docs/bank/rv-lessons';
+import { RV_VISUALS } from '../docs/bank/rv-visuals';
 
 /**
  * Todo lo escrito a mano, junto. Cada área añade aquí su par de archivos y el
  * resto del script no cambia.
  */
-const ALL_LESSONS = [...ENG_LESSONS, ...RM_LESSONS];
-const ALL_VISUALS = [...ENG_VISUALS, ...RM_VISUALS];
+const ALL_LESSONS = [...ENG_LESSONS, ...RM_LESSONS, ...MAT_LESSONS, ...RV_LESSONS, ...CG_LESSONS];
+const ALL_VISUALS = [...ENG_VISUALS, ...RM_VISUALS, ...MAT_VISUALS, ...RV_VISUALS, ...CG_VISUALS];
 
 /**
  * Siembra las clases escritas a mano.

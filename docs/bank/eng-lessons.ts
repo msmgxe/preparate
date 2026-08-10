@@ -1902,6 +1902,102 @@ export const ENG_LESSONS: LessonSeed[] = [
     ],
   },
 
+  // ── B1 · Hipótesis ────────────────────────────────────────────────────────
+  {
+    slug: 'eng-condicionales',
+    chapter: 'B1 · Hipótesis',
+    title: 'Un paso atrás en el tiempo por cada paso lejos de la realidad',
+    hook: 'Los condicionales tienen fama de ser tres reglas separadas que hay que memorizar. Son una sola idea, y encima es una idea que el español también usa: por eso «si tuviera» está en pasado aunque hable de ahora.',
+    minutes: 8,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'La idea, antes que las tres estructuras',
+          p: 'En inglés —igual que en español— <strong>el tiempo verbal no solo dice cuándo: también dice cuánto de real es</strong>. Cuanto más lejos está algo de ser verdad, más atrás se manda el verbo. Por eso «si <em>tengo</em> plata, viajo» habla de algo posible y «si <em>tuviera</em> plata, viajaría» habla de algo que hoy no es así, aunque las dos frases se refieran al presente. El inglés hace exactamente lo mismo.',
+        },
+      },
+      {
+        kind: 'viz',
+        payload: {
+          viz_id: 'v-eng-condicionales',
+          caption: 'Las tres filas no son tres reglas: son la misma regla aplicada tres veces. Cada escalón hacia abajo retrocede un tiempo verbal.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'REAL, FUTURO      If + presente        , will + verbo\n                  If it rains        , I will stay home.\n\nIRREAL, AHORA     If + pasado          , would + verbo\n                  If I had money     , I would travel.\n\nIMPOSIBLE, ANTES  If + past perfect    , would have + participio\n                  If I had studied   , I would have passed.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha los tres escalones seguidos',
+          items: [
+            { en: 'If it rains, I will stay home.', es: 'Si llueve, me quedaré en casa. (puede pasar)' },
+            { en: 'If I had money, I would travel.', es: 'Si tuviera dinero, viajaría. (hoy no lo tengo)' },
+            { en: 'If I had studied, I would have passed.', es: 'Si hubiera estudiado, habría aprobado. (ya no hay arreglo)' },
+            { en: 'If I were you, I would take the job.', es: 'Yo que tú, aceptaría el trabajo.' },
+          ],
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La regla de oro: el «if» no lleva futuro ni condicional',
+          p: 'Dentro de la parte del <em>if</em> nunca va <strong>will</strong> ni <strong>would</strong>. Ni una vez. Se dice <em>If it rains</em>, no «if it will rain»; y <em>If I had known</em>, no «if I would have known». Este error es tan característico del hispanohablante que un examinador lo oye a un metro de distancia, y lo bueno es que corregirlo no exige aprender nada: exige quitar una palabra.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Dos detalles que valen puntos',
+          p: 'El primero: en el segundo condicional, el inglés cuidado usa <strong>were</strong> para todas las personas, no <em>was</em>. <em>If I <strong>were</strong> you</em>, <em>if he <strong>were</strong> here</em>. En la calle oirás <em>was</em>, pero en un examen escrito pon <em>were</em>. El segundo: la coma solo va cuando el <em>if</em> abre la frase. <em>If it rains, I will stay</em> lleva coma; <em>I will stay if it rains</em> no lleva ninguna.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo en voz alta',
+          note: 'Fíjate en que las tres empiezan igual de fácil. Lo que cambia es lo que viene después de la coma.',
+          items: [
+            { text: 'If I were you, I would start today.' },
+            { text: 'If I had known, I would have called you.' },
+            { text: 'If it rains tomorrow, we will cancel the trip.' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál de estas frases es correcta?',
+          opts: [
+            'If I had known, I would have told you.',
+            'If I would have known, I would have told you.',
+            'If I will know, I would tell you.',
+            'If I knew, I would have told you yesterday.',
+          ],
+          ans: 0,
+          ok: 'Correcta. El «if» lleva past perfect y la otra mitad lleva «would have» + participio: es el tercer condicional bien armado.',
+          no: 'La segunda mete «would» dentro del if, que es justo lo que nunca se hace. La tercera mete «will» en el if. Y la cuarta mezcla escalones: un pasado simple en el if no cuadra con «would have» hablando de ayer. La buena es la primera.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Poner «will» o «would» dentro de la parte del if. Es el error que más delata al hispanohablante.',
+            'Usar «was» en lugar de «were» en el segundo condicional escrito.',
+            'Mezclar escalones sin querer: pasado simple en el if con «would have» en la otra mitad.',
+            'Poner coma cuando el «if» va en la segunda mitad de la frase. Ahí no lleva.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
   // ── C1 · Simulacro completo ───────────────────────────────────────────────
   {
     slug: 'eng-simulacro',

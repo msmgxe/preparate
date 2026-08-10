@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Fotos de stock sin licencia: las previsualizaciones de Envato llevan la marca
+# de agua incrustada y no pueden publicarse. Cuando haya archivos con licencia,
+# quita esta línea y súbelos.
+/public/fotos/
