@@ -10,6 +10,9 @@ export const pt: Dict = {
     startFree: 'Começar grátis hoje',
     whatsapp: 'Falar pelo WhatsApp',
     language: 'Idioma',
+    menu: 'Menu',
+    openMenu: 'Abrir o menu',
+    closeMenu: 'Fechar o menu',
     fonts: {
       standard: 'Tipografia padrão',
       lexend: 'Lexend · leitura fácil',

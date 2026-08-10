@@ -16,11 +16,9 @@ import {
 import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher';
-import { FontToggle } from '@/components/FontToggle';
+import { LandingNav } from '@/components/landing/Nav';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { Demo } from '@/components/landing/Demo';
 import { Modules } from '@/components/landing/Modules';
 import { EnglishRoadmap } from '@/components/landing/EnglishRoadmap';
@@ -46,34 +44,7 @@ export default async function LandingPage() {
 
   return (
     <>
-      {/* ═══ NAV ═══ */}
-      <header className="lp-nav">
-        <div className="lp-wrap lp-navbar">
-          <Link href="/" className="lp-logo">
-            RUMBO <span>Admisión</span>
-          </Link>
-
-          <nav className="lp-navlinks">
-            <a href="#modulos">{t.nav.modules}</a>
-            <a href="#ingles">{t.nav.english}</a>
-            <a href="#metodo">{t.nav.method}</a>
-            <a href="#planes">{t.nav.plans}</a>
-            <a href="#preguntas">{t.nav.faq}</a>
-          </nav>
-
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <LocaleSwitcher current={locale} variant="landing" label={t.common.language} />
-            <FontToggle variant="landing" labels={t.common.fonts} />
-            <ThemeToggle defaultDark={false} />
-            <Link href="/login" className="lp-btn lp-btn-ghost">
-              {t.common.login}
-            </Link>
-            <a href="#planes" className="lp-btn lp-btn-primary">
-              {t.common.seePlans}
-            </a>
-          </div>
-        </div>
-      </header>
+      <LandingNav locale={locale} t={t} />
 
       {/* ═══ HERO ═══ */}
       <section className="lp-wrap" style={{ padding: '64px 20px 0' }}>

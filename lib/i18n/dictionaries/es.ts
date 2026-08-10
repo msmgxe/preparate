@@ -13,6 +13,9 @@ export const es = {
     startFree: 'Comenzar gratis hoy',
     whatsapp: 'Escribir por WhatsApp',
     language: 'Idioma',
+    menu: 'Menú',
+    openMenu: 'Abrir el menú',
+    closeMenu: 'Cerrar el menú',
     fonts: {
       standard: 'Tipografía estándar',
       lexend: 'Lexend · lectura fácil',
