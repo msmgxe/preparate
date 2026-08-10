@@ -8,6 +8,7 @@ import { daysUntil, getDueReviews, getItinerary, getStamps } from '@/lib/queries
 import { Itinerary } from '@/components/Itinerary';
 import { startErrors, startQuick } from '@/app/(student)/actions';
 import { getI18n, fill } from '@/lib/i18n';
+import { site, whatsappLink } from '@/lib/site';
 import { INTL_LOCALE } from '@/lib/i18n/config';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -214,7 +215,12 @@ export default async function HomePage({
       <footer>
         <span>RUMBO v0.2</span>
         <span>·</span>
-        <span>Next.js + Neon + Vercel</span>
+        <span>
+          {t.landing.footerAuthor}{' '}
+          <a href={whatsappLink(t.wa.short)} target="_blank" rel="noopener noreferrer">
+            {site.whatsappPretty}
+          </a>
+        </span>
         <Link href="/app/perfil" style={{ marginLeft: 'auto' }}>
           {a.editProfile}
         </Link>

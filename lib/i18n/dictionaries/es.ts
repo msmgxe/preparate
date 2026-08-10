@@ -111,12 +111,12 @@ export const es = {
     moduleClose: 'Ocultar temario',
     moduleSample: 'Pregunta de muestra',
     moduleLoose: '/ mes suelto',
-    moduleYear: 'o S/ {price} al año',
+    moduleYear: 'o {price} al año',
     moduleBuy: 'Comprar solo este módulo',
     moduleWaitlist: 'Entrar a la lista de espera',
 
     englishBadge: 'Nuevo módulo · preventa',
-    englishPrice: 'S/ {price} al mes · incluido en el Pase de Admisión',
+    englishPrice: '{price} al mes · incluido en el Pase de Admisión',
     englishTitleA: 'Inglés de cero a',
     englishBody:
       'No otra app de rachas y vidas. Una ruta con las técnicas que de verdad mueven la aguja: repetición espaciada, input comprensible, shadowing y producción con corrección razonada. Cien semanas de camino, marcadas nivel por nivel.',
@@ -153,6 +153,9 @@ export const es = {
     plansTitle: 'Elige por módulo o llévate todo',
     plansBody:
       'Sin letra chica: pagas por Yape, Plin o transferencia y abrimos el acceso el mismo día. Si el plan no encaja, escríbenos y lo armamos a medida.',
+    priceNote:
+      'Los precios están en soles. Se paga por Yape, Plin o transferencia a una cuenta peruana.',
+    footerAuthor: 'Concepto, contenido y dirección:',
     pickerTitle: '¿Cuántos módulos necesitas?',
     pickerHint: 'Marca los que te interesan y compara al instante.',
     pickerLoose: 'Sueltos',

@@ -322,6 +322,15 @@ export default async function AyudaPage() {
           <code>docs/i18n-content.ts</code> y se aplican con <code>npm run db:i18n</code>.
         </Note>
         <p style={P}>
+          Los <b>precios</b> también cambian de aspecto: en inglés se ven en dólares y en
+          portugués en reales, redondeados. Es solo la etiqueta — el cobro siempre se hace en
+          soles, porque es la cuenta a la que llega el Yape, y la propia página lo dice donde se
+          muestran los precios. Los tipos de cambio están fijos en{' '}
+          <code>lib/money.ts</code> y conviene revisarlos cada cierto tiempo; están puestos con
+          holgura a la baja, así que si el sol se aprecia cobras un poco más de lo anunciado, no
+          menos.
+        </p>
+        <p style={P}>
           El módulo de Inglés se ofrece solo en español: sus explicaciones están escritas para
           alguien que piensa en español. Por eso desaparece del itinerario y de la página de venta
           cuando el idioma elegido es otro.
@@ -375,8 +384,9 @@ export default async function AyudaPage() {
             {
               t: 'Cambiar precios o planes',
               s: [
-                'Los planes viven en la tabla plans de la base.',
+                'Los planes viven en la tabla plans de la base, siempre en soles.',
                 'La landing los lee en vivo: no hay que volver a desplegar.',
+                'El dólar y el real salen de un tipo de cambio fijo en lib/money.ts.',
                 'Acuérdate de traducir el plan nuevo en Idiomas.',
               ],
             },

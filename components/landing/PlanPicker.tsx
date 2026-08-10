@@ -6,6 +6,7 @@ import { whatsappLink } from '@/lib/site';
 import type { Dict } from '@/lib/i18n/dictionaries/es';
 import type { Locale } from '@/lib/i18n/config';
 import { fill } from '@/lib/i18n/fill';
+import { money as format, soles } from '@/lib/money';
 
 export type PlanCard = {
   id: string;
@@ -32,7 +33,7 @@ export type PickerModule = {
   locales: string[];
 };
 
-const money = (n: number) => `S/ ${n.toLocaleString('es-PE')}`;
+
 
 export function PlanPicker({
   plans,
@@ -45,6 +46,7 @@ export function PlanPicker({
   t: Dict['landing'];
   locale: Locale;
 }) {
+  const money = (n: number) => format(n, locale);
   const sellable = modules.filter((m) => m.priceMonth !== null && m.locales.includes(locale));
   const [picked, setPicked] = useState<string[]>(sellable.slice(0, 2).map((m) => m.id));
 
@@ -247,7 +249,7 @@ export function PlanPicker({
               href={whatsappLink(
                 fill(t.waBuyPlan, {
                   plan: plan.name,
-                  price: money(plan.price),
+                  price: soles(plan.price),
                   period: plan.period === 'year' ? t.planPeriodYear : t.planPeriodMonth,
                 }),
               )}

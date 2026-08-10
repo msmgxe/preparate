@@ -108,12 +108,12 @@ export const en: Dict = {
     moduleClose: 'Hide syllabus',
     moduleSample: 'Sample question',
     moduleLoose: '/ month on its own',
-    moduleYear: 'or S/ {price} a year',
+    moduleYear: 'or {price} a year',
     moduleBuy: 'Buy this module only',
     moduleWaitlist: 'Join the waiting list',
 
     englishBadge: 'New module · pre-sale',
-    englishPrice: 'S/ {price} a month · included in the Admission Pass',
+    englishPrice: '{price} a month · included in the Admission Pass',
     englishTitleA: 'English from zero to',
     englishBody:
       'Not another app of streaks and hearts. A route built on the techniques that actually move the needle: spaced repetition, comprehensible input, shadowing and output with reasoned correction. A hundred weeks of road, marked level by level.',
@@ -150,6 +150,9 @@ export const en: Dict = {
     plansTitle: 'Pick a module or take everything',
     plansBody:
       'No fine print: you pay by Yape, Plin or bank transfer and we open access the same day. If no plan fits, write to us and we will put one together.',
+    priceNote:
+      'Prices are shown in US dollars as a guide and rounded. The charge is made in Peruvian soles at the exchange rate on the day of payment, by Yape, Plin or bank transfer.',
+    footerAuthor: 'Concept, content and direction:',
     pickerTitle: 'How many modules do you need?',
     pickerHint: 'Tick the ones you want and compare instantly.',
     pickerLoose: 'Separately',

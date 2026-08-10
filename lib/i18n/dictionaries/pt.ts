@@ -108,12 +108,12 @@ export const pt: Dict = {
     moduleClose: 'Ocultar conteúdo',
     moduleSample: 'Questão de exemplo',
     moduleLoose: '/ mês avulso',
-    moduleYear: 'ou S/ {price} por ano',
+    moduleYear: 'ou {price} por ano',
     moduleBuy: 'Comprar só este módulo',
     moduleWaitlist: 'Entrar na lista de espera',
 
     englishBadge: 'Novo módulo · pré-venda',
-    englishPrice: 'S/ {price} por mês · incluso no Passe de Admissão',
+    englishPrice: '{price} por mês · incluso no Passe de Admissão',
     englishTitleA: 'Inglês do zero ao',
     englishBody:
       'Não é mais um aplicativo de ofensivas e vidas. Um caminho com as técnicas que realmente funcionam: repetição espaçada, input compreensível, shadowing e produção com correção explicada. Cem semanas de percurso, marcadas nível a nível.',
@@ -150,6 +150,9 @@ export const pt: Dict = {
     plansTitle: 'Escolha por módulo ou leve tudo',
     plansBody:
       'Sem letras miúdas: você paga por Yape, Plin ou transferência e abrimos o acesso no mesmo dia. Se nenhum plano servir, escreva para nós e montamos um sob medida.',
+    priceNote:
+      'Os preços aparecem em reais apenas como referência e são arredondados. A cobrança é feita em soles peruanos pelo câmbio do dia do pagamento, via Yape, Plin ou transferência.',
+    footerAuthor: 'Conceito, conteúdo e direção:',
     pickerTitle: 'De quantos módulos você precisa?',
     pickerHint: 'Marque os que interessam e compare na hora.',
     pickerLoose: 'Avulsos',

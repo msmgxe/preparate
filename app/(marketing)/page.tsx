@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
+import { money } from '@/lib/money';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
@@ -153,6 +154,9 @@ export default async function LandingPage() {
           <span className="lp-eyebrow">{l.modulesEyebrow}</span>
           <h2 style={{ marginTop: 10 }}>{l.modulesTitle}</h2>
           <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.modulesBody}</p>
+          <p className="lp-muted" style={{ fontSize: 14, marginTop: 10, maxWidth: '62ch' }}>
+            {l.priceNote}
+          </p>
         </Reveal>
 
         <Reveal delay={80} className="lp-grid" >
@@ -180,7 +184,7 @@ export default async function LandingPage() {
                 </span>
                 {english?.priceMonth && (
                   <span className="lp-muted" style={{ fontSize: 14, fontWeight: 600 }}>
-                    {fill(l.englishPrice, { price: english.priceMonth })}
+                    {fill(l.englishPrice, { price: money(english.priceMonth, locale) })}
                   </span>
                 )}
               </div>
@@ -278,6 +282,9 @@ export default async function LandingPage() {
             <span className="lp-eyebrow">{l.plansEyebrow}</span>
             <h2 style={{ marginTop: 10 }}>{l.plansTitle}</h2>
             <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.plansBody}</p>
+            <p className="lp-muted" style={{ fontSize: 14, marginTop: 10, maxWidth: '62ch' }}>
+              {l.priceNote}
+            </p>
           </Reveal>
 
           <Reveal delay={80}>
@@ -494,6 +501,8 @@ export default async function LandingPage() {
           style={{ fontSize: 13, marginTop: 30, paddingTop: 20, borderTop: '1px solid var(--line)' }}
         >
           © {new Date().getFullYear()} RUMBO. {l.footerDisclaimer}
+          <br />
+          {l.footerAuthor} <a href={whatsappLink(t.wa.short)} target="_blank" rel="noopener noreferrer">{site.whatsappPretty}</a>
         </div>
       </footer>
     </>

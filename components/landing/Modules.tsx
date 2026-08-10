@@ -6,6 +6,7 @@ import type { Dict } from '@/lib/i18n/dictionaries/es';
 import type { Locale } from '@/lib/i18n/config';
 import { whatsappLink } from '@/lib/site';
 import { fill } from '@/lib/i18n/fill';
+import { money } from '@/lib/money';
 
 export type ModuleCard = {
   id: string;
@@ -159,13 +160,13 @@ export function Modules({
                   }}
                 >
                   <span style={{ fontSize: 26, fontWeight: 800, color: 'var(--text)' }}>
-                    S/ {m.priceMonth}
+                    {money(m.priceMonth ?? 0, locale)}
                   </span>
                   <span className="lp-muted" style={{ fontSize: 14 }}>
                     {t.moduleLoose}
                   </span>
                   <span className="lp-muted" style={{ fontSize: 13, marginLeft: 'auto' }}>
-                    {fill(t.moduleYear, { price: m.priceYear ?? 0 })}
+                    {fill(t.moduleYear, { price: money(m.priceYear ?? 0, locale) })}
                   </span>
                 </div>
 

@@ -171,7 +171,7 @@ update plans set i18n = '{
     "cta": "Secure my place",
     "features": [
       "Everything in the Monthly plan",
-      "You save S/ 478 compared with paying month by month",
+      "You save about $130 compared with paying month by month",
       "Early access to the English C1 module",
       "Mock exams by institution: ISIL, USIL, UPC",
       "Study plan based on your initial diagnostic",
@@ -185,7 +185,7 @@ update plans set i18n = '{
     "cta": "Garantir minha vaga",
     "features": [
       "Tudo do plano Mensal",
-      "Você economiza S/ 478 em relação a pagar mês a mês",
+      "Você economiza cerca de R$ 690 em relação a pagar mês a mês",
       "Acesso antecipado ao módulo de Inglês C1",
       "Simulados por instituição: ISIL, USIL, UPC",
       "Plano de estudo conforme seu diagnóstico inicial",
