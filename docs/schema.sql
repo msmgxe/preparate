@@ -560,3 +560,11 @@ do $$ begin
   alter type block_kind add value if not exists 'pair';
   alter type block_kind add value if not exists 'say';
 end $$;
+
+-- ── 13 · orden libre o secuencial ───────────────────────────────────────────
+-- En las áreas de admisión el alumno entra por donde quiera: los capítulos no
+-- dependen unos de otros y quien va flojo en porcentajes no tiene por qué
+-- empezar por sucesiones. En un idioma sí importa: el B2 no se sostiene sin el
+-- A2, así que el módulo de Inglés abre sus capítulos a medida que se avanza.
+alter table areas add column if not exists sequential boolean not null default false;
+update areas set sequential = (id = 'eng');

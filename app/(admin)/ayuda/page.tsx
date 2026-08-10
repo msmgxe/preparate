@@ -214,6 +214,20 @@ export default async function AyudaPage() {
           la guía —primero lo flojo, luego lo nuevo, y la clase antes que la práctica—, así que un
           alumno que solo pulsa ahí ya está siguiendo el método sin tener que pensarlo.
         </p>
+        <p style={P}>
+          Al abrir un curso, el alumno ve primero <b>de qué va</b>: su descripción, cuántos
+          capítulos y preguntas tiene, y si puede entrar por donde quiera. En las cuatro áreas de
+          admisión el orden es libre —los capítulos no dependen unos de otros, y quien va flojo en
+          porcentajes no tiene por qué empezar por sucesiones—. En Inglés no: cada nivel se apoya
+          en el anterior, así que los capítulos se abren a medida que avanza. El listón es bajo a
+          propósito: basta con haber practicado el anterior, no con dominarlo.
+        </p>
+        <p style={P}>
+          Cada capítulo se despliega y cuenta tres cosas sin salir de la página: qué se practica
+          ahí, cómo va el alumno, y el recorrido dibujado —<b>primero la clase, después la
+          práctica</b>—. La mitad de los alumnos entra a practicar sin leer la clase, y verlo
+          dibujado lo corrige mejor que un aviso escrito.
+        </p>
         <Note title="Por qué los módulos van en dos grupos">
           Debajo de «Tus cursos», el itinerario separa lo comprado de lo que es solo muestra. Antes
           iban mezclados y un padre que había pagado un módulo veía cinco tarjetas iguales: parecía
@@ -397,6 +411,14 @@ export default async function AyudaPage() {
                 'Calibración te muestra las que casi nadie acierta.',
                 'Ábrela en Balotario y corrígela, o pásala a borrador.',
                 'Un borrador deja de salir en sesiones nuevas al instante.',
+              ],
+            },
+            {
+              t: 'Cambiar si un curso va en orden',
+              s: [
+                'La columna «sequential» de la tabla areas lo decide.',
+                'Hoy solo Inglés la tiene activada; las cuatro de admisión van libres.',
+                'Un capítulo se abre cuando el anterior tiene al menos una respuesta.',
               ],
             },
             {

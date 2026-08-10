@@ -412,6 +412,14 @@ export const pt: Dict = {
     bestStreak: 'Melhor ofensiva',
 
     stagesTitle: 'Escalas do itinerário',
+    orderFree: 'Comece pelo capítulo que quiser: eles não dependem uns dos outros.',
+    orderSequential: 'Os capítulos abrem em ordem: cada nível se apoia no anterior.',
+    chapterWaiting:
+      'Ainda não é a hora. Pratique o capítulo anterior — basta começá-lo — e este abre sozinho.',
+    stepLesson: 'Primeiro',
+    stepNoLesson: 'Este capítulo ainda não tem aula',
+    stepPractice: 'Depois',
+    stepPracticeTitle: 'Sessão de prática',
     groupMine: 'Seus módulos',
     groupSample: 'Outros módulos · apenas amostra',
     groupSampleHint: 'Você pode testá-los, mas não estão ativos na sua conta.',

@@ -412,6 +412,14 @@ export const en: Dict = {
     bestStreak: 'Best streak',
 
     stagesTitle: 'Stops on the itinerary',
+    orderFree: 'Start with whichever chapter you like: they do not depend on each other.',
+    orderSequential: 'Chapters open in order: each level builds on the previous one.',
+    chapterWaiting:
+      'Not yet. Practise the previous chapter — just starting it is enough — and this one opens by itself.',
+    stepLesson: 'First',
+    stepNoLesson: 'This chapter has no lesson yet',
+    stepPractice: 'Then',
+    stepPracticeTitle: 'Practice session',
     groupMine: 'Your modules',
     groupSample: 'Other modules · sample only',
     groupSampleHint: 'You can try them, but they are not active on your account.',

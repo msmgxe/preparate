@@ -50,10 +50,19 @@ export type ChapterCard = Chapter & {
   lesson: { id: string; slug: string | null; title: string; minutes: number } | null;
   mastery: number | null;
   answered: number;
+  /**
+   * Todavía no toca.
+   *
+   * Solo puede ser cierto en un área secuencial. En las de admisión el alumno
+   * entra por donde quiera: los capítulos no dependen unos de otros.
+   */
+  waiting: boolean;
 };
 
 export type AreaCard = Area & {
   chapters: ChapterCard[];
+  /** Cuántas clases publicadas tiene el módulo. */
+  lessons: number;
   published: number;
   mastery: number | null;
   /** Cerrado = solo muestra gratuita. */
@@ -101,18 +110,30 @@ export async function getItinerary(userId: string, locale: Locale = 'es'): Promi
   return allAreas
     .filter((area) => area.locales.includes(locale))
     .map((area) => {
+    /**
+     * En un área secuencial, un capítulo se abre cuando el anterior ya se
+     * empezó. El listón es bajo a propósito: basta con haberlo practicado, no
+     * con dominarlo. Se trata de sostener el orden, no de bloquear a nadie.
+     */
+    let previousStarted = true;
+
     const own = allChapters
       .filter((c) => c.areaId === area.id)
       .map<ChapterCard>((c) => {
         const m = masteryByChapter.get(c.id);
         const lesson = lessonByChapter.get(c.id) ?? null;
+        const answered = m ? Number(m.n ?? 0) : 0;
+        const waiting = area.sequential && !previousStarted;
+        previousStarted = answered > 0;
         return {
           ...c,
           title: tr(c, 'title', locale),
+          blurb: tr(c, 'blurb', locale),
           published: countByChapter.get(c.id) ?? 0,
           lesson: lesson ? { ...lesson, title: tr(lesson, 'title', locale) } : null,
           mastery: m ? num(m.pct) : null,
-          answered: m ? Number(m.n ?? 0) : 0,
+          answered,
+          waiting,
         };
       });
 
@@ -121,7 +142,9 @@ export async function getItinerary(userId: string, locale: Locale = 'es'): Promi
       ...area,
       name: tr(area, 'name', locale),
       short: tr(area, 'short', locale),
+      blurb: tr(area, 'blurb', locale),
       chapters: own,
+      lessons: own.filter((c) => c.lesson).length,
       published: own.reduce((a, c) => a + c.published, 0),
       mastery: am ? num(am.pct) : null,
       locked: !access.isOpen(area.id),

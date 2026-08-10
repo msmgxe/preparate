@@ -68,6 +68,8 @@ export const areas = pgTable('areas', {
   status: text('status').notNull().default('live').$type<'live' | 'soon'>(),
   /** Idiomas en los que se ofrece el módulo. */
   locales: text('locales').array().notNull().default(['es', 'en', 'pt']),
+  /** Si los capítulos deben hacerse en orden. Solo el módulo de idioma. */
+  sequential: boolean('sequential').notNull().default(false),
   i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
 });
 

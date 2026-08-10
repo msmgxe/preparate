@@ -415,6 +415,14 @@ export const es = {
     bestStreak: 'Mejor racha',
 
     stagesTitle: 'Escalas del itinerario',
+    orderFree: 'Empieza por el capítulo que quieras: no dependen unos de otros.',
+    orderSequential: 'Los capítulos se abren en orden: cada nivel se apoya en el anterior.',
+    chapterWaiting:
+      'Todavía no toca. Practica el capítulo anterior —basta con empezarlo— y este se abre solo.',
+    stepLesson: 'Primero',
+    stepNoLesson: 'Este capítulo aún no tiene clase',
+    stepPractice: 'Después',
+    stepPracticeTitle: 'Sesión de práctica',
     groupMine: 'Tus módulos',
     groupSample: 'Otros módulos · solo muestra',
     groupSampleHint: 'Puedes probarlos, pero no están activos en tu cuenta.',

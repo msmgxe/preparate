@@ -2,19 +2,23 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { startChapter } from '@/app/(student)/actions';
 import type { AreaCard } from '@/lib/queries';
+import { ChapterRow } from '@/components/student/ChapterCard';
+import { Shuffle, ListOrdered } from 'lucide-react';
 import type { Dict } from '@/lib/i18n/dictionaries/es';
-
-function stars(mastery: number | null): string {
-  if (mastery === null) return '☆☆☆';
-  const filled = mastery >= 85 ? 3 : mastery >= 65 ? 2 : mastery >= 40 ? 1 : 0;
-  return '★'.repeat(filled) + '☆'.repeat(3 - filled);
-}
 
 export function Itinerary({ areas, t }: { areas: AreaCard[]; t: Dict }) {
   const a = t.app;
-  const [open, setOpen] = useState<string | null>(null);
+  /**
+   * Se abre solo el primer módulo comprado.
+   *
+   * Antes había que pulsar para ver de qué iba un curso, y quien entraba por
+   * primera vez encontraba cinco tarjetas mudas. Abriendo uno, la explicación
+   * del curso y sus capítulos están a la vista desde el primer segundo.
+   */
+  const [open, setOpen] = useState<string | null>(
+    () => (areas.find((x) => !x.locked) ?? areas[0])?.id ?? null,
+  );
   const current = areas.find((a) => a.id === open) ?? null;
 
   /**
@@ -92,43 +96,43 @@ export function Itinerary({ areas, t }: { areas: AreaCard[]; t: Dict }) {
       )}
 
       {current && (
-        <div className="chapters">
-          {current.chapters.map((chapter, i) => (
-            <div className="chap" key={chapter.id}>
-              <div className="num">{String(i + 1).padStart(2, '0')}</div>
-              <div className="t">
-                <b>{chapter.title}</b>
-                <span>
-                  {chapter.published}{' '}
-                  {chapter.published === 1 ? t.common.question : t.common.questions}
-                  {chapter.answered > 0
-                    ? ` · ${chapter.answered} ${a.solved} · ${chapter.mastery}% ${a.accuracyShort}`
-                    : ` · ${a.notStarted}`}
-                  {chapter.lesson ? ` · ${a.lessonAvailable}` : ''}
+        <>
+          {/* ── qué es este curso ─────────────────────────────────── */}
+          <div className="areahead" style={{ '--accent': current.accent } as React.CSSProperties}>
+            <div className="areahead-top">
+              <span className="areahead-sym">{current.symbol}</span>
+              <div>
+                <h3>{current.name}</h3>
+                <span className="areahead-counts">
+                  {current.chapters.length} {t.common.chapters} · {current.published} {t.common.questions}
+                  {current.lessons > 0 ? ` · ${current.lessons} ${t.common.lessons}` : ''}
                 </span>
               </div>
-              <div className="stars">{stars(chapter.mastery)}</div>
-              {chapter.lesson &&
-                (!current.locked || current.freeLessonId === chapter.lesson.id ? (
-                  <Link className="btn sm" href={`/app/clase/${chapter.lesson.id}`}>
-                    {a.lessonBtn} · {chapter.lesson.minutes} {t.common.minutes}
-                    {current.locked ? ` · ${a.sample}` : ''}
-                  </Link>
-                ) : (
-                  <span className="btn sm" style={{ opacity: 0.45, cursor: 'not-allowed' }}>
-                    🔒 {a.lessonBtn.replace('◐ ', '')}
-                  </span>
-                ))}
-              <form action={startChapter}>
-                <input type="hidden" name="chapter_id" value={chapter.id} />
-                <input type="hidden" name="title" value={`${current.name} · ${chapter.title}`} />
-                <button className="btn sm" disabled={chapter.published === 0}>
-                  {chapter.published === 0 ? a.noQuestions : a.practiceBtn}
-                </button>
-              </form>
             </div>
-          ))}
-        </div>
+
+            {current.blurb && <p className="areahead-blurb">{current.blurb}</p>}
+
+            <p className="areahead-order">
+              {current.sequential ? <ListOrdered size={15} /> : <Shuffle size={15} />}
+              <span>{current.sequential ? a.orderSequential : a.orderFree}</span>
+            </p>
+          </div>
+
+          <div className="chapters2">
+            {current.chapters.map((chapter, i) => (
+              <ChapterRow
+                key={chapter.id}
+                chapter={chapter}
+                index={i}
+                accent={current.accent}
+                areaName={current.name}
+                areaLocked={current.locked}
+                freeLessonId={current.freeLessonId}
+                t={t}
+              />
+            ))}
+          </div>
+        </>
       )}
     </>
   );
