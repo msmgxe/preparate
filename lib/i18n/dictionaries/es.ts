@@ -311,6 +311,82 @@ export const es = {
       'Los nombres de las instituciones se citan solo para indicar el formato de examen que se practica; no existe vínculo ni respaldo de ellas.',
   },
 
+  /** La guía de a bordo: qué compró, cómo se usa y en qué orden. */
+  guide: {
+    eyebrow: 'Plan de vuelo',
+    title: 'Esto es lo que llevas a bordo',
+    intro:
+      'Cuatro herramientas, siempre en el mismo orden. No hace falta que las descubras solas: aquí está para qué sirve cada una y cuándo usarla.',
+    open: 'Ver mi plan de vuelo',
+    close: 'Ocultar la guía',
+    reopen: '¿Te perdiste? Vuelve a leer la guía',
+    steps: [
+      {
+        id: 'clase',
+        tag: 'Escala 1',
+        title: 'Embarca con la clase',
+        time: '5–7 min',
+        body: 'Una infografía animada te explica el concepto antes de practicar. Empieza por la intuición y deja la fórmula para el final, cuando ya es obvia.',
+        tip: 'A mitad de camino hay un checkpoint: si no lo respondes, la clase no sigue. Es a propósito — así no se lee en piloto automático.',
+      },
+      {
+        id: 'practica',
+        tag: 'Escala 2',
+        title: 'Practica como en el examen',
+        time: 'a tu ritmo',
+        body: 'Preguntas escritas al formato real de cada institución. Eliges, y en el mismo segundo ves si acertaste y por qué.',
+        tip: '¿Atascado? El botón «Muéstrame cómo se resuelve» abre la resolución completa. Cuenta como fallo, pero aprender vale más que el puntaje de una sesión.',
+      },
+      {
+        id: 'bitacora',
+        tag: 'Escala 3',
+        title: 'Cierra la bitácora',
+        time: '10 min al día',
+        body: 'Lo que fallas no se pierde: vuelve programado a los días 1, 3, 7 y 21. Es el intervalo que mejor funciona para no olvidar.',
+        tip: 'Si vuelves a fallar, el reloj se reinicia. No es castigo: es la señal de que ese tema todavía no está cerrado.',
+      },
+      {
+        id: 'simulacro',
+        tag: 'Destino',
+        title: 'Rinde el simulacro',
+        time: '25 min',
+        body: 'Examen completo, cronometrado y con la mezcla real de la institución. Sin pistas hasta entregar, como el día de verdad.',
+        tip: 'Rinde uno cada dos semanas, no todos los días. Sirve para medir, y medir demasiado seguido no deja tiempo a mejorar.',
+      },
+    ],
+    routeTitle: 'La ruta que recomendamos',
+    routeBody:
+      'No es una lista de deberes: es el ritmo que funciona. Si un día solo tienes diez minutos, haz la bitácora — es lo que más rinde por minuto.',
+    route: [
+      ['Cada capítulo nuevo', 'Clase primero, práctica después. Nunca al revés.'],
+      ['Todos los días', 'Diez minutos de bitácora. Es lo que fija lo aprendido.'],
+      ['Cada dos semanas', 'Un simulacro completo para ver dónde estás.'],
+      ['Cuando falles mucho', 'Vuelve a la clase del capítulo. No insistas a ciegas.'],
+    ],
+    tipsTitle: 'Tres cosas que marcan la diferencia',
+    tips: [
+      ['Practica corto y seguido', 'Veinte minutos diarios rinden más que tres horas del domingo. La memoria necesita repetir, no maratones.'],
+      ['Lee siempre la resolución', 'También cuando aciertas. A veces se acierta por descarte, y eso no se repite en el examen.'],
+      ['Fíjate en el truco', 'Cada resolución termina con el atajo que ahorra tiempo. En un examen cronometrado, eso son puntos.'],
+    ],
+  },
+
+  /** Acceso directo a lo comprado. */
+  courses: {
+    title: 'Tus cursos',
+    hint: 'Continúa donde lo dejaste',
+    progress: 'Dominio',
+    start: 'Empezar',
+    continue: 'Continuar',
+    review: 'Reforzar',
+    nextUp: 'Sigue',
+    readFirst: 'Empieza por la clase',
+    noneTitle: 'Todavía no tienes ningún curso activo',
+    noneBody:
+      'Puedes probar unas pocas preguntas y leer la primera clase de cada módulo. Cuando quieras abrir uno completo, escríbenos.',
+    noneCta: 'Ver planes',
+  },
+
   app: {
     checkIn: 'Check-in del día',
     countdownNone: 'Aún no fijas la fecha.',

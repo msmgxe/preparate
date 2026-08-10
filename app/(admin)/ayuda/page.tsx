@@ -19,6 +19,7 @@ export const dynamic = 'force-dynamic';
 const INDEX = [
   ['sistema', 'El sistema de un vistazo'],
   ['registro', 'Cómo se registra un alumno'],
+  ['primera', 'Qué ve el alumno al entrar'],
   ['roles', 'Quién puede hacer qué'],
   ['acceso', 'Cómo se abre un módulo pagado'],
   ['contenido', 'El ciclo del contenido'],
@@ -195,6 +196,31 @@ export default async function AyudaPage() {
       </Section>
 
       {/* ══ 3 ══════════════════════════════════════════════════════════ */}
+      <Section id="primera" title="Qué ve el alumno al entrar">
+        <p style={P}>
+          La primera vez, la <b>guía de a bordo</b> se abre sola. Es un plan de vuelo con las
+          cuatro herramientas en el orden en que hay que usarlas —clase, práctica, bitácora,
+          simulacro—, cada una con su tiempo estimado y un consejo concreto. Debajo van el ritmo
+          semanal recomendado y tres hábitos que marcan la diferencia.
+        </p>
+        <p style={P}>
+          Se pliega en cuanto el alumno la cierra y se queda plegada; la barra de arriba sigue
+          disponible para volver a abrirla. A partir de la primera sesión practicada ya no se abre
+          sola: quien ya sabe usar la plataforma no necesita que se lo repitan cada día.
+        </p>
+        <p style={P}>
+          Justo debajo está <b>Tus cursos</b>: solo los módulos que tiene abiertos, con su
+          progreso y un único botón que lleva al siguiente paso. La regla es la misma que enseña
+          la guía —primero lo flojo, luego lo nuevo, y la clase antes que la práctica—, así que un
+          alumno que solo pulsa ahí ya está siguiendo el método sin tener que pensarlo.
+        </p>
+        <Note title="Por qué los módulos van en dos grupos">
+          Debajo de «Tus cursos», el itinerario separa lo comprado de lo que es solo muestra. Antes
+          iban mezclados y un padre que había pagado un módulo veía cinco tarjetas iguales: parecía
+          que tenía acceso a todo. Lo cerrado se atenúa y lleva candado.
+        </Note>
+      </Section>
+
       <Section id="roles" title="Quién puede hacer qué">
         <p style={P}>
           Hay tres roles. <b>Alumno</b> es el que se asigna solo al registrarse. <b>Administrador</b>{' '}
@@ -379,6 +405,14 @@ export default async function AyudaPage() {
                 'Idiomas → elige inglés o portugués.',
                 'Elige el grupo (módulos, capítulos, clases, preguntas, planes).',
                 'Los que llevan un punto en vez de un check están sin traducir.',
+              ],
+            },
+            {
+              t: 'Llenar el balotario de golpe',
+              s: [
+                'Necesita ANTHROPIC_API_KEY en el entorno; sin ella el generador no responde.',
+                'npm run db:bank -- 5 mat  → prueba con un área y lee lo que sale.',
+                'npm run db:bank  → completa todos los capítulos que estén por debajo.',
               ],
             },
             {

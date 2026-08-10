@@ -308,6 +308,82 @@ export const en: Dict = {
       'Institution names are cited only to indicate the exam format being practised; there is no affiliation with or endorsement by them.',
   },
 
+  /** The onboard guide: what they bought, how it works, in what order. */
+  guide: {
+    eyebrow: 'Flight plan',
+    title: 'This is what you have on board',
+    intro:
+      'Four tools, always in the same order. You should not have to work them out alone: here is what each one is for and when to use it.',
+    open: 'See my flight plan',
+    close: 'Hide the guide',
+    reopen: 'Lost? Read the guide again',
+    steps: [
+      {
+        id: 'clase',
+        tag: 'Stop 1',
+        title: 'Board with the lesson',
+        time: '5–7 min',
+        body: 'An animated infographic explains the concept before you practise. It starts from intuition and leaves the formula for the end, once it is obvious.',
+        tip: 'Halfway through there is a checkpoint: if you do not answer it, the lesson does not continue. That is on purpose — it stops you reading on autopilot.',
+      },
+      {
+        id: 'practica',
+        tag: 'Stop 2',
+        title: 'Practise like the exam',
+        time: 'at your pace',
+        body: 'Questions written to the real format of each institution. You choose, and in the same second you see whether you got it and why.',
+        tip: 'Stuck? The "Show me how to solve it" button opens the full solution. It counts as a miss, but learning is worth more than one session score.',
+      },
+      {
+        id: 'bitacora',
+        tag: 'Stop 3',
+        title: 'Close your error log',
+        time: '10 min a day',
+        body: 'What you get wrong is not lost: it comes back on days 1, 3, 7 and 21. That is the spacing that works best against forgetting.',
+        tip: 'If you miss it again, the clock resets. It is not a punishment: it is the sign that the topic is not closed yet.',
+      },
+      {
+        id: 'simulacro',
+        tag: 'Destination',
+        title: 'Sit the mock exam',
+        time: '25 min',
+        body: 'A full timed exam with the real subject mix of the institution. No hints until you submit, just like the real day.',
+        tip: 'Sit one every two weeks, not every day. It is for measuring, and measuring too often leaves no time to improve.',
+      },
+    ],
+    routeTitle: 'The route we recommend',
+    routeBody:
+      'It is not a list of chores: it is the rhythm that works. If you only have ten minutes one day, do the error log — it is what pays off most per minute.',
+    route: [
+      ['Every new chapter', 'Lesson first, practice after. Never the other way round.'],
+      ['Every day', 'Ten minutes of error log. That is what fixes what you learned.'],
+      ['Every two weeks', 'One full mock exam to see where you stand.'],
+      ['When you miss a lot', 'Go back to the chapter lesson. Do not keep pushing blindly.'],
+    ],
+    tipsTitle: 'Three things that make the difference',
+    tips: [
+      ['Practise short and often', 'Twenty minutes a day beats three hours on Sunday. Memory needs repetition, not marathons.'],
+      ['Always read the solution', 'Even when you get it right. Sometimes you get there by elimination, and that does not repeat on exam day.'],
+      ['Watch for the trick', 'Every solution ends with the shortcut that saves time. In a timed exam, that is points.'],
+    ],
+  },
+
+  /** Direct access to what they bought. */
+  courses: {
+    title: 'Your courses',
+    hint: 'Pick up where you left off',
+    progress: 'Mastery',
+    start: 'Start',
+    continue: 'Continue',
+    review: 'Reinforce',
+    nextUp: 'Next',
+    readFirst: 'Start with the lesson',
+    noneTitle: 'You do not have an active course yet',
+    noneBody:
+      'You can try a few questions and read the first lesson of each module. When you want to open one in full, write to us.',
+    noneCta: 'See plans',
+  },
+
   app: {
     checkIn: 'Today’s check-in',
     countdownNone: 'You have not set the date yet.',

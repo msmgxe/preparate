@@ -6,6 +6,8 @@ import { examProfiles, vStudentStats } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { daysUntil, getDueReviews, getItinerary, getStamps } from '@/lib/queries';
 import { Itinerary } from '@/components/Itinerary';
+import { Guide } from '@/components/student/Guide';
+import { MyCourses } from '@/components/student/MyCourses';
 import { startErrors, startQuick } from '@/app/(student)/actions';
 import { getI18n, fill } from '@/lib/i18n';
 import { site, whatsappLink } from '@/lib/site';
@@ -75,6 +77,9 @@ export default async function HomePage({
         </p>
       )}
 
+      {/* La guía se abre sola mientras no haya practicado nada. */}
+      <Guide t={t} startOpen={Number(stats?.sessions ?? 0) === 0} />
+
       <div className="pass">
         <div className="pass-main">
           <div className="pf">
@@ -126,6 +131,8 @@ export default async function HomePage({
           <div className="barcode" />
         </div>
       </div>
+
+      <MyCourses areas={areas} t={t} />
 
       <section>
         <div className="shead">

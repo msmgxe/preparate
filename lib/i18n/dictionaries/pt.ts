@@ -308,6 +308,82 @@ export const pt: Dict = {
       'Os nomes das instituições são citados apenas para indicar o formato de prova que se pratica; não há vínculo nem endosso por parte delas.',
   },
 
+  /** O guia de bordo: o que comprou, como se usa e em que ordem. */
+  guide: {
+    eyebrow: 'Plano de voo',
+    title: 'Isto é o que você leva a bordo',
+    intro:
+      'Quatro ferramentas, sempre na mesma ordem. Você não precisa descobri-las sozinho: aqui está para que serve cada uma e quando usá-la.',
+    open: 'Ver meu plano de voo',
+    close: 'Ocultar o guia',
+    reopen: 'Se perdeu? Leia o guia de novo',
+    steps: [
+      {
+        id: 'clase',
+        tag: 'Escala 1',
+        title: 'Embarque com a aula',
+        time: '5–7 min',
+        body: 'Um infográfico animado explica o conceito antes de você praticar. Começa pela intuição e deixa a fórmula para o final, quando já é óbvia.',
+        tip: 'No meio do caminho há um checkpoint: se você não responder, a aula não continua. É de propósito — assim não se lê no piloto automático.',
+      },
+      {
+        id: 'practica',
+        tag: 'Escala 2',
+        title: 'Pratique como na prova',
+        time: 'no seu ritmo',
+        body: 'Questões escritas no formato real de cada instituição. Você escolhe e, no mesmo segundo, vê se acertou e por quê.',
+        tip: 'Travou? O botão «Mostre como se resolve» abre a resolução completa. Conta como erro, mas aprender vale mais que a nota de uma sessão.',
+      },
+      {
+        id: 'bitacora',
+        tag: 'Escala 3',
+        title: 'Feche seu registro de erros',
+        time: '10 min por dia',
+        body: 'O que você erra não se perde: volta nos dias 1, 3, 7 e 21. É o intervalo que melhor funciona contra o esquecimento.',
+        tip: 'Se errar de novo, o relógio reinicia. Não é castigo: é o sinal de que aquele tema ainda não está fechado.',
+      },
+      {
+        id: 'simulacro',
+        tag: 'Destino',
+        title: 'Faça o simulado',
+        time: '25 min',
+        body: 'Prova completa, cronometrada e com a mistura real da instituição. Sem dicas até entregar, como no dia de verdade.',
+        tip: 'Faça um a cada duas semanas, não todo dia. Serve para medir, e medir demais não deixa tempo para melhorar.',
+      },
+    ],
+    routeTitle: 'A rota que recomendamos',
+    routeBody:
+      'Não é uma lista de tarefas: é o ritmo que funciona. Se num dia você só tem dez minutos, faça o registro de erros — é o que mais rende por minuto.',
+    route: [
+      ['Cada capítulo novo', 'Aula primeiro, prática depois. Nunca ao contrário.'],
+      ['Todos os dias', 'Dez minutos de registro de erros. É o que fixa o aprendido.'],
+      ['A cada duas semanas', 'Um simulado completo para ver onde você está.'],
+      ['Quando errar muito', 'Volte à aula do capítulo. Não insista às cegas.'],
+    ],
+    tipsTitle: 'Três coisas que fazem diferença',
+    tips: [
+      ['Pratique curto e sempre', 'Vinte minutos por dia rendem mais que três horas no domingo. A memória precisa de repetição, não de maratonas.'],
+      ['Leia sempre a resolução', 'Inclusive quando acerta. Às vezes se acerta por eliminação, e isso não se repete na prova.'],
+      ['Preste atenção ao truque', 'Cada resolução termina com o atalho que economiza tempo. Numa prova cronometrada, isso são pontos.'],
+    ],
+  },
+
+  /** Acesso direto ao que comprou. */
+  courses: {
+    title: 'Seus cursos',
+    hint: 'Continue de onde parou',
+    progress: 'Domínio',
+    start: 'Começar',
+    continue: 'Continuar',
+    review: 'Reforçar',
+    nextUp: 'A seguir',
+    readFirst: 'Comece pela aula',
+    noneTitle: 'Você ainda não tem nenhum curso ativo',
+    noneBody:
+      'Você pode testar algumas questões e ler a primeira aula de cada módulo. Quando quiser abrir um completo, fale com a gente.',
+    noneCta: 'Ver planos',
+  },
+
   app: {
     checkIn: 'Check-in do dia',
     countdownNone: 'Você ainda não marcou a data.',
