@@ -17,6 +17,7 @@ import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
+import { StudentFocused, StudentMobile, StudyGroup } from '@/components/landing/Figures';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
 import { Demo } from '@/components/landing/Demo';
@@ -136,6 +137,42 @@ export default async function LandingPage() {
           <div style={{ marginTop: 30 }}>
             <Modules modules={modules} t={l} locale={locale} />
           </div>
+        </Reveal>
+      </section>
+
+
+      {/* ═══ PARA QUIÉN ES ══════════════════════════════════════════════ */}
+      <section id="para-quien" className="lp-wrap lp-section">
+        <Reveal>
+          <span className="lp-eyebrow">{t.who.eyebrow}</span>
+          <h2 style={{ marginTop: 10 }}>{t.who.title}</h2>
+          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{t.who.body}</p>
+        </Reveal>
+
+        <div
+          className="lp-grid"
+          style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 32 }}
+        >
+          {t.who.cases.map((item, i) => {
+            const Figure = [StudentFocused, StudentMobile, StudyGroup][i];
+            return (
+              <Reveal key={item.title} delay={i * 100}>
+                <article className="lp-card lp-card-hover" style={{ padding: 0, height: '100%', overflow: 'hidden' }}>
+                  <Figure />
+                  <div style={{ padding: 22 }}>
+                    <h3>{item.title}</h3>
+                    <p style={{ fontSize: 15.5, marginTop: 9, lineHeight: 1.65 }}>{item.body}</p>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <Reveal delay={160}>
+          <p className="lp-muted" style={{ fontSize: 14.5, marginTop: 20, textAlign: 'center' }}>
+            {t.who.age}
+          </p>
         </Reveal>
       </section>
 

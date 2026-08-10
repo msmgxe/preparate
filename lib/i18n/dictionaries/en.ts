@@ -90,6 +90,29 @@ export const en: Dict = {
     exam: 'Mock exam',
   },
   /** What is already built, told from the value and not from the feature. */
+  /** Who this is for, with a scene for each case. */
+  who: {
+    eyebrow: 'Who it is for',
+    title: 'Three ways to reach the exam',
+    body:
+      'From the third year of secondary school onwards. You do not need to be doing well or badly: you need to want to arrive with the ground measured.',
+    cases: [
+      {
+        title: 'You are doing well and want to be sure',
+        body: 'You already study, but you do not know whether what you practise looks like the exam. Here the questions are written to the real format of each institution, and the mock exam tells you, against the clock, where you actually stand.',
+      },
+      {
+        title: 'You are scraping by and need order',
+        body: 'The problem is not time, it is not knowing where to start. Every chapter brings its five-minute lesson, its questions and a log that brings you what is due each day. Ten minutes pay off more than three hours on Sunday.',
+      },
+      {
+        title: 'You study together',
+        body: 'At school, at a prep academy or among friends. Each person moves at their own pace and through whichever chapter they like, and the Family plan adds the weekly report so that at home they know how it is going without having to ask.',
+      },
+    ],
+    age: 'Made for the last three years of secondary school, and for anyone who already finished and is applying.',
+  },
+
   proof: {
     eyebrow: 'How you study here',
     title: 'Four decisions that change the outcome',

@@ -90,6 +90,29 @@ export const pt: Dict = {
     exam: 'Simulado',
   },
   /** O que já está construído, contado pelo valor e não pela funcionalidade. */
+  /** Para quem serve isto, com uma cena para cada caso. */
+  who: {
+    eyebrow: 'Para quem é',
+    title: 'Três formas de chegar à prova',
+    body:
+      'Do terceiro ano do ensino médio em diante. Não é preciso ir bem nem ir mal: é preciso querer chegar com o terreno medido.',
+    cases: [
+      {
+        title: 'Você vai bem e quer garantir',
+        body: 'Você já estuda, mas não sabe se o que pratica se parece com a prova. Aqui as questões são escritas no formato real de cada instituição, e o simulado diz, com relógio, onde você está de verdade.',
+      },
+      {
+        title: 'Você vai no limite e precisa de ordem',
+        body: 'O problema não é o tempo, é não saber por onde começar. Cada capítulo traz sua aula de cinco minutos, suas questões e um registro que traz todo dia o que toca. Dez minutos rendem mais que três horas no domingo.',
+      },
+      {
+        title: 'Vocês estudam juntos',
+        body: 'Na escola, no cursinho ou entre amigos. Cada um avança no seu ritmo e pelo capítulo que quiser, e o plano Familiar acrescenta o relatório semanal para que em casa se saiba como vai sem precisar perguntar.',
+      },
+    ],
+    age: 'Pensado para os últimos anos do ensino médio e para quem já terminou e vai prestar.',
+  },
+
   proof: {
     eyebrow: 'Como se estuda aqui',
     title: 'Quatro decisões que mudam o resultado',

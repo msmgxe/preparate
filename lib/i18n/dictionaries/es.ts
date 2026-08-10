@@ -93,6 +93,29 @@ export const es = {
     exam: 'Simulacro',
   },
   /** Lo que ya está construido, contado desde el valor y no desde la función. */
+  /** A quién le sirve esto, con una escena para cada caso. */
+  who: {
+    eyebrow: 'Para quién es',
+    title: 'Tres formas de llegar al examen',
+    body:
+      'Desde tercero de secundaria en adelante. No hace falta ir bien ni ir mal: hace falta querer llegar con el terreno medido.',
+    cases: [
+      {
+        title: 'Vas bien y quieres asegurar',
+        body: 'Ya estudias, pero no sabes si lo que practicas se parece al examen. Aquí las preguntas están escritas al formato real de cada institución y el simulacro te dice, con reloj, dónde estás de verdad.',
+      },
+      {
+        title: 'Vas justo y necesitas orden',
+        body: 'El problema no es el tiempo, es no saber por dónde empezar. Cada capítulo trae su clase de cinco minutos, sus preguntas y una bitácora que te trae cada día lo que toca. Diez minutos rinden más que tres horas del domingo.',
+      },
+      {
+        title: 'Estudian juntos',
+        body: 'En el colegio, en la academia o entre amigos. Cada quien avanza a su ritmo y por el capítulo que quiera, y el plan Familiar añade el reporte semanal para que en casa se sepa cómo va sin tener que preguntarlo.',
+      },
+    ],
+    age: 'Pensado para 3.º, 4.º y 5.º de secundaria, y para quien ya salió y va a postular.',
+  },
+
   proof: {
     eyebrow: 'Cómo se estudia aquí',
     title: 'Cuatro decisiones que cambian el resultado',
