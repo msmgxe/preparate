@@ -1897,4 +1897,997 @@ export const ENG: BankQuestion[] = [
       '4': 'Quedarse sin algo es «run out of».',
     },
   },
+
+  // ── B1 · Entender a velocidad real ────────────────────────────────────────
+  {
+    chapter: 'B1 · Entender a velocidad real',
+    stem: '<b>«Gonna»</b> es la forma hablada de:',
+    options: ['going to', 'gone to', 'got to', 'go to', 'want to'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Reconoce la reducción',
+        p: 'En habla normal «going to» se comprime hasta sonar como una sola palabra.',
+        m: 'going to → /ˈɡʌnə/ → gonna',
+      },
+      {
+        t: 'No es jerga',
+        p: 'La usan todos los registros hablados, también en una entrevista o una conferencia. Solo se evita al escribir.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las reducciones no son inglés descuidado: son la pronunciación normal. Reconocerlas es la diferencia entre entender una conversación y no entenderla.',
+    trick: 'Las tres que más aparecen: gonna, wanna y gotta. Con esas tres ya cambia mucho lo que entiendes.',
+    distractors: {
+      '1': '«Gone to» no se reduce así.',
+      '2': 'Esa es «gotta».',
+      '3': '«Go to» no se contrae.',
+      '4': 'Esa es «wanna».',
+    },
+  },
+  {
+    chapter: 'B1 · Entender a velocidad real',
+    stem: 'Oyes algo que suena a <span class="math">/ˈwɒdʒə ˈwɒnə duː/</span>. ¿Qué frase es?',
+    options: ['What do you want to do?', 'What did you want to do?', 'Where do you want to go?', 'What are you doing?', 'Why do you want to do it?'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Separa los bloques',
+        p: '«What do you» se funde en «whaddaya» y «want to» en «wanna».',
+        m: 'whaddaya + wanna + do',
+      },
+      {
+        t: 'Reconstruye',
+        p: 'Cada bloque se desanda hasta su forma escrita.',
+        m: 'What do you want to do?',
+      },
+    ],
+    concept:
+      'El habla rápida funde grupos enteros de palabras. Reconocer el bloque completo funciona mejor que intentar oír cada palabra.',
+    trick: 'Cuando algo suene a una sola palabra larga, prueba a ver si empieza por un auxiliar y un pronombre pegados.',
+    distractors: {
+      '1': 'El pasado sonaría «whadja», con otra consonante.',
+      '2': 'Empezaría por «where», con otra vocal.',
+      '3': 'No contiene «want to».',
+      '4': 'Empezaría por «why».',
+    },
+  },
+  {
+    chapter: 'B1 · Entender a velocidad real',
+    stem: '¿Por qué <b>«an apple»</b> suena como una sola palabra?',
+    options: [
+      'Porque la consonante final se une a la vocal siguiente',
+      'Porque el artículo pierde su vocal',
+      'Porque «apple» empieza por una letra muda',
+      'Porque se acentúa solo la segunda palabra',
+      'Porque es una excepción del artículo «an»',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en la frontera entre las dos palabras',
+        p: '«An» acaba en consonante y «apple» empieza en vocal. Ahí es donde se pegan.',
+        m: 'an + apple → a-napple',
+      },
+      {
+        t: 'Comprueba que ocurre siempre',
+        p: 'Es un fenómeno general, no una excepción de esta pareja.',
+        m: 'pick it up → pi-ki-tup\nturn it off → tur-ni-toff',
+      },
+    ],
+    concept:
+      'En inglés las palabras no tienen fronteras sonoras: una consonante final busca la vocal siguiente. Por eso una frase corta puede sonar como una palabra larga.',
+    trick: 'Al hablar, pega tú también. Separar cada palabra no te hace más claro: te hace más lento y más difícil de seguir.',
+    distractors: {
+      '1': 'La vocal del artículo se mantiene.',
+      '2': 'La «a» de apple suena con normalidad.',
+      '3': 'El acento no explica la fusión.',
+      '4': 'Le pasa a cualquier pareja consonante-vocal.',
+    },
+  },
+  {
+    chapter: 'B1 · Entender a velocidad real',
+    stem: 'En un audio, la palabra clave se te escapa. ¿Qué conviene hacer?',
+    options: [
+      'Seguir escuchando y deducirla por el contexto',
+      'Detener el audio y buscarla en el diccionario',
+      'Volver atrás inmediatamente a esa palabra',
+      'Traducir mentalmente la frase anterior para situarte',
+      'Abandonar el audio y buscar otro más fácil',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Piensa en qué te cuesta pararte',
+        p: 'Mientras buscas o traduces, el audio sigue. Recuperas una palabra y pierdes tres frases.',
+        m: '',
+      },
+      {
+        t: 'Apuesta por el contexto',
+        p: 'Casi siempre la frase siguiente aclara lo que faltaba. Entender el 80 % sin parar rinde más que el 100 % a trozos.',
+        m: '',
+      },
+    ],
+    concept:
+      'Escuchar es una carrera de fondo: se avanza tolerando huecos. Rellenarlos todos en el momento es lo que hace imposible seguir un discurso largo.',
+    trick: 'Escucha el mismo audio tres veces antes de pasar a otro. La segunda pasada rinde más que un audio nuevo.',
+    distractors: {
+      '1': 'Te saca del audio justo cuando más falta hace seguir.',
+      '2': 'Rompe el hilo por una sola palabra.',
+      '3': 'Traducir es precisamente lo que hay que dejar de hacer.',
+      '4': 'Un audio algo por encima de tu nivel es el que más te enseña.',
+    },
+  },
+  {
+    chapter: 'B1 · Entender a velocidad real',
+    stem: 'Muchos nativos escriben <b>«would of»</b> en vez de «would have». ¿Por qué?',
+    options: [
+      'Porque «have» se reduce a /əv/ y suena idéntico a «of»',
+      'Porque «of» y «have» son intercambiables en ese contexto',
+      'Porque es una forma antigua que sigue siendo válida',
+      'Porque «would» exige «of» en registro informal',
+      'Porque el corrector automático lo cambia',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Escucha la reducción',
+        p: 'En «would have told you», el «have» no lleva acento y se comprime hasta casi desaparecer.',
+        m: 'would have → /wʊdəv/',
+      },
+      {
+        t: 'Compara con «of»',
+        p: 'La preposición «of» átona suena exactamente igual: /əv/.',
+        m: 'have átono = of átono = /əv/',
+      },
+      {
+        t: 'Saca la conclusión útil',
+        p: 'El error demuestra hasta qué punto se reduce. Si un nativo lo confunde al escribir, no esperes oír «have» completo al escuchar.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las palabras gramaticales se reducen tanto que llegan a confundirse entre sí. Escuchar buscando la forma completa es buscar algo que no está.',
+    trick:
+      'Cuando oigas /əv/ detrás de would, could o should, es «have». Y al escribir, siempre «have»: «would of» es incorrecto.',
+    distractors: {
+      '1': 'Significan cosas distintas: una es verbo y otra preposición.',
+      '2': 'Nunca ha sido correcto; es un error ortográfico moderno.',
+      '3': 'No existe tal exigencia.',
+      '4': 'El error es anterior a los correctores.',
+    },
+  },
+
+  // ── B2 · Lo que pudo haber sido ───────────────────────────────────────────
+  {
+    chapter: 'B2 · Lo que pudo haber sido',
+    stem: 'Te enteras tarde de algo importante. Completa: «You <b>______</b> told me!»',
+    options: ['should have', 'should', 'must have', 'could', 'would have'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Identifica qué estás haciendo',
+        p: 'No deduces ni imaginas: reprochas. Lo correcto habría sido avisarte y no ocurrió.',
+        m: 'reproche → should have',
+      },
+      {
+        t: 'Monta la fórmula',
+        p: 'Modal, have y participio. El participio de «tell» es «told».',
+        m: 'should + have + told',
+      },
+    ],
+    concept:
+      'Should have expresa que lo correcto era otra cosa. Es la estructura del reproche y del arrepentimiento.',
+    trick: 'En español dirías «deberías habérmelo dicho». Ese «haber» es el «have» inglés.',
+    distractors: {
+      '1': 'Sin «have» hablaría del presente o del futuro.',
+      '2': 'Sería una deducción, no un reproche.',
+      '3': 'Le falta el «have» y cambia el sentido.',
+      '4': 'Expresaría una consecuencia hipotética, no un reproche.',
+    },
+  },
+  {
+    chapter: 'B2 · Lo que pudo haber sido',
+    stem: 'Llegas y la casa está a oscuras y vacía. Completa: «They <b>______</b> left.»',
+    options: ['must have', 'should have', 'could have to', 'can have', 'must'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en de dónde sacas la conclusión',
+        p: 'No lo viste: lo deduces de lo que tienes delante. Y estás bastante seguro.',
+        m: 'deducción con seguridad → must have',
+      },
+      {
+        t: 'Compáralo con el reproche',
+        p: '«They should have left» significaría que se tendrían que haber ido y no lo hicieron. Es otra cosa.',
+        m: '',
+      },
+    ],
+    concept:
+      'Must have expresa una deducción firme sobre el pasado a partir de evidencia presente. Es el equivalente del «se habrán ido» español.',
+    trick: 'Si en español te sale un futuro con valor de suposición —«habrán llegado», «estará dormido»—, en inglés casi siempre toca must.',
+    distractors: {
+      '1': 'Sería un reproche.',
+      '2': 'Detrás del modal no va «to».',
+      '3': 'Can no se usa para deducciones afirmativas.',
+      '4': 'Sin «have» hablaría del presente.',
+    },
+  },
+  {
+    chapter: 'B2 · Lo que pudo haber sido',
+    stem: 'Completa: «I <b>______</b> helped you, but you never asked.»',
+    options: ['could have', 'should have', 'must have', 'can have', 'would'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira la segunda mitad',
+        p: 'Dice que no lo pediste, así que la ayuda era posible pero no ocurrió. No hay reproche a uno mismo.',
+        m: 'era posible y no pasó → could have',
+      },
+      {
+        t: 'Distínguelo de should have',
+        p: '«I should have helped you» sería reprocharse a sí mismo no haber ayudado. Aquí la culpa es del otro.',
+        m: '',
+      },
+    ],
+    concept:
+      'Could have señala una posibilidad que existió y no se realizó, sin juzgarla. Should have sí juzga.',
+    trick: 'Pregúntate si hay reproche. Si lo hay, should; si solo describes una posibilidad perdida, could.',
+    distractors: {
+      '1': 'Añadiría un reproche que la frase no tiene.',
+      '2': 'Sería una deducción, que aquí no encaja.',
+      '3': 'No se usa así en afirmativa.',
+      '4': 'Le falta el «have» para referirse al pasado.',
+    },
+  },
+  {
+    chapter: 'B2 · Lo que pudo haber sido',
+    stem: 'Completa: «He <b>______</b> seen it — he was asleep the whole time.»',
+    options: ["can't have", "mustn't have", "shouldn't have", "couldn't to have", "didn't have"],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fíjate en que es una deducción negativa',
+        p: 'Estás seguro de que NO ocurrió, y lo deduces de que estaba dormido.',
+        m: 'seguro de que no → can’t have',
+      },
+      {
+        t: 'Aprende la asimetría',
+        p: 'La afirmativa es «must have» pero la negativa no es «mustn’t have»: es «can’t have». Es el único par del idioma que cambia de modal al negar.',
+        m: 'must have  ↔  can’t have',
+      },
+    ],
+    concept:
+      'Para deducir, el inglés usa must en afirmativa y can’t en negativa. «Mustn’t» existe, pero significa prohibición, no deducción.',
+    trick: 'Recuerda la pareja como una unidad: must have / can’t have. Nunca las mezcles con should.',
+    distractors: {
+      '1': 'Significaría prohibición, no deducción.',
+      '2': 'Sería un reproche.',
+      '3': 'Detrás del modal no va «to».',
+      '4': 'Hablaría de posesión, no de deducción.',
+    },
+  },
+  {
+    chapter: 'B2 · Lo que pudo haber sido',
+    stem: 'Tu amigo no llegó a la cita y no avisó. Después descubres que se quedó sin batería. ¿Cuál describe mejor tu reacción <b>antes</b> de saberlo?',
+    options: [
+      'He might have forgotten — I am not sure.',
+      'He must have forgotten, so it is his fault.',
+      'He should have forgotten.',
+      "He can't have forgotten.",
+      'He would have forgotten.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Mide cuánta certeza tienes',
+        p: 'Antes de saber lo de la batería no tenías ninguna evidencia: solo barajabas posibilidades.',
+        m: 'duda → might have',
+      },
+      {
+        t: 'Recorre la escala',
+        p: 'Los modales de pasado forman una escala de certeza, y elegir mal comunica una seguridad que no tienes.',
+        m: 'must have   → casi seguro que sí\nmight have  → quizá\ncan’t have  → casi seguro que no',
+      },
+      {
+        t: 'Descarta el reproche',
+        p: 'Should have valoraría lo que debió hacer, no lo que crees que pasó.',
+        m: '',
+      },
+    ],
+    concept:
+      'Los modales de pasado no solo cuentan hechos: dicen cuánta confianza tienes en lo que afirmas. Elegir el modal es elegir cuánto te comprometes.',
+    trick:
+      'Colócalos en una recta antes de elegir: can’t have — might have — must have. La evidencia que tengas decide dónde caes.',
+    distractors: {
+      '1': 'Afirma una certeza que en ese momento no tenías.',
+      '2': 'No tiene sentido: nadie «debería haber olvidado».',
+      '3': 'Descartaría el olvido, y era justo lo que sospechabas.',
+      '4': 'Sería parte de un condicional, no una suposición.',
+    },
+  },
+
+  // ── B2 · Contar lo que otro dijo ──────────────────────────────────────────
+  {
+    chapter: 'B2 · Contar lo que otro dijo',
+    stem: '«I\'m tired», she said. Reporta: «She said she <b>______</b> tired.»',
+    options: ['was', 'is', 'were', 'has been', 'be'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Retrocede un paso el tiempo',
+        p: 'El presente del original pasa a pasado al reportarse.',
+        m: 'am → was',
+      },
+      {
+        t: 'Ajusta el pronombre',
+        p: 'El «I» del original es ella, así que pasa a «she».',
+        m: "I'm tired → she was tired",
+      },
+    ],
+    concept:
+      'Reportar mueve dos cosas a la vez: el tiempo verbal retrocede y los pronombres se recolocan desde el punto de vista de quien cuenta.',
+    trick: 'Haz los dos cambios por separado: primero el pronombre, después el tiempo. Juntos se olvida uno.',
+    distractors: {
+      '1': 'No retrocede el tiempo.',
+      '2': 'Correspondería a un sujeto plural.',
+      '3': 'Cambia el sentido a algo que viene ocurriendo.',
+      '4': 'Es la forma base, sin conjugar.',
+    },
+  },
+  {
+    chapter: 'B2 · Contar lo que otro dijo',
+    stem: '«I\'ll call you tomorrow», he said. Reporta la frase completa.',
+    options: [
+      'He said he would call me the next day.',
+      'He said he will call me tomorrow.',
+      'He said he would call me tomorrow.',
+      'He said that he call me the next day.',
+      'He told he would call me the next day.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Retrocede el modal',
+        p: 'Will pasa a would al reportarse.',
+        m: 'will → would',
+      },
+      {
+        t: 'Ajusta también el tiempo del calendario',
+        p: 'Si lo cuentas otro día, «tomorrow» ya no es mañana: es el día siguiente a cuando lo dijo.',
+        m: 'tomorrow → the next day',
+      },
+      {
+        t: 'Comprueba el verbo de reporte',
+        p: '«Say» no lleva complemento de persona directamente: sería «told me», no «told».',
+        m: 'he said (that)…  ✓\nhe told me (that)…  ✓\nhe told (that)…  ✗',
+      },
+    ],
+    concept:
+      'Al reportar se mueven tres cosas: el tiempo verbal, los pronombres y las referencias de tiempo y lugar. Olvidar la tercera es lo más frecuente.',
+    trick: 'Repasa la frase buscando palabras de calendario —today, tomorrow, here, this—: casi todas necesitan ajuste.',
+    distractors: {
+      '1': 'No retrocede el modal.',
+      '2': 'Retrocede el modal pero deja «tomorrow» sin ajustar.',
+      '3': 'El verbo se queda sin conjugar.',
+      '4': '«Told» necesita complemento de persona.',
+    },
+  },
+  {
+    chapter: 'B2 · Contar lo que otro dijo',
+    stem: '«Where do you work?», he asked. Reporta: «He asked <b>______</b>.»',
+    options: ['where I worked', 'where did I work', 'where do I work', 'where I did work', 'where worked I'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Recuerda que deja de ser pregunta',
+        p: 'Al reportarse se convierte en una frase normal dentro de otra. Pierde la inversión y el auxiliar.',
+        m: 'sin do/does/did',
+      },
+      {
+        t: 'Retrocede el tiempo',
+        p: 'El presente del original pasa a pasado.',
+        m: 'work → worked',
+      },
+    ],
+    concept:
+      'Una pregunta reportada tiene el orden de una afirmación. Es la misma regla de la pregunta indirecta, aplicada en pasado.',
+    trick: 'Si en tu versión reportada aparece did, do o does, sobra. Quítalo y pon el tiempo en el verbo.',
+    distractors: {
+      '1': 'Mantiene el auxiliar, que en el reporte desaparece.',
+      '2': 'Ni retrocede el tiempo ni quita el auxiliar.',
+      '3': 'El «did» sobra por completo.',
+      '4': 'Invierte el orden como si siguiera siendo pregunta.',
+    },
+  },
+  {
+    chapter: 'B2 · Contar lo que otro dijo',
+    stem: '«I didn\'t do it!», he insisted. ¿Cuál reporta la escena con más precisión y menos palabras?',
+    options: ['He denied doing it.', 'He said that he did not do it.', 'He told he had not done it.', 'He refused to do it.', 'He explained he did not do it.'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mira qué actitud hay en el original',
+        p: 'No solo informa: niega una acusación con énfasis.',
+        m: 'negar una acusación → deny',
+      },
+      {
+        t: 'Elige el verbo que ya la contiene',
+        p: 'Deny reporta y valora a la vez, y va seguido de gerundio.',
+        m: 'deny + -ing',
+      },
+    ],
+    concept:
+      'Los verbos de reporte llevan la actitud dentro. Admit, deny, insist, warn o complain ahorran media frase y dicen más que «said».',
+    trick: 'Antes de escribir «he said that», pregúntate qué estaba haciendo al decirlo. Suele existir un verbo exacto.',
+    distractors: {
+      '1': 'Es correcto pero neutro: pierde el énfasis de la negación.',
+      '2': '«Told» necesita complemento de persona.',
+      '3': 'Significaría que se negó a hacerlo, no que negó haberlo hecho.',
+      '4': 'Explicar no es negar una acusación.',
+    },
+  },
+  {
+    chapter: 'B2 · Contar lo que otro dijo',
+    stem: 'Ana te dijo hace un rato «I live in Lima», y sigue viviendo allí. ¿Cuál es preferible?',
+    options: [
+      'She said she lives in Lima.',
+      'She said she had lived in Lima.',
+      'She said she would live in Lima.',
+      'She said she was living in Lima at that moment.',
+      'She told she lives in Lima.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Comprueba si sigue siendo verdad',
+        p: 'Vive en Lima ahora, no solo cuando lo dijo.',
+        m: 'sigue vigente',
+      },
+      {
+        t: 'Aplica la excepción',
+        p: 'Cuando lo dicho sigue siendo cierto, el tiempo puede quedarse en presente. Retroceder daría a entender que quizá ya no vive allí.',
+        m: 'she lives  ✓  (sigue)\nshe lived  →  suena a que ya no',
+      },
+      {
+        t: 'Ten en cuenta el matiz',
+        p: 'Retroceder no es un error gramatical, pero cambia lo que el otro entiende. Y comunicar bien es elegir lo que no confunde.',
+        m: '',
+      },
+    ],
+    concept:
+      'El retroceso de tiempos no es automático. Si lo reportado sigue vigente, mantener el presente es más preciso y más natural.',
+    trick: 'Pregúntate si sigue siendo verdad. Si lo es, puedes dejar el tiempo quieto; si ya no, retrocédelo.',
+    distractors: {
+      '1': 'Sugiere que vivió allí y ya no.',
+      '2': 'Convierte un hecho actual en un plan.',
+      '3': 'Limita el hecho a aquel momento.',
+      '4': '«Told» necesita complemento de persona.',
+    },
+  },
+
+  // ── B2 · Sonar natural, no correcto ───────────────────────────────────────
+  {
+    chapter: 'B2 · Sonar natural, no correcto',
+    stem: '¿Cómo se dice <b>«llovió muy fuerte»</b> de forma natural?',
+    options: ['It rained heavily.', 'It rained strongly.', 'It rained hardly.', 'It rained powerfully.', 'It rained big.'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'No traduzcas el adjetivo',
+        p: 'La lluvia intensa en inglés es «heavy», que literalmente sería pesada. No hay razón lógica: es la combinación que se usa.',
+        m: 'heavy rain / it rained heavily',
+      },
+      {
+        t: 'Cuidado con una trampa',
+        p: '«Hardly» no significa «con fuerza» sino «apenas». Es un falso amigo peligroso.',
+        m: 'hardly = apenas  ✗',
+      },
+    ],
+    concept:
+      'Las colocaciones no siguen ninguna lógica: son acuerdos del idioma. Traducir el adjetivo produce frases correctas que nadie dice.',
+    trick: 'Con lluvia, tráfico y acento, el adjetivo es «heavy». Con café y viento, «strong».',
+    distractors: {
+      '1': 'Gramaticalmente posible, pero no se usa con la lluvia.',
+      '2': '«Hardly» significa apenas: diría lo contrario.',
+      '3': 'No se combina con la lluvia.',
+      '4': 'No es una combinación real.',
+    },
+  },
+  {
+    chapter: 'B2 · Sonar natural, no correcto',
+    stem: 'Completa con la palabra natural: «I need a <b>______</b> coffee to wake up.»',
+    options: ['strong', 'hard', 'heavy', 'powerful', 'thick'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Recuerda que cada sustantivo tiene su adjetivo',
+        p: 'El café cargado es «strong», aunque la lluvia intensa sea «heavy». No hay coherencia entre ellos.',
+        m: 'strong coffee  ✓\nheavy coffee   ✗',
+      },
+      {
+        t: 'Amplía la familia',
+        p: '«Strong» acompaña también a acento, opinión y viento.',
+        m: 'strong accent · strong opinion · strong wind',
+      },
+    ],
+    concept:
+      'La misma idea de intensidad se expresa con adjetivos distintos según el sustantivo. Hay que aprender la pareja, no el adjetivo.',
+    trick: 'Cuando aprendas un sustantivo nuevo, apunta con qué adjetivo de intensidad va. Es un dato tan útil como el significado.',
+    distractors: {
+      '1': 'Se usa con trabajo o con agua, no con café.',
+      '2': 'Va con lluvia o tráfico.',
+      '3': 'Se usa para máquinas o argumentos.',
+      '4': 'Describiría la textura, no la intensidad.',
+    },
+  },
+  {
+    chapter: 'B2 · Sonar natural, no correcto',
+    stem: '¿Cuál es la combinación correcta para «<b>cometer un delito</b>»?',
+    options: ['commit a crime', 'do a crime', 'make a crime', 'take a crime', 'perform a crime'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Descarta los verbos genéricos',
+        p: 'Do y make cubren mucho, pero no esto. El delito tiene su propio verbo.',
+        m: 'commit a crime',
+      },
+      {
+        t: 'Aprende la familia de commit',
+        p: 'Acompaña a lo grave y a lo que compromete.',
+        m: 'commit a crime · a mistake ·\nsuicide · to a plan',
+      },
+    ],
+    concept:
+      'Algunos sustantivos exigen un verbo específico que no es ni do ni make. Se aprenden de uno en uno y aparecen constantemente en prensa.',
+    trick: 'Si el sustantivo pertenece al mundo legal o formal, desconfía de do y make: casi seguro tiene verbo propio.',
+    distractors: {
+      '1': 'No se usa con crime.',
+      '2': 'Tampoco.',
+      '3': 'No existe esa combinación.',
+      '4': 'Se usa para tareas o funciones, no para delitos.',
+    },
+  },
+  {
+    chapter: 'B2 · Sonar natural, no correcto',
+    stem: '¿Cuál diría un nativo?',
+    options: [
+      'She takes a big interest in politics.',
+      'She takes a keen interest in politics.',
+      'She makes a keen interest in politics.',
+      'She does a keen interest in politics.',
+      'She puts a keen interest in politics.',
+    ],
+    answer: 1,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Fija primero el verbo',
+        p: 'El interés se «toma»: take an interest. Ese es el bloque.',
+        m: 'take an interest in…',
+      },
+      {
+        t: 'Ahora el adjetivo',
+        p: 'Un interés intenso es «keen», no «big». «Big» funciona con otros sustantivos, no con este.',
+        m: 'a keen interest  ✓\na big interest   ✗',
+      },
+    ],
+    concept:
+      'Una colocación puede fallar por el verbo o por el adjetivo. Hay que acertar los dos, y por eso conviene guardar la frase entera.',
+    trick: 'Si dudas entre dos adjetivos, busca la combinación exacta en un buscador entre comillas. La que aparezca miles de veces es la real.',
+    distractors: {
+      '0': 'El verbo es correcto pero «big» no acompaña a «interest».',
+      '2': 'El interés no se «hace».',
+      '3': 'Tampoco se «do».',
+      '4': 'No es una combinación usada.',
+    },
+  },
+  {
+    chapter: 'B2 · Sonar natural, no correcto',
+    stem: '¿Por qué importa una colocación si la frase se entiende igual?',
+    options: [
+      'Porque la combinación esperada se procesa más rápido y no distrae al que escucha',
+      'Porque las combinaciones inusuales son gramaticalmente incorrectas',
+      'Porque los exámenes penalizan cualquier sinónimo',
+      'Porque el inglés no admite sinónimos',
+      'Porque cambian por completo el significado de la frase',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Descarta lo que no es cierto',
+        p: '«Strong rain» no es incorrecto ni cambia el significado. Se entiende perfectamente.',
+        m: '',
+      },
+      {
+        t: 'Piensa en quien escucha',
+        p: 'El oído nativo predice la palabra que viene. Cuando llega la esperada, no gasta atención; cuando llega otra, se detiene un instante a comprobar.',
+        m: 'esperada → fluye\ninusual  → interrumpe',
+      },
+      {
+        t: 'Saca la consecuencia',
+        p: 'Una frase con la colocación correcta no se nota, y eso es exactamente el objetivo del B2: dejar de notarse.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las colocaciones no van de corrección sino de fluidez ajena: la combinación esperada libera atención en quien escucha para lo que de verdad quieres decir.',
+    trick:
+      'Mide tu nivel por cuántas veces interrumpes a quien te escucha, no por cuántos errores cometes. En el B2 esa es la métrica.',
+    distractors: {
+      '1': 'Son gramaticalmente correctas: ese no es el problema.',
+      '2': 'Los exámenes valoran la naturalidad, no penalizan todo sinónimo.',
+      '3': 'El inglés está lleno de sinónimos; lo que no admite es cualquier combinación.',
+      '4': 'El significado se mantiene: por eso el problema es sutil.',
+    },
+  },
+
+  // ── B2 · Defender una postura por escrito ─────────────────────────────────
+  {
+    chapter: 'B2 · Defender una postura por escrito',
+    stem: '¿Cuál es la mejor <b>frase de apertura</b> de un párrafo académico?',
+    options: [
+      'Social media has changed how teenagers build friendships.',
+      'In this paragraph I am going to talk about social media.',
+      'Social media is a very interesting topic with many aspects.',
+      'Let us look at social media and see what happens.',
+      'There are many things to say about social media.',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Recuerda para qué sirve la primera frase',
+        p: 'Debe decir qué va a demostrar el párrafo, no de qué va a hablar.',
+        m: 'afirmación defendible',
+      },
+      {
+        t: 'Comprueba que se pueda discutir',
+        p: 'Una buena apertura admite que alguien esté en desacuerdo. Anunciar el tema no admite desacuerdo porque no afirma nada.',
+        m: '',
+      },
+    ],
+    concept:
+      'La topic sentence es una afirmación discutible, no un anuncio del tema. Es lo primero que se corrige en un texto de examen.',
+    trick: 'Prueba a responder «¿y qué?» a tu primera frase. Si no tiene respuesta, todavía no es una topic sentence.',
+    distractors: {
+      '1': 'Anuncia el tema sin afirmar nada.',
+      '2': 'Es vago y no se puede defender.',
+      '3': 'Es conversacional y tampoco afirma.',
+      '4': 'No compromete a ninguna postura.',
+    },
+  },
+  {
+    chapter: 'B2 · Defender una postura por escrito',
+    stem: 'En un texto formal, ¿cuál es la versión adecuada?',
+    options: [
+      'The government decided to postpone the reform.',
+      "The government didn't want to put off the reform.",
+      'The government put off the reform, which is a shame.',
+      "The kids didn't like it, so they put it off.",
+      "They found out it wasn't gonna work.",
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Revisa las contracciones',
+        p: 'En registro formal se escriben completas: does not, did not.',
+        m: "didn't → did not",
+      },
+      {
+        t: 'Sustituye los phrasal verbs por su equivalente culto',
+        p: 'Cuando existe el verbo de origen latino, el texto formal lo prefiere.',
+        m: 'put off → postpone\nfind out → discover',
+      },
+      {
+        t: 'Elimina las valoraciones personales',
+        p: '«Which is a shame» opina; en un texto académico la valoración se argumenta, no se suelta.',
+        m: '',
+      },
+    ],
+    concept:
+      'El registro formal es una convención, no una cuestión de elegancia. Quien corrige espera contracciones expandidas y vocabulario culto.',
+    trick: 'Al revisar, busca apóstrofos y phrasal verbs. Son los dos rastros más fáciles de detectar y corregir.',
+    distractors: {
+      '1': 'Contracción y phrasal verb coloquial.',
+      '2': 'Añade una valoración sin argumentar.',
+      '3': '«Kids» es coloquial y hay contracción.',
+      '4': '«Gonna» no se escribe nunca en registro formal.',
+    },
+  },
+  {
+    chapter: 'B2 · Defender una postura por escrito',
+    stem: 'Los datos muestran una relación, pero no una causa. ¿Cómo conviene escribirlo?',
+    options: [
+      'This suggests that screen time may contribute to poor sleep.',
+      'This proves that screen time causes poor sleep.',
+      'This obviously shows that screen time destroys sleep.',
+      'Everybody knows that screen time causes poor sleep.',
+      'It is clear that screen time is the cause of poor sleep.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mide qué permite afirmar la evidencia',
+        p: 'Una relación no es una causa. Escribir «proves» afirma más de lo que los datos sostienen.',
+        m: 'relación ≠ causa',
+      },
+      {
+        t: 'Usa el verbo con la fuerza justa',
+        p: 'Suggest, indicate y tend to dejan la afirmación en su sitio.',
+        m: 'suggests + may contribute',
+      },
+    ],
+    concept:
+      'Medir la fuerza de lo que se afirma —el hedging— es señal de madurez académica. Exagerar la certeza es el error más común al pasar de B1 a B2.',
+    trick: 'Desconfía de «proves», «obviously» y «everybody knows». Casi siempre son señales de que te estás pasando.',
+    distractors: {
+      '1': 'Afirma causalidad donde solo hay correlación.',
+      '2': '«Obviously» y «destroys» exageran.',
+      '3': 'Apelar al sentido común no es argumentar.',
+      '4': 'Sigue afirmando causa directa.',
+    },
+  },
+  {
+    chapter: 'B2 · Defender una postura por escrito',
+    stem: 'Quieres reconocer una objeción y aun así sostener tu postura. ¿Qué conector usas?',
+    options: [
+      'Although the evidence is limited, the trend is consistent.',
+      'Because the evidence is limited, the trend is consistent.',
+      'The evidence is limited, so the trend is consistent.',
+      'Moreover, the evidence is limited and the trend is consistent.',
+      'The evidence is limited, and the trend is consistent.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Identifica la relación que necesitas',
+        p: 'Quieres admitir algo en contra y mantener tu conclusión. Eso es una concesión.',
+        m: 'concesión → although, while, despite',
+      },
+      {
+        t: 'Comprueba que las otras no sirven',
+        p: 'Because y so afirmarían que la evidencia limitada causa la consistencia, que es absurdo.',
+        m: '',
+      },
+    ],
+    concept:
+      'Reconocer la objeción antes de rebatirla es lo que separa un argumento de una opinión. El conector concesivo es la herramienta que lo hace.',
+    trick: 'Un párrafo argumentativo sólido casi siempre contiene un «although» o un «however». Si no lo tiene, revisa si estás ignorando lo que te contradice.',
+    distractors: {
+      '1': 'Convierte la limitación en causa, que no tiene sentido.',
+      '2': 'Igual problema con «so».',
+      '3': '«Moreover» suma en vez de conceder.',
+      '4': 'La simple «and» no marca ninguna relación.',
+    },
+  },
+  {
+    chapter: 'B2 · Defender una postura por escrito',
+    stem: 'Un párrafo tuyo tiene: una afirmación sobre el transporte público, un dato sobre contaminación y una conclusión sobre educación. ¿Cuál es el problema?',
+    options: [
+      'Contiene más de una idea: el párrafo debe defender una sola',
+      'Es demasiado corto para un texto académico',
+      'Le falta una cita de una fuente',
+      'El orden de las frases está invertido',
+      'No usa suficientes conectores',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Comprueba la unidad del párrafo',
+        p: 'Transporte, contaminación y educación son tres asuntos. Un párrafo defiende uno.',
+        m: 'un párrafo = una idea',
+      },
+      {
+        t: 'Mira si la prueba apoya la afirmación',
+        p: 'El dato de contaminación puede apoyar la afirmación sobre transporte. Lo que no encaja es la conclusión sobre educación.',
+        m: '',
+      },
+      {
+        t: 'Decide la corrección',
+        p: 'La conclusión ajena se saca y se lleva a su propio párrafo, o se elimina.',
+        m: '',
+      },
+    ],
+    concept:
+      'La unidad del párrafo es la regla estructural más importante del inglés académico: una idea, su desarrollo, su prueba y su enlace.',
+    trick:
+      'Al revisar, resume cada párrafo en una frase. Si no puedes sin usar un «y además», es que contiene más de una idea.',
+    distractors: {
+      '1': 'La longitud no es el problema principal.',
+      '2': 'Una cita ayudaría, pero no es el fallo estructural.',
+      '3': 'El orden no explica que sobre una idea.',
+      '4': 'Más conectores no arreglarían la falta de unidad.',
+    },
+  },
+
+  // ── B2 · Escuchar contenido académico ─────────────────────────────────────
+  {
+    chapter: 'B2 · Escuchar contenido académico',
+    stem: 'En una conferencia oyes «<b>To sum up</b>». ¿Qué anuncia?',
+    options: ['La conclusión: viene lo más importante', 'Un ejemplo que ilustra lo anterior', 'Una objeción a lo dicho', 'Un cambio de tema', 'Una repetición literal'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Reconoce la señal',
+        p: 'No aporta contenido: avisa de qué papel juega lo que viene.',
+        m: 'to sum up → conclusión',
+      },
+      {
+        t: 'Aprovéchala',
+        p: 'Es el momento de más atención de toda la exposición: ahí se condensa lo que hay que retener.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las expresiones de señalización son el mapa de una exposición. Reconocerlas permite seguir el hilo aunque falten palabras.',
+    trick: 'Cuando oigas «to sum up», «in conclusion» o «the key point is», deja de escribir y escucha.',
+    distractors: {
+      '1': 'Sería «for instance» o «for example».',
+      '2': 'Sería «however» o «on the other hand».',
+      '3': 'Sería «moving on» o «turning to».',
+      '4': 'Sería «in other words».',
+    },
+  },
+  {
+    chapter: 'B2 · Escuchar contenido académico',
+    stem: '«<b>In other words</b>, the policy failed.» ¿Qué está haciendo quien habla?',
+    options: ['Repitiendo la misma idea de forma más clara', 'Introduciendo una idea nueva', 'Citando a otro autor', 'Poniendo un ejemplo', 'Contradiciendo lo anterior'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Traduce la señal',
+        p: '«En otras palabras» anuncia una reformulación, no información nueva.',
+        m: 'reformulación',
+      },
+      {
+        t: 'Úsalo a tu favor',
+        p: 'Si perdiste la idea anterior, esta es tu segunda oportunidad: la va a decir más simple.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las reformulaciones son la red de seguridad de una conferencia: quien habla repite lo esencial con otras palabras porque sabe que no todos lo captaron.',
+    trick: 'Si te perdiste, no retrocedas: espera. «In other words» o «that is to say» suelen llegar en menos de un minuto.',
+    distractors: {
+      '1': 'Es justo lo contrario: repite la anterior.',
+      '2': 'Una cita se anuncia con «according to».',
+      '3': 'Un ejemplo se anuncia con «for instance».',
+      '4': 'Contradecir sería «however».',
+    },
+  },
+  {
+    chapter: 'B2 · Escuchar contenido académico',
+    stem: 'El profesor dice: «<b>For instance</b>, in 2018 the figure dropped by half». ¿Qué conviene anotar?',
+    options: [
+      'Que hay un ejemplo con cifra: 2018, cayó a la mitad',
+      'La frase completa, palabra por palabra',
+      'Nada: los ejemplos no se anotan',
+      'Solo la expresión «for instance»',
+      'Una traducción al español de toda la frase',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce el tipo de información',
+        p: '«For instance» avisa de que no es una idea nueva, sino una ilustración.',
+        m: 'ejemplo, no tesis',
+      },
+      {
+        t: 'Pero fíjate en la cifra',
+        p: 'Los datos numéricos sí se apuntan: son lo que no se puede reconstruir después.',
+        m: '2018 · −50 %',
+      },
+    ],
+    concept:
+      'Tomar notas es decidir qué no se puede reconstruir luego. Las ideas se recuerdan; las cifras y los nombres propios, no.',
+    trick: 'Usa símbolos y abreviaturas: flechas, porcentajes, iniciales. Escribir frases completas te saca del audio.',
+    distractors: {
+      '1': 'Escribir todo te hace perder lo siguiente.',
+      '2': 'La cifra sí merece anotarse.',
+      '3': 'La señal sola no informa de nada.',
+      '4': 'Traducir es justo lo que hay que dejar de hacer.',
+    },
+  },
+  {
+    chapter: 'B2 · Escuchar contenido académico',
+    stem: '¿Cuál es el error más costoso al escuchar una exposición larga?',
+    options: [
+      'Traducir mentalmente mientras el que habla avanza',
+      'No conocer todo el vocabulario técnico',
+      'No tomar notas suficientes',
+      'Escuchar sin haber leído antes sobre el tema',
+      'No sentarse cerca del que habla',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Mide el coste de cada opción',
+        p: 'Desconocer una palabra cuesta una idea. Traducir cuesta todas las que vengan mientras traduces.',
+        m: '',
+      },
+      {
+        t: 'Entiende por qué no se puede',
+        p: 'Traducir es una tarea consciente y lenta; escuchar en tiempo real exige dejarla ir.',
+        m: 'traducir ≠ entender',
+      },
+    ],
+    concept:
+      'La comprensión oral avanzada exige procesar en inglés, no en español. Traducir es la muleta que hay que soltar para llegar al B2.',
+    trick: 'Entrena con contenido que ya te interese en español: el conocimiento previo sustituye a la traducción.',
+    distractors: {
+      '1': 'Se resuelve por contexto y cuesta mucho menos.',
+      '2': 'Notas de más es peor que notas de menos.',
+      '3': 'Ayuda mucho, pero no es el error más caro.',
+      '4': 'Es logística, no comprensión.',
+    },
+  },
+  {
+    chapter: 'B2 · Escuchar contenido académico',
+    stem: 'Oyes: «Firstly, the economic impact. <b>More importantly, however</b>, the social cost was higher.» ¿Qué acaba de ocurrir?',
+    options: [
+      'Anuncia una objeción y además señala que eso pesa más que lo anterior',
+      'Anuncia el segundo punto de una lista, con el mismo peso',
+      'Concluye la exposición',
+      'Repite lo anterior con otras palabras',
+      'Introduce un ejemplo del impacto económico',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Separa las dos señales',
+        p: 'Hay dos juntas, y cada una hace algo distinto.',
+        m: 'however → objeción\nmore importantly → jerarquía',
+      },
+      {
+        t: 'Combínalas',
+        p: 'No solo cambia de punto: avisa de que este vale más que el anterior. Eso es información sobre la estructura del argumento.',
+        m: '',
+      },
+      {
+        t: 'Decide qué anotar',
+        p: 'Lo que viene detrás merece más espacio en tus notas que lo primero.',
+        m: 'coste social > impacto económico',
+      },
+    ],
+    concept:
+      'Las señales no solo ordenan: jerarquizan. Quien habla te está diciendo qué pesa más, y eso es exactamente lo que hay que retener.',
+    trick:
+      'Marca en tus notas lo que venga detrás de «more importantly», «crucially» o «the key point is». Suele ser lo que luego se pregunta.',
+    distractors: {
+      '1': 'El «more importantly» rompe la igualdad de la lista.',
+      '2': 'Concluir sería «to sum up».',
+      '3': 'Repetir sería «in other words».',
+      '4': 'Un ejemplo se anuncia con «for instance».',
+    },
+  },
 ];

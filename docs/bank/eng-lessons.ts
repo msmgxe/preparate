@@ -897,4 +897,522 @@ export const ENG_LESSONS: LessonSeed[] = [
       { kind: 'video', payload: {} },
     ],
   },
+
+  // ── B1 · Entender a velocidad real ────────────────────────────────────────
+  {
+    slug: 'eng-velocidad',
+    chapter: 'B1 · Entender a velocidad real',
+    title: 'Nadie habla como escribe',
+    hook: 'Entiendes cada palabra por separado y no entiendes la frase. No es tu oído: es que el inglés hablado no pronuncia las palabras una a una.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'El problema no es la velocidad',
+          p: 'Lo que llamamos «hablan muy rápido» casi nunca es velocidad. Es que las palabras <strong>se pegan, se reducen y pierden sonidos</strong>. Un nativo no dice «what do you want»: dice algo que suena a una sola palabra larga. Y hasta que no reconoces esa forma, no hay oído que valga.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'escrito              hablado\ngoing to        →   gonna\nwant to         →   wanna\ngot to          →   gotta\nwhat do you     →   whaddaya\nkind of         →   kinda',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Lo importante suena; lo gramatical se borra',
+          p: 'El inglés reparte el peso: las palabras que llevan significado —sustantivos, verbos principales, adjetivos— suenan claras y largas. Las gramaticales —artículos, preposiciones, auxiliares— se comprimen hasta casi desaparecer. <strong>Si escuchas buscando cada palabra, te pierdes; si escuchas las que suenan fuerte, entiendes.</strong>',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escúchalo dos veces: normal y despacio',
+          items: [
+            { en: "What do you want to do tonight?", es: '¿Qué quieres hacer esta noche?' },
+            { en: "I'm going to call her later.", es: 'La voy a llamar más tarde.' },
+            { en: "It's kind of expensive, isn't it?", es: 'Es un poco caro, ¿no?' },
+            { en: 'I would have told you if I had known.', es: 'Te lo habría dicho si lo hubiera sabido.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Las palabras se enganchan',
+          p: 'Cuando una palabra acaba en consonante y la siguiente empieza por vocal, se unen. <em>An apple</em> suena «anapple», <em>pick it up</em> suena «pickitup». Por eso una frase corta puede sonar como una sola palabra: no falta nada, está todo pegado.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo pegado, no separado',
+          note: 'Si las dices palabra por palabra sonarás más lento que un nativo, no más claro. Pégalas.',
+          items: [{ text: 'What do you want to do' }, { text: 'Pick it up' }, { text: 'I would have told you' }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Muchos nativos escriben «would of» en vez de «would have». ¿Por qué?',
+          opts: [
+            'Porque «of» y «have» significan lo mismo en ese contexto',
+            'Porque «have» se reduce a /əv/ y suena exactamente igual que «of»',
+            'Porque es una forma antigua que sigue aceptándose',
+            'Porque «would» exige «of» en inglés informal',
+          ],
+          ans: 1,
+          ok: 'Exacto. En habla rápida «have» se comprime hasta sonar /əv/, idéntico a «of». Escriben lo que oyen. Es un error, pero explica cómo suena de verdad.',
+          no: 'Piensa en el sonido, no en el significado: «have» reducido suena /əv/, que es exactamente «of». Escriben lo que oyen.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Escuchar buscando cada palabra en vez de las que suenan fuerte.',
+            'Creer que «gonna» o «wanna» son incorrectos: son la pronunciación normal, no jerga.',
+            'Escribir «would of», «could of», «should of»: se oyen así, pero se escriben con have.',
+            'Pronunciar cada palabra separada al hablar, lo que hace más difícil que te sigan.',
+            'Rendirse con un audio en vez de escucharlo tres veces: la tercera se entiende el doble.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B2 · Lo que pudo haber sido ───────────────────────────────────────────
+  {
+    slug: 'eng-modales-pasado',
+    chapter: 'B2 · Lo que pudo haber sido',
+    title: 'Reproche, posibilidad y deducción',
+    hook: 'Should have, could have, must have. Tres estructuras casi idénticas que dicen cosas completamente distintas, y las tres aparecen en cualquier conversación adulta.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Una fórmula, tres significados',
+          p: 'Todas se montan igual: <strong>modal + have + participio</strong>. Lo que cambia es el modal, y con él cambia por completo lo que dices sobre el pasado.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'should have + participio  →  reproche: lo correcto era otra cosa\ncould have  + participio  →  posibilidad: era posible y no pasó\nmust have   + participio  →  deducción: estoy casi seguro de que pasó\nmight have  + participio  →  duda: quizá pasó',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La deducción es la que más se usa y menos se enseña',
+          p: 'Ves las luces apagadas y dices «se han ido»: en inglés es <strong>They must have left</strong>. No lo sabes, lo deduces de lo que ves. Y su negativa no es «mustn\'t have» sino <strong>can\'t have</strong>: <em>He can\'t have seen it — he was asleep</em>. Es la única pareja del idioma donde la negación cambia de modal.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Las cuatro, en situación',
+          items: [
+            { en: 'You should have told me.', es: 'Deberías habérmelo dicho. (reproche)' },
+            { en: "I could have helped you, but you didn't ask.", es: 'Podría haberte ayudado, pero no me lo pediste.' },
+            { en: 'The lights are off. They must have left.', es: 'Las luces están apagadas. Se habrán ido.' },
+            { en: "He can't have seen it — he was asleep.", es: 'No puede haberlo visto: estaba dormido.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Por qué importan en el B2',
+          p: 'Son la frontera entre hablar de hechos y hablar <strong>sobre</strong> los hechos: valorarlos, lamentarlos, deducirlos. Sin ellas una conversación se queda en contar lo que pasó; con ellas se puede discutir por qué pasó y qué habría sido mejor.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'En habla real, «should have» suena /ʃʊdəv/ y «must have» /mʌstəv/. Dilas pegadas: separarlas suena a libro.',
+          items: [{ text: 'You should have told me' }, { text: 'They must have left' }, { text: "He can't have seen it" }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Llegas y la puerta está abierta y todo revuelto. ¿Qué dices?',
+          opts: [
+            'Someone should have broken in.',
+            'Someone must have broken in.',
+            'Someone could have to break in.',
+            'Someone can have broken in.',
+          ],
+          ans: 1,
+          ok: 'Exacto. No lo viste, lo deduces de lo que tienes delante: eso es «must have».',
+          no: 'No estás reprochando ni imaginando: estás deduciendo a partir de lo que ves. Eso pide «must have».',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Usar «mustn\'t have» para negar una deducción: se dice «can\'t have».',
+            'Meter «to» detrás del modal: «could have to», «must have to».',
+            'Confundir reproche con deducción: «should have left» no significa «se habrán ido».',
+            'Usar el pasado en vez del participio: «must have went».',
+            'Traducir «debería haber» literalmente cada vez: a veces el español usa «habrá» y el inglés «must have».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B2 · Contar lo que otro dijo ──────────────────────────────────────────
+  {
+    slug: 'eng-reported',
+    chapter: 'B2 · Contar lo que otro dijo',
+    title: 'Reportar sin cambiar el sentido',
+    hook: 'Repetir lo que alguien dijo obliga a mover los tiempos, los pronombres y las referencias de tiempo. Y a veces a no moverlos, que es lo que casi nadie enseña.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Todo retrocede un paso',
+          p: 'Al reportar, cada tiempo verbal da un paso hacia el pasado. Es lo mismo que hace el español —«estoy cansada» pasa a «dijo que estaba cansada»—, así que la lógica ya la tienes; lo que hay que aprender es la tabla.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'presente     →  pasado          am    →  was\npasado       →  pasado perfecto went  →  had gone\nwill         →  would\ncan          →  could\ntomorrow     →  the next day\nhere         →  there',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Las preguntas pierden la inversión',
+          p: 'Al reportar una pregunta deja de ser pregunta, así que vuelve al orden de una afirmación y pierde el auxiliar: <em>«Where do you live?»</em> pasa a <strong>He asked where I lived</strong>, no <em>where did I live</em>. Es la misma regla de la pregunta indirecta del A1, ahora en pasado.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha el antes y el después',
+          items: [
+            { en: "She said she was tired.", es: 'Dijo que estaba cansada.' },
+            { en: 'He said he would call me the next day.', es: 'Dijo que me llamaría al día siguiente.' },
+            { en: 'He asked where I lived.', es: 'Me preguntó dónde vivía.' },
+            { en: 'She admitted she had made a mistake.', es: 'Admitió que se había equivocado.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'El verbo de reporte ya opina',
+          p: 'No todo es «said». <strong>Admit, deny, insist, warn, suggest, complain</strong> reportan y valoran a la vez. Elegir bien el verbo ahorra media frase: <em>He denied doing it</em> dice en tres palabras lo que «he said that he hadn\'t done it» dice en siete.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Cuándo NO se retrocede',
+          p: 'Si lo que se dijo <strong>sigue siendo verdad</strong>, el tiempo puede quedarse como está: <em>She said she lives in Lima</em> es perfectamente correcto si sigue viviendo allí. Retroceder siempre, mecánicamente, es lo que hace que un reporte suene a ejercicio de libro.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          items: [
+            { text: 'She said she was tired' },
+            { text: 'He asked where I lived' },
+            { text: 'He denied doing it' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '«Where do you work?», he asked. ¿Cómo se reporta?',
+          opts: [
+            'He asked where did I work.',
+            'He asked where I worked.',
+            'He asked where do I work.',
+            'He asked where I did work.',
+          ],
+          ans: 1,
+          ok: 'Exacto. Al reportar deja de ser pregunta: se va el auxiliar y vuelve el orden normal.',
+          no: 'Ya no es una pregunta, así que no lleva inversión ni auxiliar: «where I worked».',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Mantener la inversión: «he asked where did I live».',
+            'Olvidar mover los pronombres: «she said I was tired» cuando la cansada era ella.',
+            'Dejar «tomorrow» o «here» sin ajustar al nuevo momento y lugar.',
+            'Retroceder mecánicamente lo que sigue siendo verdad.',
+            'Usar «say» con complemento de persona: es «tell me», no «say me».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B2 · Sonar natural, no correcto ───────────────────────────────────────
+  {
+    slug: 'eng-colocaciones',
+    chapter: 'B2 · Sonar natural, no correcto',
+    title: 'La frase correcta que ningún nativo diría',
+    hook: '«Strong rain» es gramaticalmente impecable y nadie lo dice. En el B2 el problema deja de ser la corrección y pasa a ser otra cosa.',
+    minutes: 6,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Dónde está ahora el listón',
+          p: 'A estas alturas ya no cometes errores de gramática que impidan entenderte. Lo que te delata es otra cosa: <strong>combinaciones que existen pero que nadie usa</strong>. Es el mismo problema de los bloques del A1, pero ahora con palabras que ya conoces.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'se dice              no se dice\nheavy rain      ✓    strong rain      ✗\nstrong coffee   ✓    hard coffee      ✗\nmake a decision ✓    take a decision  ~\ncommit a crime  ✓    do a crime       ✗\npay attention   ✓    give attention   ✗',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Por qué no hay regla',
+          p: 'La lluvia es «pesada» y el café «fuerte» sin ninguna razón lógica: podría ser al revés y el idioma funcionaría igual. Las colocaciones son <strong>acuerdos históricos</strong>, no reglas. Por eso no se deducen ni se traducen: se reconocen por exposición.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha las combinaciones tal como suenan',
+          items: [
+            { en: 'We had heavy rain all night.', es: 'Llovió con fuerza toda la noche.' },
+            { en: 'I need a strong coffee.', es: 'Necesito un café cargado.' },
+            { en: 'She made a difficult decision.', es: 'Tomó una decisión difícil.' },
+            { en: 'Please pay close attention to this part.', es: 'Presta mucha atención a esta parte.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Cómo se aprenden de verdad',
+          p: 'No con listas. Se aprenden <strong>leyendo y escuchando mucho del mismo tipo de contenido</strong>, y anotando la combinación entera cada vez que una te sorprenda. Si un día lees «heavy traffic» y te suena raro, apúntalo: acabas de encontrar una que no tenías.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilas enteras',
+          note: 'Como en el A1: la unidad es la combinación, no la palabra. Dilas de corrido.',
+          items: [{ text: 'We had heavy rain' }, { text: 'I need a strong coffee' }, { text: 'Pay close attention' }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál diría un nativo?',
+          opts: ['There was strong rain last night.', 'There was heavy rain last night.', 'There was hard rain last night.', 'There was big rain last night.'],
+          ans: 1,
+          ok: 'Exacto. La lluvia en inglés es «heavy», sin ninguna razón lógica. Es un acuerdo, no una regla.',
+          no: 'Las cuatro son gramaticalmente posibles; solo una se usa. La lluvia intensa es «heavy rain».',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Traducir el adjetivo español y suponer que la combinación funciona igual.',
+            'Usar un sinónimo del diccionario sin comprobar si acompaña a esa palabra.',
+            'Estudiar colocaciones en listas sueltas en vez de dentro de frases reales.',
+            'Confundir corrección con naturalidad: lo primero ya lo tienes, lo segundo es el trabajo del B2.',
+            'Repetir «very» para todo cuando el inglés tiene un adjetivo exacto: «heavy», «deep», «bitter».',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B2 · Defender una postura por escrito ─────────────────────────────────
+  {
+    slug: 'eng-escribir',
+    chapter: 'B2 · Defender una postura por escrito',
+    title: 'Un párrafo, una idea, una prueba',
+    hook: 'Escribir bien en inglés no es escribir bonito: es que quien lee sepa en la primera línea de cada párrafo qué le vas a demostrar.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'La estructura manda sobre el estilo',
+          p: 'El inglés académico premia la <strong>previsibilidad</strong>: el lector quiere saber a dónde va antes de llegar. Por eso cada párrafo abre anunciando su idea —la <em>topic sentence</em>—, la desarrolla, la apoya con una prueba y cierra enlazando con la siguiente.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: '1  Idea       →  la afirmación del párrafo, en una frase\n2  Desarrollo →  qué significa, qué implica\n3  Prueba     →  dato, ejemplo, cita\n4  Enlace     →  puente al párrafo siguiente',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'El registro también se escribe',
+          p: 'En un texto formal no van contracciones —<em>doesn\'t</em> pasa a <em>does not</em>—, ni phrasal verbs cuando existe el verbo culto, ni preguntas retóricas. No es esnobismo: es la convención que espera quien corrige, y saltársela cuesta puntos aunque el argumento sea bueno.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'conversación        texto formal\nfind out       →    discover\nput off        →    postpone\nlook into      →    investigate\ndoesn\'t        →    does not\nkids           →    children',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Afirma con la fuerza justa',
+          p: 'Un texto académico rara vez dice «esto demuestra». Dice <strong>suggests, indicates, tends to</strong>. Medir la fuerza de lo que afirmas —lo que en inglés llaman <em>hedging</em>— es señal de madurez, no de duda: exagerar la certeza es el error más frecuente de un B1 escribiendo como B2.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha la diferencia de tono',
+          items: [
+            { en: 'This proves that social media causes anxiety.', es: 'Demasiado tajante para lo que se puede demostrar.' },
+            { en: 'This suggests that social media may contribute to anxiety.', es: 'Mide la fuerza: es lo que se espera en un texto académico.' },
+            { en: 'Although the evidence is limited, the trend is consistent.', es: 'Reconoce la objeción y aun así sostiene la postura.' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál es la mejor frase para abrir un párrafo académico?',
+          opts: [
+            'In this paragraph I am going to talk about social media.',
+            'Social media has changed how teenagers form friendships.',
+            'Social media is very interesting and has many aspects.',
+            "Let's look at social media and see what happens.",
+          ],
+          ans: 1,
+          ok: 'Exacto. Anuncia una afirmación concreta que se puede defender: eso es una topic sentence.',
+          no: 'Una buena apertura no anuncia el tema: afirma algo discutible que el párrafo va a demostrar.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Abrir el párrafo anunciando el tema en vez de afirmar algo: «I am going to talk about…».',
+            'Meter dos ideas distintas en un mismo párrafo.',
+            'Afirmar más de lo que la evidencia permite: «this proves» donde toca «this suggests».',
+            'Usar contracciones y phrasal verbs coloquiales en un texto formal.',
+            'Terminar sin enlazar: cada párrafo debe dejar preparado el siguiente.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── B2 · Escuchar contenido académico ─────────────────────────────────────
+  {
+    slug: 'eng-escuchar',
+    chapter: 'B2 · Escuchar contenido académico',
+    title: 'Seguir el hilo sin traducir',
+    hook: 'En una clase de cuarenta minutos no puedes parar a traducir. Lo que salva no es entender cada palabra: es reconocer la estructura.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Deja de traducir',
+          p: 'Traducir mentalmente funciona con frases sueltas y se derrumba con un discurso largo: mientras traduces la primera idea, el que habla ya va por la tercera. La salida no es ir más rápido, es <strong>escuchar la arquitectura</strong> en vez de las palabras.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Quien habla te va diciendo dónde estás',
+          p: 'Toda exposición académica lleva señales explícitas. <strong>Firstly, more importantly, however, on the other hand, to sum up.</strong> No aportan contenido: dicen qué papel juega lo que viene. Aprenderlas es aprender a no perderse aunque falten palabras.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'la señal              lo que anuncia\nFirstly / To begin  →  empieza la lista\nMore importantly    →  esto pesa más que lo anterior\nHowever             →  viene la objeción\nIn other words      →  lo va a repetir más claro\nFor instance        →  ejemplo, no idea nueva\nTo sum up           →  la conclusión, atención',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha las señales, no el contenido',
+          items: [
+            { en: 'Firstly, let us consider the economic impact.', es: 'Empieza la primera parte de la lista.' },
+            { en: 'More importantly, however, the social cost was higher.', es: 'Objeción y, además, lo que más pesa.' },
+            { en: 'In other words, the policy failed.', es: 'Va a repetir la misma idea más claro.' },
+            { en: 'To sum up, three factors explain the decline.', es: 'Llega la conclusión: aquí hay que atender.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Qué apuntar y qué no',
+          p: 'Escribir frases completas te saca del audio. Apunta <strong>solo la estructura</strong>: la tesis, los apartados y los datos con cifra. Los ejemplos casi nunca hay que anotarlos — están para ilustrar, y si entendiste la idea, el ejemplo sobra.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Reconócelas al decirlas',
+          note: 'Decir las señales en voz alta ayuda a reconocerlas al oírlas: el oído reconoce mejor lo que la boca ya ha producido.',
+          items: [{ text: 'More importantly however' }, { text: 'In other words' }, { text: 'To sum up' }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'El profesor dice «For instance, in 2018 the figure dropped by half». ¿Qué anotas?',
+          opts: [
+            'La frase completa, palabra por palabra',
+            'Que hay un ejemplo con una cifra: 2018, cayó a la mitad',
+            'Nada: los ejemplos no importan',
+            'Solo la palabra «for instance»',
+          ],
+          ans: 1,
+          ok: 'Exacto. «For instance» avisa de que es un ejemplo, pero trae una cifra concreta, y las cifras sí se apuntan.',
+          no: 'Es un ejemplo, así que no hace falta la frase entera. Pero lleva una cifra, y las cifras se anotan siempre.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Traducir mentalmente y perder el hilo mientras el que habla avanza.',
+            'Parar en la primera palabra que no entiendes en vez de seguir.',
+            'Apuntar frases completas y dejar de escuchar.',
+            'Confundir un ejemplo con la idea principal.',
+            'Escuchar solo una vez: la segunda pasada de un mismo audio rinde más que un audio nuevo.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
 ];
