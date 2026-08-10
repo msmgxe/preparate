@@ -32,6 +32,7 @@ export default async function PracticaPage({
     .select({
       id: chapters.id,
       title: chapters.title,
+      blurb: chapters.blurb,
       i18n: chapters.i18n,
       areaName: areas.name,
       areaAccent: areas.accent,
@@ -47,6 +48,7 @@ export default async function PracticaPage({
   const chapter = {
     ...row,
     title: tr(row, 'title', locale),
+    blurb: tr(row, 'blurb', locale),
     areaName: tr({ i18n: row.areaI18n, name: row.areaName }, 'name', locale),
   };
 
@@ -86,6 +88,14 @@ export default async function PracticaPage({
           {chapter.areaName} · {t.app.practiceChapter}
         </span>
         <h1 style={{ marginTop: 10 }}>{chapter.title}</h1>
+        {chapter.blurb && (
+          <div className="chapnote">
+            <span className="eyebrow" style={{ color: chapter.areaAccent }}>
+              {t.app.whatYouPractise}
+            </span>
+            <p>{chapter.blurb}</p>
+          </div>
+        )}
       </section>
 
       <section style={{ marginTop: 26 }}>

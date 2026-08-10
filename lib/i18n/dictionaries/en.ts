@@ -514,6 +514,7 @@ export const en: Dict = {
     lessonMissingViz: 'Infographic “{id}” is missing.',
 
     practiceChapter: 'chapter',
+    whatYouPractise: 'What you will practise',
     practicePublished: 'Published questions',
     practiceTakes: 'the session takes up to 10',
     practiceYourMastery: 'Your mastery',

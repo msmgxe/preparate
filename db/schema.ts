@@ -120,6 +120,8 @@ export const chapters = pgTable(
     title: text('title').notNull(),
     ord: smallint('ord').notNull().default(0),
     videoUrl: text('video_url'),
+    /** Qué entrena el capítulo, en un párrafo. Lo lee el alumno antes de practicar. */
+    blurb: text('blurb'),
     i18n: jsonb('i18n').notNull().default({}).$type<Translations>(),
   },
   (t) => [unique('chapters_area_id_title_key').on(t.areaId, t.title)],

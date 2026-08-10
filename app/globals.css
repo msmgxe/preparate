@@ -192,6 +192,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .stub-v{font-family:var(--display);font-weight:800;font-size:36px;letter-spacing:-.04em;line-height:1;margin-top:2px}
 .stub-n{font-family:var(--mono);font-size:12px;color:rgba(var(--bg-rgb),.72);margin-top:10px}
 
+.chapnote{margin-top:18px;max-width:74ch;padding:16px 20px;border-radius:var(--r);border:1px solid var(--line);border-left:3px solid var(--accent,var(--amber));background:rgba(var(--fg-rgb),.03)}
+.chapnote p{font-size:16px;line-height:1.62;color:var(--paper-dim);margin-top:7px}
 .grouphead{display:flex;align-items:baseline;gap:12px;margin-bottom:11px;flex-wrap:wrap}
 .grouphint{font-size:13.5px;color:var(--paper-dim)}
 .area.locked{opacity:.72}
@@ -296,7 +298,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .viz{border:1px solid var(--line);border-radius:var(--r);background:rgba(var(--bg-rgb),.42);padding:22px;position:relative;overflow:hidden}
 .viz .vtop{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .viz .vtop .eyebrow{flex:1}
-.viz svg{width:100%;height:auto;display:block;overflow:visible}
+/* Las infografías pintan su texto con `currentColor`, así que el color lo
+   pone el contenedor y siguen al tema en vez de quedarse en el oscuro. */
+.viz svg{width:100%;height:auto;display:block;overflow:visible;color:var(--paper)}
 .replay{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line-strong);border-radius:100px;color:var(--paper-dim);transition:.2s}
 .replay:hover{color:var(--amber);border-color:var(--amber)}
 .vcap{font-family:var(--mono);font-size:12px;color:var(--paper-dim);margin-top:14px;line-height:1.6;text-align:center}

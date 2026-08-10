@@ -1,7 +1,8 @@
-import { eq, inArray } from 'drizzle-orm';
+import { eq, inArray, sql } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { areas, chapters, questions } from '@/db/schema';
 import { BANK } from '../docs/bank';
+import { NOTES } from '../docs/bank/notes';
 
 /**
  * Siembra el balotario escrito a mano.
@@ -99,6 +100,32 @@ async function main() {
     });
     written += 1;
   }
+
+  // ── qué se practica en cada capítulo ─────────────────────────────────────
+  let noted = 0;
+  for (const note of NOTES) {
+    const chapter = byTitle.get(note.chapter);
+    if (!chapter) {
+      missing.add(note.chapter);
+      continue;
+    }
+    if (onlyArea && chapter.areaId !== onlyArea) continue;
+
+    await db
+      .update(chapters)
+      .set({
+        blurb: note.es,
+        // se fusiona con lo que ya haya traducido, sin pisar el resto de campos
+        i18n: sql`jsonb_set(
+          jsonb_set(coalesce(${chapters.i18n}, '{}'::jsonb), '{en}',
+            coalesce(${chapters.i18n} -> 'en', '{}'::jsonb) || ${JSON.stringify({ blurb: note.en })}::jsonb, true),
+          '{pt}',
+          coalesce(${chapters.i18n} -> 'pt', '{}'::jsonb) || ${JSON.stringify({ blurb: note.pt })}::jsonb, true)`,
+      })
+      .where(eq(chapters.id, chapter.id));
+    noted += 1;
+  }
+  process.stdout.write(`✓ ${noted} capítulos con su explicación\n`);
 
   if (missing.size) {
     process.stdout.write(`⚠ capítulos no encontrados: ${[...missing].join(', ')}\n`);

@@ -514,6 +514,7 @@ export const pt: Dict = {
     lessonMissingViz: 'Falta o infográfico «{id}».',
 
     practiceChapter: 'capítulo',
+    whatYouPractise: 'O que você vai praticar',
     practicePublished: 'Questões publicadas',
     practiceTakes: 'a sessão pega até 10',
     practiceYourMastery: 'Seu domínio',

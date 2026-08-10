@@ -518,6 +518,7 @@ export const es = {
     lessonMissingViz: 'Falta la infografía «{id}».',
 
     practiceChapter: 'capítulo',
+    whatYouPractise: 'Qué vas a practicar',
     practicePublished: 'Preguntas publicadas',
     practiceTakes: 'la sesión toma hasta 10',
     practiceYourMastery: 'Tu dominio',

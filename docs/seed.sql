@@ -51,23 +51,23 @@ insert into visuals (id,caption,svg,version) values
   
     <g class="an" style="animation-delay:0s">
       <circle cx="58" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
-      <text x="58" y="49" text-anchor="middle" fill="#F7F1E5" font-size="19">2</text>
+      <text x="58" y="49" text-anchor="middle" fill="currentColor" font-size="19">2</text>
     </g>
     <g class="an" style="animation-delay:0.13s">
       <circle cx="176" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
-      <text x="176" y="49" text-anchor="middle" fill="#F7F1E5" font-size="19">6</text>
+      <text x="176" y="49" text-anchor="middle" fill="currentColor" font-size="19">6</text>
     </g>
     <g class="an" style="animation-delay:0.26s">
       <circle cx="294" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
-      <text x="294" y="49" text-anchor="middle" fill="#F7F1E5" font-size="19">12</text>
+      <text x="294" y="49" text-anchor="middle" fill="currentColor" font-size="19">12</text>
     </g>
     <g class="an" style="animation-delay:0.39s">
       <circle cx="412" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
-      <text x="412" y="49" text-anchor="middle" fill="#F7F1E5" font-size="19">20</text>
+      <text x="412" y="49" text-anchor="middle" fill="currentColor" font-size="19">20</text>
     </g>
     <g class="an" style="animation-delay:0.52s">
       <circle cx="530" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
-      <text x="530" y="49" text-anchor="middle" fill="#F7F1E5" font-size="19">30</text>
+      <text x="530" y="49" text-anchor="middle" fill="currentColor" font-size="19">30</text>
     </g>
   <g class="an" style="animation-delay:.72s">
     <circle cx="648" cy="42" r="27" fill="rgba(79,214,156,.16)" stroke="#4FD69C" stroke-width="1.8" stroke-dasharray="5 4"/>
@@ -119,44 +119,44 @@ insert into visuals (id,caption,svg,version) values
     <rect x="60" y="208" width="520" height="36" rx="10" fill="rgba(79,214,156,.09)" stroke="#4FD69C" stroke-width="1" stroke-dasharray="5 4"/>
     <text x="320" y="231" text-anchor="middle" fill="#4FD69C" font-size="13">tercera fila constante  →  30 + 12  =  42</text>
   </g>
-  <text x="8" y="47" fill="#B9AE99" font-size="10" letter-spacing="1.5">n</text>
-  <text x="8" y="115" fill="#B9AE99" font-size="10" letter-spacing="1.5">Δ¹</text>
-  <text x="8" y="174" fill="#B9AE99" font-size="10" letter-spacing="1.5">Δ²</text>
+  <text x="8" y="47" fill="currentColor" fill-opacity=".64" font-size="10" letter-spacing="1.5">n</text>
+  <text x="8" y="115" fill="currentColor" fill-opacity=".64" font-size="10" letter-spacing="1.5">Δ¹</text>
+  <text x="8" y="174" fill="currentColor" fill-opacity=".64" font-size="10" letter-spacing="1.5">Δ²</text>
 </svg>$rumbo$,1),
   ($rumbo$v-pronic$rumbo$,$rumbo$Cada rectángulo tiene un lado más que el anterior. El área es la sucesión. Si reconoces la forma, no necesitas restar nada.$rumbo$,$rumbo$<svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
   <g><rect class="an" style="animation-delay:0s" x="40" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.2)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.028s" x="40" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.2)" stroke="#EFA451" stroke-width=".8"/>
-      <text class="grow" style="animation-delay:0.4s" x="47" y="132" text-anchor="middle" fill="#F7F1E5" font-size="13">1×2</text>
+      <text class="grow" style="animation-delay:0.4s" x="47" y="132" text-anchor="middle" fill="currentColor" font-size="13">1×2</text>
       <text class="grow" style="animation-delay:0.5s" x="47" y="152" text-anchor="middle" fill="#EFA451" font-size="16">2</text>
-      <text class="grow" style="animation-delay:0.55s" x="47" y="172" text-anchor="middle" fill="#B9AE99" font-size="10">n=1</text>
+      <text class="grow" style="animation-delay:0.55s" x="47" y="172" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">n=1</text>
     </g><g><rect class="an" style="animation-delay:0.28s" x="192" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.30800000000000005s" x="208" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.336s" x="192" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.36400000000000005s" x="208" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.392s" x="192" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.42000000000000004s" x="208" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.33)" stroke="#EFA451" stroke-width=".8"/>
-      <text class="grow" style="animation-delay:0.68s" x="207" y="132" text-anchor="middle" fill="#F7F1E5" font-size="13">2×3</text>
+      <text class="grow" style="animation-delay:0.68s" x="207" y="132" text-anchor="middle" fill="currentColor" font-size="13">2×3</text>
       <text class="grow" style="animation-delay:0.78s" x="207" y="152" text-anchor="middle" fill="#EFA451" font-size="16">6</text>
-      <text class="grow" style="animation-delay:0.8300000000000001s" x="207" y="172" text-anchor="middle" fill="#B9AE99" font-size="10">n=2</text>
+      <text class="grow" style="animation-delay:0.8300000000000001s" x="207" y="172" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">n=2</text>
     </g><g><rect class="an" style="animation-delay:0.56s" x="344" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.5880000000000001s" x="360" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.6160000000000001s" x="376" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.644s" x="344" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.672s" x="360" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.7000000000000001s" x="376" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.7280000000000001s" x="344" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.756s" x="360" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.784s" x="376" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.812s" x="344" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.8400000000000001s" x="360" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.8680000000000001s" x="376" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.46)" stroke="#EFA451" stroke-width=".8"/>
-      <text class="grow" style="animation-delay:0.9600000000000001s" x="367" y="132" text-anchor="middle" fill="#F7F1E5" font-size="13">3×4</text>
+      <text class="grow" style="animation-delay:0.9600000000000001s" x="367" y="132" text-anchor="middle" fill="currentColor" font-size="13">3×4</text>
       <text class="grow" style="animation-delay:1.06s" x="367" y="152" text-anchor="middle" fill="#EFA451" font-size="16">12</text>
-      <text class="grow" style="animation-delay:1.11s" x="367" y="172" text-anchor="middle" fill="#B9AE99" font-size="10">n=3</text>
+      <text class="grow" style="animation-delay:1.11s" x="367" y="172" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">n=3</text>
     </g><g><rect class="an" style="animation-delay:0.8400000000000001s" x="496" y="30" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.8680000000000001s" x="512" y="30" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.8960000000000001s" x="528" y="30" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.924s" x="544" y="30" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.9520000000000001s" x="496" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:0.9800000000000001s" x="512" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.008s" x="528" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.036s" x="544" y="46" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.064s" x="496" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.092s" x="512" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.12s" x="528" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.1480000000000001s" x="544" y="62" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.1760000000000002s" x="496" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.2040000000000002s" x="512" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.2320000000000002s" x="528" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.26s" x="544" y="78" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.288s" x="496" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.316s" x="512" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.344s" x="528" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/><rect class="an" style="animation-delay:1.372s" x="544" y="94" width="13.5" height="13.5" rx="3" fill="rgba(239,164,81,0.5900000000000001)" stroke="#EFA451" stroke-width=".8"/>
-      <text class="grow" style="animation-delay:1.2400000000000002s" x="527" y="132" text-anchor="middle" fill="#F7F1E5" font-size="13">4×5</text>
+      <text class="grow" style="animation-delay:1.2400000000000002s" x="527" y="132" text-anchor="middle" fill="currentColor" font-size="13">4×5</text>
       <text class="grow" style="animation-delay:1.34s" x="527" y="152" text-anchor="middle" fill="#EFA451" font-size="16">20</text>
-      <text class="grow" style="animation-delay:1.3900000000000001s" x="527" y="172" text-anchor="middle" fill="#B9AE99" font-size="10">n=4</text>
+      <text class="grow" style="animation-delay:1.3900000000000001s" x="527" y="172" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">n=4</text>
     </g>
   <g class="grow" style="animation-delay:1.5s">
     <rect x="480" y="52" width="140" height="52" rx="11" fill="rgba(79,214,156,.1)" stroke="#4FD69C" stroke-width="1.2"/>
     <text x="550" y="76" text-anchor="middle" fill="#4FD69C" font-size="15">tₙ = n(n+1)</text>
-    <text x="550" y="93" text-anchor="middle" fill="#B9AE99" font-size="10">números pronic</text>
+    <text x="550" y="93" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">números pronic</text>
   </g>
 </svg>$rumbo$,1),
   ($rumbo$v-desc$rumbo$,$rumbo$De S/ 100 quedan S/ 80. El 10 % de 80 son 8, no 10. Quedan S/ 72. El descuento real fue de 28 %.$rumbo$,$rumbo$<svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
   <g class="grow" style="animation-delay:0s">
     <rect x="40" y="24" width="520" height="44" rx="9" fill="rgba(102,191,232,.2)" stroke="#66BFE8" stroke-width="1.3"/>
-    <text x="300" y="52" text-anchor="middle" fill="#F7F1E5" font-size="15">Precio original — S/ 100</text>
+    <text x="300" y="52" text-anchor="middle" fill="currentColor" font-size="15">Precio original — S/ 100</text>
     <text x="578" y="52" fill="#66BFE8" font-size="12">100 %</text>
   </g>
   <g class="grow" style="animation-delay:.5s">
     <rect x="40" y="88" width="416" height="44" rx="9" fill="rgba(239,164,81,.22)" stroke="#EFA451" stroke-width="1.3"/>
     <rect x="456" y="88" width="104" height="44" rx="9" fill="rgba(255,95,87,.13)" stroke="#FF5F57" stroke-width="1" stroke-dasharray="4 3"/>
-    <text x="248" y="116" text-anchor="middle" fill="#F7F1E5" font-size="15">Queda S/ 80</text>
+    <text x="248" y="116" text-anchor="middle" fill="currentColor" font-size="15">Queda S/ 80</text>
     <text x="508" y="116" text-anchor="middle" fill="#FF5F57" font-size="12">−20</text>
     <text x="578" y="116" fill="#EFA451" font-size="12">80 %</text>
   </g>
@@ -164,7 +164,7 @@ insert into visuals (id,caption,svg,version) values
     <rect x="40" y="152" width="374" height="44" rx="9" fill="rgba(79,214,156,.22)" stroke="#4FD69C" stroke-width="1.4"/>
     <rect x="414" y="152" width="42" height="44" rx="9" fill="rgba(255,95,87,.18)" stroke="#FF5F57" stroke-width="1" stroke-dasharray="4 3"/>
     <rect x="456" y="152" width="104" height="44" rx="9" fill="rgba(255,95,87,.07)" stroke="rgba(255,95,87,.35)" stroke-width="1" stroke-dasharray="3 4"/>
-    <text x="227" y="180" text-anchor="middle" fill="#F7F1E5" font-size="15">Queda S/ 72</text>
+    <text x="227" y="180" text-anchor="middle" fill="currentColor" font-size="15">Queda S/ 72</text>
     <text x="435" y="180" text-anchor="middle" fill="#FF5F57" font-size="11">−8</text>
     <text x="578" y="180" fill="#4FD69C" font-size="12">72 %</text>
   </g>
@@ -174,15 +174,15 @@ insert into visuals (id,caption,svg,version) values
     <text x="487" y="229" text-anchor="middle" fill="#FF5F57" font-size="13">descuento real 28 %</text>
   </g>
   <g class="grow" style="animation-delay:2s">
-    <text x="40" y="230" fill="#B9AE99" font-size="12">el segundo corte es más pequeño porque la barra ya encogió</text>
+    <text x="40" y="230" fill="currentColor" fill-opacity=".64" font-size="12">el segundo corte es más pequeño porque la barra ya encogió</text>
   </g>
 </svg>$rumbo$,1),
   ($rumbo$v-anal$rumbo$,$rumbo$La frase del puente es la herramienta. Solo la alternativa que soporta exactamente la misma frase es la correcta.$rumbo$,$rumbo$<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
   <g class="grow" style="animation-delay:0s">
     <rect x="40" y="20" width="170" height="50" rx="11" fill="rgba(239,164,81,.16)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="125" y="51" text-anchor="middle" fill="#F7F1E5" font-size="16">AVIÓN</text>
+    <text x="125" y="51" text-anchor="middle" fill="currentColor" font-size="16">AVIÓN</text>
     <rect x="410" y="20" width="190" height="50" rx="11" fill="rgba(239,164,81,.16)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="505" y="51" text-anchor="middle" fill="#F7F1E5" font-size="16">PASAJERO</text>
+    <text x="505" y="51" text-anchor="middle" fill="currentColor" font-size="16">PASAJERO</text>
   </g>
   <g class="grow" style="animation-delay:.45s">
     <path d="M 210 45 L 400 45" stroke="#EFA451" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -196,36 +196,36 @@ insert into visuals (id,caption,svg,version) values
     <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
     <path d="M0,0 L9,4.5 L0,9 z" fill="#FF5F57"/></marker>
   </defs>
-  <line class="grow" style="animation-delay:.8s" x1="40" y1="88" x2="600" y2="88" stroke="rgba(247,241,229,.18)" stroke-width="1" stroke-dasharray="6 5"/>
-  <text class="grow" style="animation-delay:.85s" x="40" y="112" fill="#B9AE99" font-size="10.5" letter-spacing="1.4">¿QUÉ ALTERNATIVA SOPORTA LA MISMA FRASE?</text>
+  <line class="grow" style="animation-delay:.8s" x1="40" y1="88" x2="600" y2="88" stroke="currentColor" stroke-opacity=".18" stroke-width="1" stroke-dasharray="6 5"/>
+  <text class="grow" style="animation-delay:.85s" x="40" y="112" fill="currentColor" fill-opacity=".64" font-size="10.5" letter-spacing="1.4">¿QUÉ ALTERNATIVA SOPORTA LA MISMA FRASE?</text>
 
   <g class="grow" style="animation-delay:1.05s">
     <rect x="40" y="128" width="150" height="38" rx="9" fill="rgba(79,214,156,.15)" stroke="#4FD69C" stroke-width="1.3"/>
-    <text x="115" y="152" text-anchor="middle" fill="#F7F1E5" font-size="14">HOTEL</text>
+    <text x="115" y="152" text-anchor="middle" fill="currentColor" font-size="14">HOTEL</text>
     <path d="M 190 147 L 400 147" stroke="#4FD69C" stroke-width="1.5" marker-end="url(#ag)"/>
     <text x="295" y="141" text-anchor="middle" fill="#4FD69C" font-size="10">aloja temporalmente a</text>
     <rect x="410" y="128" width="150" height="38" rx="9" fill="rgba(79,214,156,.15)" stroke="#4FD69C" stroke-width="1.3"/>
-    <text x="485" y="152" text-anchor="middle" fill="#F7F1E5" font-size="14">HUÉSPED</text>
+    <text x="485" y="152" text-anchor="middle" fill="currentColor" font-size="14">HUÉSPED</text>
     <text x="578" y="152" fill="#4FD69C" font-size="16">✓</text>
   </g>
 
   <g class="grow" style="animation-delay:1.35s" opacity=".62">
     <rect x="40" y="182" width="150" height="36" rx="9" fill="rgba(255,95,87,.08)" stroke="rgba(255,95,87,.5)" stroke-width="1"/>
-    <text x="115" y="205" text-anchor="middle" fill="#B9AE99" font-size="13">PILOTO</text>
+    <text x="115" y="205" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="13">PILOTO</text>
     <path d="M 400 200 L 195 200" stroke="#FF5F57" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
     <text x="297" y="194" text-anchor="middle" fill="#FF5F57" font-size="10">sentido invertido</text>
     <rect x="410" y="182" width="150" height="36" rx="9" fill="rgba(255,95,87,.08)" stroke="rgba(255,95,87,.5)" stroke-width="1"/>
-    <text x="485" y="205" text-anchor="middle" fill="#B9AE99" font-size="13">CABINA</text>
+    <text x="485" y="205" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="13">CABINA</text>
     <text x="578" y="205" fill="#FF5F57" font-size="15">✕</text>
   </g>
 
   <g class="grow" style="animation-delay:1.6s" opacity=".62">
     <rect x="40" y="234" width="150" height="36" rx="9" fill="rgba(255,95,87,.08)" stroke="rgba(255,95,87,.5)" stroke-width="1"/>
-    <text x="115" y="257" text-anchor="middle" fill="#B9AE99" font-size="13">MALETA</text>
+    <text x="115" y="257" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="13">MALETA</text>
     <path d="M 195 252 L 400 252" stroke="#FF5F57" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
     <text x="297" y="246" text-anchor="middle" fill="#FF5F57" font-size="10">objeto → evento</text>
     <rect x="410" y="234" width="150" height="36" rx="9" fill="rgba(255,95,87,.08)" stroke="rgba(255,95,87,.5)" stroke-width="1"/>
-    <text x="485" y="257" text-anchor="middle" fill="#B9AE99" font-size="13">VIAJE</text>
+    <text x="485" y="257" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="13">VIAJE</text>
     <text x="578" y="257" fill="#FF5F57" font-size="15">✕</text>
   </g>
 </svg>$rumbo$,1)

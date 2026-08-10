@@ -542,3 +542,9 @@ alter table plans         add column if not exists i18n jsonb not null default '
 -- futuro módulo se ofrezca en otros.
 alter table areas add column if not exists locales text[] not null default array['es','en','pt'];
 update areas set locales = array['es'] where id = 'eng';
+
+-- ── 11 · qué se practica en cada capítulo ───────────────────────────────────
+-- Un párrafo corto que el alumno lee antes de empezar la sesión: qué entrena
+-- ese capítulo y qué error concreto ataca. Se traduce por la columna `i18n`,
+-- igual que el título.
+alter table chapters add column if not exists blurb text;

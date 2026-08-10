@@ -35,51 +35,51 @@ insert into visuals (id,caption,svg,version) values
   
   <g class="grow" style="animation-delay:0s">
     <rect x="34" y="34" width="238" height="60" rx="12" fill="rgba(45,212,191,.13)" stroke="#2DD4BF" stroke-width="1.4"/>
-    <text x="153" y="60" text-anchor="middle" fill="#F7F1E5" font-size="19">ship</text>
+    <text x="153" y="60" text-anchor="middle" fill="currentColor" font-size="19">ship</text>
     <text x="153" y="81" text-anchor="middle" fill="#2DD4BF" font-size="13">/ɪ/ · barco</text>
 
-    <text x="320" y="71" text-anchor="middle" fill="#B9AE99" font-size="15">≠</text>
+    <text x="320" y="71" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="15">≠</text>
 
     <rect x="368" y="34" width="238" height="60" rx="12" fill="rgba(239,164,81,.13)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="487" y="60" text-anchor="middle" fill="#F7F1E5" font-size="19">sheep</text>
+    <text x="487" y="60" text-anchor="middle" fill="currentColor" font-size="19">sheep</text>
     <text x="487" y="81" text-anchor="middle" fill="#EFA451" font-size="13">/iː/ · oveja</text>
   </g>
   <g class="grow" style="animation-delay:0.22s">
     <rect x="34" y="122" width="238" height="60" rx="12" fill="rgba(45,212,191,.13)" stroke="#2DD4BF" stroke-width="1.4"/>
-    <text x="153" y="148" text-anchor="middle" fill="#F7F1E5" font-size="19">bad</text>
+    <text x="153" y="148" text-anchor="middle" fill="currentColor" font-size="19">bad</text>
     <text x="153" y="169" text-anchor="middle" fill="#2DD4BF" font-size="13">/æ/ · malo</text>
 
-    <text x="320" y="159" text-anchor="middle" fill="#B9AE99" font-size="15">≠</text>
+    <text x="320" y="159" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="15">≠</text>
 
     <rect x="368" y="122" width="238" height="60" rx="12" fill="rgba(239,164,81,.13)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="487" y="148" text-anchor="middle" fill="#F7F1E5" font-size="19">bed</text>
+    <text x="487" y="148" text-anchor="middle" fill="currentColor" font-size="19">bed</text>
     <text x="487" y="169" text-anchor="middle" fill="#EFA451" font-size="13">/e/ · cama</text>
   </g>
   <g class="grow" style="animation-delay:0.44s">
     <rect x="34" y="210" width="238" height="60" rx="12" fill="rgba(45,212,191,.13)" stroke="#2DD4BF" stroke-width="1.4"/>
-    <text x="153" y="236" text-anchor="middle" fill="#F7F1E5" font-size="19">think</text>
+    <text x="153" y="236" text-anchor="middle" fill="currentColor" font-size="19">think</text>
     <text x="153" y="257" text-anchor="middle" fill="#2DD4BF" font-size="13">/θ/ · pensar</text>
 
-    <text x="320" y="247" text-anchor="middle" fill="#B9AE99" font-size="15">≠</text>
+    <text x="320" y="247" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="15">≠</text>
 
     <rect x="368" y="210" width="238" height="60" rx="12" fill="rgba(239,164,81,.13)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="487" y="236" text-anchor="middle" fill="#F7F1E5" font-size="19">sink</text>
+    <text x="487" y="236" text-anchor="middle" fill="currentColor" font-size="19">sink</text>
     <text x="487" y="257" text-anchor="middle" fill="#EFA451" font-size="13">/s/ · hundirse</text>
   </g>
   <g class="grow" style="animation-delay:.8s">
     <rect x="34" y="286" width="572" height="0" rx="8" fill="none"/>
-    <text x="320" y="296" text-anchor="middle" fill="#B9AE99" font-size="12">si los pronuncias igual, quien escucha adivina — y a veces adivina mal</text>
+    <text x="320" y="296" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="12">si los pronuncias igual, quien escucha adivina — y a veces adivina mal</text>
   </g>
 </svg>$rumbo$,1),
   ($rumbo$v-eng-perfect$rumbo$,$rumbo$El past simple es un punto cerrado en el pasado. El present perfect es una franja que llega hasta hoy.$rumbo$,$rumbo$<svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
-  <line class="grow" style="animation-delay:0s" x1="40" y1="150" x2="600" y2="150" stroke="rgba(247,241,229,.28)" stroke-width="1.5"/>
-  <text class="grow" style="animation-delay:.05s" x="40" y="175" fill="#B9AE99" font-size="11">pasado</text>
-  <text class="grow" style="animation-delay:.05s" x="560" y="175" fill="#B9AE99" font-size="11">ahora</text>
-  <line class="grow" style="animation-delay:.1s" x1="600" y1="126" x2="600" y2="174" stroke="#F7F1E5" stroke-width="2"/>
+  <line class="grow" style="animation-delay:0s" x1="40" y1="150" x2="600" y2="150" stroke="currentColor" stroke-opacity=".28" stroke-width="1.5"/>
+  <text class="grow" style="animation-delay:.05s" x="40" y="175" fill="currentColor" fill-opacity=".64" font-size="11">pasado</text>
+  <text class="grow" style="animation-delay:.05s" x="560" y="175" fill="currentColor" fill-opacity=".64" font-size="11">ahora</text>
+  <line class="grow" style="animation-delay:.1s" x1="600" y1="126" x2="600" y2="174" stroke="currentColor" stroke-width="2"/>
 
   <g class="grow" style="animation-delay:.35s">
     <rect x="70" y="52" width="230" height="56" rx="11" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.4"/>
-    <text x="185" y="76" text-anchor="middle" fill="#F7F1E5" font-size="15">I lived in Cusco</text>
+    <text x="185" y="76" text-anchor="middle" fill="currentColor" font-size="15">I lived in Cusco</text>
     <text x="185" y="96" text-anchor="middle" fill="#EFA451" font-size="12">past simple · ya no vivo ahí</text>
     <circle cx="185" cy="150" r="7" fill="#EFA451"/>
     <line x1="185" y1="110" x2="185" y2="141" stroke="#EFA451" stroke-width="1.4" stroke-dasharray="4 3"/>
@@ -88,7 +88,7 @@ insert into visuals (id,caption,svg,version) values
 
   <g class="grow" style="animation-delay:.7s">
     <rect x="330" y="52" width="270" height="56" rx="11" fill="rgba(45,212,191,.14)" stroke="#2DD4BF" stroke-width="1.4"/>
-    <text x="465" y="76" text-anchor="middle" fill="#F7F1E5" font-size="15">I have lived in Cusco</text>
+    <text x="465" y="76" text-anchor="middle" fill="currentColor" font-size="15">I have lived in Cusco</text>
     <text x="465" y="96" text-anchor="middle" fill="#2DD4BF" font-size="12">present perfect · sigo o me marca hoy</text>
     <path d="M 330 150 L 600 150" stroke="#2DD4BF" stroke-width="7" stroke-linecap="round" opacity=".55"/>
     <line x1="465" y1="110" x2="465" y2="141" stroke="#2DD4BF" stroke-width="1.4" stroke-dasharray="4 3"/>
@@ -97,7 +97,7 @@ insert into visuals (id,caption,svg,version) values
   <g class="grow" style="animation-delay:1.05s">
     <rect x="70" y="206" width="530" height="46" rx="10" fill="rgba(255,95,87,.08)" stroke="rgba(255,95,87,.45)" stroke-width="1" stroke-dasharray="5 4"/>
     <text x="335" y="226" text-anchor="middle" fill="#FF5F57" font-size="13">yesterday · in 2019 · last month  →  nunca con present perfect</text>
-    <text x="335" y="244" text-anchor="middle" fill="#B9AE99" font-size="12">si dices cuándo, el hecho está cerrado: past simple</text>
+    <text x="335" y="244" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="12">si dices cuándo, el hecho está cerrado: past simple</text>
   </g>
 </svg>$rumbo$,1),
   ($rumbo$v-eng-conditionals$rumbo$,$rumbo$La barra de arriba mide la distancia con lo real. Cuanto más larga, más atrás va el verbo.$rumbo$,$rumbo$<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
@@ -106,25 +106,25 @@ insert into visuals (id,caption,svg,version) values
     <rect x="34" y="30" width="120" height="8" rx="4" fill="#4FD69C" opacity=".5"/>
     <rect x="34" y="48" width="572" height="52" rx="11" fill="rgba(79,214,156,.14)" stroke="#4FD69C" stroke-width="1.3"/>
     <text x="52" y="72" fill="#4FD69C" font-size="13">1st</text>
-    <text x="92" y="72" fill="#F7F1E5" font-size="15">If it rains, I will stay.</text>
-    <text x="92" y="90" fill="#B9AE99" font-size="11.5">posible — pasa a menudo</text>
+    <text x="92" y="72" fill="currentColor" font-size="15">If it rains, I will stay.</text>
+    <text x="92" y="90" fill="currentColor" fill-opacity=".64" font-size="11.5">posible — pasa a menudo</text>
   </g>
   <g class="grow" style="animation-delay:0.25s">
     <rect x="34" y="118" width="270" height="8" rx="4" fill="#EFA451" opacity=".5"/>
     <rect x="34" y="136" width="572" height="52" rx="11" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.3"/>
     <text x="52" y="160" fill="#EFA451" font-size="13">2nd</text>
-    <text x="92" y="160" fill="#F7F1E5" font-size="15">If it rained, I would stay.</text>
-    <text x="92" y="178" fill="#B9AE99" font-size="11.5">improbable — imagino otra realidad</text>
+    <text x="92" y="160" fill="currentColor" font-size="15">If it rained, I would stay.</text>
+    <text x="92" y="178" fill="currentColor" fill-opacity=".64" font-size="11.5">improbable — imagino otra realidad</text>
   </g>
   <g class="grow" style="animation-delay:0.5s">
     <rect x="34" y="206" width="420" height="8" rx="4" fill="#FF5F57" opacity=".5"/>
     <rect x="34" y="224" width="572" height="52" rx="11" fill="rgba(255,95,87,.12)" stroke="#FF5F57" stroke-width="1.3"/>
     <text x="52" y="248" fill="#FF5F57" font-size="13">3rd</text>
-    <text x="92" y="248" fill="#F7F1E5" font-size="15">If it had rained, I would have stayed.</text>
-    <text x="92" y="266" fill="#B9AE99" font-size="11.5">imposible — ya no se puede cambiar</text>
+    <text x="92" y="248" fill="currentColor" font-size="15">If it had rained, I would have stayed.</text>
+    <text x="92" y="266" fill="currentColor" fill-opacity=".64" font-size="11.5">imposible — ya no se puede cambiar</text>
   </g>
   <g class="grow" style="animation-delay:.9s">
-    <text x="34" y="290" fill="#B9AE99" font-size="12">cuanto más lejos de lo real, un paso más atrás en el tiempo verbal</text>
+    <text x="34" y="290" fill="currentColor" fill-opacity=".64" font-size="12">cuanto más lejos de lo real, un paso más atrás en el tiempo verbal</text>
   </g>
 </svg>$rumbo$,1)
 on conflict (id) do update set svg = excluded.svg, caption = excluded.caption,

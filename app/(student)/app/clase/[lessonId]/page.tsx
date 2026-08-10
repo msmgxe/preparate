@@ -47,6 +47,7 @@ export default async function ClasePage({
       i18n: lessons.i18n,
       chapterId: chapters.id,
       chapterTitle: chapters.title,
+      chapterBlurb: chapters.blurb,
       chapterI18n: chapters.i18n,
       areaId: areas.id,
       areaName: areas.name,
@@ -68,6 +69,7 @@ export default async function ClasePage({
     title: tr(row, 'title', locale),
     hook: tr(row, 'hook', locale),
     chapterTitle: tr({ i18n: row.chapterI18n, title: row.chapterTitle }, 'title', locale),
+    chapterBlurb: tr({ i18n: row.chapterI18n, blurb: row.chapterBlurb }, 'blurb', locale),
     areaName: tr({ i18n: row.areaI18n, name: row.areaName }, 'name', locale),
   };
 
@@ -134,6 +136,15 @@ export default async function ClasePage({
           <h3>{lesson.title}</h3>
           <p>{lesson.hook}</p>
         </div>
+
+        {lesson.chapterBlurb && (
+          <div className="chapnote" style={{ marginBottom: 26 }}>
+            <span className="eyebrow" style={{ color: lesson.areaAccent }}>
+              {t.app.whatYouPractise}
+            </span>
+            <p>{lesson.chapterBlurb}</p>
+          </div>
+        )}
 
         {blocks.length === 0 ? (
           <p className="empty">{t.app.lessonNoBlocks}</p>
