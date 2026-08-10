@@ -89,6 +89,53 @@ export const pt: Dict = {
     results: 'Resultados',
     exam: 'Simulado',
   },
+  /** O que já está construído, contado pelo valor e não pela funcionalidade. */
+  proof: {
+    eyebrow: 'Como se estuda aqui',
+    title: 'Quatro decisões que mudam o resultado',
+    body:
+      'Não é uma biblioteca de vídeos nem um banco de questões. É um método com uma sequência fixa, e cada peça está ali por uma razão que se pode explicar.',
+    items: [
+      {
+        tag: 'A resolução, sempre',
+        title: 'Você nunca fica travado',
+        body: 'Cada questão traz sua resolução passo a passo, o conceito que se transfere e o atalho que economiza tempo. E se você travar antes de responder, um botão a abre: conta como erro, mas aprender vale mais que a nota de uma sessão.',
+      },
+      {
+        tag: 'Por que você errou',
+        title: 'Não diz «incorreto»: diz o que você pensou errado',
+        body: 'Cada alternativa errada traz escrito o erro de raciocínio que a explica. Se você marcar 30 % em descontos sucessivos, não lê um X: lê que somou as porcentagens e por que isso nunca funciona.',
+      },
+      {
+        tag: 'Repetição espaçada',
+        title: 'O que você erra volta sozinho',
+        body: 'Nos dias 1, 3, 7 e 21. É o intervalo com mais respaldo contra o esquecimento, e funciona sem que ninguém precise lembrar: o app traz todo dia o que toca revisar.',
+      },
+      {
+        tag: 'Aula antes da prática',
+        title: 'Primeiro entender, depois exercitar',
+        body: 'Cada capítulo abre com um infográfico animado que explica o conceito em cinco minutos, com um checkpoint no meio para que não seja lido no piloto automático. Só depois vêm as questões.',
+      },
+    ],
+    statsTitle: 'O que já está dentro',
+    stats: [
+      ['250', 'questões com resolução passo a passo'],
+      ['50', 'capítulos com conteúdo próprio'],
+      ['27', 'aulas visuais com infográficos animados'],
+      ['3', 'idiomas: espanhol, inglês e português'],
+    ],
+    extrasTitle: 'E ainda',
+    extras: [
+      ['Modo claro e escuro', 'Para estudar de dia e de noite sem forçar a vista.'],
+      ['Tipografia acessível', 'Lexend e Atkinson Hyperlegible, pensadas para dislexia e baixa visão.'],
+      ['Áudio no módulo de Inglês', 'Ouça cada frase e confira sua pronúncia com o microfone.'],
+      ['Simulados cronometrados', 'Com a mistura real de cada instituição e o relógio correndo.'],
+    ],
+    startupTitle: 'Com as cartas na mesa',
+    startupBody:
+      'O RUMBO é um projeto jovem, feito em Lima, que reúne num só lugar métodos já comprovados separadamente: repetição espaçada, prática de recuperação, aprendizagem visual e retorno imediato. Não inventamos uma pedagogia nova nem prometemos uma vaga — isso ninguém pode prometer. O que oferecemos é esses métodos juntos, organizados e ao alcance de uma família peruana. Cresce toda semana e, se algo não encaixa, a gente escuta e corrige.',
+  },
+
   landing: {
     badge: 'ISIL · USIL · UPC · U. de Lima',
     heroA: 'Seu filho não precisa',

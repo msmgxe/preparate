@@ -89,6 +89,53 @@ export const en: Dict = {
     results: 'Results',
     exam: 'Mock exam',
   },
+  /** What is already built, told from the value and not from the feature. */
+  proof: {
+    eyebrow: 'How you study here',
+    title: 'Four decisions that change the outcome',
+    body:
+      'This is not a video library or a question bank. It is a method with a fixed sequence, and every piece is there for a reason we can explain.',
+    items: [
+      {
+        tag: 'The solution, always',
+        title: 'You never get stuck',
+        body: 'Every question carries its step-by-step solution, the concept it transfers and the shortcut that saves time. And if you freeze before answering, a button opens it: it counts as a miss, but learning is worth more than one session score.',
+      },
+      {
+        tag: 'Why you got it wrong',
+        title: 'It does not say "incorrect": it says what you thought wrong',
+        body: 'Every wrong option carries the reasoning error that explains it. If you pick 30% on successive discounts, you do not read a cross: you read that you added the percentages and why that never works.',
+      },
+      {
+        tag: 'Spaced repetition',
+        title: 'What you miss comes back by itself',
+        body: 'On days 1, 3, 7 and 21. It is the best-supported spacing against forgetting, and it works without anyone remembering: the app brings you what is due each day.',
+      },
+      {
+        tag: 'Lesson before practice',
+        title: 'Understand first, drill after',
+        body: 'Every chapter opens with an animated infographic that explains the concept in five minutes, with a checkpoint halfway so it cannot be read on autopilot. Only then come the questions.',
+      },
+    ],
+    statsTitle: 'What is already inside',
+    stats: [
+      ['250', 'questions with step-by-step solutions'],
+      ['50', 'chapters with their own syllabus'],
+      ['27', 'visual lessons with animated infographics'],
+      ['3', 'languages: Spanish, English and Portuguese'],
+    ],
+    extrasTitle: 'And also',
+    extras: [
+      ['Light and dark mode', 'To study by day and by night without straining your eyes.'],
+      ['Accessible typefaces', 'Lexend and Atkinson Hyperlegible, designed for dyslexia and low vision.'],
+      ['Audio in the English module', 'Hear every phrase and check your pronunciation with the microphone.'],
+      ['Timed mock exams', 'With the real subject mix of each institution and the clock running.'],
+    ],
+    startupTitle: 'Cards on the table',
+    startupBody:
+      'RUMBO is a young project, made in Lima, that brings together in one place methods already proven separately: spaced repetition, retrieval practice, visual learning and immediate feedback. We did not invent a new pedagogy and we do not promise a place — nobody can promise that. What we offer is those methods together, in order, and within reach of a Peruvian family. It grows every week, and if something does not fit, we listen and fix it.',
+  },
+
   landing: {
     badge: 'ISIL · USIL · UPC · U. de Lima',
     heroA: 'Your child does not need',

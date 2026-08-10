@@ -248,6 +248,95 @@ export default async function LandingPage() {
         </div>
       </section>
 
+
+      {/* ═══ LO QUE YA ESTÁ HECHO ═══════════════════════════════════════ */}
+      <section id="metodo-detalle" className="lp-section" style={{ background: 'var(--surface-2)' }}>
+        <div className="lp-wrap">
+          <Reveal>
+            <span className="lp-eyebrow">{t.proof.eyebrow}</span>
+            <h2 style={{ marginTop: 10 }}>{t.proof.title}</h2>
+            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '64ch' }}>{t.proof.body}</p>
+          </Reveal>
+
+          <div
+            className="lp-grid"
+            style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', marginTop: 32 }}
+          >
+            {t.proof.items.map((item, i) => (
+              <Reveal key={item.tag} delay={i * 90}>
+                <article className="lp-card lp-card-hover" style={{ padding: 26, height: '100%' }}>
+                  <span className="lp-pill lp-pill-accent">{item.tag}</span>
+                  <h3 style={{ marginTop: 14 }}>{item.title}</h3>
+                  <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.65 }}>{item.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* ── las cifras de lo construido ───────────────────────────── */}
+          <Reveal delay={120}>
+            <div className="lp-card" style={{ marginTop: 26, padding: '26px 24px' }}>
+              <span className="lp-eyebrow">{t.proof.statsTitle}</span>
+              <div
+                style={{
+                  display: 'grid',
+                  gap: 22,
+                  gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))',
+                  marginTop: 18,
+                  textAlign: 'center',
+                }}
+              >
+                {t.proof.stats.map(([value, label]) => (
+                  <div key={label}>
+                    <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: '-.03em', color: 'var(--brand)' }}>
+                      <Counter to={Number(value)} />
+                    </div>
+                    <div className="lp-muted" style={{ fontSize: 13.5, marginTop: 4 }}>
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── lo que acompaña ───────────────────────────────────────── */}
+          <Reveal delay={160}>
+            <div style={{ marginTop: 26 }}>
+              <span className="lp-eyebrow">{t.proof.extrasTitle}</span>
+              <div
+                className="lp-grid"
+                style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', marginTop: 14 }}
+              >
+                {t.proof.extras.map(([head, body]) => (
+                  <div key={head} className="lp-card" style={{ padding: 18 }}>
+                    <b style={{ fontSize: 15, display: 'block' }}>{head}</b>
+                    <p style={{ fontSize: 14, marginTop: 5, lineHeight: 1.55 }}>{body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── de dónde viene esto ───────────────────────────────────── */}
+          <Reveal delay={200}>
+            <div
+              className="lp-card"
+              style={{
+                marginTop: 26,
+                padding: '24px 26px',
+                borderLeft: '3px solid var(--accent)',
+              }}
+            >
+              <h3 style={{ fontSize: 18 }}>{t.proof.startupTitle}</h3>
+              <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.7, maxWidth: '72ch' }}>
+                {t.proof.startupBody}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ═══ PLANES ═══ */}
       <section id="planes" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
