@@ -41,7 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Fotos de stock sin licencia: las previsualizaciones de Envato llevan la marca
-# de agua incrustada y no pueden publicarse. Cuando haya archivos con licencia,
-# quita esta línea y súbelos.
-/public/fotos/
+# En public/fotos conviven los originales que descargas —que pesan megas y no
+# hacen falta en producción— y las versiones optimizadas que sí se publican.
+# Solo se suben las segundas, que llevan el prefijo `rumbo-`.
+/public/fotos/*
+!/public/fotos/rumbo-*.jpg

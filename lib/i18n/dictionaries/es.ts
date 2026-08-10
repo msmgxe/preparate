@@ -197,8 +197,10 @@ export const es = {
       'Clase visual de cinco minutos, preguntas del examen real y la resolución paso a paso en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de fallarse.',
     heroCta2: 'Ver planes y garantía',
     heroNote: 'Sin tarjeta. Cada módulo trae preguntas abiertas para que lo pruebes antes de pagar.',
-    heroAltA: 'Una alumna resolviendo ejercicios en su cuaderno',
-    heroAltB: 'Un alumno practicando en la laptop',
+    heroAlt: 'Una estudiante repasando en su laptop junto a la ventana de un aula',
+    heroShot: 'Una clase de cinco minutos y su práctica, todos los días.',
+    heroCard1: ['Repaso espaciado', 'días 1 · 3 · 7 · 21'],
+    heroCard2: ['Corrección', 'al instante, y explicada'],
 
     statChapters: 'capítulos con temario propio',
     statQuestions: 'preguntas con resolución paso a paso',

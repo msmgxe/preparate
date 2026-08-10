@@ -194,8 +194,10 @@ export const en: Dict = {
       'A five-minute visual lesson, real exam questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
     heroCta2: 'See plans and guarantee',
     heroNote: 'No card needed. Every module opens a few questions so you can try before paying.',
-    heroAltA: 'A student working through exercises in her notebook',
-    heroAltB: 'A student practising on his laptop',
+    heroAlt: 'A student revising on her laptop by a classroom window',
+    heroShot: 'A five-minute lesson and its practice, every day.',
+    heroCard1: ['Spaced review', 'days 1 · 3 · 7 · 21'],
+    heroCard2: ['Marking', 'instant, and explained'],
 
     statChapters: 'chapters with their own syllabus',
     statQuestions: 'questions with step-by-step solutions',

@@ -194,8 +194,10 @@ export const pt: Dict = {
       'Aula visual de cinco minutos, questões da prova real e a resolução passo a passo no instante em que você erra. O que você erra volta programado até deixar de errar.',
     heroCta2: 'Ver planos e garantia',
     heroNote: 'Sem cartão. Cada módulo abre algumas questões para você testar antes de pagar.',
-    heroAltA: 'Uma aluna resolvendo exercícios no caderno',
-    heroAltB: 'Um aluno praticando no notebook',
+    heroAlt: 'Uma estudante revisando no notebook junto à janela de uma sala',
+    heroShot: 'Uma aula de cinco minutos e sua prática, todos os dias.',
+    heroCard1: ['Revisão espaçada', 'dias 1 · 3 · 7 · 21'],
+    heroCard2: ['Correção', 'na hora, e explicada'],
 
     statChapters: 'capítulos com conteúdo próprio',
     statQuestions: 'questões com resolução passo a passo',

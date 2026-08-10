@@ -17,8 +17,7 @@ import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
-import { StudentFocused, StudentMobile, StudyGroup } from '@/components/landing/Figures';
-import { PHOTOS, Portrait, PortraitLaptop, PortraitWriting } from '@/components/landing/Portrait';
+import { HeroShot, PHOTO } from '@/components/landing/Photos';
 import { Road } from '@/components/Road';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
@@ -50,18 +49,12 @@ export default async function LandingPage() {
       <LandingNav locale={locale} t={t} />
 
       {/* ═══ HERO ═══════════════════════════════════════════════════════
-          Retrato · titular · retrato. Los dos retratos son ilustraciones
-          hasta que se rellenen las rutas de PHOTOS en components/landing/
-          Portrait.tsx; el marco y el recorte son los mismos en ambos casos. */}
+          Texto a la izquierda y una foto grande a la derecha, con dos
+          tarjetas flotando encima. Las cifras que antes vivían en su propia
+          tarjeta se suben aquí: decían lo mismo dos veces. */}
       <section className="lp-wrap">
         <div className="lp-hero">
-          <Reveal className="lp-hero-side">
-            <Portrait src={PHOTOS.left} alt={l.heroAltA}>
-              <PortraitWriting />
-            </Portrait>
-          </Reveal>
-
-          <Reveal className="lp-hero-mid" delay={60}>
+          <Reveal className="lp-hero-copy">
             <span className="lp-pill">
               <GraduationCap size={14} /> {l.badge}
             </span>
@@ -74,7 +67,7 @@ export default async function LandingPage() {
               <span style={{ color: 'var(--brand)' }}>{l.heroC}</span>
             </h1>
 
-            <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '46ch' }}>
+            <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '50ch' }}>
               {l.heroBody}
             </p>
 
@@ -90,52 +83,38 @@ export default async function LandingPage() {
             <p className="lp-muted" style={{ fontSize: 14, marginTop: 14 }}>
               {l.heroNote}
             </p>
+
+            <div className="lp-proof">
+              {[
+                { value: <Counter to={chapters} />, label: l.statChapters },
+                { value: <Counter to={published} suffix="+" />, label: l.statQuestions },
+                { value: <Counter to={5} />, label: l.statModules },
+              ].map((stat, i) => (
+                <div key={i}>
+                  <b>{stat.value}</b>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </Reveal>
 
-          <Reveal className="lp-hero-side" delay={120}>
-            <Portrait src={PHOTOS.right} alt={l.heroAltB}>
-              <PortraitLaptop />
-            </Portrait>
+          <Reveal delay={120}>
+            <HeroShot
+              alt={l.heroAlt}
+              caption={l.heroShot}
+              cards={[
+                { l: l.heroCard1[0], v: l.heroCard1[1] },
+                { l: l.heroCard2[0], v: l.heroCard2[1] },
+              ]}
+            />
           </Reveal>
         </div>
       </section>
 
       {/* ═══ LA MUESTRA EN VIVO ═══ */}
-      <section className="lp-wrap" style={{ paddingTop: 56 }}>
-        <Reveal>
-          <Demo t={l} />
-        </Reveal>
-      </section>
-
-      {/* ═══ CIFRAS ═══ */}
       <section className="lp-wrap" style={{ paddingTop: 64 }}>
         <Reveal>
-          <div
-            className="lp-card"
-            style={{
-              padding: '28px 24px',
-              display: 'grid',
-              gap: 22,
-              gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))',
-              textAlign: 'center',
-            }}
-          >
-            {[
-              { value: <Counter to={chapters} />, label: l.statChapters },
-              { value: <Counter to={published} suffix="+" />, label: l.statQuestions },
-              { value: <Counter to={4} />, label: l.statSpaced },
-              { value: <Counter to={5} />, label: l.statModules },
-            ].map((stat, i) => (
-              <div key={i}>
-                <div style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-.03em', color: 'var(--brand)' }}>
-                  {stat.value}
-                </div>
-                <div className="lp-muted" style={{ fontSize: 13.5, marginTop: 4 }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Demo t={l} />
         </Reveal>
       </section>
 
@@ -170,20 +149,20 @@ export default async function LandingPage() {
           className="lp-grid"
           style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 32 }}
         >
-          {t.who.cases.map((item, i) => {
-            const Figure = [StudentFocused, StudentMobile, StudyGroup][i];
-            return (
-              <Reveal key={item.title} delay={i * 100}>
-                <article className="lp-card lp-card-hover" style={{ padding: 0, height: '100%', overflow: 'hidden' }}>
-                  <Figure />
-                  <div style={{ padding: 22 }}>
-                    <h3>{item.title}</h3>
-                    <p style={{ fontSize: 15.5, marginTop: 9, lineHeight: 1.65 }}>{item.body}</p>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
+          {t.who.cases.map((item, i) => (
+            <Reveal key={item.title} delay={i * 100}>
+              <article className="lp-card lp-card-hover" style={{ padding: 0, height: '100%', overflow: 'hidden' }}>
+                <div className="lp-casephoto">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={PHOTO.casos[i]} alt="" width={900} height={620} loading="lazy" />
+                </div>
+                <div style={{ padding: 22 }}>
+                  <h3>{item.title}</h3>
+                  <p style={{ fontSize: 15.5, marginTop: 9, lineHeight: 1.65 }}>{item.body}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
 
         <Reveal delay={160}>
@@ -257,17 +236,29 @@ export default async function LandingPage() {
           <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.methodBody}</p>
         </Reveal>
 
-        <div className="lp-vp">
+        <div className="lp-steps">
           {l.method.map((step, i) => {
             const Icon = METHOD_ICONS[i];
             return (
-              <Reveal key={step.title} delay={i * 100} className="lp-vp-item">
-                <span className="lp-vp-icon">
-                  <Icon size={26} />
-                </span>
-                <span className="lp-vp-time">{step.time}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
+              <Reveal key={step.title} delay={i * 100}>
+                <article className="lp-step">
+                  <div className="lp-stepimg">
+                    {/* decorativa: el titular de al lado ya dice lo que hay que saber */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={PHOTO.pasos[i]} alt="" width={900} height={675} loading="lazy" />
+                    <span className="lp-stepnum">{i + 1}</span>
+                  </div>
+                  <div className="lp-stepbody">
+                    <div className="lp-stephead">
+                      <span className="lp-vp-icon">
+                        <Icon size={21} />
+                      </span>
+                      <span className="lp-vp-time">{step.time}</span>
+                    </div>
+                    <h3>{step.title}</h3>
+                    <p>{step.body}</p>
+                  </div>
+                </article>
               </Reveal>
             );
           })}
