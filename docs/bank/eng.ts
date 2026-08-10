@@ -2890,4 +2890,1047 @@ export const ENG: BankQuestion[] = [
       '4': 'Un ejemplo se anuncia con «for instance».',
     },
   },
+
+  // ── C1 · Poner el foco donde quieres ──────────────────────────────────────
+  {
+    chapter: 'C1 · Poner el foco donde quieres',
+    stem: 'Completa: «Never <b>______</b> such a thing.»',
+    options: ['have I seen', 'I have seen', 'I saw', 'did I saw', 'saw I'],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Fíjate en cómo empieza la frase',
+        p: 'Abre con un adverbio negativo, y eso obliga a invertir.',
+        m: 'never al inicio → inversión',
+      },
+      {
+        t: 'Invierte solo el auxiliar',
+        p: 'El auxiliar pasa delante del sujeto, como en una pregunta. El verbo principal se queda donde estaba.',
+        m: 'have + I + seen',
+      },
+    ],
+    concept:
+      'Cuando una expresión negativa o restrictiva abre la frase, el inglés invierte sujeto y auxiliar. No es opcional.',
+    trick: 'Móntala primero como pregunta —«have I seen…?»— y después ponle el «never» delante.',
+    distractors: {
+      '1': 'Le falta la inversión que exige el «never» inicial.',
+      '2': 'Ni invierte ni usa auxiliar.',
+      '3': 'Con «did» el verbo va en forma base.',
+      '4': 'Invierte el verbo principal en vez del auxiliar.',
+    },
+  },
+  {
+    chapter: 'C1 · Poner el foco donde quieres',
+    stem: 'Completa: «Not only <b>______</b> late, but he also forgot the tickets.»',
+    options: ['did he arrive', 'he arrived', 'he did arrive', 'arrived he', 'did he arrived'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce la expresión restrictiva',
+        p: '«Not only» al principio funciona igual que «never»: exige inversión.',
+        m: 'not only → inversión',
+      },
+      {
+        t: 'Añade el auxiliar que no había',
+        p: 'La frase original no tenía auxiliar, así que hay que introducir «did», como en las preguntas del presente simple.',
+        m: 'he arrived → did he arrive',
+      },
+    ],
+    concept:
+      'Si la frase no tiene auxiliar propio, la inversión lo pide prestado: do, does o did según el tiempo.',
+    trick: 'Después de «did» el verbo va siempre en forma base. Es la misma regla del A2, aplicada aquí.',
+    distractors: {
+      '1': 'Falta la inversión.',
+      '2': 'El orden no está invertido.',
+      '3': 'Invierte el verbo principal.',
+      '4': 'Con «did» el verbo no lleva pasado.',
+    },
+  },
+  {
+    chapter: 'C1 · Poner el foco donde quieres',
+    stem: 'Quieres destacar que fue <b>Ana</b> y no otra persona quien llamó. ¿Cuál es la forma adecuada?',
+    options: [
+      'It was Ana who called yesterday.',
+      'Ana was who called yesterday.',
+      'It was Ana that she called yesterday.',
+      'Was Ana who called yesterday.',
+      'It is Ana who called yesterday.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce la estructura hendida',
+        p: 'Para destacar un elemento, el inglés parte la frase: «it + be + elemento + who/that».',
+        m: 'It was Ana who…',
+      },
+      {
+        t: 'Ajusta el tiempo del verbo be',
+        p: 'La llamada fue ayer, así que va en pasado.',
+        m: 'was, no is',
+      },
+    ],
+    concept:
+      'Las frases hendidas ponen bajo el foco un elemento concreto. Con personas se usa «who»; con cosas, «that».',
+    trick: 'El foco es lo que va justo después de «it was». Si cambias ese hueco, cambias lo que subrayas.',
+    distractors: {
+      '1': 'Le falta el «it» inicial.',
+      '2': 'Duplica el sujeto con «she».',
+      '3': 'Sin «it» la frase queda como pregunta incompleta.',
+      '4': 'El presente choca con «yesterday».',
+    },
+  },
+  {
+    chapter: 'C1 · Poner el foco donde quieres',
+    stem: '¿Qué consigue la estructura «<b>What I need is more time</b>» frente a «I need more time»?',
+    options: [
+      'Pone el foco en la necesidad y la presenta como el punto central',
+      'Convierte la frase en una pregunta indirecta',
+      'La hace más formal sin cambiar el énfasis',
+      'Indica que la necesidad es pasada',
+      'Suaviza la petición para sonar más cortés',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Compara las dos frases',
+        p: 'Dicen lo mismo, pero la segunda anuncia primero que va a decir qué necesita y lo revela al final.',
+        m: 'What I need is…  → suspense y foco',
+      },
+      {
+        t: 'Identifica el efecto',
+        p: 'Retrasar el elemento clave lo destaca. Es la misma lógica del «lo que necesito es» español.',
+        m: '',
+      },
+    ],
+    concept:
+      'La hendida con «what» destaca la idea completa, no un elemento suelto. Se usa para marcar el punto central de un argumento.',
+    trick: 'Si estás escribiendo y quieres que una idea no pase desapercibida, prueba a reescribirla con «What… is…».',
+    distractors: {
+      '1': 'No es una pregunta, aunque empiece por «what».',
+      '2': 'Sí cambia el énfasis: ese es todo su sentido.',
+      '3': 'El tiempo no cambia.',
+      '4': 'Destaca, no suaviza.',
+    },
+  },
+  {
+    chapter: 'C1 · Poner el foco donde quieres',
+    stem: 'Quieres subrayar que la llamada fue <b>ayer</b> y no otro día. ¿Cuál eliges?',
+    options: [
+      'It was yesterday that Ana called.',
+      'It was Ana who called yesterday.',
+      'What Ana did was call yesterday.',
+      'Yesterday Ana called.',
+      'Ana called yesterday, indeed.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Decide qué va bajo el foco',
+        p: 'En una hendida, lo destacado es lo que ocupa el hueco después de «it was». Aquí quieres el día.',
+        m: 'It was + [foco] + that…',
+      },
+      {
+        t: 'Comprueba el conector',
+        p: 'Con un tiempo o un lugar se usa «that», no «who». «Who» solo con personas.',
+        m: 'It was yesterday that…',
+      },
+      {
+        t: 'Descarta las que destacan otra cosa',
+        p: 'Todas son correctas y todas subrayan algo distinto. Eso es lo que se evalúa en el C1.',
+        m: 'Ana → quién\nyesterday → cuándo',
+      },
+    ],
+    concept:
+      'Varias estructuras pueden ser correctas a la vez y destacar cosas distintas. Elegir la adecuada es elegir qué quieres que el lector retenga.',
+    trick:
+      'Antes de escribir la hendida, pregúntate qué palabra respondería a la objeción del lector. Esa es la que va bajo el foco.',
+    distractors: {
+      '1': 'Destaca a Ana, no el día.',
+      '2': 'Destaca la acción de llamar.',
+      '3': 'Adelanta el día pero sin construir foco.',
+      '4': 'Refuerza la frase entera, sin señalar el día.',
+    },
+  },
+
+  // ── C1 · Los matices que separan C1 de B2 ─────────────────────────────────
+  {
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    stem: 'En una noticia, «The company <b>claimed</b> the data was secure» sugiere que quien escribe:',
+    options: [
+      'No respalda la afirmación y marca distancia',
+      'Confirma que los datos estaban seguros',
+      'Cita textualmente un documento oficial',
+      'Considera el asunto poco relevante',
+      'Está de acuerdo con la empresa',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Fíjate en el verbo de reporte',
+        p: '«Claim» reporta lo dicho y a la vez señala que quien escribe no lo hace suyo.',
+        m: 'claim → lo dice él, no yo',
+      },
+      {
+        t: 'Compáralo con el neutro',
+        p: '«Said» habría sido neutro. Elegir «claimed» es una decisión editorial, no una cuestión de estilo.',
+        m: '',
+      },
+    ],
+    concept:
+      'Los verbos de reporte llevan una valoración implícita. En periodismo, elegir uno u otro puede equivaler a una acusación encubierta.',
+    trick: 'Si no quieres opinar, usa «said» o «stated». Todo lo demás añade algo.',
+    distractors: {
+      '1': 'Es justo lo contrario.',
+      '2': 'Una cita textual iría entre comillas.',
+      '3': 'La relevancia no la marca este verbo.',
+      '4': '«Claim» marca distancia, no acuerdo.',
+    },
+  },
+  {
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    stem: 'En un correo profesional quieres señalar algo que va mal sin que suene a reproche. ¿Qué palabra eliges?',
+    options: ['concern', 'problem', 'disaster', 'fault', 'complaint'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Ordena las palabras por dureza',
+        p: 'Todas nombran algo que no va bien, pero no con la misma carga.',
+        m: 'concern < issue < problem < fault',
+      },
+      {
+        t: 'Elige la que no atribuye culpa',
+        p: '«Concern» presenta el asunto como algo que preocupa, sin señalar a nadie. Es la que deja la puerta abierta.',
+        m: 'I have a concern about…',
+      },
+    ],
+    concept:
+      'El registro profesional en inglés atenúa deliberadamente. Elegir la palabra dura donde tocaba la suave se lee como una acusación.',
+    trick: 'En un correo de trabajo, empieza siempre por la palabra más suave. Siempre puedes endurecer después; retroceder es más caro.',
+    distractors: {
+      '1': 'Es correcto pero más directo: puede leerse como reproche.',
+      '2': 'Exagera y suena alarmista.',
+      '3': 'Atribuye culpa explícitamente.',
+      '4': 'Convierte el aviso en una queja formal.',
+    },
+  },
+  {
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    stem: 'En un informe formal, ¿cuál es la mejor forma de decir que hubo <b>muchos</b> errores?',
+    options: [
+      'A considerable number of errors were identified.',
+      'There were a lot of errors.',
+      'There were tons of errors.',
+      'We found loads of mistakes.',
+      'There were many many errors.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Descarta lo coloquial',
+        p: '«A lot of», «tons of» y «loads of» pertenecen a la conversación.',
+        m: '',
+      },
+      {
+        t: 'Elige el cuantificador preciso y el registro impersonal',
+        p: '«A considerable number» cuantifica sin exagerar, y la pasiva quita al autor de en medio.',
+        m: 'considerable + pasiva',
+      },
+    ],
+    concept:
+      'Las palabras comodín son la marca del B2. Sustituirlas por cuantificadores precisos es lo primero que sube un texto de nivel.',
+    trick: 'Haz una lista de tus comodines —a lot of, things, get, very— y búscalos al revisar. Cada uno tiene un equivalente exacto.',
+    distractors: {
+      '1': 'Correcto pero coloquial.',
+      '2': 'Muy informal.',
+      '3': 'Informal y además personal.',
+      '4': 'Repetir el intensificador no lo hace más formal.',
+    },
+  },
+  {
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    stem: '¿Qué verbo de reporte usarías para алгo que alguien reconoció a regañadientes?',
+    options: ['admitted', 'stated', 'claimed', 'announced', 'suggested'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Busca el que lleva la resistencia dentro',
+        p: '«Admit» implica que decirlo iba en contra del propio interés.',
+        m: 'admit → costó reconocerlo',
+      },
+      {
+        t: 'Comprueba los demás',
+        p: 'Cada uno aporta otra cosa: neutralidad formal, distancia, publicidad o tentativa.',
+        m: 'state → formal neutro\nclaim → distancia\nannounce → público\nsuggest → tentativo',
+      },
+    ],
+    concept:
+      'Un solo verbo puede sustituir a media frase de explicación. Elegirlo bien es lo que hace un texto denso sin ser largo.',
+    trick: 'Cuando vayas a escribir «he said that, although he did not want to», busca el verbo que ya diga eso.',
+    distractors: {
+      '1': 'Es neutro y formal, sin resistencia.',
+      '2': 'Marca distancia, no reconocimiento.',
+      '3': 'Implica comunicación pública y voluntaria.',
+      '4': 'Es tentativo, no un reconocimiento.',
+    },
+  },
+  {
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    stem: 'Ambas frases son correctas. ¿Cuál es preferible en el resumen de un artículo científico?',
+    options: [
+      'The results indicate a possible association between the two variables.',
+      'The results clearly prove that one variable causes the other.',
+      'We really think the two things are connected somehow.',
+      'It is obvious that the variables are related.',
+      'The results definitely show a strong link between both.',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Mide qué permite afirmar el dato',
+        p: 'Una asociación entre variables no demuestra causalidad. Afirmarla es un error de fondo, no de estilo.',
+        m: 'asociación ≠ causa',
+      },
+      {
+        t: 'Revisa los intensificadores',
+        p: '«Clearly», «obvious» y «definitely» aportan seguridad y no evidencia. En un resumen científico restan credibilidad.',
+        m: '',
+      },
+      {
+        t: 'Comprueba el registro',
+        p: '«We really think» y «somehow» pertenecen a la conversación.',
+        m: '',
+      },
+    ],
+    concept:
+      'En el C1 la elección correcta depende de tres capas a la vez: precisión conceptual, fuerza de la afirmación y registro. Fallar en cualquiera baja el nivel del texto.',
+    trick:
+      'Al revisar, comprueba las tres por separado: ¿dice exactamente lo que el dato permite? ¿No exagera? ¿Suena al registro que toca?',
+    distractors: {
+      '1': 'Afirma causalidad donde solo hay asociación.',
+      '2': 'Registro coloquial y vago.',
+      '3': 'Apela a la obviedad en lugar de a la evidencia.',
+      '4': 'Exagera la certeza con «definitely» y «strong».',
+    },
+  },
+
+  // ── C1 · Lenguaje figurado ────────────────────────────────────────────────
+  {
+    chapter: 'C1 · Lenguaje figurado',
+    stem: '¿Qué significa «<b>the elephant in the room</b>»?',
+    options: [
+      'El problema evidente que nadie se atreve a mencionar',
+      'Una persona que ocupa demasiado espacio',
+      'Un detalle sin importancia que distrae',
+      'Un invitado inesperado',
+      'Una exageración de alguien',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'No lo traduzcas',
+        p: 'La imagen es la clave: un elefante en la sala es imposible de ignorar y aun así todos fingen que no está.',
+        m: '',
+      },
+      {
+        t: 'Fíjate en cuándo se usa',
+        p: 'Aparece justo antes de sacar un tema incómodo: «let’s address the elephant in the room».',
+        m: '',
+      },
+    ],
+    concept:
+      'Un modismo no significa la suma de sus palabras. La única vía es reconocerlo, y para eso hay que haberlo encontrado en contexto.',
+    trick: 'Cuando encuentres uno, apunta la frase entera y dónde apareció. Sin contexto vuelve a ser opaco en dos semanas.',
+    distractors: {
+      '1': 'Es la lectura literal, y no es lo que significa.',
+      '2': 'Justo al revés: es lo importante que se ignora.',
+      '3': 'No tiene que ver con visitas.',
+      '4': 'Eso sería «to blow something out of proportion».',
+    },
+  },
+  {
+    chapter: 'C1 · Lenguaje figurado',
+    stem: '«We had to <b>bite the bullet</b> and cancel the project.» ¿Qué significa?',
+    options: [
+      'Afrontar algo desagradable que no se podía evitar',
+      'Actuar con demasiada prisa',
+      'Discutir con dureza antes de decidir',
+      'Reducir gastos al mínimo',
+      'Arriesgarse sin información',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Usa el contexto',
+        p: 'Cancelar un proyecto es una decisión dolorosa, y «had to» dice que no había alternativa.',
+        m: '',
+      },
+      {
+        t: 'Conecta con la imagen',
+        p: 'Viene de morder una bala para soportar el dolor. La imagen es aguantar algo duro sin quejarse.',
+        m: '',
+      },
+    ],
+    concept:
+      'Cuando un modismo se te resiste, el contexto suele bastar. Las palabras que lo rodean acotan el significado casi siempre.',
+    trick: 'No busques el modismo antes de leer la frase entera: el contexto te da la mitad y así se te queda mejor.',
+    distractors: {
+      '1': 'La prisa sería «to jump the gun».',
+      '2': 'Discutir sería «to lock horns».',
+      '3': 'Recortar sería «to tighten one’s belt».',
+      '4': 'Arriesgarse a ciegas sería «to take a shot in the dark».',
+    },
+  },
+  {
+    chapter: 'C1 · Lenguaje figurado',
+    stem: 'Un colega británico ve tu trabajo y dice: «<b>That’s not bad at all.</b>» ¿Qué significa probablemente?',
+    options: [
+      'Que le parece muy bueno',
+      'Que le parece mediocre pero aceptable',
+      'Que tiene errores que no quiere señalar',
+      'Que no lo ha mirado con atención',
+      'Que prefiere no opinar',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce el understatement',
+        p: 'El inglés británico dice menos de lo que quiere decir, sobre todo al elogiar.',
+        m: 'not bad at all → muy bueno',
+      },
+      {
+        t: 'Compara con el español',
+        p: 'Nosotros exageramos el elogio; ellos lo contienen. Traducir literalmente invierte el mensaje.',
+        m: '',
+      },
+    ],
+    concept:
+      'El understatement es una convención cultural, no una figura literaria. Tomarlo al pie de la letra es el malentendido más común entre hispanohablantes y británicos.',
+    trick: 'La escala británica del elogio va de «not bad» a «quite good» a «rather impressive». Suma un escalón a lo que oigas.',
+    distractors: {
+      '1': 'Sería la lectura literal, que aquí engaña.',
+      '2': 'Los reparos se señalan con «I have one small concern».',
+      '3': 'El comentario implica que sí lo miró.',
+      '4': 'Está opinando, y a favor.',
+    },
+  },
+  {
+    chapter: 'C1 · Lenguaje figurado',
+    stem: 'En una reunión, alguien dice: «<b>I have one small concern about the plan.</b>» ¿Qué conviene asumir?',
+    options: [
+      'Que puede tener una objeción de fondo, expresada con suavidad',
+      'Que se trata de un detalle menor sin importancia',
+      'Que está de acuerdo con el plan',
+      'Que necesita más información antes de opinar',
+      'Que quiere cambiar de tema',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Aplica la escala del understatement',
+        p: 'Igual que el elogio se contiene, la crítica también. «One small concern» rara vez es pequeña.',
+        m: 'small concern → posible desacuerdo serio',
+      },
+      {
+        t: 'Decide qué hacer con eso',
+        p: 'La respuesta útil es preguntar, no dar por zanjado: «Could you tell me more about that?».',
+        m: '',
+      },
+    ],
+    concept:
+      'La atenuación funciona en las dos direcciones: suaviza el elogio y suaviza la crítica. Ignorarla hace perder información importante.',
+    trick: 'Cuando oigas un adjetivo atenuador —small, slight, minor— delante de una objeción, pregunta antes de seguir.',
+    distractors: {
+      '1': 'Es la lectura literal, y suele quedarse corta.',
+      '2': 'Está señalando un reparo, no acuerdo.',
+      '3': 'Ya tiene una opinión formada.',
+      '4': 'Está entrando en el tema, no evitándolo.',
+    },
+  },
+  {
+    chapter: 'C1 · Lenguaje figurado',
+    stem: '¿Cuál es la mejor manera de incorporar modismos a tu propio inglés?',
+    options: [
+      'Anotar los que encuentres en contexto, con la frase entera',
+      'Memorizar listas de doscientos ordenadas alfabéticamente',
+      'Traducir los modismos españoles que más usas',
+      'Usar el mayor número posible en cada conversación',
+      'Aprenderlos solo para reconocerlos, sin usarlos nunca',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Descarta lo que no funciona',
+        p: 'La lista alfabética junta modismos sin relación y se olvida. Traducir los españoles produce frases que nadie dice.',
+        m: '',
+      },
+      {
+        t: 'Piensa en cómo se recuerda un significado opaco',
+        p: 'Si el significado no se deduce, lo único que lo fija es la situación en que apareció.',
+        m: 'contexto = mitad del significado',
+      },
+      {
+        t: 'Y modera el uso',
+        p: 'Meter demasiados seguidos suena a alguien recitando. Uno bien colocado vale por cinco.',
+        m: '',
+      },
+    ],
+    concept:
+      'Los modismos se adquieren por exposición y se fijan por contexto. La memorización masiva es el método que más se intenta y menos funciona.',
+    trick:
+      'Ponte un límite: un modismo nuevo por semana, usado tres veces en conversación real. Es más lento y es lo único que se queda.',
+    distractors: {
+      '1': 'Se olvidan porque no hay nada que los relacione entre sí.',
+      '2': 'Los modismos no se traducen entre idiomas.',
+      '3': 'Suena artificial y delata que se están recitando.',
+      '4': 'Reconocerlos está bien, pero usarlos es parte del C1.',
+    },
+  },
+
+  // ── C1 · Escritura formal ─────────────────────────────────────────────────
+  {
+    chapter: 'C1 · Escritura formal',
+    stem: '¿Cuál es la versión más adecuada para un informe académico?',
+    options: [
+      'The findings indicate that the plan was largely ineffective.',
+      'I think this shows the plan did not work very well.',
+      'This obviously proves the plan was a total failure.',
+      "The plan didn't really work out, which is a shame.",
+      'We found out the plan was pretty bad.',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Borra al autor',
+        p: 'En un informe se da por hecho que lo escribes tú: «I think» sobra y resta autoridad.',
+        m: 'I think → the findings indicate',
+      },
+      {
+        t: 'Mide la fuerza',
+        p: '«Largely ineffective» dice lo que los datos permiten; «total failure» exagera.',
+        m: '',
+      },
+      {
+        t: 'Revisa el registro',
+        p: 'Nada de contracciones, phrasal verbs coloquiales ni valoraciones sueltas.',
+        m: '',
+      },
+    ],
+    concept:
+      'El registro académico combina tres cosas: estructura impersonal, precisión léxica y certeza medida. Las tres se revisan por separado.',
+    trick: 'Busca en tu texto las palabras «I», «obviously» y los apóstrofos. Son los tres rastros más fáciles de detectar.',
+    distractors: {
+      '1': 'Personal y con palabras comodín.',
+      '2': 'Exagera la certeza.',
+      '3': 'Contracción, phrasal verb y valoración personal.',
+      '4': 'Coloquial de principio a fin.',
+    },
+  },
+  {
+    chapter: 'C1 · Escritura formal',
+    stem: 'Convierte en una sola frase con nominalización: «They decided quickly, and this surprised everyone.»',
+    options: [
+      'Their rapid decision surprised everyone.',
+      'They decided quickly and surprised everyone.',
+      'The decision they took quickly was a surprise for everyone.',
+      'Deciding quickly, everyone was surprised.',
+      'It was quick, their decision, and surprising.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Convierte la acción en sustantivo',
+        p: '«They decided quickly» se comprime en «their rapid decision».',
+        m: 'decided → decision\nquickly → rapid',
+      },
+      {
+        t: 'Encájalo como sujeto',
+        p: 'Una vez convertido en sustantivo, funciona como cualquier objeto dentro de otra frase.',
+        m: 'Their rapid decision + surprised everyone',
+      },
+    ],
+    concept:
+      'La nominalización comprime una oración en un sustantivo, y eso permite meterla dentro de otra. Es el mecanismo que hace denso al inglés académico.',
+    trick: 'Si dos frases cortas se repiten el sujeto, convierte la primera en sustantivo y hazla sujeto de la segunda.',
+    distractors: {
+      '1': 'No nominaliza: sigue con dos verbos coordinados.',
+      '2': 'Es correcto pero más largo y menos comprimido.',
+      '3': 'El gerundio inicial deja un sujeto que no corresponde.',
+      '4': 'Es una construcción forzada y coloquial.',
+    },
+  },
+  {
+    chapter: 'C1 · Escritura formal',
+    stem: 'Los datos muestran una relación pero no una causa. ¿Cómo se escribe?',
+    options: [
+      'The data suggest that screen time may contribute to poor sleep.',
+      'The data prove that screen time causes poor sleep.',
+      'It is clear that screen time destroys sleep quality.',
+      'Everyone knows screen time is bad for sleep.',
+      'Screen time definitely leads to poor sleep.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Comprueba qué permite el dato',
+        p: 'Una relación no autoriza a hablar de causa.',
+        m: 'relación ≠ causa',
+      },
+      {
+        t: 'Elige verbo y modal con la fuerza justa',
+        p: '«Suggest» y «may contribute» dejan la afirmación en su sitio.',
+        m: '',
+      },
+    ],
+    concept:
+      'Medir la fuerza de lo que se afirma es señal de rigor, no de inseguridad. Exagerar la certeza es lo que descalifica un texto ante quien lo evalúa.',
+    trick: 'Cada vez que escribas «proves», comprueba si el dato lo sostiene. Casi nunca lo hace.',
+    distractors: {
+      '1': 'Afirma causalidad sin base.',
+      '2': 'Apela a la obviedad y exagera.',
+      '3': 'Apelar al saber común no es argumentar.',
+      '4': '«Definitely» y «leads to» afirman causa directa.',
+    },
+  },
+  {
+    chapter: 'C1 · Escritura formal',
+    stem: 'Sustituye por el equivalente formal: «We <b>found out</b> that the numbers were wrong.»',
+    options: ['discovered', 'looked into', 'checked out', 'came across', 'figured out'],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Reconoce el phrasal verb',
+        p: '«Find out» es de registro conversacional.',
+        m: '',
+      },
+      {
+        t: 'Busca el verbo culto equivalente',
+        p: 'Casi todos los phrasal verbs tienen un verbo de origen latino que el texto formal prefiere.',
+        m: 'find out → discover\nput off → postpone\nlook into → investigate',
+      },
+    ],
+    concept:
+      'El registro formal prefiere el verbo de una sola pieza. No es esnobismo: es la convención que espera quien evalúa.',
+    trick: 'Cuando dudes, el verbo largo de raíz latina suele ser el formal, y el corto con partícula, el conversacional.',
+    distractors: {
+      '1': 'También es phrasal y significa investigar.',
+      '2': 'Es aún más coloquial.',
+      '3': 'Significa encontrarse algo por casualidad.',
+      '4': 'Es coloquial y significa deducir.',
+    },
+  },
+  {
+    chapter: 'C1 · Escritura formal',
+    stem: 'Un párrafo tuyo nominaliza tanto que cuesta leerlo. ¿Qué conviene hacer?',
+    options: [
+      'Devolver algunas acciones a forma verbal para recuperar claridad',
+      'Nominalizar el resto para que quede uniforme',
+      'Partirlo en frases más cortas manteniendo los sustantivos',
+      'Añadir conectores entre las nominalizaciones',
+      'Dejarlo así: cuanto más denso, más académico',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Recuerda para qué sirve nominalizar',
+        p: 'Para comprimir y encadenar ideas, no para oscurecerlas.',
+        m: '',
+      },
+      {
+        t: 'Detecta el exceso',
+        p: 'Cuando la frase pierde el verbo principal reconocible, el lector deja de saber quién hace qué.',
+        m: 'la compresión tiene un límite',
+      },
+      {
+        t: 'Corrige a la baja',
+        p: 'Devolver una o dos acciones a verbo suele bastar para que el párrafo vuelva a leerse.',
+        m: '',
+      },
+    ],
+    concept:
+      'La densidad académica es un medio, no un fin. Un texto que hay que releer para entender quién hizo qué está peor escrito, no mejor.',
+    trick:
+      'Léelo en voz alta. Si te quedas sin aire antes del verbo principal, has nominalizado de más.',
+    distractors: {
+      '1': 'Agravaría el problema.',
+      '2': 'Frases cortas de sustantivos siguen siendo ilegibles.',
+      '3': 'Los conectores no arreglan la falta de verbos.',
+      '4': 'Densidad no es calidad.',
+    },
+  },
+
+  // ── C1 · Fluidez bajo presión ─────────────────────────────────────────────
+  {
+    chapter: 'C1 · Fluidez bajo presión',
+    stem: 'En un examen oral no te sale una palabra. ¿Qué conviene hacer?',
+    options: [
+      'Describirla con otras palabras y seguir hablando',
+      'Detenerse hasta recordarla',
+      'Cambiar de tema para evitarla',
+      'Decirla en español y continuar',
+      'Pedir disculpas y empezar la frase de nuevo',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Recuerda qué se puntúa',
+        p: 'Se evalúa que el discurso avance, no que cada palabra sea la exacta.',
+        m: 'fluidez = no detenerse',
+      },
+      {
+        t: 'Usa una fórmula de rodeo',
+        p: '«It’s the thing you use to…» resuelve casi cualquier hueco y además demuestra recursos.',
+        m: '',
+      },
+    ],
+    concept:
+      'Rodear una palabra que falta no es una derrota: es una estrategia que los evaluadores puntúan como recurso comunicativo.',
+    trick: 'Ten tres fórmulas automatizadas: «It’s a kind of…», «It’s the thing you use to…», «I can’t remember the word, but…».',
+    distractors: {
+      '1': 'El silencio penaliza más que la imprecisión.',
+      '2': 'Evitar temas limita lo que puedes demostrar.',
+      '3': 'Rompe el discurso en la lengua evaluada.',
+      '4': 'Reiniciar constantemente suena a inseguridad.',
+    },
+  },
+  {
+    chapter: 'C1 · Fluidez bajo presión',
+    stem: 'Te equivocas a mitad de frase. ¿Cuál es la mejor reparación?',
+    options: [
+      '…or rather, what I mean is that the cost was higher.',
+      'Sorry. Sorry. Let me start again from the beginning.',
+      'No, no, forget it, it does not matter.',
+      'Ehm… ehm… ehm…',
+      'How do you say… ay, no sé.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Repara en marcha',
+        p: 'Enlazar la corrección con la frase mantiene el discurso vivo.',
+        m: 'or rather / what I mean is',
+      },
+      {
+        t: 'Evita reiniciar',
+        p: 'Volver al principio pierde lo dicho y transmite inseguridad.',
+        m: '',
+      },
+    ],
+    concept:
+      'Autocorregirse sin romper el discurso es señal de dominio. Los hablantes nativos lo hacen constantemente y nadie lo percibe como error.',
+    trick: 'Aprende dos conectores de reparación y úsalos siempre los mismos: «or rather» y «what I mean is».',
+    distractors: {
+      '1': 'Reiniciar pierde el hilo y penaliza.',
+      '2': 'Abandonar la idea deja la respuesta incompleta.',
+      '3': 'El silencio relleno no repara nada.',
+      '4': 'Cambiar de idioma rompe la evaluación.',
+    },
+  },
+  {
+    chapter: 'C1 · Fluidez bajo presión',
+    stem: 'Necesitas un segundo para pensar la respuesta. ¿Qué dices?',
+    options: [
+      "That's a good question. Let me think about that for a moment.",
+      'Wait, wait, I am thinking, wait.',
+      'Ehhh…',
+      'Repeat the question, please.',
+      'I do not know what to say.',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Gana tiempo sin dejar de hablar',
+        p: 'Una fórmula corta ocupa el silencio y te da los segundos que necesitas.',
+        m: '',
+      },
+      {
+        t: 'Comprueba que suene natural',
+        p: 'Debe estar tan automatizada que salga sin pensarla. Si tienes que construirla, ya no sirve.',
+        m: '',
+      },
+    ],
+    concept:
+      'Las fórmulas para ganar tiempo son parte del repertorio de un hablante avanzado. No son relleno vacío: son gestión del discurso.',
+    trick: 'Ensáyalas hasta que salgan solas. Una fórmula que hay que pensar no cumple su función.',
+    distractors: {
+      '1': 'Suena ansioso y no da información.',
+      '2': 'El silencio relleno no aporta nada.',
+      '3': 'Puede leerse como que no entendiste.',
+      '4': 'Cierra la respuesta en vez de abrirla.',
+    },
+  },
+  {
+    chapter: 'C1 · Fluidez bajo presión',
+    stem: '¿Cuál de estas afirmaciones sobre la fluidez es correcta?',
+    options: [
+      'Hablar despacio sin bloqueos puntúa más que hablar rápido atascándose',
+      'La fluidez se mide sobre todo por la velocidad',
+      'Un acento marcado impide alcanzar el C1',
+      'Cometer errores gramaticales impide ser fluido',
+      'Memorizar respuestas completas es la mejor preparación',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Separa fluidez de velocidad',
+        p: 'Fluidez es continuidad del discurso, no palabras por minuto.',
+        m: '',
+      },
+      {
+        t: 'Descarta los mitos',
+        p: 'El acento no se penaliza mientras se entienda, y los errores menores tampoco rompen la fluidez.',
+        m: '',
+      },
+    ],
+    concept:
+      'La fluidez evalúa si el discurso avanza y se sostiene. Un ritmo pausado y constante puntúa más alto que uno rápido e interrumpido.',
+    trick: 'Practica hablando un minuto seguido sobre cualquier tema sin parar. Lo que se entrena es no detenerse, no ir deprisa.',
+    distractors: {
+      '1': 'La velocidad no es el criterio.',
+      '2': 'El acento no impide el C1 si se entiende.',
+      '3': 'Los errores menores no rompen la fluidez.',
+      '4': 'Memorizar se nota al primer desvío del guion.',
+    },
+  },
+  {
+    chapter: 'C1 · Fluidez bajo presión',
+    stem: 'Te preguntan algo sobre lo que no tienes opinión formada. ¿Cuál es la mejor estrategia?',
+    options: [
+      'Reconocerlo y construir en voz alta: «I have not thought about it much, but I suppose…»',
+      'Inventar una opinión firme y defenderla como si la tuvieras',
+      'Decir que no sabes y esperar la siguiente pregunta',
+      'Repetir la pregunta con otras palabras para llenar el tiempo',
+      'Cambiar a un tema que domines mejor',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Recuerda qué se evalúa',
+        p: 'No se juzga el contenido de tu opinión sino cómo la construyes en inglés.',
+        m: '',
+      },
+      {
+        t: 'Convierte la duda en discurso',
+        p: 'Pensar en voz alta —«on the one hand… on the other…»— genera lenguaje evaluable y suena natural.',
+        m: '',
+      },
+      {
+        t: 'Descarta las salidas falsas',
+        p: 'Inventar una postura firme te obliga a defender lo que no piensas; callar deja la respuesta vacía.',
+        m: '',
+      },
+    ],
+    concept:
+      'En un examen oral, dudar en voz alta produce más lenguaje que una opinión firme mal sostenida. La duda articulada es una respuesta válida.',
+    trick:
+      'Ten preparada una estructura de duda: «I have not thought about it much, but I suppose it depends on…». Sirve para cualquier tema.',
+    distractors: {
+      '1': 'Te obliga a sostener argumentos que no tienes.',
+      '2': 'Deja la respuesta sin lenguaje que evaluar.',
+      '3': 'Se nota como relleno y no aporta.',
+      '4': 'Evitar el tema limita lo que demuestras.',
+    },
+  },
+
+  // ── C1 · Simulacro completo ───────────────────────────────────────────────
+  {
+    chapter: 'C1 · Simulacro completo',
+    stem: '¿Para qué sirve principalmente rendir un simulacro completo?',
+    options: [
+      'Para medir el nivel real y familiarizarse con el formato',
+      'Para aprender la gramática que aún falta',
+      'Para ampliar vocabulario',
+      'Para practicar la pronunciación',
+      'Para descansar entre capítulos',
+    ],
+    answer: 0,
+    difficulty: 1,
+    steps: [
+      {
+        t: 'Separa medir de aprender',
+        p: 'Un simulacro no enseña contenido: revela dónde estás y dónde fallas.',
+        m: '',
+      },
+      {
+        t: 'Añade el segundo efecto',
+        p: 'Quitar sorpresas de formato vale puntos por sí solo: quien ya lo conoce no pierde minutos entendiendo las instrucciones.',
+        m: '',
+      },
+    ],
+    concept:
+      'Medir y aprender son fases distintas. Rendir simulacros sin estudiar entre ellos no mejora el resultado.',
+    trick: 'Uno cada dos semanas basta. Más seguido no deja tiempo para corregir lo que el anterior reveló.',
+    distractors: {
+      '1': 'Eso se hace en los capítulos, no en el examen.',
+      '2': 'El simulacro usa el vocabulario que ya tienes.',
+      '3': 'La pronunciación se entrena en las clases.',
+      '4': 'Es lo contrario de un descanso.',
+    },
+  },
+  {
+    chapter: 'C1 · Simulacro completo',
+    stem: 'Vas por la mitad del tiempo y te quedan tres de las cinco lecturas. ¿Qué haces?',
+    options: [
+      'Pasar a las siguientes y volver al final si queda tiempo',
+      'Terminar bien la actual aunque sacrifiques las demás',
+      'Responder al azar las que faltan y revisar la actual',
+      'Leer todas por encima sin responder ninguna',
+      'Empezar por la más larga, que vale más',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Comprueba cuánto vale cada parte',
+        p: 'Todas las lecturas puntúan igual. Perfeccionar una a costa de dos es un mal cambio.',
+        m: '',
+      },
+      {
+        t: 'Reparte el tiempo antes de empezar',
+        p: 'Fijar minutos por sección y respetarlos evita justamente esta situación.',
+        m: 'tiempo total ÷ secciones',
+      },
+    ],
+    concept:
+      'La gestión del tiempo decide más resultados que el nivel. La mayoría de quienes suspenden no lo hacen por saber menos, sino por no llegar.',
+    trick: 'Escribe en el margen la hora a la que debes abandonar cada sección. Y abandónala aunque duela.',
+    distractors: {
+      '1': 'Sacrifica puntos que valían lo mismo.',
+      '2': 'Responder al azar tiene sentido al final, no antes de intentarlo.',
+      '3': 'Leer sin responder gasta el tiempo dos veces.',
+      '4': 'La longitud no cambia el valor.',
+    },
+  },
+  {
+    chapter: 'C1 · Simulacro completo',
+    stem: 'En la parte escrita, ¿cuál es el error más caro?',
+    options: [
+      'Responder a algo distinto de lo que pide la consigna',
+      'Cometer algunos errores gramaticales menores',
+      'Escribir con letra poco clara',
+      'Usar vocabulario demasiado sencillo',
+      'Tardar en empezar el primer párrafo',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Piensa en qué se penaliza más',
+        p: 'Un texto impecable que no responde a la tarea pierde la mitad de los puntos de contenido.',
+        m: '',
+      },
+      {
+        t: 'Previene el error',
+        p: 'Subrayar el verbo de la consigna —compare, discuss, evaluate— antes de escribir cuesta diez segundos.',
+        m: '',
+      },
+    ],
+    concept:
+      'La adecuación a la tarea se puntúa aparte de la lengua. Es el criterio donde más puntos se pierden de golpe.',
+    trick: 'Antes de escribir, formula en una frase qué te están pidiendo. Si no puedes, todavía no has entendido la consigna.',
+    distractors: {
+      '1': 'Restan, pero mucho menos que fallar la tarea.',
+      '2': 'Influye poco y hoy muchos exámenes son digitales.',
+      '3': 'Baja la nota de léxico, no invalida el texto.',
+      '4': 'Es cuestión de minutos, no de puntos.',
+    },
+  },
+  {
+    chapter: 'C1 · Simulacro completo',
+    stem: 'En la parte oral, ¿qué se evalúa además del vocabulario y la gramática?',
+    options: [
+      'La capacidad de sostener e interactuar en el discurso',
+      'La rapidez al responder',
+      'La ausencia total de acento extranjero',
+      'La cantidad de modismos utilizados',
+      'La longitud de cada respuesta',
+    ],
+    answer: 0,
+    difficulty: 2,
+    steps: [
+      {
+        t: 'Recuerda los criterios',
+        p: 'Se puntúa léxico, gramática, pronunciación, fluidez e interacción. Los dos últimos son los que se olvidan al preparar.',
+        m: '',
+      },
+      {
+        t: 'Entiende qué es interactuar',
+        p: 'Escuchar al otro candidato, responder a lo que dijo y ceder el turno también puntúa.',
+        m: '',
+      },
+    ],
+    concept:
+      'La prueba oral evalúa comunicación, no exhibición. Un candidato que monologa sin escuchar puntúa por debajo de uno que dialoga.',
+    trick: 'En las partes de pareja, reacciona a lo que dijo el otro antes de aportar lo tuyo: «That is a good point, although…».',
+    distractors: {
+      '1': 'La velocidad no es criterio.',
+      '2': 'El acento no penaliza si se entiende.',
+      '3': 'Meter modismos a la fuerza resta naturalidad.',
+      '4': 'Respuestas largas sin contenido no suman.',
+    },
+  },
+  {
+    chapter: 'C1 · Simulacro completo',
+    stem: 'Terminas el simulacro con una nota más baja de la esperada. ¿Qué conviene hacer primero?',
+    options: [
+      'Revisar en qué sección se perdieron los puntos y volver a esos capítulos',
+      'Rendir otro simulacro inmediatamente para confirmar',
+      'Repasar toda la gramática desde el principio',
+      'Bajar de nivel objetivo y presentarse al B2',
+      'Repetir el mismo simulacro hasta memorizar las respuestas',
+    ],
+    answer: 0,
+    difficulty: 3,
+    steps: [
+      {
+        t: 'Trata el simulacro como un diagnóstico',
+        p: 'Su valor está en lo que revela, no en la nota. Sin analizarlo, solo has perdido dos horas.',
+        m: '',
+      },
+      {
+        t: 'Vuelve a lo concreto',
+        p: 'Si fallaste en escucha, el problema no es la gramática. Cada sección apunta a capítulos distintos.',
+        m: '',
+      },
+      {
+        t: 'Descarta las reacciones inútiles',
+        p: 'Repetirlo enseguida mide lo mismo; repasarlo todo diluye el esfuerzo; memorizarlo no transfiere a otro examen.',
+        m: '',
+      },
+    ],
+    concept:
+      'Un simulacro sin análisis posterior no sirve de nada. El trabajo empieza cuando termina la prueba, y consiste en convertir cada fallo en un capítulo concreto que repasar.',
+    trick:
+      'Anota cada error en una de cuatro columnas: no lo sabía, lo sabía y no lo vi, se me acabó el tiempo, no entendí la consigna. Cada columna se corrige de forma distinta.',
+    distractors: {
+      '1': 'Mediría lo mismo sin haber corregido nada.',
+      '2': 'Diluye el esfuerzo en lo que ya dominas.',
+      '3': 'Una nota baja no significa que el objetivo sea inalcanzable.',
+      '4': 'Memorizar un examen concreto no transfiere a otro.',
+    },
+  },
 ];

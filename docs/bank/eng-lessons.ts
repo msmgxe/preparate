@@ -1415,4 +1415,523 @@ export const ENG_LESSONS: LessonSeed[] = [
       { kind: 'video', payload: {} },
     ],
   },
+
+  // ── C1 · Poner el foco donde quieres ──────────────────────────────────────
+  {
+    slug: 'eng-foco',
+    chapter: 'C1 · Poner el foco donde quieres',
+    title: 'Mover las piezas para subrayar',
+    hook: 'En español subimos la voz. El inglés no puede: cambia el orden de la frase. Estas estructuras son la diferencia entre decir algo y hacer que se note.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'El problema del orden fijo',
+          p: 'El inglés tiene el orden más rígido que el español: sujeto, verbo, objeto, y poco margen. Así que para destacar algo no puede moverlo sin más — necesita <strong>estructuras que reorganizan la frase entera</strong>. Son las que separan un texto correcto de uno que suena escrito por alguien que domina el idioma.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'La inversión tras negativos',
+          p: 'Cuando una frase empieza por una expresión negativa o restrictiva —<em>never, rarely, not only, under no circumstances, little</em>—, el sujeto y el auxiliar <strong>se invierten como en una pregunta</strong>. No es opcional ni decorativo: es obligatorio en cuanto pones ese adverbio al principio.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'I have never seen such a thing.\nNever have I seen such a thing.        ← inversión\n\nHe not only arrived late, he also…\nNot only did he arrive late, but he also…',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Las frases hendidas',
+          p: 'La otra herramienta parte la frase en dos para poner una pieza bajo el foco. Con <strong>it</strong> se destaca un elemento; con <strong>what</strong> se destaca la idea completa. El español lo hace igual —«fue Ana quien llamó»—, así que la intuición ya la tienes.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'Ana called yesterday.\nIt was Ana who called yesterday.     ← el foco es Ana\nIt was yesterday that Ana called.    ← el foco es el día\n\nI need more time.\nWhat I need is more time.            ← el foco es la necesidad',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha dónde cae el peso',
+          items: [
+            { en: 'Never have I seen anything like it.', es: 'Nunca había visto nada igual.' },
+            { en: 'Not only did he arrive late, but he also forgot the tickets.', es: 'No solo llegó tarde, sino que además olvidó las entradas.' },
+            { en: 'It was Ana who called, not Marta.', es: 'Fue Ana quien llamó, no Marta.' },
+            { en: 'What I need is more time.', es: 'Lo que necesito es más tiempo.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilo tú',
+          note: 'La inversión suena rara al principio porque el orden se parece al de una pregunta. Repítela hasta que deje de sonar a error.',
+          items: [
+            { text: 'Never have I seen anything like it' },
+            { text: 'It was Ana who called' },
+            { text: 'What I need is more time' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál está bien?',
+          opts: [
+            'Never I have seen such a thing.',
+            'Never have I seen such a thing.',
+            'Never did I saw such a thing.',
+            'Never I saw such a thing.',
+          ],
+          ans: 1,
+          ok: 'Exacto. Al empezar por «never», el auxiliar pasa delante del sujeto, igual que en una pregunta.',
+          no: 'Al abrir con un adverbio negativo, la inversión es obligatoria: auxiliar antes que sujeto.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Poner el negativo delante y olvidar invertir: «Never I have seen».',
+            'Invertir el verbo principal en vez del auxiliar: «Never saw I».',
+            'Usar la inversión en registro coloquial, donde suena pomposa.',
+            'Confundir «What I need is…» con una pregunta indirecta.',
+            'Abusar de estas estructuras: destacan porque son escasas.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── C1 · Los matices que separan C1 de B2 ─────────────────────────────────
+  {
+    slug: 'eng-matices',
+    chapter: 'C1 · Los matices que separan C1 de B2',
+    title: 'Dos palabras correctas y solo una precisa',
+    hook: 'A este nivel ya no eliges entre bien y mal. Eliges entre dos opciones correctas, y la diferencia está en lo que cada una insinúa.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Se acabaron las reglas',
+          p: 'Hasta el B2 casi todo tenía una respuesta correcta. En el C1 el examen te da dos formas impecables y te pide la que encaja. Lo que se mide ya no es conocimiento: es <strong>sensibilidad al matiz y al registro</strong>.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'El verbo de reporte revela lo que piensas',
+          p: 'Decir <em>he said</em>, <em>he claimed</em> o <em>he admitted</em> reporta lo mismo y comunica cosas opuestas. <strong>Claim</strong> insinúa que no te lo crees; <strong>admit</strong>, que le costó decirlo; <strong>state</strong>, neutralidad formal. En periodismo esa elección puede ser una acusación encubierta.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'he said        →  neutro\nhe stated      →  formal, con peso\nhe claimed     →  lo dice él; yo no lo respaldo\nhe alleged     →  acusación sin probar\nhe admitted    →  le costaba reconocerlo\nhe insisted    →  se le discutió y no cedió',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'El registro también es un matiz',
+          p: '<strong>Problem</strong> nombra algo que va mal. <strong>Issue</strong> lo suaviza y lo vuelve discutible. <strong>Concern</strong> lo convierte en algo que preocupa sin culpar a nadie. En un correo de trabajo, elegir «problem» donde tocaba «concern» puede sonar a reproche sin que lo pretendieras.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'La misma información, tres intenciones',
+          items: [
+            { en: 'The minister said the report was incomplete.', es: 'Neutro: solo se informa de lo dicho.' },
+            { en: 'The minister claimed the report was incomplete.', es: 'Insinúa que quien escribe no lo respalda.' },
+            { en: 'The minister admitted the report was incomplete.', es: 'Da a entender que le costó reconocerlo.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilas seguidas',
+          note: 'Al decirlas una detrás de otra se oye el cambio de intención aunque el resto de la frase sea idéntico.',
+          items: [{ text: 'He said the report was incomplete' }, { text: 'He claimed the report was incomplete' }],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'En una noticia, «The company <b>claimed</b> the data was secure» sugiere que quien escribe:',
+          opts: [
+            'Respalda la afirmación de la empresa',
+            'No respalda la afirmación y marca distancia',
+            'Está citando textualmente un documento',
+            'Considera el asunto irrelevante',
+          ],
+          ans: 1,
+          ok: 'Exacto. «Claim» es la forma estándar de reportar algo sin hacerlo propio.',
+          no: 'Fíjate en el verbo: «claim» reporta y a la vez marca distancia respecto de lo dicho.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Usar «claim» donde bastaba «say», insinuando desconfianza sin querer.',
+            'Escribir «problem» en un correo profesional donde tocaba «issue» o «concern».',
+            'Elegir la palabra más larga creyendo que suena más culta.',
+            'Ignorar la connotación de un sinónimo del diccionario.',
+            'Copiar el registro de una película en un texto académico.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── C1 · Lenguaje figurado ────────────────────────────────────────────────
+  {
+    slug: 'eng-figurado',
+    chapter: 'C1 · Lenguaje figurado',
+    title: 'Lo que se dice sin decirlo',
+    hook: 'Es lo último que se aprende porque no se deduce: se reconoce. Y es lo que separa entender un idioma de participar en él.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Por qué llega al final',
+          p: 'Un modismo no significa la suma de sus palabras, así que no hay estrategia que lo resuelva desde dentro. La única vía es <strong>encontrárselos en contexto y quedárselos</strong>. Por eso llegan al C1: hacen falta miles de horas de exposición antes de que empiecen a sonar familiares.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'the elephant in the room  →  lo evidente que nadie menciona\nto bite the bullet        →  afrontar algo desagradable\nto be under the weather   →  sentirse mal, indispuesto\nto cut corners            →  hacerlo rápido y mal\nto touch base             →  ponerse en contacto brevemente',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'El understatement, la trampa cultural',
+          p: 'El inglés —el británico sobre todo— dice menos de lo que quiere decir. <strong>«Not bad at all»</strong> sobre algo excelente significa que le pareció excelente. <em>«I have a slight concern»</em> puede significar que está en total desacuerdo. Tomarlo literalmente es el malentendido más frecuente entre culturas.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escucha lo que de verdad dicen',
+          items: [
+            { en: "Let's address the elephant in the room.", es: 'Hablemos del asunto evidente que todos evitamos.' },
+            { en: "I'm feeling a bit under the weather today.", es: 'Hoy no me encuentro bien.' },
+            { en: "That's not bad at all.", es: 'En boca británica: está muy bien.' },
+            { en: 'I have one small concern about the plan.', es: 'Puede significar un desacuerdo de fondo.' },
+          ],
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Cómo abordarlos sin volverse loco',
+          p: 'No los estudies en listas de doscientos. Cuando encuentres uno en algo que estabas leyendo o viendo, <strong>anótalo con la frase entera y con dónde apareció</strong>. El contexto es la mitad del significado, y sin él vuelven a ser opacos en dos semanas.',
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilos en su frase',
+          note: 'Un modismo suelto no se recuerda. Dentro de una frase, sí.',
+          items: [
+            { text: "Let's address the elephant in the room" },
+            { text: "I'm feeling under the weather" },
+            { text: 'We had to bite the bullet' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Un colega británico revisa tu propuesta y dice: «It’s quite interesting, I suppose.» ¿Qué significa probablemente?',
+          opts: [
+            'Que le parece muy interesante',
+            'Que no le convence y lo dice con suavidad',
+            'Que necesita más información para opinar',
+            'Que quiere que se la expliques otra vez',
+          ],
+          ans: 1,
+          ok: 'Exacto. El «I suppose» y el tono contenido señalan reserva, no entusiasmo. Es understatement puro.',
+          no: 'Fíjate en el «I suppose»: en registro británico, atenuar así suele ser una forma cortés de no estar convencido.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Tomar literalmente un understatement y creer que gustó.',
+            'Traducir un modismo español al inglés palabra por palabra.',
+            'Usar modismos en un texto académico, donde no tienen sitio.',
+            'Meter demasiados seguidos: suena a alguien recitando una lista.',
+            'Estudiarlos sueltos, sin el contexto donde aparecieron.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── C1 · Escritura formal ─────────────────────────────────────────────────
+  {
+    slug: 'eng-formal',
+    chapter: 'C1 · Escritura formal',
+    title: 'Decir más con menos y sin aparecer',
+    hook: 'El texto formal en inglés comprime, precisa y borra al autor. Tres movimientos que se pueden aprender por separado.',
+    minutes: 7,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Comprimir: la nominalización',
+          p: 'El inglés académico convierte acciones en sustantivos. <em>They decided quickly</em> pasa a <strong>their rapid decision</strong>, y de golpe esa idea cabe dentro de otra frase como si fuera un objeto. Es lo que permite decir más en menos espacio.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'They decided quickly, and this surprised everyone.\n→ Their rapid decision surprised everyone.\n\nThe policy failed, and that caused protests.\n→ The failure of the policy caused protests.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Borrar al autor',
+          p: 'En un texto académico el «I think» sobra: se da por hecho que lo escribes tú. Se sustituye por estructuras impersonales —<em>it appears that</em>, <em>the evidence suggests</em>, <em>this indicates</em>—. No es esconderse: es <strong>poner el foco en la evidencia y no en quien la interpreta</strong>.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'I think the policy failed.\n→ The evidence suggests that the policy failed.\n\nI found a lot of mistakes.\n→ A significant number of errors were identified.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Precisar: adiós a las palabras comodín',
+          p: '<em>A lot of, things, get, very, good</em> son las palabras que más se repiten en un texto de B2 y las primeras que desaparecen en uno de C1. Cada una tiene un equivalente exacto: <strong>a significant proportion, factors, obtain, considerably, effective</strong>. Precisar no es adornar: es decir exactamente lo que quieres decir.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'La misma idea, dos registros',
+          items: [
+            { en: 'I think the policy failed and caused a lot of problems.', es: 'Registro de B2: personal y vago.' },
+            { en: 'The evidence suggests that the policy failed, causing considerable disruption.', es: 'Registro de C1: impersonal y preciso.' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: '¿Cuál es la versión más adecuada para un informe académico?',
+          opts: [
+            'I think this shows the plan did not work very well.',
+            'The findings indicate that the plan was largely ineffective.',
+            'This obviously proves the plan was a total failure.',
+            "The plan didn't really work out, which is a shame.",
+          ],
+          ans: 1,
+          ok: 'Exacto: impersonal, preciso y con la fuerza medida. Los tres movimientos a la vez.',
+          no: 'Busca la que borre al autor, evite las palabras comodín y no exagere la certeza.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Escribir «I think» o «in my opinion» en un texto académico.',
+            'Nominalizar tanto que la frase se vuelve ilegible: la compresión tiene un límite.',
+            'Usar «a lot of», «things» y «get» en registro formal.',
+            'Confundir formal con largo: precisar suele acortar.',
+            'Mantener contracciones y phrasal verbs coloquiales.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── C1 · Fluidez bajo presión ─────────────────────────────────────────────
+  {
+    slug: 'eng-fluidez',
+    chapter: 'C1 · Fluidez bajo presión',
+    title: 'No quedarse atascado',
+    hook: 'La fluidez no es hablar rápido. Es no detenerse — y para eso hay técnicas concretas que se pueden entrenar.',
+    minutes: 6,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Qué se mide de verdad',
+          p: 'En un examen oral no se puntúa la velocidad ni el acento: se puntúa que el discurso <strong>avance sin bloqueos</strong>. Un candidato que habla despacio pero sin pararse puntúa más alto que uno rápido que se atasca cada tres frases.',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'Si te falta una palabra, descríbela',
+          p: 'Buscar en la memoria la palabra exacta te detiene, y detenerse cuesta más que la imprecisión. Un hablante avanzado <strong>rodea</strong>: si no le sale <em>screwdriver</em>, dice «the tool you use to turn screws» y sigue. Casi siempre el interlocutor le da la palabra, y encima se le queda.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'para rodear una palabra\n  It’s the thing you use to…\n  It’s a kind of…\n  I can’t remember the word, but it’s when…\n\npara ganar un segundo\n  That’s a good question.\n  Well, it depends on…\n  Let me think about that for a moment.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Corregirse sin desmontar la frase',
+          p: 'Si te equivocas a mitad de frase, no vuelvas al principio: enlaza. <strong>«What I mean is…»</strong>, <strong>«or rather…»</strong>, <strong>«sorry, let me rephrase that»</strong>. Reparar en marcha es una señal de dominio; empezar de cero es lo que suena a inseguridad.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Escúchalas con su entonación',
+          items: [
+            { en: "That's a good question. Let me think about that for a moment.", es: 'Gana tiempo sin quedarse callado.' },
+            { en: "I can't remember the word, but it's the tool you use to turn screws.", es: 'Rodea la palabra y sigue.' },
+            { en: 'What I mean is that the cost was higher than expected.', es: 'Repara sin volver al principio.' },
+          ],
+        },
+      },
+      {
+        kind: 'say',
+        payload: {
+          h: 'Dilas hasta que salgan solas',
+          note: 'Estas fórmulas hay que tenerlas automatizadas: si tienes que pensarlas, ya no sirven para ganar tiempo.',
+          items: [
+            { text: "That's a good question" },
+            { text: 'What I mean is' },
+            { text: "It's the thing you use to" },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'En pleno examen oral no te sale la palabra «tornillo». ¿Qué haces?',
+          opts: [
+            'Parar y buscarla mentalmente hasta recordarla',
+            'Describirla —«the small metal thing you turn»— y seguir hablando',
+            'Cambiar de tema para evitarla',
+            'Decirla en español y continuar',
+          ],
+          ans: 1,
+          ok: 'Exacto. Rodearla mantiene el discurso en marcha y demuestra recursos, que es justo lo que se puntúa.',
+          no: 'Detenerse cuesta más que la imprecisión. Describe lo que no te sale y sigue: eso puntúa como recurso.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Quedarse en silencio buscando la palabra exacta.',
+            'Volver al principio de la frase cada vez que hay un error.',
+            'Usar muletillas en español —«este», «o sea»— sin darse cuenta.',
+            'Hablar rápido creyendo que eso es fluidez.',
+            'Memorizar respuestas enteras: se nota al primer desvío del guion.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
+
+  // ── C1 · Simulacro completo ───────────────────────────────────────────────
+  {
+    slug: 'eng-simulacro',
+    chapter: 'C1 · Simulacro completo',
+    title: 'El examen entero, con reloj',
+    hook: 'No queda nada nuevo que aprender. Este capítulo sirve para medir dónde estás y para que el día del examen no haya ninguna sorpresa de formato.',
+    minutes: 6,
+    blocks: [
+      {
+        kind: 'text',
+        payload: {
+          h: 'Para qué sirve un simulacro',
+          p: 'No para aprender: eso ya lo hiciste en los veintitrés capítulos anteriores. Sirve para <strong>medir</strong> y para <strong>quitar sorpresas</strong>. Quien llega al examen habiendo rendido tres simulacros no descubre el formato ese día, y eso solo ya vale puntos.',
+        },
+      },
+      {
+        kind: 'math',
+        payload: {
+          m: 'Reading & Use of English  →  precisión y velocidad de lectura\nWriting                   →  estructura y registro\nListening                 →  señales y notas, sin traducir\nSpeaking                  →  no quedarse atascado',
+        },
+      },
+      {
+        kind: 'callout',
+        payload: {
+          t: 'El reloj es parte del examen',
+          p: 'La mayoría de quienes suspenden no lo hacen por nivel: lo hacen por <strong>quedarse sin tiempo</strong>. La regla que más salva es fijar de antemano cuántos minutos tiene cada parte y abandonarla al llegar al límite, aunque quede algo sin responder. Una pregunta perfecta no compensa tres sin contestar.',
+        },
+      },
+      {
+        kind: 'text',
+        payload: {
+          h: 'Lee la consigna dos veces',
+          p: 'En la parte escrita, el error más caro no es gramatical: es <strong>responder a otra cosa</strong>. Si la consigna pide comparar dos posturas y tú defiendes una, el texto puede ser impecable y aun así perder la mitad de los puntos. Subraya el verbo de la consigna antes de escribir una sola línea.',
+        },
+      },
+      {
+        kind: 'listen',
+        payload: {
+          h: 'Las instrucciones que vas a oír',
+          items: [
+            { en: 'You will hear the recording twice.', es: 'Vas a oír la grabación dos veces.' },
+            { en: 'You have forty minutes to complete this part.', es: 'Tienes cuarenta minutos para esta parte.' },
+            { en: 'Write between 220 and 260 words.', es: 'Escribe entre 220 y 260 palabras.' },
+          ],
+        },
+      },
+      {
+        kind: 'check',
+        payload: {
+          q: 'Vas por la mitad del tiempo y te quedan tres lecturas de cinco. ¿Qué haces?',
+          opts: [
+            'Terminar bien la que tienes aunque sacrifiques las otras',
+            'Pasar a las siguientes y volver al final si queda tiempo',
+            'Responder al azar las que faltan y revisar la actual',
+            'Leer todas por encima sin responder ninguna',
+          ],
+          ans: 1,
+          ok: 'Exacto. Cada lectura vale lo mismo, así que conviene tocarlas todas antes que perfeccionar una.',
+          no: 'Todas las secciones puntúan igual. Dedicar el doble a una deja sin responder otras que valían lo mismo.',
+        },
+      },
+      {
+        kind: 'err',
+        payload: {
+          items: [
+            'Perfeccionar una sección y dejar otra sin empezar.',
+            'Responder a algo distinto de lo que pide la consigna.',
+            'Pasarse del número de palabras: también penaliza quedarse corto.',
+            'Dejar respuestas en blanco: no hay penalización por error.',
+            'Rendir el simulacro sin reloj: entonces no mide nada.',
+          ],
+        },
+      },
+      { kind: 'video', payload: {} },
+    ],
+  },
 ];
