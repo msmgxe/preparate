@@ -30,7 +30,7 @@ export const RM_VISUALS: Visual[] = [
   // ── Traducir del castellano al álgebra ──────────────────────────────────
   {
     id: 'v-rm-planteo',
-    svg: `${open(215)}
+    svg: `${open(238)}
   <g class="grow" style="animation-delay:0s">
     ${box(30, 24, 150, 42, SKY, 'El triple')}
     ${box(190, 24, 200, 42, SKY, 'de un número')}
@@ -49,7 +49,7 @@ export const RM_VISUALS: Visual[] = [
   </g>
   <g class="an" style="animation-delay:1.6s">
     ${box(190, 158, 260, 42, MINT, '3x + 5 = 26', 18)}
-    ${tag(500, 184, MINT, 'y solo entonces, resolver', 'start')}
+    ${tag(320, 224, MINT, 'y solo entonces, resolver')}
   </g>
 </svg>`,
   },

@@ -53,7 +53,7 @@ export const ENG_VISUALS: Visual[] = [
     <circle cx="150" cy="132" r="15" fill="${AMBER}33" stroke="${AMBER}" stroke-width="1.5"/>
     <text x="150" y="138" text-anchor="middle" fill="${AMBER}" font-size="16" font-weight="700">s</text>
     ${box(170, 111, 300, 42, AMBER, "doe   n't like")}
-    ${tag(490, 137, AMBER, 'con auxiliar: la lleva él', 'start')}
+    ${tag(480, 137, AMBER, 'la lleva el auxiliar', 'start')}
   </g>
   <g class="an" style="animation-delay:1.5s">
     <text x="320" y="188" text-anchor="middle" fill="${CORAL}" font-size="14">✕  she doesn't likes  —  la -s no puede estar dos veces</text>

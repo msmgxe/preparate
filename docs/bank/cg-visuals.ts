@@ -54,7 +54,8 @@ export const CG_VISUALS: Visual[] = [
     ${hito(460, 110, MINT, '1821', 'Independencia')}
   </g>
   <g class="grow" style="animation-delay:2s">
-    ${hito(578, 110, VIOLET, '1879', 'Guerra del Pacífico')}
+    ${hito(578, 110, VIOLET, '1879', 'Guerra del')}
+    <text x="578" y="154" text-anchor="middle" fill="currentColor" font-size="13">Pacífico</text>
   </g>
   <g class="an" style="animation-delay:2.4s">
     ${tag(150, 178, SKY, 'PREHISPÁNICO')}
@@ -132,7 +133,7 @@ export const CG_VISUALS: Visual[] = [
   // ── La espina dorsal de la literatura peruana ───────────────────────────
   {
     id: 'v-cg-literatura',
-    svg: `${open(232)}
+    svg: `${open(250)}
   <g class="grow" style="animation-delay:0s">
     <line x1="40" y1="118" x2="600" y2="118" stroke="currentColor" stroke-opacity=".28" stroke-width="2"/>
     ${tag(320, 26, SKY, 'AUTOR · OBRA · POR QUÉ IMPORTA')}
@@ -148,8 +149,8 @@ export const CG_VISUALS: Visual[] = [
     <circle cx="218" cy="118" r="8" fill="${AMBER}"/>
     ${tag(218, 96, AMBER, 's. XIX')}
     <text x="218" y="146" text-anchor="middle" fill="currentColor" font-size="12.5">Palma</text>
-    ${tag(218, 166, AMBER, 'inventa un género:')}
-    ${tag(218, 182, AMBER, 'la tradición')}
+    ${tag(218, 190, AMBER, 'inventa un género:')}
+    ${tag(218, 206, AMBER, 'la tradición')}
   </g>
   <g class="grow" style="animation-delay:1.3s">
     <circle cx="346" cy="118" r="8" fill="${CORAL}"/>
@@ -162,18 +163,18 @@ export const CG_VISUALS: Visual[] = [
     <circle cx="472" cy="118" r="8" fill="${MINT}"/>
     ${tag(472, 96, MINT, '1958')}
     <text x="472" y="146" text-anchor="middle" fill="currentColor" font-size="12.5">Arguedas</text>
-    ${tag(472, 166, MINT, 'el mundo andino')}
-    ${tag(472, 182, MINT, 'contado desde dentro')}
+    ${tag(472, 190, MINT, 'el mundo andino')}
+    ${tag(472, 206, MINT, 'contado desde dentro')}
   </g>
   <g class="grow" style="animation-delay:2.1s">
-    <circle cx="586" cy="118" r="8" fill="${VIOLET}"/>
-    ${tag(586, 96, VIOLET, '1963')}
-    <text x="586" y="146" text-anchor="middle" fill="currentColor" font-size="12.5">Vargas Llosa</text>
-    ${tag(586, 166, VIOLET, 'la novela peruana')}
-    ${tag(586, 182, VIOLET, 'sale al mundo')}
+    <circle cx="574" cy="118" r="8" fill="${VIOLET}"/>
+    ${tag(574, 96, VIOLET, '1963')}
+    <text x="574" y="146" text-anchor="middle" fill="currentColor" font-size="12.5">Vargas Llosa</text>
+    ${tag(574, 166, VIOLET, 'la novela peruana')}
+    ${tag(574, 182, VIOLET, 'sale al mundo')}
   </g>
   <g class="an" style="animation-delay:2.5s">
-    ${tag(320, 216, AMBER, 'el examen casi nunca pide una fecha: pide unir el autor con su obra')}
+    ${tag(320, 236, AMBER, 'el examen casi nunca pide una fecha: pide unir el autor con su obra')}
   </g>
 </svg>`,
   },

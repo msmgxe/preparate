@@ -47,7 +47,7 @@ insert into exam_profiles (id,name,description,n_questions,seconds,mix,ord) valu
 on conflict (id) do nothing;
 
 insert into visuals (id,caption,svg,version) values
-  ($rumbo$v-suc$rumbo$,$rumbo$Primera fila: la sucesión. Segunda: cuánto salta cada paso. Tercera: cuánto crece el salto. Cuando la última fila es constante, ya ganaste.$rumbo$,$rumbo$<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
+  ($rumbo$v-suc$rumbo$,$rumbo$Primera fila: la sucesión. Segunda: cuánto salta cada paso. Tercera: cuánto crece el salto. Cuando la última fila es constante, ya ganaste.$rumbo$,$rumbo$<svg viewBox="0 0 684 260" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
   
     <g class="an" style="animation-delay:0s">
       <circle cx="58" cy="42" r="27" fill="rgba(239,164,81,.14)" stroke="#EFA451" stroke-width="1.6"/>
@@ -142,9 +142,9 @@ insert into visuals (id,caption,svg,version) values
       <text class="grow" style="animation-delay:1.3900000000000001s" x="527" y="172" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">n=4</text>
     </g>
   <g class="grow" style="animation-delay:1.5s">
-    <rect x="480" y="52" width="140" height="52" rx="11" fill="rgba(79,214,156,.1)" stroke="#4FD69C" stroke-width="1.2"/>
-    <text x="550" y="76" text-anchor="middle" fill="#4FD69C" font-size="15">tₙ = n(n+1)</text>
-    <text x="550" y="93" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">números pronic</text>
+    <rect x="40" y="10" width="196" height="48" rx="11" fill="rgba(79,214,156,.1)" stroke="#4FD69C" stroke-width="1.2"/>
+    <text x="138" y="32" text-anchor="middle" fill="#4FD69C" font-size="15">tₙ = n(n+1)</text>
+    <text x="138" y="49" text-anchor="middle" fill="currentColor" fill-opacity=".64" font-size="10">números pronic</text>
   </g>
 </svg>$rumbo$,1),
   ($rumbo$v-desc$rumbo$,$rumbo$De S/ 100 quedan S/ 80. El 10 % de 80 son 8, no 10. Quedan S/ 72. El descuento real fue de 28 %.$rumbo$,$rumbo$<svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
