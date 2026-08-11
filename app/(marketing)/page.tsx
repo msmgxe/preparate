@@ -7,11 +7,8 @@ import {
   CalendarClock,
   GraduationCap,
   MessageCircle,
-  Quote,
-  ShieldCheck,
   Sparkles,
   Target,
-  Timer,
 } from 'lucide-react';
 import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
@@ -19,6 +16,7 @@ import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
 import { HeroShot, PHOTO } from '@/components/landing/Photos';
 import { Road } from '@/components/Road';
+import { SectionHead } from '@/components/landing/SectionHead';
 import { site, whatsappLink } from '@/lib/site';
 import { Counter, Reveal } from '@/components/landing/Reveal';
 import { Demo } from '@/components/landing/Demo';
@@ -120,14 +118,12 @@ export default async function LandingPage() {
 
       {/* ═══ MÓDULOS ═══ */}
       <section id="modulos" className="lp-wrap lp-section">
-        <Reveal>
-          <span className="lp-eyebrow">{l.modulesEyebrow}</span>
-          <h2 style={{ marginTop: 10 }}>{l.modulesTitle}</h2>
-          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.modulesBody}</p>
-          <p className="lp-muted" style={{ fontSize: 14, marginTop: 10, maxWidth: '62ch' }}>
-            {l.priceNote}
-          </p>
-        </Reveal>
+        <SectionHead
+          eyebrow={l.modulesEyebrow}
+          title={l.modulesTitle}
+          body={l.modulesBody}
+          note={l.priceNote}
+        />
 
         <Reveal delay={80} className="lp-grid" >
           <div style={{ marginTop: 30 }}>
@@ -139,11 +135,7 @@ export default async function LandingPage() {
 
       {/* ═══ PARA QUIÉN ES ══════════════════════════════════════════════ */}
       <section id="para-quien" className="lp-wrap lp-section">
-        <Reveal>
-          <span className="lp-eyebrow">{t.who.eyebrow}</span>
-          <h2 style={{ marginTop: 10 }}>{t.who.title}</h2>
-          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{t.who.body}</p>
-        </Reveal>
+        <SectionHead eyebrow={t.who.eyebrow} title={t.who.title} body={t.who.body} />
 
         <div
           className="lp-grid"
@@ -215,7 +207,7 @@ export default async function LandingPage() {
                   href={whatsappLink(t.wa.waitlist)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="lp-btn lp-btn-accent lp-btn-lg"
+                  className="lp-btn lp-btn-wa lp-btn-lg"
                 >
                   {l.englishCta} <ArrowRight size={18} />
                 </a>
@@ -230,11 +222,7 @@ export default async function LandingPage() {
 
       {/* ═══ MÉTODO ═══ */}
       <section id="metodo" className="lp-wrap lp-section">
-        <Reveal>
-          <span className="lp-eyebrow">{l.methodEyebrow}</span>
-          <h2 style={{ marginTop: 10 }}>{l.methodTitle}</h2>
-          <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.methodBody}</p>
-        </Reveal>
+        <SectionHead eyebrow={l.methodEyebrow} title={l.methodTitle} body={l.methodBody} />
 
         <div className="lp-steps">
           {l.method.map((step, i) => {
@@ -270,11 +258,7 @@ export default async function LandingPage() {
           carretera. El mismo componente se reutiliza en la guía de dentro. */}
       <section id="camino" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
-          <Reveal>
-            <span className="lp-eyebrow">{t.route.eyebrow}</span>
-            <h2 style={{ marginTop: 10 }}>{t.route.title}</h2>
-            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '64ch' }}>{t.route.body}</p>
-          </Reveal>
+          <SectionHead eyebrow={t.route.eyebrow} title={t.route.title} body={t.route.body} />
 
           <Reveal delay={80}>
             <Road
@@ -301,11 +285,7 @@ export default async function LandingPage() {
       {/* ═══ LO QUE YA ESTÁ HECHO ═══════════════════════════════════════ */}
       <section id="metodo-detalle" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
-          <Reveal>
-            <span className="lp-eyebrow">{t.proof.eyebrow}</span>
-            <h2 style={{ marginTop: 10 }}>{t.proof.title}</h2>
-            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '64ch' }}>{t.proof.body}</p>
-          </Reveal>
+          <SectionHead eyebrow={t.proof.eyebrow} title={t.proof.title} body={t.proof.body} />
 
           <div
             className="lp-grid"
@@ -389,14 +369,12 @@ export default async function LandingPage() {
       {/* ═══ PLANES ═══ */}
       <section id="planes" className="lp-section" style={{ background: 'var(--surface-2)' }}>
         <div className="lp-wrap">
-          <Reveal>
-            <span className="lp-eyebrow">{l.plansEyebrow}</span>
-            <h2 style={{ marginTop: 10 }}>{l.plansTitle}</h2>
-            <p style={{ fontSize: 18, marginTop: 12, maxWidth: '62ch' }}>{l.plansBody}</p>
-            <p className="lp-muted" style={{ fontSize: 14, marginTop: 10, maxWidth: '62ch' }}>
-              {l.priceNote}
-            </p>
-          </Reveal>
+          <SectionHead
+            eyebrow={l.plansEyebrow}
+            title={l.plansTitle}
+            body={l.plansBody}
+            note={l.priceNote}
+          />
 
           <Reveal delay={80}>
             <div style={{ marginTop: 32 }}>
@@ -404,92 +382,7 @@ export default async function LandingPage() {
             </div>
           </Reveal>
 
-          <Reveal delay={120}>
-            <div
-              className="lp-card"
-              style={{
-                marginTop: 26,
-                padding: '22px 24px',
-                display: 'flex',
-                gap: 16,
-                alignItems: 'center',
-                flexWrap: 'wrap',
-              }}
-            >
-              <ShieldCheck size={26} style={{ color: 'var(--lime)', flex: 'none' }} />
-              <div style={{ flex: 1, minWidth: 260 }}>
-                <h3 style={{ fontSize: 17 }}>{l.guaranteeTitle}</h3>
-                <p style={{ fontSize: 14.5, marginTop: 4 }}>{l.guaranteeBody}</p>
-              </div>
-              <a
-                href={whatsappLink(t.wa.plans)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lp-btn lp-btn-ghost"
-              >
-                <MessageCircle size={17} /> {l.guaranteeCta}
-              </a>
-            </div>
-          </Reveal>
         </div>
-      </section>
-
-      {/* ═══ TESTIMONIOS ═══ */}
-      <section className="lp-wrap lp-section">
-        <Reveal>
-          <span className="lp-eyebrow">{l.socialEyebrow}</span>
-          <h2 style={{ marginTop: 10 }}>{l.socialTitle}</h2>
-        </Reveal>
-
-        <div
-          className="lp-grid"
-          style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', marginTop: 30 }}
-        >
-          {l.testimonials.map((item, i) => (
-            <Reveal key={item.name} delay={i * 100}>
-              <figure className="lp-card lp-card-hover" style={{ padding: 26, height: '100%', margin: 0 }}>
-                <Quote size={22} style={{ color: 'var(--brand)', opacity: 0.5 }} />
-                <blockquote style={{ fontSize: 16, lineHeight: 1.65, marginTop: 12, color: 'var(--text)' }}>
-                  {item.quote}
-                </blockquote>
-                <figcaption style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 11 }}>
-                  <span
-                    style={{
-                      width: 38,
-                      height: 38,
-                      borderRadius: '50%',
-                      display: 'grid',
-                      placeContent: 'center',
-                      background: 'var(--brand-soft)',
-                      color: 'var(--brand)',
-                      fontWeight: 800,
-                      fontSize: 14,
-                    }}
-                  >
-                    {item.name.slice(0, 1)}
-                  </span>
-                  <span>
-                    <span style={{ display: 'block', fontWeight: 700, fontSize: 14.5, color: 'var(--text)' }}>
-                      {item.name}
-                    </span>
-                    <span className="lp-muted" style={{ fontSize: 13 }}>
-                      {item.role}
-                    </span>
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={140}>
-          <p
-            className="lp-muted"
-            style={{ fontSize: 13, marginTop: 20, textAlign: 'center', maxWidth: '62ch', marginInline: 'auto' }}
-          >
-            {l.socialNote}
-          </p>
-        </Reveal>
       </section>
 
       {/* ═══ FAQ ═══ */}
@@ -534,8 +427,7 @@ export default async function LandingPage() {
                 href={whatsappLink(t.wa.info)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="lp-btn lp-btn-lg"
-                style={{ background: 'rgba(255,255,255,.16)', color: '#fff', borderColor: 'rgba(255,255,255,.4)' }}
+                className="lp-btn lp-btn-wa lp-btn-lg"
               >
                 <MessageCircle size={18} /> {t.common.whatsapp}
               </a>
@@ -591,14 +483,11 @@ export default async function LandingPage() {
               href={whatsappLink(t.wa.short)}
               target="_blank"
               rel="noopener noreferrer"
-              className="lp-btn lp-btn-primary"
+              className="lp-btn lp-btn-wa"
             >
               <MessageCircle size={17} /> {l.footerSupport}
             </a>
             <div className="lp-muted" style={{ fontSize: 13, marginTop: 10, display: 'flex', gap: 7, alignItems: 'center' }}>
-              <Timer size={14} /> {l.footerHours}
-            </div>
-            <div className="lp-muted" style={{ fontSize: 13, marginTop: 6, display: 'flex', gap: 7, alignItems: 'center' }}>
               <BadgeCheck size={14} /> {l.footerPay}
             </div>
             <div className="lp-muted" style={{ fontSize: 13, marginTop: 6, display: 'flex', gap: 7, alignItems: 'center' }}>

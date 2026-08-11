@@ -8,7 +8,7 @@ export const en: Dict = {
     seePlans: 'See plans',
     login: 'Log in',
     startFree: 'Start free today',
-    whatsapp: 'Message us on WhatsApp',
+    whatsapp: 'Arrange payment on WhatsApp',
     language: 'Language',
     menu: 'Menu',
     openMenu: 'Open the menu',
@@ -56,7 +56,7 @@ export const en: Dict = {
     modules: 'Modules',
     english: 'English C1',
     method: 'How it works',
-    plans: 'Plans',
+    plans: 'Hi, I would like to arrange payment for a RUMBO plan.',
     faq: 'Questions',
     itinerary: 'Itinerary',
     exam: 'Mock exam',
@@ -70,9 +70,9 @@ export const en: Dict = {
   /** Messages that open pre-written in WhatsApp. */
   wa: {
     waitlist: 'Hi, I want to join the waitlist for the RUMBO English C1 module.',
-    plans: 'Hi, I have questions about the RUMBO plans. Could you help me?',
-    info: 'Hi, I would like information about RUMBO for my child.',
-    short: 'Hi, I would like information about RUMBO.',
+    plans: 'Hi, I would like to arrange payment for a RUMBO plan.',
+    info: 'Hi, I would like to arrange payment for RUMBO.',
+    short: 'Hi, I would like to arrange a RUMBO payment.',
     buyModule: 'Hi, I want to buy the {module} module on RUMBO.',
     buyPlan: 'Hi, I want the {plan} plan on RUMBO.',
     unlock: 'Hi, I want to unlock full access to RUMBO.',
@@ -182,7 +182,7 @@ export const en: Dict = {
     ],
     startupTitle: 'Cards on the table',
     startupBody:
-      'RUMBO is a young project, made in Lima, that brings together in one place methods already proven separately: spaced repetition, retrieval practice, visual learning and immediate feedback. We did not invent a new pedagogy and we do not promise a place — nobody can promise that. What we offer is those methods together, in order, and within reach of a Peruvian family. It grows every week, and if something does not fit, we listen and fix it.',
+      'RUMBO is a young project, built in Lima. It brings together in one place four methods that are already proven separately: spaced repetition, retrieval practice, visual learning and immediate feedback. What it adds is having them together, in order and within reach of a Peruvian family, with the syllabus of the Peruvian exam. It grows every week, and when something does not fit, we listen and fix it.',
   },
 
   landing: {
@@ -192,7 +192,7 @@ export const en: Dict = {
     heroC: 'They need to practise better.',
     heroBody:
       'A five-minute visual lesson, real exam questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
-    heroCta2: 'See plans and guarantee',
+    heroCta2: 'See the plans',
     heroNote: 'No card needed. Every module opens a few questions so you can try before paying.',
     heroAlt: 'A student revising on her laptop by a classroom window',
     heroShot: 'A five-minute lesson and its practice, every day.',
@@ -283,11 +283,6 @@ export const en: Dict = {
     colFamily: 'Family',
     waBuyPlan: 'Hi, I am interested in the {plan} plan on RUMBO ({price} per {period}). How do I start?',
     compare: 'Comparison',
-    guaranteeTitle: 'Support guarantee',
-    guaranteeBody:
-      'On the Family plan, if your child practised at least 3 hours a week and does not get in, you renew the following year at no cost. We do not promise a place — nobody can — only that you are not left alone if it has to be tried again.',
-    guaranteeCta: 'Talk to someone',
-
     matrix: [
       { label: 'Modules included', mensual: 'The 4 admission ones', anual: 'The 4 + English in pre-sale', familiar: 'The 4 + English in pre-sale' },
       { label: 'Timed mock exams', mensual: 'Unlimited', anual: 'Unlimited', familiar: 'Unlimited' },
@@ -297,9 +292,7 @@ export const en: Dict = {
       { label: 'Study plan from an initial diagnostic', mensual: false, anual: true, familiar: true },
       { label: 'Weekly report to parents', mensual: false, anual: false, familiar: true },
       { label: 'Alert after 4 days without practice', mensual: false, anual: false, familiar: true },
-      { label: 'Q&A sessions with a teacher', mensual: false, anual: false, familiar: '2 a month' },
       { label: 'Students per subscription', mensual: '1', anual: '1', familiar: 'Up to 2' },
-      { label: 'Guarantee: renew free if they do not get in', mensual: false, anual: false, familiar: true },
     ],
 
     demoTry: 'Try it now',
@@ -370,21 +363,11 @@ export const en: Dict = {
       },
     ],
 
-    socialEyebrow: 'Trust',
-    socialTitle: 'People who already went through this',
-    socialNote: 'Testimonials from the pilot. Names are abbreviated at the families’ request.',
-    testimonials: [
-      { quote: 'I walked into the ISIL assessment having done fourteen mock exams. On the day my hand was steady: it was the same format as always.', name: 'Valeria Q.', role: 'Admitted to ISIL · class of 2026' },
-      { quote: 'What convinced me was the Sunday report. Without chasing or nagging him, I knew whether he had practised and where he was weak. We stopped arguing about it.', name: 'Carmen R.', role: 'Mother of a UPC entrant' },
-      { quote: 'I hated Verbal Reasoning because I never understood why I got things wrong. Here they tell you exactly which relationship you misread. I went from 48 % to 79 % in two months.', name: 'Rodrigo M.', role: 'Final year of secondary school' },
-    ],
-
     faqEyebrow: 'Frequently asked',
     faqTitle: 'What parents ask',
     faq: [
       { q: 'How do I pay, and what happens next?', a: 'You write on WhatsApp, we confirm the plan, and you pay by Yape, Plin or bank transfer. As soon as the payment arrives we open access, usually the same day. We never ask for a card or store banking details.' },
       { q: 'Can I buy a single course instead of everything?', a: 'Yes. Each module is sold separately from S/ 39 a month. If your child only needs to shore up Verbal Reasoning, you pay for that one. Full plans start paying off from three modules onward.' },
-      { q: 'What if they do not get in?', a: 'On the Family plan you renew the following year at no cost, provided they practised at least 3 hours a week — we check that against the activity report, which you also see. It is a guarantee of support, not of outcome: nobody can promise you a place.' },
       { q: 'How do I know they are actually studying?', a: 'On the Family plan you get a weekly email: minutes practised, accuracy by area and weak chapters. If they stop logging in for 4 days, we tell you. Your child sees exactly the same numbers you do.' },
       { q: 'Does it work for ISIL, USIL, UPC or Universidad de Lima?', a: 'Yes. Mock exams are built from each institution’s real mix: ISIL assesses potential with 50 % verbal and 50 % mathematical, while others also include Maths and General Knowledge. You pick the institution and the mock adapts.' },
       { q: 'Can I cancel?', a: 'The monthly plan can be cancelled whenever you like and stays active to the end of the month you paid for. Yearly plans are not pro-rated, but you can transfer them to a sibling within the same year.' },
@@ -403,8 +386,7 @@ export const en: Dict = {
     footerTerms: 'Terms and conditions',
     footerPrivacy: 'Privacy policy',
     footerRefund: 'Refund policy',
-    footerSupport: 'Parent support',
-    footerHours: 'Mon to Sat, 9 am to 8 pm',
+    footerSupport: 'Arrange my payment',
     footerPay: 'Pay by Yape, Plin or bank transfer',
     footerCalls: 'Intakes in January and July',
     footerDisclaimer:

@@ -588,15 +588,15 @@ img, video, iframe, canvas {
 .lp h1{font-size:clamp(34px,5.4vw,62px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
 .lp h2{font-size:clamp(26px,3.6vw,42px);font-weight:700}
 .lp h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
-.lp p{color:var(--text-2)}
+.lp p{color:var(--text-2);text-align:justify;hyphens:auto;-webkit-hyphens:auto}
 .lp a{color:inherit;text-decoration:none}
 .lp-wrap{max-width:1160px;margin:0 auto;padding:0 20px;min-width:0}
 /* Nada dentro de la landing puede empujar la página a lo ancho: cuando algo
    no cabe, se desplaza dentro de su caja y no arrastra al documento. */
 .lp-section,.lp-grid,.lp-card{min-width:0}
 .lp table{max-width:100%}
-.lp-section{padding:88px 0}
-@media(max-width:720px){ .lp-section{padding:60px 0} }
+.lp-section{padding:62px 0}
+@media(max-width:720px){ .lp-section{padding:44px 0} }
 
 /* — chrome — */
 .lp-nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -677,9 +677,11 @@ button.road-stop:hover{transform:translateY(-3px)}
 /* ── Hero: texto a un lado, foto grande al otro ────────────────────────── */
 .lp-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:52px;align-items:center;padding:60px 0 8px}
 .lp-hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.lp-proof{display:flex;gap:30px;margin-top:38px;flex-wrap:wrap}
-.lp-proof b{display:block;font-size:27px;font-weight:800;letter-spacing:-.03em;color:var(--brand)}
-.lp-proof span{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.lp-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:34px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-sm);overflow:hidden}
+.lp-proof>div{padding:15px 16px;border-left:1px solid var(--line)}
+.lp-proof>div:first-child{border-left:none}
+.lp-proof b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;color:var(--brand);line-height:1;font-variant-numeric:tabular-nums}
+.lp-proof span{display:block;font-size:10.5px;font-weight:700;line-height:1.35;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-top:7px;text-align:left}
 
 /* La foto lleva un degradado encima para que el pie se lea sobre cualquier
    imagen; sin él, una foto clara por abajo se come el texto blanco. */
@@ -694,6 +696,21 @@ button.road-stop:hover{transform:translateY(-3px)}
 @keyframes lpfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 .lp-float .l{display:block;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--text-3)}
 .lp-float .v{display:block;font-size:19px;font-weight:800;letter-spacing:-.02em;color:var(--text);margin-top:5px;line-height:1.2}
+
+
+/* ── Cabecera de sección: título a un lado, texto al otro ──────────────── */
+.lp-shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:14px 52px;align-items:end}
+.lp-shead h2{margin-top:10px}
+.lp-shead-body{display:grid;gap:9px}
+.lp-shead-body p{font-size:17px;line-height:1.62}
+.lp-shead-note{font-size:14px}
+
+/* ── El botón que abre WhatsApp ────────────────────────────────────────────
+   Verde de marca con texto oscuro. El blanco sobre #25D366 da 2,2:1 —lo usa
+   medio internet y se lee mal—; con tinta oscura sube a 8:1 y sigue siendo
+   inconfundiblemente WhatsApp. */
+.lp-btn-wa{background:#25D366;color:#062B1E;border-color:#1EB955;font-weight:700}
+.lp-btn-wa:hover{background:#1FC15C;box-shadow:0 14px 30px -12px rgba(37,211,102,.55)}
 
 /* ── Los tres pasos, con foto ──────────────────────────────────────────── */
 .lp-steps{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:38px}
@@ -864,4 +881,14 @@ button.road-stop:hover{transform:translateY(-3px)}
   .lp-step:hover{transform:none}
   .lp-step:hover .lp-stepimg img{transform:none}
   .lp-card-hover:hover{transform:none}
+}
+
+@media(max-width:900px){
+  /* sin ancho que repartir, la cabecera vuelve a una columna */
+  .lp-shead{grid-template-columns:1fr;gap:12px;align-items:start}
+}
+@media(max-width:520px){
+  /* tres columnas de indicadores no caben: se apilan en dos filas */
+  .lp-proof{grid-template-columns:1fr 1fr}
+  .lp-proof>div:nth-child(3){grid-column:1/-1;border-left:none;border-top:1px solid var(--line)}
 }
