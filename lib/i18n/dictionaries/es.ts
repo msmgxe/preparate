@@ -196,6 +196,12 @@ export const es = {
     heroBody:
       'Clase visual de cinco minutos, preguntas del examen real y la resolución paso a paso en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de fallarse.',
     heroCta2: 'Ver los planes',
+    offerBadge: '40 % menos · precio de introducción',
+    offerTitle: 'Precio de introducción hasta el 31 de diciembre',
+    offerBody:
+      'RUMBO está en su primer año y crece cada semana. Mientras dure esta etapa, todo cuesta un 40 % menos que la tarifa que tendrá después. Quien entre ahora conserva su precio mientras siga renovando: no sube en la siguiente convocatoria.',
+    offerUntil: 'Hasta el 31/12/2026',
+    offerWas: 'antes {amount}',
     heroNote: 'Sin tarjeta. Cada módulo trae preguntas abiertas para que lo pruebes antes de pagar.',
     heroAlt: 'Una estudiante repasando en su laptop junto a la ventana de un aula',
     heroAltB: 'Un alumno resolviendo ejercicios junto a su laptop',
@@ -223,7 +229,7 @@ export const es = {
     moduleWaitlist: 'Entrar a la lista de espera',
 
     englishBadge: 'Nuevo módulo · preventa',
-    englishPrice: '{price} al mes · incluido en el Pase de Admisión',
+    englishPrice: '{price} al mes por separado · sin pagar nada extra si tienes el Pase de Admisión o el plan Familiar',
     englishTitleA: 'Inglés de cero a',
     englishBody:
       'No otra app de rachas y vidas. Una ruta con las técnicas que de verdad mueven la aguja: repetición espaciada, input comprensible, shadowing y producción con corrección razonada. Cien semanas de camino, marcadas nivel por nivel.',
@@ -368,7 +374,7 @@ export const es = {
     faqTitle: 'Lo que preguntan los papás',
     faq: [
       { q: '¿Cómo se paga y qué pasa después?', a: 'Escribes por WhatsApp, te confirmamos el plan y pagas por Yape, Plin o transferencia. En cuanto llega el pago abrimos el acceso, normalmente el mismo día. No pedimos tarjeta ni guardamos datos bancarios.' },
-      { q: '¿Puedo comprar un solo curso en vez de todo?', a: 'Sí. Cada módulo se vende por separado desde S/ 39 al mes. Si tu hijo solo necesita reforzar Razonamiento Verbal, pagas ese. Los planes completos salen a cuenta a partir de tres módulos.' },
+      { q: '¿Puedo comprar un solo curso en vez de todo?', a: 'Sí. Cada módulo se vende por separado, al mes o al año; el precio de cada uno está arriba, en la sección de módulos. Si tu hijo solo necesita reforzar Razonamiento Verbal, pagas ese. Los planes completos salen a cuenta a partir de tres módulos.' },
       { q: '¿Cómo sé que está estudiando de verdad?', a: 'Con el plan Familiar recibes un reporte semanal por correo: minutos practicados, precisión por área y capítulos flojos. Si deja de entrar 4 días seguidos, te avisamos. Tu hijo ve exactamente los mismos números que tú.' },
       { q: '¿Sirve para ISIL, USIL, UPC o Universidad de Lima?', a: 'Sí. Los simulacros se arman con la mezcla real de cada institución: ISIL evalúa potencial con 50 % verbal y 50 % matemático, mientras que otras incluyen Matemática y Cultura General. Eliges la institución y el simulacro se adapta.' },
       { q: '¿Puedo cancelar?', a: 'El plan mensual se cancela cuando quieras y sigue activo hasta el final del mes pagado. Los planes anuales no se prorratean, pero puedes transferirlos a otro hermano dentro del mismo año.' },

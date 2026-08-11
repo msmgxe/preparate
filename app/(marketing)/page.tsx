@@ -121,6 +121,19 @@ export default async function LandingPage() {
           note={l.priceNote}
         />
 
+        <Reveal delay={40}>
+          <div className="lp-offer">
+            <span className="lp-offer-tag">
+              <Sparkles size={14} /> {l.offerBadge}
+            </span>
+            <div className="lp-offer-txt">
+              <b>{l.offerTitle}</b>
+              <p>{l.offerBody}</p>
+            </div>
+            <span className="lp-offer-until">{l.offerUntil}</span>
+          </div>
+        </Reveal>
+
         <Reveal delay={80} className="lp-grid" >
           <div style={{ marginTop: 30 }}>
             <Modules modules={modules} t={l} locale={locale} />
@@ -371,6 +384,20 @@ export default async function LandingPage() {
             body={l.plansBody}
             note={l.priceNote}
           />
+
+
+          <Reveal delay={40}>
+            <div className="lp-offer">
+              <span className="lp-offer-tag">
+                <Sparkles size={14} /> {l.offerBadge}
+              </span>
+              <div className="lp-offer-txt">
+                <b>{l.offerTitle}</b>
+                <p>{l.offerBody}</p>
+              </div>
+              <span className="lp-offer-until">{l.offerUntil}</span>
+            </div>
+          </Reveal>
 
           <Reveal delay={80}>
             <div style={{ marginTop: 32 }}>

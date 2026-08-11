@@ -193,6 +193,12 @@ export const en: Dict = {
     heroBody:
       'A five-minute visual lesson, real exam questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
     heroCta2: 'See the plans',
+    offerBadge: '40% off · introductory price',
+    offerTitle: 'Introductory price until 31 December',
+    offerBody:
+      'RUMBO is in its first year and grows every week. While this stage lasts, everything costs 40% less than the price it will carry later. Whoever joins now keeps that price for as long as they keep renewing: it does not go up at the next intake.',
+    offerUntil: 'Until 31/12/2026',
+    offerWas: 'was {amount}',
     heroNote: 'No card needed. Every module opens a few questions so you can try before paying.',
     heroAlt: 'A student revising on her laptop by a classroom window',
     heroAltB: 'A student working through exercises next to his laptop',
@@ -220,7 +226,7 @@ export const en: Dict = {
     moduleWaitlist: 'Join the waiting list',
 
     englishBadge: 'New module · pre-sale',
-    englishPrice: '{price} a month · included in the Admission Pass',
+    englishPrice: '{price} a month on its own · no extra charge if you have the Admission Pass or the Family plan',
     englishTitleA: 'English from zero to',
     englishBody:
       'Not another app of streaks and hearts. A route built on the techniques that actually move the needle: spaced repetition, comprehensible input, shadowing and output with reasoned correction. A hundred weeks of road, marked level by level.',
@@ -365,7 +371,7 @@ export const en: Dict = {
     faqTitle: 'What parents ask',
     faq: [
       { q: 'How do I pay, and what happens next?', a: 'You write on WhatsApp, we confirm the plan, and you pay by Yape, Plin or bank transfer. As soon as the payment arrives we open access, usually the same day. We never ask for a card or store banking details.' },
-      { q: 'Can I buy a single course instead of everything?', a: 'Yes. Each module is sold separately from S/ 39 a month. If your child only needs to shore up Verbal Reasoning, you pay for that one. Full plans start paying off from three modules onward.' },
+      { q: 'Can I buy a single course instead of everything?', a: 'Yes. Each module is sold separately, monthly or yearly; the price of each one is above, in the modules section. If your child only needs to shore up Verbal Reasoning, you pay for that one. Full plans start paying off from three modules onward.' },
       { q: 'How do I know they are actually studying?', a: 'On the Family plan you get a weekly email: minutes practised, accuracy by area and weak chapters. If they stop logging in for 4 days, we tell you. Your child sees exactly the same numbers you do.' },
       { q: 'Does it work for ISIL, USIL, UPC or Universidad de Lima?', a: 'Yes. Mock exams are built from each institution’s real mix: ISIL assesses potential with 50 % verbal and 50 % mathematical, while others also include Maths and General Knowledge. You pick the institution and the mock adapts.' },
       { q: 'Can I cancel?', a: 'The monthly plan can be cancelled whenever you like and stays active to the end of the month you paid for. Yearly plans are not pro-rated, but you can transfer them to a sibling within the same year.' },

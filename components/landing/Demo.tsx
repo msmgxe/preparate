@@ -5,7 +5,12 @@ import { useState } from 'react';
 import type { Dict } from '@/lib/i18n/dictionaries/es';
 
 /**
- * Demo del hero: una pregunta real, resuelta en el sitio.
+ * La muestra: una pregunta real, resuelta en el sitio.
+ *
+ * Al responder, la explicación no se despliega debajo sino que abre una
+ * segunda columna al lado. Debajo obligaba a bajar con la rueda justo en el
+ * momento en que la persona acaba de acertar —que es cuando hay que enseñarle
+ * por qué—, y esa media pantalla de scroll se pierden muchos.
  *
  * Va escrita aquí y no sale del balotario a propósito. La regla de oro de la
  * app es que `answer_index` no viaja al navegador antes de responder; una
@@ -21,7 +26,8 @@ export function Demo({ t }: { t: Dict['landing'] }) {
   const correct = chosen === DEMO.answer;
 
   return (
-    <div className="lp-card" style={{ padding: 22, maxWidth: 520 }}>
+    <div className={`lp-card lp-demo${answered ? ' is-open' : ''}`}>
+      <div className="lp-demo-q">
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <span className="lp-pill">{DEMO.area}</span>
         <span className="lp-pill lp-pill-accent">{DEMO.chapter}</span>
@@ -91,16 +97,15 @@ export function Demo({ t }: { t: Dict['landing'] }) {
         })}
       </div>
 
+        {!answered && (
+          <p className="lp-muted" style={{ fontSize: 13.5, marginTop: 14 }}>
+            {t.demoHint}
+          </p>
+        )}
+      </div>
+
       {answered && (
-        <div
-          style={{
-            marginTop: 16,
-            padding: '14px 16px',
-            borderRadius: 12,
-            background: 'var(--surface-2)',
-            border: '1px solid var(--line)',
-          }}
-        >
+        <aside className="lp-demo-a">
           <div
             style={{
               fontWeight: 700,
@@ -144,13 +149,7 @@ export function Demo({ t }: { t: Dict['landing'] }) {
           >
             <RotateCcw size={15} /> {t.demoRetry}
           </button>
-        </div>
-      )}
-
-      {!answered && (
-        <p className="lp-muted" style={{ fontSize: 13.5, marginTop: 14 }}>
-          {t.demoHint}
-        </p>
+        </aside>
       )}
     </div>
   );
