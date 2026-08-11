@@ -14,7 +14,7 @@ import { getLandingModules, getLandingPlans } from '@/lib/landing-queries';
 import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
-import { HeroShot, PHOTO } from '@/components/landing/Photos';
+import { PHOTO, Portrait } from '@/components/landing/Photos';
 import { Road } from '@/components/Road';
 import { SectionHead } from '@/components/landing/SectionHead';
 import { site, whatsappLink } from '@/lib/site';
@@ -47,12 +47,15 @@ export default async function LandingPage() {
       <LandingNav locale={locale} t={t} />
 
       {/* ═══ HERO ═══════════════════════════════════════════════════════
-          Texto a la izquierda y una foto grande a la derecha, con dos
-          tarjetas flotando encima. Las cifras que antes vivían en su propia
-          tarjeta se suben aquí: decían lo mismo dos veces. */}
+          Retrato · titular · retrato, con las cifras en un panel debajo que
+          cruza las tres columnas. */}
       <section className="lp-wrap">
         <div className="lp-hero">
-          <Reveal className="lp-hero-copy">
+          <Reveal>
+            <Portrait src={PHOTO.heroA} alt={l.heroAlt} />
+          </Reveal>
+
+          <Reveal className="lp-hero-copy" delay={60}>
             <span className="lp-pill">
               <GraduationCap size={14} /> {l.badge}
             </span>
@@ -65,9 +68,7 @@ export default async function LandingPage() {
               <span style={{ color: 'var(--brand)' }}>{l.heroC}</span>
             </h1>
 
-            <p style={{ fontSize: 18.5, marginTop: 20, maxWidth: '50ch' }}>
-              {l.heroBody}
-            </p>
+            <p style={{ fontSize: 18, marginTop: 20, maxWidth: '46ch' }}>{l.heroBody}</p>
 
             <div className="lp-hero-cta">
               <Link href="/registro" className="lp-btn lp-btn-primary lp-btn-lg">
@@ -81,32 +82,27 @@ export default async function LandingPage() {
             <p className="lp-muted" style={{ fontSize: 14, marginTop: 14 }}>
               {l.heroNote}
             </p>
-
-            <div className="lp-proof">
-              {[
-                { value: <Counter to={chapters} />, label: l.statChapters },
-                { value: <Counter to={published} suffix="+" />, label: l.statQuestions },
-                { value: <Counter to={5} />, label: l.statModules },
-              ].map((stat, i) => (
-                <div key={i}>
-                  <b>{stat.value}</b>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <HeroShot
-              alt={l.heroAlt}
-              caption={l.heroShot}
-              cards={[
-                { l: l.heroCard1[0], v: l.heroCard1[1] },
-                { l: l.heroCard2[0], v: l.heroCard2[1] },
-              ]}
-            />
+            <Portrait src={PHOTO.heroB} alt={l.heroAltB} />
           </Reveal>
         </div>
+
+        <Reveal delay={180}>
+          <div className="lp-proof">
+            {[
+              { value: <Counter to={chapters} />, label: l.statChapters },
+              { value: <Counter to={published} suffix="+" />, label: l.statQuestions },
+              { value: <Counter to={5} />, label: l.statModules },
+            ].map((stat, i) => (
+              <div key={i}>
+                <b>{stat.value}</b>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* ═══ LA MUESTRA EN VIVO ═══ */}

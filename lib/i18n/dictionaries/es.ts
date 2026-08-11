@@ -57,9 +57,9 @@ export const es = {
 
   nav: {
     modules: 'Módulos',
-    english: 'Inglés C1',
+    english: 'Inglés',
     method: 'Cómo funciona',
-    plans: 'Hola, quiero coordinar el pago de un plan de RUMBO.',
+    plans: 'Planes',
     faq: 'Preguntas',
     itinerary: 'Itinerario',
     exam: 'Simulacro',
@@ -198,9 +198,7 @@ export const es = {
     heroCta2: 'Ver los planes',
     heroNote: 'Sin tarjeta. Cada módulo trae preguntas abiertas para que lo pruebes antes de pagar.',
     heroAlt: 'Una estudiante repasando en su laptop junto a la ventana de un aula',
-    heroShot: 'Una clase de cinco minutos y su práctica, todos los días.',
-    heroCard1: ['Repaso espaciado', 'días 1 · 3 · 7 · 21'],
-    heroCard2: ['Corrección', 'al instante, y explicada'],
+    heroAltB: 'Un alumno resolviendo ejercicios junto a su laptop',
 
     statChapters: 'capítulos con temario propio',
     statQuestions: 'preguntas con resolución paso a paso',

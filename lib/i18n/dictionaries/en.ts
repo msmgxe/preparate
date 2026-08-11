@@ -54,10 +54,10 @@ export const en: Dict = {
 
   nav: {
     modules: 'Modules',
-    english: 'English C1',
+    english: 'English',
     method: 'How it works',
-    plans: 'Hi, I would like to arrange payment for a RUMBO plan.',
-    faq: 'Questions',
+    plans: 'Plans',
+    faq: 'FAQ',
     itinerary: 'Itinerary',
     exam: 'Mock exam',
     backToPanel: 'Back to panel',
@@ -195,9 +195,7 @@ export const en: Dict = {
     heroCta2: 'See the plans',
     heroNote: 'No card needed. Every module opens a few questions so you can try before paying.',
     heroAlt: 'A student revising on her laptop by a classroom window',
-    heroShot: 'A five-minute lesson and its practice, every day.',
-    heroCard1: ['Spaced review', 'days 1 · 3 · 7 · 21'],
-    heroCard2: ['Marking', 'instant, and explained'],
+    heroAltB: 'A student working through exercises next to his laptop',
 
     statChapters: 'chapters with their own syllabus',
     statQuestions: 'questions with step-by-step solutions',

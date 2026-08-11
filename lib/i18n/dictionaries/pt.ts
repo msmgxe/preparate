@@ -54,9 +54,9 @@ export const pt: Dict = {
 
   nav: {
     modules: 'Módulos',
-    english: 'Inglês C1',
+    english: 'Inglês',
     method: 'Como funciona',
-    plans: 'Olá, quero combinar o pagamento de um plano do RUMBO.',
+    plans: 'Planos',
     faq: 'Perguntas',
     itinerary: 'Itinerário',
     exam: 'Simulado',
@@ -195,9 +195,7 @@ export const pt: Dict = {
     heroCta2: 'Ver os planos',
     heroNote: 'Sem cartão. Cada módulo abre algumas questões para você testar antes de pagar.',
     heroAlt: 'Uma estudante revisando no notebook junto à janela de uma sala',
-    heroShot: 'Uma aula de cinco minutos e sua prática, todos os dias.',
-    heroCard1: ['Revisão espaçada', 'dias 1 · 3 · 7 · 21'],
-    heroCard2: ['Correção', 'na hora, e explicada'],
+    heroAltB: 'Um aluno resolvendo exercícios ao lado do notebook',
 
     statChapters: 'capítulos com conteúdo próprio',
     statQuestions: 'questões com resolução passo a passo',

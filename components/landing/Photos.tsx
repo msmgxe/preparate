@@ -1,26 +1,22 @@
 /**
  * Las fotos de la página de venta.
  *
- * Viven en `public/fotos/`. Ahí conviven dos cosas: los originales que bajas
- * —de varios megas— y estas versiones, redimensionadas a 900 px de ancho y
- * recomprimidas, que son las únicas que se suben al repositorio. El `.gitignore`
- * está montado justo así: ignora la carpeta entera menos los `rumbo-*.jpg`.
+ * Viven en `public/fotos/`. Ahí conviven los originales que descargas —de
+ * varios megas— y estas versiones recortadas y recomprimidas, que son las
+ * únicas que se suben: el `.gitignore` ignora la carpeta entera menos los
+ * `rumbo-*.jpg`.
  *
- * Para cambiar una foto: deja el original en la carpeta, genera su versión con
+ * Los recortes no se hacen con `object-position`. Cada foto se recorta de
+ * verdad, a su formato final, con `scripts/fotos.py`; así el navegador no
+ * descarga píxeles que el marco esconde. Si un recorte deja a alguien a
+ * medias, se mueve el punto de interés en ese script y se vuelve a correr.
  *
- *   sips --resampleWidth 900 -s format jpeg -s formatOptions 78 ORIGINAL --out rumbo-NOMBRE.jpg
- *
- * y ya está: el nombre no cambia, así que no hay que tocar código.
- *
- * Procedencia, por si algún día hay que justificarla: las cuatro `pexels-…`
- * vienen de Pexels y las tres `photo-…` de Unsplash, las dos con licencia libre
- * para uso comercial y sin atribución obligatoria. Se descartaron las de Envato
- * y las de iStock que había antes en la carpeta: las primeras traían la marca
- * de agua incrustada y las segundas eran comps de 612 px, que ni se pueden usar
- * ni tienen resolución para un hero.
+ * Procedencia: `pexels-…` de Pexels y `photo-…` de Unsplash, las dos con
+ * licencia libre para uso comercial y sin atribución obligatoria.
  */
 export const PHOTO = {
-  hero: '/fotos/rumbo-hero.jpg',
+  heroA: '/fotos/rumbo-hero-a.jpg',
+  heroB: '/fotos/rumbo-hero-b.jpg',
   pasos: [
     '/fotos/rumbo-paso-clase.jpg',
     '/fotos/rumbo-paso-practica.jpg',
@@ -33,38 +29,12 @@ export const PHOTO = {
   ],
 };
 
-/**
- * El retrato grande del hero, con las dos tarjetas que flotan encima.
- *
- * Las tarjetas no llevan métricas: llevan hechos del método. Un «7 días de
- * racha» o un «78 % de precisión» quedan muy bien en una maqueta y son
- * inventados, y esto es una página que la gente lee antes de pagar.
- */
-export function HeroShot({
-  alt,
-  caption,
-  cards,
-}: {
-  alt: string;
-  caption: string;
-  cards: [{ l: string; v: string }, { l: string; v: string }];
-}) {
+/** Uno de los dos retratos que flanquean el titular. */
+export function Portrait({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="lp-shot">
-      <figure className="lp-shot-frame">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={PHOTO.hero} alt={alt} width={900} height={1350} />
-        <figcaption className="lp-shot-cap">{caption}</figcaption>
-      </figure>
-
-      <div className="lp-float lp-float-1">
-        <span className="l">{cards[0].l}</span>
-        <b className="v">{cards[0].v}</b>
-      </div>
-      <div className="lp-float lp-float-2">
-        <span className="l">{cards[1].l}</span>
-        <b className="v">{cards[1].v}</b>
-      </div>
-    </div>
+    <figure className="lp-portrait">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} width={1000} height={1250} loading="eager" fetchPriority="high" />
+    </figure>
   );
 }
