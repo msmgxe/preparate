@@ -297,10 +297,11 @@ export default async function LandingPage() {
         <div className="lp-wrap">
           <SectionHead eyebrow={t.proof.eyebrow} title={t.proof.title} body={t.proof.body} />
 
-          <div
-            className="lp-grid"
-            style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', marginTop: 32 }}
-          >
+          {/* Dos columnas y no cuatro: cada tarjeta lleva dibujo y cinco líneas
+              de texto, y a cuatro por fila quedarían en 260 px —una palabra por
+              renglón—. En dos filas de dos, además, las cuatro se ven a la vez
+              sin el huérfano que dejaba el auto-fit. */}
+          <div className="lp-grid lp-proofgrid">
             {t.proof.items.map((item, i) => {
               const Spot = PROOF_SPOTS[i];
               return (

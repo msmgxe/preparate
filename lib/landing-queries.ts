@@ -35,14 +35,22 @@ export async function getLandingModules(locale: Locale = 'es'): Promise<ModuleCa
       .innerJoin(chapters, eq(chapters.id, lessons.chapterId))
       .where(eq(lessons.status, 'published'))
       .groupBy(chapters.areaId),
-    // un enunciado por área, solo para enseñar el tono de las preguntas
-    db
-      .select({ areaId: chapters.areaId, stem: questions.stem, i18n: questions.i18n })
-      .from(questions)
-      .innerJoin(chapters, eq(chapters.id, questions.chapterId))
-      .where(eq(questions.status, 'published'))
-      .orderBy(sql`random()`)
-      .limit(40),
+    /**
+     * Un enunciado por área, para enseñar el tono de las preguntas.
+     *
+     * `distinct on` es lo que garantiza «uno por área». Antes esto pedía 40
+     * preguntas al azar de todo el balotario y se quedaba con la primera de
+     * cada área, y como Inglés tiene 120 de las 250, había áreas que no salían
+     * en el sorteo: su tarjeta abría el temario sin ningún ejemplo debajo.
+     */
+    db.execute(sql`
+      select distinct on (ch.area_id)
+             ch.area_id as "areaId", q.stem, q.i18n
+        from questions q
+        join chapters ch on ch.id = q.chapter_id
+       where q.status = 'published'
+       order by ch.area_id, random()
+    `),
   ]);
 
   const byArea = <T extends { areaId: string; n: number }>(rows: T[]) =>
@@ -53,8 +61,18 @@ export async function getLandingModules(locale: Locale = 'es'): Promise<ModuleCa
   const lessonsBy = byArea(lessonCounts);
 
   const sampleBy = new Map<string, string>();
+  /**
+   * `db.execute` no devuelve un array en todos los conectores: con neon-http
+   * llega envuelto en `{ rows }`. Se acepta cualquiera de las dos formas para
+   * que la página no reviente si cambia el driver.
+   */
+  const sampleRows = (Array.isArray(samples) ? samples : (samples as { rows?: unknown[] })?.rows ?? []) as {
+    areaId: string;
+    stem: string;
+    i18n: unknown;
+  }[];
   // solo el enunciado se traduce aquí: el resto de la pregunta ni se consulta
-  for (const s of samples) if (!sampleBy.has(s.areaId)) sampleBy.set(s.areaId, tr(s, 'stem', locale));
+  for (const row of sampleRows) sampleBy.set(row.areaId, tr(row as never, 'stem', locale));
 
   return allAreas.map((a) => ({
     id: a.id,

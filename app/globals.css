@@ -775,7 +775,8 @@ button.road-stop:hover{transform:translateY(-3px)}
 
 
 /* ── Las viñetas del método ────────────────────────────────────────────── */
-.lp-proofcard{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.lp-proofgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:32px}
+.lp-proofcard{display:flex;flex-direction:column;height:100%;padding:0;overflow:hidden}
 .lp-spot{padding:20px 22px 12px;background:var(--surface-2);border-bottom:1px solid var(--line)}
 .lp-proofcard-txt{padding:20px 24px 24px}
 
@@ -990,4 +991,9 @@ button.road-stop:hover{transform:translateY(-3px)}
   /* el dibujo de las cartas se va debajo del texto */
   .lp-startup{grid-template-columns:1fr;gap:20px}
   .lp-startup-art{max-width:320px}
+}
+
+@media(max-width:860px){
+  /* dos columnas de tarjeta con dibujo ya no caben */
+  .lp-proofgrid{grid-template-columns:1fr}
 }
