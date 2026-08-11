@@ -99,7 +99,7 @@ export const en: Dict = {
     cases: [
       {
         title: 'You are doing well and want to be sure',
-        body: 'You already study, but you do not know whether what you practise looks like the exam. Here the questions are written to the real format of each institution, and the mock exam tells you, against the clock, where you actually stand.',
+        body: 'You already study, but you do not know whether what you practise looks like the exam. Here the questions are written in admission-exam style, and the mock exam tells you, against the clock, where you actually stand.',
       },
       {
         title: 'You are scraping by and need order',
@@ -128,7 +128,7 @@ export const en: Dict = {
       {
         tag: 'Stage 2',
         title: 'Active practice',
-        body: 'A five-minute lesson, questions in the real format, and instant marking that explains which reasoning error leads to each wrong option.',
+        body: 'A five-minute lesson, questions in admission-exam style, and instant marking that explains which reasoning error leads to each wrong option.',
       },
       {
         tag: 'Stage 3',
@@ -191,7 +191,7 @@ export const en: Dict = {
     heroB: 'to study more.',
     heroC: 'They need to practise better.',
     heroBody:
-      'A five-minute visual lesson, real exam questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
+      'A five-minute visual lesson, admission-exam style questions, and the step-by-step solution the moment you get one wrong. What you miss comes back on a schedule until you stop missing it.',
     heroCta2: 'See the plans',
     offerBadge: '40% off · introductory price',
     offerTitle: 'Introductory price until 31 December',
@@ -250,7 +250,7 @@ export const en: Dict = {
       {
         title: 'Exam-style questions',
         time: 'at your pace',
-        body: 'You practise with questions written to each institution’s real format, timed like the exam. Every wrong option maps to a specific reasoning error, not to noise.',
+        body: 'You practise with questions written in admission-exam style, timed like the real day. Every wrong option maps to a specific reasoning error, not to noise.',
       },
       {
         title: 'Feedback right away',
@@ -397,6 +397,40 @@ export const en: Dict = {
   },
 
   /** The onboard guide: what they bought, how it works, in what order. */
+  /** El diagnóstico inicial: opcional, explicado y repetible. */
+  diag: {
+    eyebrow: 'Optional',
+    title: 'Initial diagnostic',
+    lead:
+      'A short pass over every chapter you have open, to find out which ones you are fine with and which ones you are not. It is not an exam: nobody sees it, it does not count towards badges, and you can redo it whenever you like.',
+    statQuestions: 'questions',
+    statChapters: 'chapters',
+    statTime: 'minutes approx.',
+    statFree: 'no clock',
+    steps: [
+      ['How you take it', 'Two questions from each chapter, in one sitting and with no timer. If you get bored halfway, submit anyway: whatever you answered already counts.'],
+      ['Why there is no clock', 'Because it measures what you know, not how fast you are. Speed gets trained later, with the timed mock exams.'],
+      ['Where the result shows up', 'As soon as you finish, on the results screen itself: every chapter with its percentage and the weakest ones at the top. And from then on your itinerary stays coloured chapter by chapter, so you never have to come back here to check.'],
+      ['What it recommends next', 'Start with the weakest chapter in the area that weighs most in your exam. The home screen suggests it on its own, and if everything looks similar, start at the first chapter of the syllabus.'],
+    ],
+    partial:
+      'You have modules that are not open. The diagnostic only measures what is open plus the sample questions, so the picture comes out incomplete.',
+    empty: 'There are no published questions you can answer yet.',
+    cta: 'Start the diagnostic',
+    later: 'Not now',
+    redo: 'Redo the diagnostic',
+    redoHint: 'Worth redoing every three or four weeks to see whether the weak spots have moved.',
+    cardTitle: 'Want to know where to start?',
+    cardBody:
+      'The initial diagnostic walks through your chapters and tells you which ones are weak. It is optional, has no clock and takes a few minutes.',
+    cardCta: 'See what it involves',
+    resultTitle: 'Your starting point',
+    resultLead: 'Here is how each chapter you answered stands. The first three are where it pays to start.',
+    resultWeak: 'Start here',
+    resultSolid: 'You already have this',
+    resultNone: 'You need to answer a few more chapters for this to mean anything.',
+    goChapter: 'Go to the chapter',
+  },
   guide: {
     eyebrow: 'Flight plan',
     title: 'This is what you have on board',
@@ -419,7 +453,7 @@ export const en: Dict = {
         tag: 'Stop 2',
         title: 'Practise like the exam',
         time: 'at your pace',
-        body: 'Questions written to the real format of each institution. You choose, and in the same second you see whether you got it and why.',
+        body: 'Questions written in admission-exam style. You choose, and in the same second you see whether you got it and why.',
         tip: 'Stuck? The "Show me how to solve it" button opens the full solution. It counts as a miss, but learning is worth more than one session score.',
       },
       {

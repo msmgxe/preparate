@@ -255,7 +255,7 @@ export const lessonVideos = pgTable('lesson_videos', {
 
 // ── sesiones ────────────────────────────────────────────────────────────────
 
-export type AttemptMode = 'practice' | 'exam' | 'errors' | 'chapter' | 'lesson';
+export type AttemptMode = 'practice' | 'exam' | 'errors' | 'chapter' | 'lesson' | 'diagnostic';
 
 export const attempts = pgTable(
   'attempts',

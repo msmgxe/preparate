@@ -19,6 +19,11 @@ const QUICK_SIZE = 10;
 const CHAPTER_SIZE = 10;
 
 /** Crea el intento con sus items y manda al runner. */
+/** Cuántas preguntas toma el diagnóstico de cada capítulo. */
+const DIAGNOSTIC_PER_CHAPTER = 2;
+/** Se guarda en la base y no se traduce: es el título del intento. */
+const DIAGNOSTIC_TITLE = 'Diagnóstico inicial';
+
 async function launch(opts: {
   userId: string;
   mode: AttemptMode;
@@ -167,6 +172,56 @@ export async function startExam(formData: FormData) {
     profileId: exam.id,
     limitSeconds: exam.seconds,
     questionIds: shuffle(picked).slice(0, exam.nQuestions),
+  });
+}
+
+/**
+ * El diagnóstico inicial. Opcional, y se puede repetir.
+ *
+ * No es un simulacro de institución: en vez de repartir por áreas según una
+ * mezcla, recorre TODOS los capítulos abiertos y toma dos preguntas de cada
+ * uno. Esa diferencia es la que lo hace útil: un examen con la mezcla de ISIL
+ * dice cuánto sabes en total, pero puede no tocar seis capítulos, y entonces
+ * no sirve para decidir por dónde empezar. Aquí lo que importa es la cobertura,
+ * no el puntaje.
+ *
+ * Sin límite de tiempo, también a propósito: mide lo que sabes, no lo rápido
+ * que eres. Para eso ya están los simulacros cronometrados.
+ *
+ * Con los módulos cerrados usa lo que la muestra gratuita permite, así que
+ * alguien que no ha pagado también puede hacerlo —con menos capítulos, y la
+ * página se lo dice antes de empezar.
+ */
+export async function startDiagnostic() {
+  const profile = await requireUser();
+  const db = getDb();
+
+  const access = await getAccess(profile.id);
+
+  const rows = await db
+    .select({ id: questions.id, chapterId: questions.chapterId, areaId: chapters.areaId })
+    .from(questions)
+    .innerJoin(chapters, eq(chapters.id, questions.chapterId))
+    .where(eq(questions.status, 'published'));
+
+  const porCapitulo = new Map<string, string[]>();
+  for (const r of rows) {
+    if (!r.chapterId) continue;
+    // en un módulo cerrado solo entran las preguntas de la muestra
+    if (!access.isOpen(r.areaId) && access.limitFor(r.areaId) === 0) continue;
+    const list = porCapitulo.get(r.chapterId) ?? [];
+    list.push(r.id);
+    porCapitulo.set(r.chapterId, list);
+  }
+
+  const picked: string[] = [];
+  for (const [, ids] of porCapitulo) picked.push(...shuffle(ids).slice(0, DIAGNOSTIC_PER_CHAPTER));
+
+  await launch({
+    userId: profile.id,
+    mode: 'diagnostic',
+    title: DIAGNOSTIC_TITLE,
+    questionIds: shuffle(picked),
   });
 }
 

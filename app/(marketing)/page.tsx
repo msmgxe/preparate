@@ -15,6 +15,7 @@ import { getI18n, fill } from '@/lib/i18n';
 import { money } from '@/lib/money';
 import { LandingNav } from '@/components/landing/Nav';
 import { PHOTO, Portrait } from '@/components/landing/Photos';
+import { PROOF_SPOTS, SpotStartup } from '@/components/landing/Spots';
 import { Road } from '@/components/Road';
 import { SectionHead } from '@/components/landing/SectionHead';
 import { site, whatsappLink } from '@/lib/site';
@@ -300,15 +301,21 @@ export default async function LandingPage() {
             className="lp-grid"
             style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', marginTop: 32 }}
           >
-            {t.proof.items.map((item, i) => (
-              <Reveal key={item.tag} delay={i * 90}>
-                <article className="lp-card lp-card-hover" style={{ padding: 26, height: '100%' }}>
-                  <span className="lp-pill lp-pill-accent">{item.tag}</span>
-                  <h3 style={{ marginTop: 14 }}>{item.title}</h3>
-                  <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.65 }}>{item.body}</p>
-                </article>
-              </Reveal>
-            ))}
+            {t.proof.items.map((item, i) => {
+              const Spot = PROOF_SPOTS[i];
+              return (
+                <Reveal key={item.tag} delay={i * 90}>
+                  <article className="lp-card lp-card-hover lp-proofcard">
+                    <div className="lp-spot">{Spot && <Spot />}</div>
+                    <div className="lp-proofcard-txt">
+                      <span className="lp-pill lp-pill-accent">{item.tag}</span>
+                      <h3 style={{ marginTop: 14 }}>{item.title}</h3>
+                      <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.65 }}>{item.body}</p>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
 
           {/* ── las cifras de lo construido ───────────────────────────── */}
@@ -358,18 +365,16 @@ export default async function LandingPage() {
 
           {/* ── de dónde viene esto ───────────────────────────────────── */}
           <Reveal delay={200}>
-            <div
-              className="lp-card"
-              style={{
-                marginTop: 26,
-                padding: '24px 26px',
-                borderLeft: '3px solid var(--accent)',
-              }}
-            >
-              <h3 style={{ fontSize: 18 }}>{t.proof.startupTitle}</h3>
-              <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.7, maxWidth: '72ch' }}>
-                {t.proof.startupBody}
-              </p>
+            <div className="lp-card lp-startup">
+              <div>
+                <h3 style={{ fontSize: 18 }}>{t.proof.startupTitle}</h3>
+                <p style={{ fontSize: 15.5, marginTop: 10, lineHeight: 1.7 }}>
+                  {t.proof.startupBody}
+                </p>
+              </div>
+              <div className="lp-startup-art">
+                <SpotStartup />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -460,44 +465,42 @@ export default async function LandingPage() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer style={{ borderTop: '1px solid var(--line)', paddingBlock: 40 }}>
+      <footer className="lp-foot">
         <div
           className="lp-wrap"
           style={{ display: 'flex', gap: 30, flexWrap: 'wrap', justifyContent: 'space-between' }}
         >
           <div style={{ maxWidth: 320 }}>
-            <div className="lp-logo">
+            <div className="lp-logo lp-foot-logo">
               RUMBO <span>Admisión</span>
             </div>
             <p style={{ fontSize: 14, marginTop: 10 }}>
               {l.footerBlurb}
             </p>
             <div style={{ display: 'flex', gap: 14, marginTop: 14, fontSize: 14 }}>
-              <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="lp-muted">
+              <a href={site.instagram} target="_blank" rel="noopener noreferrer">
                 Instagram
               </a>
-              <a href={site.tiktok} target="_blank" rel="noopener noreferrer" className="lp-muted">
+              <a href={site.tiktok} target="_blank" rel="noopener noreferrer">
                 TikTok
               </a>
-              <a href={`mailto:${site.email}`} className="lp-muted">
-                {site.email}
-              </a>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: 44, flexWrap: 'wrap', fontSize: 14.5 }}>
             <div style={{ display: 'grid', gap: 9 }}>
               <span style={{ fontWeight: 700 }}>{l.footerPlatform}</span>
-              <a href="#modulos" className="lp-muted">{t.nav.modules}</a>
-              <a href="#ingles" className="lp-muted">{t.nav.english}</a>
-              <a href="#planes" className="lp-muted">{t.nav.plans}</a>
-              <Link href="/login" className="lp-muted">{t.common.login}</Link>
+              <a href="#modulos">{t.nav.modules}</a>
+              <a href="#ingles">{t.nav.english}</a>
+              <a href="#planes">{t.nav.plans}</a>
+              <Link href="/login">{t.common.login}</Link>
             </div>
             <div style={{ display: 'grid', gap: 9 }}>
               <span style={{ fontWeight: 700 }}>{l.footerLegal}</span>
-              <span className="lp-muted">{l.footerTerms}</span>
-              <span className="lp-muted">{l.footerPrivacy}</span>
-              <span className="lp-muted">{l.footerRefund}</span>
+              <span>{l.footerTerms}</span>
+              <span>{l.footerPrivacy}</span>
+              <span>{l.footerRefund}</span>
             </div>
           </div>
 
@@ -510,19 +513,16 @@ export default async function LandingPage() {
             >
               <MessageCircle size={17} /> {l.footerSupport}
             </a>
-            <div className="lp-muted" style={{ fontSize: 13, marginTop: 10, display: 'flex', gap: 7, alignItems: 'center' }}>
+            <div className="lp-foot-note">
               <BadgeCheck size={14} /> {l.footerPay}
             </div>
-            <div className="lp-muted" style={{ fontSize: 13, marginTop: 6, display: 'flex', gap: 7, alignItems: 'center' }}>
+            <div className="lp-foot-note">
               <CalendarClock size={14} /> {l.footerCalls}
             </div>
           </div>
         </div>
 
-        <div
-          className="lp-wrap lp-muted"
-          style={{ fontSize: 13, marginTop: 30, paddingTop: 20, borderTop: '1px solid var(--line)' }}
-        >
+        <div className="lp-wrap lp-foot-legal">
           © {new Date().getFullYear()} RUMBO. {l.footerDisclaimer}
           <br />
           {l.footerAuthor} <a href={whatsappLink(t.wa.short)} target="_blank" rel="noopener noreferrer">{site.whatsappPretty}</a>

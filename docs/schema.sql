@@ -568,3 +568,13 @@ end $$;
 -- A2, así que el módulo de Inglés abre sus capítulos a medida que se avanza.
 alter table areas add column if not exists sequential boolean not null default false;
 update areas set sequential = (id = 'eng');
+
+-- ── §14 · diagnóstico inicial ───────────────────────────────────────────────
+-- Un modo de intento más. Es un simulacro corto y opcional que recorre todos
+-- los capítulos abiertos en vez de una sola área, y su resultado se lee por
+-- capítulo para recomendar por dónde empezar. Va como modo propio y no como un
+-- 'exam' cualquiera porque las insignias y las estadísticas cuentan exámenes,
+-- y un diagnóstico no debería inflar esa cuenta.
+alter table attempts drop constraint if exists attempts_mode_check;
+alter table attempts add constraint attempts_mode_check
+  check (mode in ('practice','exam','errors','chapter','lesson','diagnostic'));

@@ -6,6 +6,7 @@ import { examProfiles, vStudentStats } from '@/db/schema';
 import { requireUser } from '@/lib/auth';
 import { daysUntil, getDueReviews, getItinerary, getStamps } from '@/lib/queries';
 import { Itinerary } from '@/components/Itinerary';
+import { DiagnosticCard } from '@/components/student/DiagnosticCard';
 import { Guide } from '@/components/student/Guide';
 import { MyCourses } from '@/components/student/MyCourses';
 import { startErrors, startQuick } from '@/app/(student)/actions';
@@ -79,6 +80,9 @@ export default async function HomePage({
 
       {/* La guía se abre sola mientras no haya practicado nada. */}
       <Guide t={t} startOpen={Number(stats?.sessions ?? 0) === 0} />
+
+      {/* Y debajo, la invitación al diagnóstico, que se puede cerrar. */}
+      <DiagnosticCard t={t} />
 
       <div className="pass">
         <div className="pass-main">

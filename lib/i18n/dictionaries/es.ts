@@ -102,7 +102,7 @@ export const es = {
     cases: [
       {
         title: 'Vas bien y quieres asegurar',
-        body: 'Ya estudias, pero no sabes si lo que practicas se parece al examen. Aquí las preguntas están escritas al formato real de cada institución y el simulacro te dice, con reloj, dónde estás de verdad.',
+        body: 'Ya estudias, pero no sabes si lo que practicas se parece al examen. Aquí las preguntas están escritas con formato tipo examen de admisión y el simulacro te dice, con reloj, dónde estás de verdad.',
       },
       {
         title: 'Vas justo y necesitas orden',
@@ -131,7 +131,7 @@ export const es = {
       {
         tag: 'Etapa 2',
         title: 'Práctica activa',
-        body: 'Clase de cinco minutos, ejercicios al formato real y corrección explicada al instante: qué error de razonamiento llevó a cada alternativa.',
+        body: 'Clase de cinco minutos, ejercicios con formato tipo examen y corrección explicada al instante: qué error de razonamiento llevó a cada alternativa.',
       },
       {
         tag: 'Etapa 3',
@@ -194,7 +194,7 @@ export const es = {
     heroB: 'estudiar más.',
     heroC: 'Necesita practicar mejor.',
     heroBody:
-      'Clase visual de cinco minutos, preguntas del examen real y la resolución paso a paso en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de fallarse.',
+      'Clase visual de cinco minutos, preguntas con formato tipo examen de admisión y la resolución paso a paso en el momento en que fallas. Lo que se falla vuelve programado hasta que deja de fallarse.',
     heroCta2: 'Ver los planes',
     offerBadge: '40 % menos · precio de introducción',
     offerTitle: 'Precio de introducción hasta el 31 de diciembre',
@@ -253,7 +253,7 @@ export const es = {
       {
         title: 'Preguntas tipo examen',
         time: 'a tu ritmo',
-        body: 'Practicas con preguntas escritas al formato real de cada institución, cronometradas como en el examen. Cada alternativa incorrecta corresponde a un error de razonamiento concreto, no a ruido.',
+        body: 'Practicas con preguntas escritas con formato tipo examen de admisión, cronometradas como el día real. Cada alternativa incorrecta corresponde a un error de razonamiento concreto, no a ruido.',
       },
       {
         title: 'Retroalimentación al instante',
@@ -400,6 +400,40 @@ export const es = {
   },
 
   /** La guía de a bordo: qué compró, cómo se usa y en qué orden. */
+  /** El diagnóstico inicial: opcional, explicado y repetible. */
+  diag: {
+    eyebrow: 'Opcional',
+    title: 'Diagnóstico inicial',
+    lead:
+      'Un recorrido corto por todos los capítulos que tienes abiertos, para saber en cuáles estás bien y en cuáles no. No es un examen: no lo ve nadie, no cuenta para las insignias y puedes repetirlo cuando quieras.',
+    statQuestions: 'preguntas',
+    statChapters: 'capítulos',
+    statTime: 'minutos aprox.',
+    statFree: 'sin reloj',
+    steps: [
+      ['Cómo se rinde', 'Dos preguntas de cada capítulo, en una sola sesión y sin cronómetro. Si te aburres a mitad, entrega igual: lo que hayas respondido ya cuenta.'],
+      ['Por qué no lleva reloj', 'Porque mide lo que sabes, no lo rápido que eres. La velocidad se entrena después, con los simulacros cronometrados.'],
+      ['Dónde ves el resultado', 'Al terminar, en la misma pantalla de resultados: cada capítulo con su porcentaje y los más flojos arriba del todo. Y desde ahí en adelante, tu itinerario queda coloreado por capítulo, así que no hay que volver aquí para consultarlo.'],
+      ['Qué se recomienda después', 'Empezar por el capítulo más flojo del área que más pesa en tu examen. La portada te lo propone sola, y si todos van parecido, empieza por el primero del temario.'],
+    ],
+    partial:
+      'Tienes módulos sin abrir. El diagnóstico solo mide lo que está abierto más las preguntas de muestra, así que la foto sale incompleta.',
+    empty: 'Todavía no hay preguntas publicadas que puedas responder.',
+    cta: 'Empezar el diagnóstico',
+    later: 'Ahora no',
+    redo: 'Repetir el diagnóstico',
+    redoHint: 'Conviene rehacerlo cada tres o cuatro semanas para ver si lo flojo se movió de sitio.',
+    cardTitle: '¿Quieres saber por dónde empezar?',
+    cardBody:
+      'El diagnóstico inicial recorre tus capítulos y te dice cuáles están flojos. Es opcional, no tiene reloj y dura pocos minutos.',
+    cardCta: 'Ver de qué se trata',
+    resultTitle: 'Tu punto de partida',
+    resultLead: 'Así está cada capítulo que respondiste. Los tres primeros son por donde conviene empezar.',
+    resultWeak: 'Por aquí conviene empezar',
+    resultSolid: 'Esto ya lo tienes',
+    resultNone: 'Necesitas responder algún capítulo más para que esto tenga sentido.',
+    goChapter: 'Ir al capítulo',
+  },
   guide: {
     eyebrow: 'Plan de vuelo',
     title: 'Esto es lo que llevas a bordo',
@@ -422,7 +456,7 @@ export const es = {
         tag: 'Escala 2',
         title: 'Practica como en el examen',
         time: 'a tu ritmo',
-        body: 'Preguntas escritas al formato real de cada institución. Eliges, y en el mismo segundo ves si acertaste y por qué.',
+        body: 'Preguntas escritas con formato tipo examen de admisión. Eliges, y en el mismo segundo ves si acertaste y por qué.',
         tip: '¿Atascado? El botón «Muéstrame cómo se resuelve» abre la resolución completa. Cuenta como fallo, pero aprender vale más que el puntaje de una sesión.',
       },
       {

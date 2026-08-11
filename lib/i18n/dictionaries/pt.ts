@@ -99,7 +99,7 @@ export const pt: Dict = {
     cases: [
       {
         title: 'Você vai bem e quer garantir',
-        body: 'Você já estuda, mas não sabe se o que pratica se parece com a prova. Aqui as questões são escritas no formato real de cada instituição, e o simulado diz, com relógio, onde você está de verdade.',
+        body: 'Você já estuda, mas não sabe se o que pratica se parece com a prova. Aqui as questões são escritas com formato de prova de admissão, e o simulado diz, com relógio, onde você está de verdade.',
       },
       {
         title: 'Você vai no limite e precisa de ordem',
@@ -128,7 +128,7 @@ export const pt: Dict = {
       {
         tag: 'Etapa 2',
         title: 'Prática ativa',
-        body: 'Aula de cinco minutos, exercícios no formato real e correção explicada na hora: qual erro de raciocínio leva a cada alternativa.',
+        body: 'Aula de cinco minutos, exercícios com formato de prova e correção explicada na hora: qual erro de raciocínio leva a cada alternativa.',
       },
       {
         tag: 'Etapa 3',
@@ -191,7 +191,7 @@ export const pt: Dict = {
     heroB: 'estudar mais.',
     heroC: 'Precisa praticar melhor.',
     heroBody:
-      'Aula visual de cinco minutos, questões da prova real e a resolução passo a passo no instante em que você erra. O que você erra volta programado até deixar de errar.',
+      'Aula visual de cinco minutos, questões com formato de prova de admissão e a resolução passo a passo no instante em que você erra. O que você erra volta programado até deixar de errar.',
     heroCta2: 'Ver os planos',
     offerBadge: '40% menos · preço de lançamento',
     offerTitle: 'Preço de lançamento até 31 de dezembro',
@@ -250,7 +250,7 @@ export const pt: Dict = {
       {
         title: 'Questões no formato da prova',
         time: 'no seu ritmo',
-        body: 'Você pratica com questões escritas no formato real de cada instituição, cronometradas como na prova. Cada alternativa errada corresponde a um erro de raciocínio concreto, não a ruído.',
+        body: 'Você pratica com questões escritas com formato de prova de admissão, cronometradas como no dia real. Cada alternativa errada corresponde a um erro de raciocínio concreto, não a ruído.',
       },
       {
         title: 'Retorno na hora',
@@ -397,6 +397,40 @@ export const pt: Dict = {
   },
 
   /** O guia de bordo: o que comprou, como se usa e em que ordem. */
+  /** El diagnóstico inicial: opcional, explicado y repetible. */
+  diag: {
+    eyebrow: 'Opcional',
+    title: 'Diagnóstico inicial',
+    lead:
+      'Uma passagem curta por todos os capítulos que você tem abertos, para saber em quais está bem e em quais não. Não é uma prova: ninguém vê, não conta para as insígnias e você pode refazer quando quiser.',
+    statQuestions: 'questões',
+    statChapters: 'capítulos',
+    statTime: 'minutos aprox.',
+    statFree: 'sem relógio',
+    steps: [
+      ['Como se faz', 'Duas questões de cada capítulo, numa sessão só e sem cronômetro. Se enjoar no meio, entregue assim mesmo: o que você respondeu já conta.'],
+      ['Por que não tem relógio', 'Porque mede o que você sabe, não o quão rápido você é. A velocidade se treina depois, com os simulados cronometrados.'],
+      ['Onde você vê o resultado', 'Ao terminar, na própria tela de resultados: cada capítulo com sua porcentagem e os mais fracos no topo. E daí em diante seu itinerário fica colorido capítulo a capítulo, então não precisa voltar aqui para consultar.'],
+      ['O que se recomenda depois', 'Começar pelo capítulo mais fraco da área que mais pesa na sua prova. A tela inicial já sugere sozinha e, se tudo estiver parecido, comece pelo primeiro do conteúdo.'],
+    ],
+    partial:
+      'Você tem módulos sem abrir. O diagnóstico só mede o que está aberto mais as questões de amostra, então a foto sai incompleta.',
+    empty: 'Ainda não há questões publicadas que você possa responder.',
+    cta: 'Começar o diagnóstico',
+    later: 'Agora não',
+    redo: 'Refazer o diagnóstico',
+    redoHint: 'Vale refazer a cada três ou quatro semanas para ver se o ponto fraco mudou de lugar.',
+    cardTitle: 'Quer saber por onde começar?',
+    cardBody:
+      'O diagnóstico inicial percorre seus capítulos e diz quais estão fracos. É opcional, não tem relógio e leva poucos minutos.',
+    cardCta: 'Ver do que se trata',
+    resultTitle: 'Seu ponto de partida',
+    resultLead: 'Assim está cada capítulo que você respondeu. Os três primeiros são por onde convém começar.',
+    resultWeak: 'Comece por aqui',
+    resultSolid: 'Isto você já tem',
+    resultNone: 'Você precisa responder mais alguns capítulos para que isto faça sentido.',
+    goChapter: 'Ir ao capítulo',
+  },
   guide: {
     eyebrow: 'Plano de voo',
     title: 'Isto é o que você leva a bordo',
@@ -419,7 +453,7 @@ export const pt: Dict = {
         tag: 'Escala 2',
         title: 'Pratique como na prova',
         time: 'no seu ritmo',
-        body: 'Questões escritas no formato real de cada instituição. Você escolhe e, no mesmo segundo, vê se acertou e por quê.',
+        body: 'Questões escritas com formato de prova de admissão. Você escolhe e, no mesmo segundo, vê se acertou e por quê.',
         tip: 'Travou? O botão «Mostre como se resolve» abre a resolução completa. Conta como erro, mas aprender vale mais que a nota de uma sessão.',
       },
       {

@@ -53,6 +53,9 @@ export default async function ResultadosPage({
       concept: questions.concept,
       trick: questions.trick,
       lessonId: questions.lessonId,
+      chapterId: chapters.id,
+      chapterTitle: chapters.title,
+      chapterI18n: chapters.i18n,
       areaId: areas.id,
       areaName: areas.name,
       areaShort: areas.short,
@@ -76,6 +79,7 @@ export default async function ResultadosPage({
     steps: tr(r, 'steps', locale),
     concept: tr(r, 'concept', locale),
     trick: tr(r, 'trick', locale),
+    chapterTitle: tr({ i18n: r.chapterI18n, title: r.chapterTitle }, 'title', locale),
     areaName: tr({ i18n: r.areaI18n, name: r.areaName }, 'name', locale),
     areaShort: tr({ i18n: r.areaI18n, short: r.areaShort }, 'short', locale),
   }));
@@ -97,6 +101,35 @@ export default async function ResultadosPage({
     if (row.isCorrect) bucket.ok += 1;
     byArea.set(row.areaId, bucket);
   }
+
+  /**
+   * El diagnóstico se lee por capítulo, no por área.
+   *
+   * Un porcentaje por área no sirve para decidir por dónde empezar: dice que
+   * Verbal va al 60 % pero no cuál de los siete capítulos lo hundió. Como el
+   * diagnóstico toma dos preguntas de cada capítulo justamente para eso, aquí
+   * se rehace la cuenta al nivel donde el alumno puede actuar.
+   */
+  const isDiagnostic = attempt.mode === 'diagnostic';
+  const byChapter = new Map<string, { total: number; ok: number; title: string; area: string; accent: string }>();
+  if (isDiagnostic) {
+    for (const row of rows) {
+      if (!row.chapterId) continue;
+      const b = byChapter.get(row.chapterId) ?? {
+        total: 0,
+        ok: 0,
+        title: row.chapterTitle ?? '',
+        area: row.areaShort,
+        accent: row.areaAccent,
+      };
+      b.total += 1;
+      if (row.isCorrect) b.ok += 1;
+      byChapter.set(row.chapterId, b);
+    }
+  }
+  const ranked = [...byChapter.entries()]
+    .map(([id, b]) => ({ id, ...b, pct: Math.round((b.ok / b.total) * 100) }))
+    .sort((x, y) => x.pct - y.pct || x.title.localeCompare(y.title));
 
   const elapsed = Math.round(
     (attempt.finishedAt.getTime() - attempt.startedAt.getTime()) / 1000,
@@ -172,6 +205,41 @@ export default async function ResultadosPage({
           </div>
         </div>
       </div>
+
+      {isDiagnostic && ranked.length > 0 && (
+        <section className="diagrank">
+          <span className="eyebrow" style={{ color: 'var(--sky)' }}>
+            {t.diag.eyebrow}
+          </span>
+          <h2 style={{ marginTop: 8 }}>{t.diag.resultTitle}</h2>
+          <p style={{ color: 'var(--paper-dim)', marginTop: 8, maxWidth: '62ch' }}>
+            {ranked.length < 3 ? t.diag.resultNone : t.diag.resultLead}
+          </p>
+
+          <ol className="diaglist">
+            {ranked.map((c, i) => (
+              <li key={c.id} className={i < 3 ? 'weak' : ''}>
+                <span className="diaglist-pos">{i + 1}</span>
+                <span className="diaglist-name">
+                  <b>{c.title}</b>
+                  <span className="ar">{c.area}</span>
+                </span>
+                <span className="diaglist-bar">
+                  <i style={{ width: `${c.pct}%`, background: c.accent }} />
+                </span>
+                <span className="diaglist-pct">{c.pct}%</span>
+                <Link className="diaglist-go" href={`/app/practica/${c.id}`}>
+                  {t.diag.goChapter} →
+                </Link>
+              </li>
+            ))}
+          </ol>
+
+          <p className="mono" style={{ fontSize: 12.5, color: 'var(--paper-dim)', marginTop: 16 }}>
+            {t.diag.resultWeak} · {t.diag.redoHint}
+          </p>
+        </section>
+      )}
 
       <section>
         <div className="shead">

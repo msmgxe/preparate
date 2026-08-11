@@ -565,6 +565,7 @@ img, video, iframe, canvas {
   --shadow-sm:0 1px 2px rgba(11,18,32,.06), 0 4px 12px rgba(11,18,32,.05);
   --shadow-md:0 8px 30px rgba(11,18,32,.10);
   --shadow-lg:0 24px 60px -18px rgba(44,91,232,.35);
+  --foot-bg:#2C5BE8;      /* blanco encima: 5,57:1 */
 
   position:relative; z-index:5; min-height:100vh;
   background:var(--bg); color:var(--text);
@@ -582,6 +583,7 @@ img, video, iframe, canvas {
   --accent:#A98BFF; --accent-soft:#1E1733;
   --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 8px 30px rgba(0,0,0,.45);
   --shadow-lg:0 24px 60px -18px rgba(109,149,255,.30);
+  --foot-bg:#1B3A8F;      /* el de marca se aclara en oscuro; este da 10,25:1 */
 }
 .lp *{box-sizing:border-box}
 .lp h1,.lp h2,.lp h3,.lp h4{font-family:var(--font-heading);letter-spacing:-.02em;line-height:1.15;color:var(--text)}
@@ -654,6 +656,39 @@ img, video, iframe, canvas {
   .lp-btn:hover,.lp-card-hover:hover{transform:none}
 }
 
+
+
+/* ── El diagnóstico inicial ────────────────────────────────────────────────
+   Va en el color del cielo, que en esta app es el de «orientarse»: la misma
+   familia que la primera escala de la guía. No usa el ámbar de las acciones
+   porque no es una tarea pendiente —es opcional— ni el coral de los avisos. */
+.diagcard{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px;padding:18px 20px;border:1px solid color-mix(in srgb,var(--sky) 40%,var(--line));border-radius:var(--r);background:color-mix(in srgb,var(--sky) 7%,transparent)}
+.diagcard-icon{width:42px;height:42px;border-radius:12px;display:grid;place-content:center;background:var(--sky);color:var(--ink);flex:none}
+.diagcard-txt{flex:1;min-width:240px}
+.diagcard-txt b{display:block;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;margin-top:3px}
+.diagcard-txt p{font-size:14.5px;line-height:1.55;color:var(--paper-dim);margin-top:5px;max-width:62ch}
+.diagcard-cta{display:flex;align-items:center;gap:8px;flex:none}
+.diagcard-x{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--paper-dim);display:grid;place-content:center;cursor:pointer;transition:.16s}
+.diagcard-x:hover{color:var(--paper);border-color:var(--line-strong)}
+
+.diaghow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:28px}
+.diagstep{display:flex;gap:14px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r);background:rgba(var(--fg-rgb),.02)}
+.diagstep-n{width:28px;height:28px;flex:none;border-radius:9px;display:grid;place-content:center;background:color-mix(in srgb,var(--sky) 22%,transparent);color:var(--sky);font-family:var(--mono);font-size:13px;font-weight:700}
+.diagstep h3{font-family:var(--display);font-weight:600;font-size:16.5px;letter-spacing:-.01em}
+.diagstep p{font-size:14.5px;line-height:1.6;color:var(--paper-dim);margin-top:6px}
+
+.diagrank{margin-top:34px}
+.diaglist{list-style:none;display:grid;gap:8px;margin-top:18px}
+.diaglist li{display:grid;grid-template-columns:26px minmax(0,1.5fr) minmax(80px,1fr) 46px auto;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:12px}
+.diaglist li.weak{border-color:color-mix(in srgb,var(--coral) 45%,var(--line));background:color-mix(in srgb,var(--coral) 6%,transparent)}
+.diaglist-pos{font-family:var(--mono);font-size:12px;color:var(--paper-dim)}
+.diaglist-name{min-width:0;display:grid;gap:2px}
+.diaglist-name b{font-size:14.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.diaglist-name .ar{font-family:var(--mono);font-size:11px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:.06em}
+.diaglist-bar{height:7px;border-radius:100px;background:rgba(var(--fg-rgb),.1);overflow:hidden}
+.diaglist-bar i{display:block;height:100%;border-radius:100px}
+.diaglist-pct{font-family:var(--mono);font-size:13px;text-align:right}
+.diaglist-go{font-size:12.5px;font-weight:600;color:var(--sky);white-space:nowrap}
 
 /* ── La carretera: la ruta dibujada como un camino ─────────────────────────
    Se usa en la landing y en la guía del alumno, que no comparten paleta. Por
@@ -737,6 +772,34 @@ button.road-stop:hover{transform:translateY(-3px)}
 .lp-vp-icon{width:44px;height:44px;border-radius:13px;display:grid;place-content:center;background:var(--brand-soft);color:var(--brand);flex:none}
 .lp-vp-time{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-left:auto}
 .lp-stepbody p{font-size:15.5px;line-height:1.65;margin-top:9px}
+
+
+/* ── Las viñetas del método ────────────────────────────────────────────── */
+.lp-proofcard{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.lp-spot{padding:20px 22px 12px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.lp-proofcard-txt{padding:20px 24px 24px}
+
+/* ── «Con las cartas sobre la mesa», con su dibujo al lado ─────────────── */
+.lp-startup{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.72fr);gap:30px;align-items:center;margin-top:26px;padding:26px 28px;border-left:3px solid var(--accent)}
+.lp-startup-art{min-width:0}
+
+/* ── El pie, en el azul de la marca ────────────────────────────────────────
+   Todo lo de dentro toma su color de aquí y no de los tokens claros: sobre
+   azul, `--text-3` sería ilegible. El blanco puro se reserva para lo que hay
+   que leer; los enlaces y las notas bajan a .74 y .62 de opacidad, que sobre
+   este azul siguen por encima del mínimo de contraste. */
+.lp-foot{background:var(--foot-bg);color:#fff;padding:44px 0 30px}
+.lp-foot a{color:#fff;transition:opacity .16s}
+.lp-foot a:hover{opacity:.8;text-decoration:underline}
+.lp-foot p,.lp-foot span,.lp-foot .lp-foot-note,.lp-foot .lp-foot-legal{color:rgba(255,255,255,.88)}
+.lp-foot .lp-foot-logo,.lp-foot b,.lp-foot strong{color:#fff}
+.lp-foot .lp-foot-logo span{color:rgba(255,255,255,.88)}
+.lp-foot-note{display:flex;align-items:center;gap:7px;font-size:13px;margin-top:10px}
+.lp-foot-legal{font-size:13px;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.28)}
+.lp-foot-legal a{color:#fff;font-weight:600;text-decoration:underline}
+/* el botón de WhatsApp mantiene su verde: es el único elemento que no se
+   difumina en el azul, y así se sigue viendo lo que hay que pulsar */
+.lp-foot .lp-btn-wa{border-color:transparent}
 
 /* ── La foto de cada caso ──────────────────────────────────────────────── */
 .lp-casephoto{aspect-ratio:16/11;overflow:hidden;background:var(--surface-2)}
@@ -914,4 +977,17 @@ button.road-stop:hover{transform:translateY(-3px)}
 @media(prefers-reduced-motion:reduce){
   .lp-demo{transition:none}
   .lp-demo-a{animation:none}
+}
+
+@media(max-width:640px){
+  /* la fila del ranking no cabe en cinco columnas */
+  .diaglist li{grid-template-columns:22px minmax(0,1fr) 46px;row-gap:8px}
+  .diaglist-bar{grid-column:2/-1}
+  .diaglist-go{grid-column:1/-1}
+}
+
+@media(max-width:820px){
+  /* el dibujo de las cartas se va debajo del texto */
+  .lp-startup{grid-template-columns:1fr;gap:20px}
+  .lp-startup-art{max-width:320px}
 }
